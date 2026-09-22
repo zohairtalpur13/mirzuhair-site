@@ -59,8 +59,6 @@ const PROJECTS = [
         { src: "img/co-bronze.jpg", cap: "The printed repeat: bronze on charcoal." }
       ]},
       { type: "step", n: "04", h: "The installation", p: "The look was shown in a curtained room lit by bare bulbs hung on knotted rope. Silk banners printed with the stag crest in every colourway hang beside it, so visitors see the full pattern system around the finished garment." },
-      { type: "full", src: "img/tt-hoop-3.jpg", cap: "Test prints on silk, compared in embroidery hoops for scale, colour and density." },
-      { type: "full", src: "img/tt-hoop-1.jpg", cap: "Doorway-and-arch repeat in rose on silk." },
       { type: "related", text: "Each composition behind the collection is documented as its own project:",
         links: ["corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling", "portrait-of-an-ancestor", "ivory-table", "lanterns"] }
     ]
