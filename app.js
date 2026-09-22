@@ -159,13 +159,28 @@
 
   /* ---------- Views ---------- */
   const viewHome = () => {
+    const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
+      "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
+      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg",
+      "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg" };
     const cards = PROJECTS.map((p, i) => {
-      const inner = p.coverHTML ? hlCover()
-        : p.covers ? `<div class="panels n${p.covers.length}">${p.covers.map((c) => `<img src="${c.src}" style="object-position:${c.pos || "center"}" alt="" loading="${i < 3 ? "eager" : "lazy"}">`).join("")}</div>`
-        : `<img src="${p.thumb || p.cover}" style="object-position:${p.thumbPos || "center"}" alt="${esc(p.title)}" loading="${i < 3 ? "eager" : "lazy"}">`;
-      return `<a data-tone="${p.tone || ""}" class="card reveal ${i === 0 || (i === PROJECTS.length - 1 && PROJECTS.length % 2 === 0) ? "feature" : ""}" href="#/work/${p.slug}">
-        <div class="frame">${inner}<div class="overlay"><span>View project →</span></div></div>
-        <div class="meta"><h2>${esc(p.title)}</h2><small>${esc(p.date)}</small></div></a>`;
+      const img = STAGE[p.slug] || p.cover || p.thumb;
+      const n = String(i + 1).padStart(2, "0");
+      return `<section class="ws-item" data-tone="${p.tone || ""}" style="--tone:${p.tone || "#e8d9bd"}">
+        <div class="ws-pin">
+          <a class="ws-frame" href="#/work/${p.slug}" aria-label="${esc(p.title)}">
+            <img class="ws-bg" src="${img}" alt="" loading="${i < 2 ? "eager" : "lazy"}">
+            <img class="ws-img" src="${img}" alt="${esc(p.title)}" loading="${i < 2 ? "eager" : "lazy"}">
+            <span class="ws-shade"></span>
+          </a>
+          <div class="ws-meta">
+            <span class="ws-n">${n}<i>/${String(PROJECTS.length).padStart(2, "0")}</i></span>
+            <h2 class="ws-title">${esc(p.title).split(" ").map((w) => `<span class="w"><span>${w}</span></span>`).join(" ")}</h2>
+            <p class="ws-sub">${esc(p.subtitle || "")}<span>${esc(p.date)}</span></p>
+            <a class="ws-cta" href="#/work/${p.slug}">View project <b>→</b></a>
+          </div>
+        </div>
+      </section>`;
     }).join("");
     return `
       <section class="hx" id="hx" aria-label="The Talpur palace, 1843 to 2025">
@@ -221,7 +236,7 @@
           </ol>
         </div>
       </section>
-      <section class="grid">${cards}</section>`;
+      <section class="ws" aria-label="Selected work">${cards}</section>`;
   };
 
   const viewProject = (p) => {
@@ -519,7 +534,7 @@
   function initFlow() {
     if (flowOff) { flowOff(); flowOff = null; }
     const root = document.documentElement;
-    const cards = [...app.querySelectorAll(".card[data-tone]")];
+    const cards = [...app.querySelectorAll(".ws-item[data-tone], .card[data-tone]")];
     if (!cards.length) { root.style.removeProperty("--flow"); document.body.classList.remove("flowing"); return; }
     document.body.classList.add("flowing");
     const brief = app.querySelector(".intro-brief");
@@ -532,11 +547,40 @@
       let best = null, bd = 1e9;
       cards.forEach((c) => { const r = c.getBoundingClientRect(); const d = Math.abs(r.top + r.height / 2 - mid); if (d < bd) { bd = d; best = c; } });
       if (best) set(best.dataset.tone || "#fbfaf7");
-      const g = app.querySelector(".grid"); if (g && g.getBoundingClientRect().bottom < mid) set("#fbfaf7");
+      const g = app.querySelector(".ws, .grid"); if (g && g.getBoundingClientRect().bottom < mid) set("#fbfaf7");
     };
     const on = () => { if (!raf) raf = requestAnimationFrame(pick); };
     addEventListener("scroll", on, { passive: true }); on();
     flowOff = () => { removeEventListener("scroll", on); document.body.classList.remove("flowing"); root.style.removeProperty("--flow"); };
+  }
+
+  /* ---------- Work stack: each project opens up to full screen ---------- */
+  let wsOff = null;
+  function initWorkStack() {
+    if (wsOff) { wsOff(); wsOff = null; }
+    const items = [...app.querySelectorAll(".ws-item")];
+    if (!items.length) return;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cl = (v) => Math.min(1, Math.max(0, v)), ez = (t) => 1 - Math.pow(1 - t, 3);
+    let raf = 0;
+    const frame = () => { raf = 0;
+      const vh = innerHeight;
+      items.forEach((it) => {
+        const r = it.getBoundingClientRect();
+        if (r.bottom < -vh || r.top > vh * 1.2) return;
+        const p = reduce ? .7 : cl(-r.top / (it.offsetHeight - vh));      // 0 → 1 while pinned
+        const enter = reduce ? 1 : ez(cl((vh - r.top) / vh));                // as it slides in
+        const open = ez(cl(p / .55));                                        // frame opening
+        const leave = cl((p - .82) / .18);                                   // pushed back by the next one
+        it.style.setProperty("--open", open.toFixed(4));
+        it.style.setProperty("--enter", enter.toFixed(4));
+        it.style.setProperty("--leave", leave.toFixed(4));
+        it.classList.toggle("ws-on", open > .45);
+      });
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    addEventListener("scroll", on, { passive: true }); addEventListener("resize", on); frame();
+    wsOff = () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
   }
 
   let resOff = null;
@@ -639,6 +683,7 @@
     initHero();
     initResearch();
     initFlow();
+    initWorkStack();
   }
 
   /* ---------- Behaviours ---------- */

@@ -800,3 +800,44 @@ body.flowing.on-hero .site-header { background: transparent; }
 body.flowing .card .frame { background: color-mix(in srgb, var(--flow) 70%, #fff); box-shadow: 0 30px 60px -40px color-mix(in srgb, var(--flow) 40%, #000); }
 body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(--flow) 40%, #000); }
 .hx-paper { background: color-mix(in srgb, #e8d9bd calc(var(--age) * 100%), #e8d9bd) !important; }
+
+/* ===== Work stack (cinematic project reveal) ===== */
+.ws { position: relative; }
+.ws-item { position: relative; height: 230vh; --open: 0; --enter: 0; --leave: 0; }
+.ws-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+  transform: scale(calc(1 - var(--leave) * .08)); transform-origin: center 30%; filter: brightness(calc(1 - var(--leave) * .45)); }
+.ws-frame { position: absolute; inset: 0; display: block; overflow: hidden; background: #1a1612;
+  clip-path: inset(calc((1 - var(--open)) * 22%) calc((1 - var(--open)) * 30%) calc((1 - var(--open)) * 22%) calc((1 - var(--open)) * 30%) round calc((1 - var(--open)) * 28px)); }
+.ws-bg { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(38px) saturate(1.15) brightness(.62); transform: scale(calc(1.2 - var(--open) * .1)); }
+.ws-img { position: absolute; left: 50%; top: 50%; max-width: 88%; max-height: 84%; width: auto; height: auto; object-fit: contain;
+  transform: translate(-50%, -50%) scale(calc(1.25 - var(--open) * .25)); box-shadow: 0 40px 90px -40px rgba(0,0,0,.8); border-radius: 6px; }
+.ws-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,8,6,.78) 0%, rgba(10,8,6,.1) 42%, transparent 60%); opacity: var(--open); }
+.ws-meta { position: absolute; left: clamp(20px, 5vw, 80px); right: clamp(20px, 5vw, 80px); bottom: clamp(36px, 7vh, 80px); color: #f6efe3; pointer-events: none; z-index: 2; }
+.ws-n { display: block; font-family: var(--serif); font-size: clamp(16px, 1.4vw, 22px); letter-spacing: .1em; opacity: calc(var(--open) * 1); }
+.ws-n i { font-style: normal; opacity: .55; }
+.ws-title { font-family: var(--serif); font-weight: 400; font-size: clamp(46px, 8.6vw, 150px); line-height: .92; letter-spacing: -.02em; margin: 8px 0 14px; }
+.ws-title .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; }
+.ws-title .w > span { display: inline-block; transform: translateY(105%); transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+.ws-on .ws-title .w > span { transform: none; }
+.ws-on .ws-title .w:nth-child(2) > span { transition-delay: .06s; } .ws-on .ws-title .w:nth-child(3) > span { transition-delay: .12s; } .ws-on .ws-title .w:nth-child(4) > span { transition-delay: .18s; }
+.ws-sub { display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--serif); font-style: italic; font-size: clamp(16px, 1.4vw, 22px); opacity: 0; transform: translateY(12px); transition: opacity .8s .25s, transform .8s .25s; }
+.ws-sub span { font-style: normal; font-family: var(--sans); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: .7; align-self: center; }
+.ws-on .ws-sub { opacity: 1; transform: none; }
+.ws-cta { pointer-events: auto; display: inline-flex; gap: 10px; margin-top: 20px; padding: 12px 22px; border: 1px solid rgba(246,239,227,.6); border-radius: 999px; color: #f6efe3; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+  opacity: 0; transform: translateY(12px); transition: opacity .8s .4s, transform .8s .4s, background .3s, color .3s; }
+.ws-on .ws-cta { opacity: 1; transform: none; }
+.ws-cta:hover { background: #f6efe3; color: #1a1612; }
+.ws-cta b { font-weight: 400; transition: transform .3s; } .ws-cta:hover b { transform: translateX(4px); }
+@media (max-width: 700px) {
+  .ws-item { height: 190vh; }
+  .ws-frame { clip-path: inset(calc((1 - var(--open)) * 16%) calc((1 - var(--open)) * 10%) round calc((1 - var(--open)) * 20px)); }
+  .ws-img { max-width: 92%; max-height: 64%; top: 42%; }
+  .ws-title { font-size: clamp(38px, 12vw, 60px); }
+}
+@media (prefers-reduced-motion: reduce) { .ws-item { height: 100vh; } .ws-title .w > span, .ws-sub, .ws-cta { transition: none; } }
+.ws-title .w { padding-bottom: .14em; margin-bottom: -.06em; }
+@media (max-width: 700px) {
+  .ws-img { max-height: 50%; top: 35%; }
+  .ws-title { line-height: 1; margin: 6px 0 10px; }
+  .ws-meta { bottom: 28px; }
+}
