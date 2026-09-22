@@ -571,6 +571,25 @@ const PROJECTS = [
       "The Goal":
         "To set up a dialogue between Sindhi architectural heritage and the visual language of global fashion, and to test scale, colour and placement before anything is printed."
     },
+    spiral: {
+      title: ["Pattern", "in", "Editorial"],
+      feature: 1,
+      focus: [.56, .76, 3],
+      capTitle: "The print, up close",
+      cap: "Composition 02, the deer crest, in coral, following the flare and folds of the skirt.",
+      items: [
+        { src: "img/ed-vogue-margot.jpg", ar: 1.249 },
+        { src: "img/ed-schiap.jpg", ar: 1.376 },
+        { src: "img/ed-elle.jpg", ar: 1.303 },
+        { src: "img/ed-vogue-adele.jpg", ar: 1.250 },
+        { src: "img/ed-red.jpg", ar: 1.000 },
+        { src: "img/ed-vogue-adria.jpg", ar: 1.294 },
+        { src: "img/ed-fashion.jpg", ar: 1.415 },
+        { src: "img/ed-marble.jpg", ar: 1.000 },
+        { src: "img/ed-gown.jpg", ar: 1.000 },
+        { src: "img/ed-group.jpg", ar: 1.000 }
+      ]
+    },
     note: "These are speculative mockups made for study. Original photography, models and magazine mastheads belong to their respective publications and photographers; only the textile patterns are my work.",
     blocks: [
       { type: "full", src: "img/ed-moodboard.jpg", cap: "Moodboard: contemporary fashion covers as the visual context for the collection.", contain: true },
