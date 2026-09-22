@@ -955,3 +955,19 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
 .sp-c em { font: 400 10px "Jost", sans-serif; letter-spacing: .16em; text-transform: uppercase; font-style: normal; opacity: .6; }
 .sp-c span { font: 400 1.05rem/1.35 "Cormorant Garamond", serif; }
 @media (max-width: 600px) { .sp-top { top: 72px; } }
+/* spiral: colour of the dress floods the white space */
+.sp-stage { --c: #cfa; }
+.sp-bg { position: absolute; inset: 0; opacity: 0; pointer-events: none; overflow: hidden;
+  background:
+    radial-gradient(60% 90% at 0% 50%, color-mix(in srgb, var(--c) 70%, transparent), transparent 70%),
+    radial-gradient(60% 90% at 100% 50%, color-mix(in srgb, var(--c) 70%, transparent), transparent 70%),
+    radial-gradient(80% 60% at 50% 110%, color-mix(in srgb, var(--c) 45%, transparent), transparent 70%),
+    color-mix(in srgb, var(--c) 22%, #fbfaf7);
+  transition: background .6s; }
+.sp-bg i { position: absolute; inset: -5%; display: block; }
+.sp-print { background-repeat: no-repeat; opacity: .22; mix-blend-mode: multiply; filter: blur(1.5px) saturate(1.25); transition: background-image .4s; }
+.sp-sheen { background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.1) 52%, transparent 62%) 0 0 / 260% 100%; mix-blend-mode: soft-light; animation: spSheen 5.5s ease-in-out infinite; }
+.sp-sheen::after { content: ""; position: absolute; inset: 0; background: radial-gradient(1.5px 1.5px at 12% 22%, #fff, transparent), radial-gradient(1.5px 1.5px at 84% 30%, #fff, transparent), radial-gradient(2px 2px at 22% 78%, #fff, transparent), radial-gradient(1.5px 1.5px at 90% 70%, #fff, transparent), radial-gradient(2px 2px at 6% 55%, #fff, transparent), radial-gradient(1.5px 1.5px at 95% 12%, #fff, transparent); animation: spTwinkle 2.8s ease-in-out infinite alternate; }
+@keyframes spSheen { 0% { background-position: 120% 0; } 100% { background-position: -120% 0; } }
+@keyframes spTwinkle { from { opacity: .2; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sp-sheen, .sp-sheen::after { animation: none; } }

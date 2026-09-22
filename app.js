@@ -636,6 +636,7 @@
     return `<section class="sp" aria-label="Editorial looks" style="height:${(SP_INTRO + n * S.unit + SP_OUTRO) * 100 + 100}vh">
       <div class="sp-stage">
         <div class="sp-top"><span>Mir Zuhair</span><span>Past<br>to<br>future</span></div>
+        <div class="sp-bg"><i class="sp-print"></i><i class="sp-sheen"></i></div>
         <h2 class="sp-title">${S.title.map(esc).join("<br>")}</h2>
         <div class="sp-ring">${S.items.map((it) => `<figure class="sp-card" style="--ar:${it.ar}"><img src="${it.src}" alt="" decoding="async" style="transform-origin:${org(it.f[0], it.f[2])}% ${org(it.f[1], it.f[2])}%"></figure>`).join("")}</div>
         <div class="sp-cap">${S.items.map((it, k) => `<div class="sp-c"><em>${String(k + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")} · The print, up close</em><span>${esc(it.cap)}</span></div>`).join("")}</div>
@@ -656,7 +657,8 @@
     const cl = (v) => Math.min(1, Math.max(0, v)), ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     const seg = (v, a, b) => cl((v - a) / (b - a));
     const t0 = performance.now(), INTRO_MS = 2200;
-    let raf = 0, capOn = -1;
+    const stage = sp.querySelector(".sp-stage"), bg = sp.querySelector(".sp-bg"), print = sp.querySelector(".sp-print");
+    let raf = 0, capOn = -1, bgOn = -1;
     const frame = () => {
       const W = innerWidth, H = innerHeight, m = Math.min(W, H * .8);
       const R = m * .37, base = m * Math.min(.17, 2.1 / n);
@@ -686,6 +688,16 @@
       title.style.opacity = cl(a * 1.4) * (1 - g);
       title.style.transform = `translate(-50%, -50%) scale(${.85 + .15 * a})`;
       top.style.opacity = foot.style.opacity = cl(a * 1.4) * (1 - g);
+      // the white space takes on the colour of the dress, with a pale echo of its print
+      if (act >= 0 && act !== bgOn) {
+        bgOn = act; const it = S.items[act];
+        stage.style.setProperty("--c", it.c);
+        print.style.backgroundImage = `url(${it.src})`;
+        print.style.backgroundSize = `${it.f[2] * 140}% auto`;
+        print.style.backgroundPosition = `${it.f[0] * 100}% ${it.f[1] * 100}%`;
+      }
+      bg.style.opacity = g;
+      print.style.transform = `scale(${1.15 - .15 * z})`;
       const on = act >= 0 && z > .6 ? act : -1;
       if (on !== capOn) { capOn = on; caps.forEach((cp, j) => cp.classList.toggle("on", j === on)); }
     };
