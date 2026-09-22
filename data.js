@@ -587,6 +587,10 @@ const PROJECTS = [
         { src: "img/ed-fashion.jpg", ar: 1.415 },
         { src: "img/ed-marble.jpg", ar: 1.000 },
         { src: "img/ed-gown.jpg", ar: 1.000 },
+        { src: "img/ed-vogue-mexico.jpg", ar: 1.414 },
+        { src: "img/ed-balenciaga.jpg", ar: 1.000 },
+        { src: "img/ed-vogue-france.jpg", ar: 1.414 },
+        { src: "img/ed-bazaar.jpg", ar: 1.414 },
         { src: "img/ed-group.jpg", ar: 1.000 }
       ]
     },
@@ -607,6 +611,14 @@ const PROJECTS = [
         { src: "img/ed-red.jpg", cap: "Colonnade print on a column gown." },
         { src: "img/ed-marble.jpg", cap: "Greek Key print on a fitted gown." },
         { src: "img/ed-gown.jpg", cap: "Hummingbird print on an evening coat." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/ed-vogue-mexico.jpg", cap: "Portrait-and-floral repeat, tone on tone in navy, on a satin top and fitted skirt." },
+        { src: "img/ed-vogue-france.jpg", cap: "Lantern and archway print in tonal red on a draped skirt." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/ed-balenciaga.jpg", cap: "Doorway crest in teal and red on a second-skin catsuit." },
+        { src: "img/ed-bazaar.jpg", cap: "Doorway crest in navy and magenta on a sculpted bubble dress." }
       ]},
       { type: "full", src: "img/ed-group.jpg", cap: "Collection view: multiple repeats styled together as a runway line-up." }
     ]

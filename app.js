@@ -655,7 +655,7 @@
     const seg = (p, a, b) => cl((p - a) / (b - a));
     const frame = () => {
       const W = innerWidth, H = innerHeight, m = Math.min(W, H * .8);
-      const R = m * .37, base = m * .17;
+      const R = m * .37, base = m * Math.min(.17, 2.1 / n);
       const r = sp.getBoundingClientRect(), p = reduce ? .4 : cl(-r.top / (sp.offsetHeight - H));
       const a = ease(seg(p, 0, .28));          // spiral in
       const spin = p * Math.PI * .9;          // slow rotation throughout
