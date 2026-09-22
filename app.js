@@ -327,6 +327,38 @@
     ["Decode", "From the drawings I extracted the building's grammar: symmetry, rhythm, and a palette taken from the rooms themselves.", "img/dd-colour.jpg"],
     ["Translate", "Finally, the grammar became cloth: seven compositions, printed on silk and woven as jacquard.", "img/tt-hero.jpg"],
   ];
+  const R_CASE_WHY = [
+    ["Where it began", "I studied how brand designers present a campaign: one idea carried from the street to the counter, into the bag and home. I wanted a project that showed my drawings could do the same, outside fashion."],
+    ["The idea", "In a Sindhi home the first cup of chai is for thirst and the second is for talk. That became the campaign line, \"Stay for the second cup\", and the offer: from Monday to Thursday, 4 to 7pm, the second chai is free."],
+    ["The rule", "My first draft used flat, drawn mockups, and it looked artificial. So I set a rule for the second round: every piece is shown on real photography, and every ornament is one of my own palace drawings."]
+  ];
+  const R_CASE_PAIRS = [
+    ["img/ln-drawing.jpg", "img/mc-tote3.jpg", "Canvas tote", "The lantern", "Tote, cups, billboards"],
+    ["img/co-drawing.jpg", "img/mc-kraft2.jpg", "Kraft takeaway bag", "The corridor", "Takeaway bag"],
+    ["img/de-oval.jpg", "img/mc-sticker1.jpg", "Emblem sticker", "The deer", "Emblem, stickers, loyalty stamps"],
+    ["img/ce-drawing.jpg", "img/mc-tin1.jpg", "Nankhatai tin", "The painted ceiling", "Tin lid, Kashmiri chai pouch"],
+    ["img/ch-drawing.jpg", "img/mc-pouch3.jpg", "Loose-leaf chai pouches", "The chandelier", "House chai pouch, book cover"]
+  ];
+  const R_CASE_STEPS = [
+    ["Reference study", "I broke a strong brand-campaign case study down into its parts: street advertising, packaging, digital and gifting, each shown on real photography. That became my checklist of touchpoints.", "img/mc-billboard1.jpg"],
+    ["Choosing the drawings", "From the palace archive I chose the drawings with the clearest silhouettes, the ones that still read on a cup or a sticker: the lantern, the corridor, the deer, the ceiling and the chandelier.", "img/ln-drawing.jpg"],
+    ["Identity", "Each drawing was cleaned into a single-ink line so it could print in one colour on kraft, canvas and paper. I paired it with a Bodoni wordmark and a script signature, and made the deer oval the emblem.", "img/mc-sticker3.jpg"],
+    ["The arch and the photograph", "For the campaign I framed real chai photography inside the shape of the palace doorway arch. It gave four key visuals: the second cup, Kashmiri pink chai, the copper kettle and bun maska.", "img/mc-kv2.jpg"],
+    ["Mockups", "Every design was placed into Photoshop smart-object mockups, so the print follows the folds of canvas, the grain of kraft and the curve of a cup. The street scenes are real photographs, with passers-by cut out so they walk in front of the posters.", "img/mc-st-umbrella.jpg"],
+    ["The app and social", "The loyalty idea became the Second Cup Club: an app with stamps, the 4–7pm offer and real drink photography, plus an Instagram grid that alternates photos and type.", "img/mc-app-home.jpg"]
+  ];
+  const R_CASE_PAL = [
+    ["#5E1224", "Oxblood", "The burgundy of Earthy Regal, deepened to the colour of the red hall.", "#F3EBDD"],
+    ["#E7B3B0", "Kashmiri pink", "Taken from the drink itself: the colour of Kashmiri chai.", "#5E1224"],
+    ["#0D4F4E", "Palace teal", "The teal of Earthy Regal and the painted-ceiling prints.", "#F3EBDD"],
+    ["#C99E52", "Lantern gold", "The brass of the lanterns and the gilt lines of the ceiling.", "#231E20"],
+    ["#F3EBDD", "Raw linen", "Unbleached canvas and paper, the ground for one-ink prints.", "#5E1224"]
+  ];
+  const R_CASE_LEARN = [
+    ["Research travels", "Drawings made for silk worked just as well on a paper cup, because they were built on clear silhouettes and symmetry."],
+    ["One ink goes further", "Printing single-colour line work on kraft and canvas kept the heritage feel while looking contemporary rather than costume."],
+    ["Real context convinces", "Showing the work on real photography, with real people, was the difference between a concept and a campaign."]
+  ];
   const split = (t) => { let k = 0; return t.split(" ").map((w) => `<span class="w">${w.split("").map((c) => `<i style="--d:${k++ * 30}ms">${c}</i>`).join("")}</span>`).join(" "); };
 
   const viewResearch = () => `
@@ -370,6 +402,36 @@
         <h2 class="rs-kicker">Findings</h2>
         <div class="rs-find">${[["Symmetry", "Almost every surface is mirrored: doors between windows, stags in pairs, medallions radiating from a centre. My repeats are built the same way."], ["Rhythm", "Lanterns, arches and chairs repeat at steady intervals down each corridor. That spacing sets the half-drop of the prints."], ["Light", "Coloured glass is everywhere, so the palette moves between deep grounds and jewel-bright accents."], ["Layering", "Ornament sits on ornament: portraits in carved frames, crests on painted grounds. The final prints layer figure over architecture in the same way."]]
           .map(([h, p], i) => `<article class="reveal" style="--k:${i}"><span>0${i + 1}</span><h3>${h}</h3><p>${p}</p></article>`).join("")}</div>
+      </section>
+
+      <section class="rs-case" id="mirs-cafe">
+        <div class="rs-case-head">
+          <h2 class="rs-kicker">Case study · 2026</h2>
+          <h3 class="rs-case-title">Mir's Café: <em>from palace to chai house</em></h3>
+          <p>The palace research was made for cloth. Mir's Café asks whether the same drawings could carry a whole brand: a chai house with cups, bags, billboards and an app, all built from what I drew on site.</p>
+        </div>
+
+        <div class="rs-case-why">${R_CASE_WHY.map(([h, p], i) => `<article class="reveal" style="--k:${i}"><span>${h}</span><p>${p}</p></article>`).join("")}</div>
+
+        <div class="rs-case-block">
+          <div class="rs-case-sub"><h4>From drawing to product</h4><p>Five drawings from the palace archive became the whole graphic language. Hover over or tap a product to see the drawing behind it.</p></div>
+          <div class="rs-case-pairs">${R_CASE_PAIRS.map((c) => `<figure class="cs-pair" tabindex="0"><div class="cs-pair-img"><img src="${c[1]}" alt="${c[2]}" loading="lazy"><img class="sk" src="${c[0]}" alt="My drawing: ${c[3]}" loading="lazy"></div><figcaption><b>${c[3]}</b><span>${c[4]}</span></figcaption></figure>`).join("")}</div>
+        </div>
+
+        <div class="rs-case-block">
+          <div class="rs-case-sub"><h4>How it was made</h4><p>From a reference study to a finished campaign, in six steps.</p></div>
+          <ol class="rs-case-steps">${R_CASE_STEPS.map((s, i) => `<li class="reveal" style="--k:${i}"><div class="cs-step-img"><img src="${s[2]}" alt="" loading="lazy"${s[2].includes("-drawing") ? ' style="object-fit:contain;background:#fbf8f1;padding:4%"' : ""}></div><div><span>0${i + 1}</span><h5>${s[0]}</h5><p>${s[1]}</p></div></li>`).join("")}</ol>
+        </div>
+
+        <div class="rs-case-block">
+          <div class="rs-case-sub"><h4>Where the colours come from</h4><p>The palette carries on from Heritage Loop's "Earthy Regal", then warms up for a café.</p></div>
+          <div class="rs-case-pal">${R_CASE_PAL.map((c) => `<div style="--c:${c[0]};--t:${c[3]}"><b>${c[1]}</b><span>${c[0]}</span><p>${c[2]}</p></div>`).join("")}</div>
+        </div>
+
+        <div class="rs-case-block rs-case-end">
+          <div class="rs-case-find">${R_CASE_LEARN.map(([h, p], i) => `<article class="reveal" style="--k:${i}"><h5>${h}</h5><p>${p}</p></article>`).join("")}</div>
+          <a class="rs-case-cta" href="#/work/mirs-cafe"><img src="img/mc-st-crosswalk.jpg" alt=""><span><small>See the full project</small><b>Mir's Café</b></span></a>
+        </div>
       </section>
     </section>`;
 
@@ -787,6 +849,7 @@
       specs.forEach((s) => { if (s.classList.contains("out")) return; const a = first.get(s), z = s.getBoundingClientRect(); s.animate([{ transform: `translate(${a.left - z.left}px, ${a.top - z.top}px)` }, { transform: "none" }], { duration: 600, easing: "cubic-bezier(.2,.7,.2,1)" }); });
     }));
     specs.forEach((s) => s.addEventListener("click", () => s.classList.toggle("flip")));
+    rs.querySelectorAll(".cs-pair").forEach((s) => s.addEventListener("click", () => s.classList.toggle("flip")));
     resOff = () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); cio.disconnect(); sio.disconnect(); };
   }
 
