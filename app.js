@@ -267,6 +267,16 @@
             ${p.note ? `<p class="note">${esc(p.note)}</p>` : ""}
           </div>
         </section>
+        ${typeof TOURS !== "undefined" && TOURS[p.slug] ? `<section class="tour" style="--n:${TOURS[p.slug].pts.length}">
+          <div class="tour-stage">
+            <div class="tour-bg" style="background-image:url(${TOURS[p.slug].img})"></div>
+            <div class="tour-box"><img class="tour-img" src="${TOURS[p.slug].img}" alt="${esc(p.title)}"></div>
+            <div class="tour-lens"></div>
+            <div class="tour-cap">${TOURS[p.slug].pts.map((q, k) => `<div class="tour-c" data-k="${k}"><em>${String(k + 1).padStart(2, "0")} / ${String(TOURS[p.slug].pts.length).padStart(2, "0")}</em><b>${esc(q[3])}</b><span>${esc(q[4])}</span></div>`).join("")}</div>
+            <div class="tour-dots">${TOURS[p.slug].pts.map(() => "<i></i>").join("")}</div>
+            <div class="tour-kicker">In detail</div>
+          </div>
+        </section>` : ""}
         <section class="blocks pj-blocks">${p.blocks.map(renderBlock).join("")}</section>
         <a class="pj-next" href="#/work/${next.slug}">
           <img src="${nimg}" alt="">
@@ -615,6 +625,41 @@
     pjOff = () => { removeEventListener("scroll", on); removeEventListener("resize", on); io.disconnect(); };
   }
 
+  /* ---------- Detail tour: the camera moves into one detail after another ---------- */
+  let tourOff = null;
+  function initTour() {
+    if (tourOff) { tourOff(); tourOff = null; }
+    const tour = app.querySelector(".tour"); if (!tour) return;
+    const slug = location.hash.split("/")[2]; const T = TOURS[slug]; if (!T) return;
+    const img = tour.querySelector(".tour-img"), box = tour.querySelector(".tour-box"), caps = [...tour.querySelectorAll(".tour-c")], dots = [...tour.querySelectorAll(".tour-dots i")];
+    const pts = T.pts, n = pts.length, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cl = (v) => Math.min(1, Math.max(0, v)), ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    let raf = 0, cur = -1;
+    const frame = () => {
+      if (!img.naturalWidth) return;
+      const W = innerWidth, H = innerHeight;
+      const fit = Math.min(W * .86 / img.naturalWidth, H * .78 / img.naturalHeight);
+      const w = img.naturalWidth * fit, h = img.naturalHeight * fit;
+      box.style.width = w + "px"; box.style.height = h + "px";
+      const r = tour.getBoundingClientRect(); const P = reduce ? 0 : cl(-r.top / (tour.offsetHeight - H)) * (n - 1);
+      const i = Math.min(n - 2, Math.floor(P)), f = n > 1 ? ease(cl((P - i - .15) / .7)) : 0;
+      const a = pts[Math.max(0, i)], b = pts[Math.min(n - 1, i + 1)];
+      const x = a[0] + (b[0] - a[0]) * f, y = a[1] + (b[1] - a[1]) * f, z = a[2] + (b[2] - a[2]) * f;
+      // keep the focus point centred, clamped so the image never leaves empty gaps once zoomed
+      let tx = w / 2 - x * w * z, ty = h / 2 - y * h * z;
+      tx = Math.min(Math.max(tx, w - w * z - (W - w) / 2 * (z > 1 ? 1 : 0)), (W - w) / 2 * (z > 1 ? 1 : 0));
+      ty = Math.min(Math.max(ty, h - h * z - (H - h) / 2 * (z > 1 ? 1 : 0)), (H - h) / 2 * (z > 1 ? 1 : 0));
+      img.style.transform = `translate(${tx}px, ${ty}px) scale(${z})`;
+      tour.style.setProperty("--z", ((z - 1) / 3).toFixed(3));
+      const k = Math.round(P);
+      if (k !== cur) { cur = k; caps.forEach((c, j) => c.classList.toggle("on", j === k)); dots.forEach((d, j) => d.classList.toggle("on", j <= k)); }
+    };
+    const on = () => frame();
+    addEventListener("scroll", on, { passive: true }); addEventListener("resize", on);
+    img.complete ? frame() : img.addEventListener("load", frame, { once: true });
+    tourOff = () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
+  }
+
   let resOff = null;
   function initResearch() {
     if (resOff) { resOff(); resOff = null; }
@@ -717,6 +762,7 @@
     initFlow();
     initWorkStack();
     initProject();
+    initTour();
   }
 
   /* ---------- Behaviours ---------- */

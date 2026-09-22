@@ -912,3 +912,29 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
   .pj-reveal, .pj-reveal img, .pj-fact, .pj-blocks .blk.step { transition: none; clip-path: none; opacity: 1; transform: none; }
   .pj-lit span { opacity: 1; }
 }
+
+/* ===== Detail tour ===== */
+.tour { position: relative; height: calc(var(--n) * 90vh + 60vh); margin-top: clamp(20px, 4vw, 60px); --z: 0; }
+.tour-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #120e0b; color: #f6efe3; }
+.tour-bg { position: absolute; inset: -60px; background-size: cover; background-position: center; filter: blur(50px) brightness(.4) saturate(1.2); transform: scale(calc(1.05 + var(--z) * .15)); }
+.tour-box { position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); overflow: visible; }
+.tour-img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; transform-origin: 0 0; will-change: transform; box-shadow: 0 50px 100px -40px rgba(0,0,0,.9); }
+.tour-lens { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 55% at 50% 52%, transparent 55%, rgba(10,8,6,.75) 100%); opacity: calc(.35 + var(--z) * .9); }
+.tour-kicker { position: absolute; left: clamp(20px, 5vw, 80px); top: clamp(96px, 14vh, 130px); font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #c9a45c; }
+.tour-cap { position: absolute; left: clamp(20px, 5vw, 80px); bottom: clamp(40px, 9vh, 90px); width: min(420px, 80vw); height: 180px; }
+.tour-c { position: absolute; left: 0; bottom: 0; padding: 22px 24px; background: rgba(18,14,11,.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(246,239,227,.14); border-radius: 14px;
+  opacity: 0; transform: translateY(18px); transition: opacity .6s, transform .7s cubic-bezier(.2,.8,.2,1); }
+.tour-c.on { opacity: 1; transform: none; }
+.tour-c em { display: block; font-style: normal; font-size: 11px; letter-spacing: .2em; color: #c9a45c; margin-bottom: 8px; }
+.tour-c b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.4vw, 36px); line-height: 1.05; margin-bottom: 8px; }
+.tour-c span { display: block; font-size: 14px; line-height: 1.5; opacity: .85; }
+.tour-dots { position: absolute; right: clamp(20px, 5vw, 80px); top: 50%; transform: translateY(-50%); display: grid; gap: 10px; }
+.tour-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(246,239,227,.28); transition: background .4s, transform .4s; }
+.tour-dots i.on { background: #c9a45c; transform: scale(1.4); }
+@media (max-width: 700px) {
+  .tour-box { top: 40%; }
+  .tour-cap { bottom: 28px; right: 20px; width: auto; }
+  .tour-c { right: 0; padding: 16px 18px; }
+  .tour-dots { right: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .tour { height: auto; } .tour-stage { position: relative; } }
