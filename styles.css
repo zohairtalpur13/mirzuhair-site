@@ -940,7 +940,7 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
 @media (prefers-reduced-motion: reduce) { .tour { height: auto; } .tour-stage { position: relative; } }
 
 /* ---------- Editorial spiral ---------- */
-.sp { position: relative; height: 520vh; }
+.sp { position: relative; }
 .sp-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .sp-ring { position: absolute; inset: 0; }
 .sp-card { position: absolute; left: 50%; top: 50%; margin: 0; aspect-ratio: 1 / var(--ar); overflow: hidden; background: #0001; box-shadow: 0 10px 30px -18px #0006; will-change: transform, opacity; opacity: 0; }
@@ -949,10 +949,9 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
 .sp-title { position: absolute; left: 50%; top: 50%; margin: 0; text-align: center; font-family: "Jost", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: -.01em; line-height: .92; font-size: clamp(22px, 4.2vmin, 46px); color: #1b1416; opacity: 0; pointer-events: none; }
 .sp-top, .sp-foot { position: absolute; left: 4vw; right: 4vw; display: flex; justify-content: space-between; gap: 2rem; font: 400 10px/1.3 "Jost", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #1b1416aa; text-align: center; }
 .sp-top { top: 86px; text-align: left; } .sp-top span:last-child, .sp-foot span:last-child { text-align: right; } .sp-foot { bottom: 4vh; }
-.sp-cap { position: absolute; left: 50%; bottom: 5vh; transform: translate(-50%, 12px); z-index: 6; width: min(92vw, 460px); padding: .9rem 1.1rem; background: #fffc; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity .5s, transform .5s; display: grid; gap: .2rem; }
-.sp-cap.on { opacity: 1; transform: translate(-50%, 0); }
-.sp-cap em { font: 400 10px "Jost", sans-serif; letter-spacing: .16em; text-transform: uppercase; font-style: normal; opacity: .6; }
-.sp-cap b { font: 500 1.2rem "Cormorant Garamond", serif; }
-.sp-cap span { font: 300 .88rem/1.45 "Jost", sans-serif; }
-@media (max-width: 600px) { .sp { height: 440vh; } .sp-top { top: 72px; } }
-@media (prefers-reduced-motion: reduce) { .sp { height: auto; } .sp-stage { position: relative; } }
+.sp-cap { position: absolute; left: 50%; bottom: 4vh; transform: translateX(-50%); z-index: 6; width: min(92vw, 460px); pointer-events: none; }
+.sp-c { position: absolute; left: 0; right: 0; bottom: 0; padding: .85rem 1.1rem; background: #fffd; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transform: translateY(12px); transition: opacity .45s, transform .45s; display: grid; gap: .25rem; }
+.sp-c.on { opacity: 1; transform: none; }
+.sp-c em { font: 400 10px "Jost", sans-serif; letter-spacing: .16em; text-transform: uppercase; font-style: normal; opacity: .6; }
+.sp-c span { font: 400 1.05rem/1.35 "Cormorant Garamond", serif; }
+@media (max-width: 600px) { .sp-top { top: 72px; } }

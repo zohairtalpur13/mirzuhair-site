@@ -256,6 +256,7 @@
       : `<div class="cover"><img src="${p.cover}" alt="${esc(p.title)}" data-cap="${esc(p.title)}"></div>`;
     return `
       <article class="pj page-enter" style="--tone:${p.tone || "#e8d9bd"}">
+        ${p.spiral ? viewSpiral(p) : ""}
         <section class="project-head">
           ${cover}
           <div class="project-info">
@@ -267,7 +268,6 @@
             ${p.note ? `<p class="note">${esc(p.note)}</p>` : ""}
           </div>
         </section>
-        ${p.spiral ? viewSpiral(p) : ""}
         ${!p.spiral && typeof TOURS !== "undefined" && TOURS[p.slug] ? `<section class="tour" style="--n:${TOURS[p.slug].pts.length}">
           <div class="tour-stage">
             <div class="tour-bg" style="background-image:url(${TOURS[p.slug].img})"></div>
@@ -627,17 +627,18 @@
   }
 
   /* ---------- Detail tour: the camera moves into one detail after another ---------- */
-  /* ---------- Editorial spiral: ring of looks -> feature -> zoom into the print ---------- */
+  /* ---------- Editorial spiral: ring of looks, then each look in turn -> zoom into its print ---------- */
+  const SP_INTRO = 1, SP_OUTRO = .5;
   function viewSpiral(p) {
-    const S = p.spiral;
+    const S = p.spiral, n = S.items.length;
     // origin that keeps the focus point in the centre of the frame at full zoom
     const org = (c, z) => (Math.min(1 - .5 / z, Math.max(.5 / z, c)) - .5 / z) / (1 - 1 / z) * 100;
-    return `<section class="sp" aria-label="Editorial looks">
+    return `<section class="sp" aria-label="Editorial looks" style="height:${(SP_INTRO + n * S.unit + SP_OUTRO) * 100 + 100}vh">
       <div class="sp-stage">
         <div class="sp-top"><span>Mir Zuhair</span><span>Past<br>to<br>future</span></div>
         <h2 class="sp-title">${S.title.map(esc).join("<br>")}</h2>
-        <div class="sp-ring">${S.items.map((it, k) => `<figure class="sp-card${k === S.feature ? " sp-feat" : ""}" style="--ar:${it.ar}"><img src="${it.src}" alt="" loading="eager" decoding="async"${k === S.feature ? ` style="transform-origin:${org(S.focus[0], S.focus[2])}% ${org(S.focus[1], S.focus[2])}%"` : ""}></figure>`).join("")}</div>
-        <div class="sp-cap"><em>In detail</em><b>${esc(S.capTitle)}</b><span>${esc(S.cap)}</span></div>
+        <div class="sp-ring">${S.items.map((it) => `<figure class="sp-card" style="--ar:${it.ar}"><img src="${it.src}" alt="" decoding="async" style="transform-origin:${org(it.f[0], it.f[2])}% ${org(it.f[1], it.f[2])}%"></figure>`).join("")}</div>
+        <div class="sp-cap">${S.items.map((it, k) => `<div class="sp-c"><em>${String(k + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")} · The print, up close</em><span>${esc(it.cap)}</span></div>`).join("")}</div>
         <div class="sp-foot"><span>${esc(p.tags)}</span><span>Scroll</span></div>
       </div>
     </section>`;
@@ -648,45 +649,51 @@
     if (spOff) { spOff(); spOff = null; }
     const sp = app.querySelector(".sp"); if (!sp) return;
     const slug = location.hash.split("/")[2], S = (PROJECTS.find((x) => x.slug === slug) || {}).spiral; if (!S) return;
-    const cards = [...sp.querySelectorAll(".sp-card")], n = cards.length, fi = S.feature, fimg = cards[fi].querySelector("img");
-    const title = sp.querySelector(".sp-title"), cap = sp.querySelector(".sp-cap"), top = sp.querySelector(".sp-top"), foot = sp.querySelector(".sp-foot");
+    const cards = [...sp.querySelectorAll(".sp-card")], imgs = cards.map((c) => c.querySelector("img")), n = cards.length;
+    const ars = S.items.map((it) => it.ar), caps = [...sp.querySelectorAll(".sp-c")];
+    const title = sp.querySelector(".sp-title"), top = sp.querySelector(".sp-top"), foot = sp.querySelector(".sp-foot");
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const cl = (v) => Math.min(1, Math.max(0, v)), ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    const seg = (p, a, b) => cl((p - a) / (b - a));
+    const seg = (v, a, b) => cl((v - a) / (b - a));
+    const t0 = performance.now(), INTRO_MS = 2200;
+    let raf = 0, capOn = -1;
     const frame = () => {
       const W = innerWidth, H = innerHeight, m = Math.min(W, H * .8);
       const R = m * .37, base = m * Math.min(.17, 2.1 / n);
-      const r = sp.getBoundingClientRect(), p = reduce ? .4 : cl(-r.top / (sp.offsetHeight - H));
-      const a = ease(seg(p, 0, .28));          // spiral in
-      const spin = p * Math.PI * .9;          // slow rotation throughout
-      const f = ease(seg(p, .52, .72));       // feature to centre
-      const z = ease(seg(p, .76, .96));       // zoom into the print
-      cards.forEach((c, k) => {
-        const ar = +c.style.getPropertyValue("--ar");
-        const th = -Math.PI / 2 + (k / n) * Math.PI * 2 + (1 - a) * Math.PI * 1.6 + spin;
-        const rad = R * a;
-        let x = Math.cos(th) * rad, y = Math.sin(th) * rad, w = base, o = cl(a * 1.6), rot = (1 - a) * -40;
-        if (k === fi) {
-          const tw = Math.min(H * .8 / ar, W * .88);
-          x *= 1 - f; y *= 1 - f; w = base + (tw - base) * f; rot *= 1 - f;
-          c.style.zIndex = 5;
+      // the spiral plays by itself on arrival; scroll then drives rotation and the close-ups
+      const a = reduce ? 1 : ease(cl((performance.now() - t0) / INTRO_MS));
+      const r = sp.getBoundingClientRect(), total = SP_INTRO + n * S.unit + SP_OUTRO;
+      const P = cl(-r.top / Math.max(1, sp.offsetHeight - H)) * total;
+      const spin = P / total * Math.PI * 2.2;
+      const L = (P - SP_INTRO) / S.unit, k = Math.floor(L), t = L - k;       // active look and its local progress
+      const act = L >= 0 && k < n ? k : -1;
+      const g = act < 0 ? 0 : ease(seg(t, 0, .22)) * (1 - ease(seg(t, .8, 1)));   // grow to centre, then return
+      const z = act < 0 ? 0 : ease(seg(t, .22, .5)) * (1 - ease(seg(t, .66, .84))); // zoom into the print, then out
+      cards.forEach((c, j) => {
+        const th = -Math.PI / 2 + (j / n) * Math.PI * 2 + (1 - a) * Math.PI * 1.6 + spin;
+        let x = Math.cos(th) * R * a, y = Math.sin(th) * R * a, w = base, o = cl(a * 1.6), rot = (1 - a) * -40;
+        if (j === act) {
+          const tw = Math.min(H * .78 / ars[j], W * .86);
+          x *= 1 - g; y *= 1 - g; w = base + (tw - base) * g; c.style.zIndex = 5;
         } else {
-          x *= 1 + f * 1.4; y *= 1 + f * 1.4; o *= 1 - f;
+          o *= 1 - g * .85; c.style.zIndex = 1;
         }
         c.style.width = w + "px";
         c.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${rot}deg)`;
         c.style.opacity = o;
+        imgs[j].style.transform = j === act && z > 0 ? `scale(${1 + (S.items[j].f[2] - 1) * z})` : "";
       });
-      fimg.style.transform = `scale(${1 + (S.focus[2] - 1) * z})`;
-      title.style.opacity = cl(a * 1.4) * (1 - f);
+      title.style.opacity = cl(a * 1.4) * (1 - g);
       title.style.transform = `translate(-50%, -50%) scale(${.85 + .15 * a})`;
-      top.style.opacity = foot.style.opacity = 1 - f;
-      cap.classList.toggle("on", z > .5);
+      top.style.opacity = foot.style.opacity = cl(a * 1.4) * (1 - g);
+      const on = act >= 0 && z > .6 ? act : -1;
+      if (on !== capOn) { capOn = on; caps.forEach((cp, j) => cp.classList.toggle("on", j === on)); }
     };
-    const on = () => frame();
-    addEventListener("scroll", on, { passive: true }); addEventListener("resize", on);
-    frame();
-    spOff = () => { removeEventListener("scroll", on); removeEventListener("resize", on); };
+    const intro = () => { frame(); if (performance.now() - t0 < INTRO_MS + 50) raf = requestAnimationFrame(intro); };
+    const onS = () => frame();
+    addEventListener("scroll", onS, { passive: true }); addEventListener("resize", onS);
+    raf = requestAnimationFrame(intro);
+    spOff = () => { removeEventListener("scroll", onS); removeEventListener("resize", onS); cancelAnimationFrame(raf); };
   }
 
   let tourOff = null;
