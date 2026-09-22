@@ -158,11 +158,13 @@
   };
 
   /* ---------- Views ---------- */
-  const viewHome = () => {
-    const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
+  const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
       "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
       "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg",
       "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg" };
+
+  const viewHome = () => {
+
     const cards = PROJECTS.map((p, i) => {
       const img = STAGE[p.slug] || p.cover || p.thumb;
       const n = String(i + 1).padStart(2, "0");
@@ -243,6 +245,7 @@
     const i = PROJECTS.indexOf(p);
     const prev = PROJECTS[(i - 1 + PROJECTS.length) % PROJECTS.length];
     const next = PROJECTS[(i + 1) % PROJECTS.length];
+    const nimg = STAGE[next.slug] || next.cover;
     const acc = Object.entries(p.sections).map(([k, v], n) => `
       <div class="acc-item ${n === 0 ? "open" : ""}">
         <button aria-expanded="${n === 0}"><span>${esc(k)}</span><span class="pm"></span></button>
@@ -252,7 +255,7 @@
       ? `<div class="cover hl">${hlCover()}</div>`
       : `<div class="cover"><img src="${p.cover}" alt="${esc(p.title)}" data-cap="${esc(p.title)}"></div>`;
     return `
-      <article class="page-enter">
+      <article class="pj page-enter" style="--tone:${p.tone || "#e8d9bd"}">
         <section class="project-head">
           ${cover}
           <div class="project-info">
@@ -264,10 +267,14 @@
             ${p.note ? `<p class="note">${esc(p.note)}</p>` : ""}
           </div>
         </section>
-        <section class="blocks">${p.blocks.map(renderBlock).join("")}</section>
-        <nav class="pager">
+        <section class="blocks pj-blocks">${p.blocks.map(renderBlock).join("")}</section>
+        <a class="pj-next" href="#/work/${next.slug}">
+          <img src="${nimg}" alt="">
+          <span class="pj-next-in"><small>Next project</small><b>${esc(next.title)}</b><em>${esc(next.subtitle || "")}</em></span>
+        </a>
+        <nav class="pager pj-pager">
           <a href="#/work/${prev.slug}"><small>Previous</small><span>${esc(prev.title)}</span></a>
-          <a class="next" href="#/work/${next.slug}"><small>Next</small><span>${esc(next.title)}</span></a>
+          <a class="next" href="#/"><small>All work</small><span>Index</span></a>
         </nav>
       </article>`;
   };
@@ -583,6 +590,31 @@
     wsOff = () => { removeEventListener("scroll", on); removeEventListener("resize", on); cancelAnimationFrame(raf); };
   }
 
+  /* ---------- Project page motion ---------- */
+  let pjOff = null;
+  function initProject() {
+    if (pjOff) { pjOff(); pjOff = null; }
+    const pj = app.querySelector(".pj");
+    if (!pj) return;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cl = (v) => Math.min(1, Math.max(0, v));
+    const hero = pj.querySelector(".pj-hero"), lit = [...pj.querySelectorAll(".pj-lit span")], st = pj.querySelector(".pj-statement");
+    const media = [...pj.querySelectorAll(".pj-blocks .blk figure")];
+    media.forEach((f, i) => { f.classList.add("pj-reveal"); f.style.setProperty("--d", (i % 4) * 90 + "ms"); });
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("pj-in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px" });
+    media.forEach((f) => io.observe(f)); pj.querySelectorAll(".pj-fact, .blk.step, .pj-next").forEach((f) => io.observe(f));
+    let raf = 0;
+    const frame = () => { raf = 0; const vh = innerHeight;
+      if (hero) { const p = cl(-hero.getBoundingClientRect().top / vh); hero.style.setProperty("--h", reduce ? 0 : p.toFixed(4)); }
+      if (st && lit.length) { const r = st.getBoundingClientRect(); const p = reduce ? 1 : cl((vh * .85 - r.top) / (r.height + vh * .35)); const n = Math.round(p * lit.length); lit.forEach((w, i) => w.classList.toggle("on", i < n)); }
+      pj.querySelectorAll(".pj-reveal:not(.pj-in), .pj-blocks .blk.step:not(.pj-in), .pj-next:not(.pj-in)").forEach((f) => { if (f.getBoundingClientRect().top < vh * .92) f.classList.add("pj-in"); });
+      if (!reduce) media.forEach((f) => { const r = f.getBoundingClientRect(); if (r.bottom < 0 || r.top > vh) return; const img = f.querySelector("img"); if (img) img.style.setProperty("--py", ((r.top + r.height / 2 - vh / 2) / vh * -18).toFixed(2) + "px"); });
+    };
+    const on = () => { if (!raf) raf = requestAnimationFrame(frame); };
+    addEventListener("scroll", on, { passive: true }); addEventListener("resize", on); frame();
+    pjOff = () => { removeEventListener("scroll", on); removeEventListener("resize", on); io.disconnect(); };
+  }
+
   let resOff = null;
   function initResearch() {
     if (resOff) { resOff(); resOff = null; }
@@ -684,6 +716,7 @@
     initResearch();
     initFlow();
     initWorkStack();
+    initProject();
   }
 
   /* ---------- Behaviours ---------- */
