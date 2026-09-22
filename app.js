@@ -160,7 +160,7 @@
   /* ---------- Views ---------- */
   const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
       "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
-      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg",
+      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc-st-crosswalk.jpg",
       "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg" };
 
   const viewHome = () => {

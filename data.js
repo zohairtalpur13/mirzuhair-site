@@ -520,6 +520,104 @@ const PROJECTS = [
     ]
   },
   {
+    slug: "mirs-cafe",
+    tone: "#ecc7c4",
+    title: "Mir's Café",
+    subtitle: "Brand identity & campaign",
+    date: "Brand & Campaign · 2026",
+    tags: "Identity · Packaging · Out-of-home · App · Social",
+    cover: "img/mc-st-crosswalk.jpg",
+    covers: [{ src: "img/mc-st-crosswalk.jpg" }, { src: "img/mc-box4.jpg" }],
+    sections: {
+      "The Project":
+        "Mir's Café is a self-initiated identity and launch campaign for a chai house in Hyderabad, Sindh. Instead of inventing new ornament, it is built from my own palace drawings: the lantern, the corridor, the painted ceiling, the chandelier and the deer crest become one-ink illustrations across packaging, the street and a phone screen.",
+      "The Process":
+        "I cut the line drawings from Threads of Time into single-colour artwork and paired them with a Bodoni wordmark and a script signature. The palace doorway arch became the frame for the campaign photography. Each piece was set in Photoshop mockups and real street photography, so the prints follow folds, paper grain and light.",
+      "The Problem":
+        "Cafés tend to look the same: minimal, beige and interchangeable. A brand rooted in Sindh risks the opposite, turning heritage into costume. It needed a sense of place that still reads as contemporary.",
+      "The Goal":
+        "A chai house you would recognise from across the street, and a campaign with a single warm idea: \"Stay for the second cup.\" In Sindhi homes the second cup is when the real conversation starts, so from Monday to Thursday, 4 to 7pm, it is on the house."
+    },
+    note: "Product mockups use free templates from mockups-design.com; street, food and drink photography is from Unsplash. The identity, drawings and all applied artwork are my work.",
+    blocks: [
+      { type: "full", src: "img/mc-st-crosswalk.jpg", cap: "Wall mural: the lantern drawing and the campaign line on a city corner." },
+      { type: "text", h: "Stay for the second cup",
+        p: "One line carries the whole campaign. Four key visuals frame real chai photography inside the palace arch: the second cup, Kashmiri pink chai, the copper kettle and morning bun maska." },
+      { type: "grid", cols: 4, items: [
+        { src: "img/mc-kv1.jpg", cap: "Stay for the second cup." },
+        { src: "img/mc-kv2.jpg", cap: "Pink is a flavour." },
+        { src: "img/mc-kv3.jpg", cap: "Poured the palace way." },
+        { src: "img/mc-kv4.jpg", cap: "Bun maska o'clock." }
+      ]},
+      { type: "step", n: "01", h: "Packaging", p: "Kraft, canvas and paper printed in oxblood, with colour saved for the pieces people keep: tins, tea pouches and the gift mailers." },
+      { type: "full", src: "img/mc-box4.jpg", cap: "Pastry boxes sealed with branded tape." },
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-cups2.jpg", cap: "Cups in three designs: lantern, deer and corridor band." },
+        { src: "img/mc-cup3.jpg", cap: "The second cup: \"The second is ours.\"" }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-kraft2.jpg", cap: "Takeaway bag with the corridor drawing." },
+        { src: "img/mc-tote3.jpg", cap: "Canvas tote with the lantern." }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-pouch3.jpg", cap: "Loose-leaf chai: house blend under the chandelier, Kashmiri chai under the ceiling." },
+        { src: "img/mc-mailers3.jpg", cap: "Mailers: pastry box, Kashmiri chai kit and Eid edition." }
+      ]},
+      { type: "grid", cols: 3, items: [
+        { src: "img/mc-tin1.jpg", cap: "Nankhatai tin, ceiling medallion on the lid." },
+        { src: "img/mc-tape2.jpg", cap: "Packing tape." },
+        { src: "img/mc-box5.jpg", cap: "Delivery box." }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-cup1.jpg", cap: "House cup." },
+        { src: "img/mc-apron2.jpg", cap: "Barista apron." }
+      ]},
+      { type: "step", n: "02", h: "The app", p: "Order ahead, collect Second Cup Club stamps and see the 4–7pm offer. Every drink is shown as a real photograph." },
+      { type: "trio", natural: true, items: [
+        { src: "img/mc-app-home.jpg", cap: "Home: loyalty card, today's offer and drinks." },
+        { src: "img/mc-app-product.jpg", cap: "Kashmiri chai." },
+        { src: "img/mc-app-rewards.jpg", cap: "Rewards." }
+      ]},
+      { type: "full", src: "img/mc-iphone1.jpg", cap: "The home screen in the hand." },
+      { type: "step", n: "03", h: "On the street", p: "The campaign runs from billboards and bus shelters to wheat-pasted walls, placed in real streets with people walking past." },
+      { type: "full", src: "img/mc-billboard1.jpg", cap: "Street billboard." },
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-st-umbrella.jpg", cap: "Wheat-paste wall." },
+        { src: "img/mc-st-hoarding.jpg", cap: "Shop hoardings." }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-st-roadside.jpg", cap: "Roadside billboard and poster run." },
+        { src: "img/mc-busstop.jpg", cap: "Bus shelter." }
+      ]},
+      { type: "grid", cols: 3, items: [
+        { src: "img/mc-citylight.jpg", cap: "City light." },
+        { src: "img/mc-cylinder.jpg", cap: "Advertising column." },
+        { src: "img/mc-st-airport.jpg", cap: "Airport lightbox." }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-subway2.jpg", cap: "Subway." },
+        { src: "img/mc-st-underground.jpg", cap: "Underground lightboxes." }
+      ]},
+      { type: "full", src: "img/mc-sign.jpg", cap: "Wrought-iron hanging sign." },
+      { type: "step", n: "04", h: "Social & print", p: "Instagram alternates photo posts with type-led posts. The story continues in a cookbook, The Second Cup, and on stickers for every takeaway." },
+      { type: "grid", cols: 3, items: [
+        { src: "img/mc-ig1.jpg", cap: "" }, { src: "img/mc-ig2.jpg", cap: "" }, { src: "img/mc-ig3.jpg", cap: "" },
+        { src: "img/mc-ig4.jpg", cap: "" }, { src: "img/mc-ig5.jpg", cap: "" }, { src: "img/mc-ig6.jpg", cap: "" }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-book1.jpg", cap: "The Second Cup: stories and recipes from the Mir's table." },
+        { src: "img/mc-book2.jpg", cap: "Cover and belly band." }
+      ]},
+      { type: "pair", natural: true, items: [
+        { src: "img/mc-sticker1.jpg", cap: "Emblem sticker." },
+        { src: "img/mc-sticker3.jpg", cap: "Second Cup Club sticker." }
+      ]},
+      { type: "related", text: "The drawings behind the brand are documented in:",
+        links: ["lanterns", "corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling"] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",
