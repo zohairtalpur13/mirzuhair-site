@@ -765,37 +765,6 @@ const PROJECTS = [
       ]},
       { type: "full", src: "img/ed-group.jpg", cap: "Collection view: multiple repeats styled together as a runway line-up." }
     ]
-  },
-
-  {
-    slug: "ornament-archive",
-    tone: "#bcd4c8",
-    title: "The Ornament Archive",
-    subtitle: "Six compositions, catalogued like specimens",
-    date: "Self-Initiated · Interactive & Motion Design · 2026",
-    tags: "Motion design · Scroll interaction · Digital archive",
-    cover: "img/dd-door.jpg",
-    covers: [{ src: "img/dd-door.jpg" }, { src: "img/tt-ceiling-detail.jpg" }, { src: "img/ln-red.jpg" }],
-    sections: {
-      "The Project":
-        "The Ornament Archive is a self-initiated interactive piece that takes six compositions from the Talpur Haveli thesis and presents them the way a natural history collection presents a specimen: photographed, hand-drawn, classified and kept. Each plate lets you drag between the original photograph and the line drawing made from it, the same translation that sits behind every pattern on this site.",
-      "The Process":
-        "I pulled the source photographs and finished line drawings already made for Threads of Time and the six compositions, and built a new dark, glass-toned presentation around them: a compare slider per specimen, scroll-triggered reveals and a duotone treatment that reads like an x-ray of the surface underneath. The drawings and photographs are mine, and so is the interactive format built around them.",
-      "The Problem":
-        "The six compositions already live on this site as finished patterns, on silk, brass and paper, but the surfaces they were drawn from, and the act of drawing them, aren't shown anywhere together.",
-      "The Goal":
-        "To keep a record of the haveli's ornament in one place, in a format built for the surfaces themselves rather than for a garment, in case the house changes before anyone draws it again."
-    },
-    blocks: [
-      { type: "full", src: "img/dd-door.jpg", cap: "One of six specimens: the doorway that became the Deer & the Doorway crest." },
-      { type: "text", h: "Photograph, drawing, repeat",
-        p: "Every pattern on this site starts as a surface, gets redrawn by hand, and ends as a repeat. The archive is where that middle step, the drawing, is kept next to what it was drawn from." },
-      { type: "linkout", items: [
-        { href: "ornament-archive/index.html", label: "Open the archive" }
-      ]},
-      { type: "related", text: "The six compositions catalogued in the archive:",
-        links: ["deer-and-doorway", "painted-ceiling", "portrait-of-an-ancestor", "corridors-and-chandeliers", "ivory-table", "lanterns"] }
-    ]
   }
 ];
 
