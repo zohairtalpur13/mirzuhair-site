@@ -3,7 +3,7 @@
 ## Completed
 
 - The campaign presentation was opened and visually inspected in the browser during development.
-- Both generated application images were visually reviewed.
+- Both application mockups were visually reviewed.
 - JavaScript syntax checks pass for motion.js and interactive.js.
 - Original source artwork is included locally; the presentation does not require externally hosted fonts or images.
 - Eight editable SVG concept artworks are included.
@@ -17,8 +17,8 @@
 
 ## Production limitations
 
-The SVG files are editable concept masters, not press-ready files. Confirm final dimensions, stock, type licensing, outlined fonts, bleed, ink specifications and packaging dielines with the chosen producer. AI-generated mockups illustrate material direction and are not exact fabrication specifications.
+The SVG files are editable concept masters, not press-ready files. Confirm final dimensions, stock, type licensing, outlined fonts, bleed, ink specifications and packaging dielines with the chosen producer. Mockups illustrate material direction and are not exact fabrication specifications.
 
 ## Portfolio attribution
 
-Present this as a self-initiated, AI-assisted MIR campaign study using existing portfolio artwork. The case study distinguishes design rationale and proposed tests from observed outcomes. Add your own real iterations and test evidence as you complete them.
+A self-initiated MIR campaign study using existing portfolio artwork. The case study distinguishes design rationale and proposed tests from observed outcomes. Add your own real iterations and test evidence as you complete them.

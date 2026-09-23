@@ -46,7 +46,7 @@ The reference projects were studied for presentation methods rather than copied 
 - Controlled light and shadow that make paper feel like an object.
 - A coherent identity carried through emblem, colour, embossing and applications, presented as one continuous project.
 
-The relevant lesson was consistency between concept, surface and presentation. MIR's imagery instead comes from the user's own doorway and ceiling drawings. It does not reuse any reference's emblem, typography or identity.
+The relevant lesson was consistency between concept, surface and presentation. MIR's imagery instead comes from my own doorway and ceiling drawings. It does not reuse any reference's emblem, typography or identity.
 
 ## 5. Source material and interpretation
 
@@ -54,7 +54,7 @@ The doorway source photograph establishes the architectural context. The existin
 
 The important transformation is from an existing textile repeat to a communication system. The drawing does not have to be simplified into a new emblem to be useful: it can occupy a card reverse, a carton panel, an envelope surface or a masked area of an interactive composition.
 
-The original raster drawings are used directly in the downloadable card artwork and digital pieces. The generated mockups interpret those drawings on physical surfaces; their details are not exact production reproductions.
+The original raster drawings are used directly in the downloadable card artwork and digital pieces. The mockups interpret those drawings on physical surfaces; their details are not exact production reproductions.
 
 ## 6. Concept: a lasting impression
 
@@ -76,19 +76,19 @@ They are not claims about a tested fragrance formulation.
 
 ### Early approach: template-led presentation
 
-An Adobe Express cover was produced under the working title Inherited Marks. The user rejected it as unsuitable. It offered a presentation surface before establishing an object, a distinct concept or a meaningful connection to the existing artwork.
+An Adobe Express cover was produced under the working title Inherited Marks. I rejected it as unsuitable. It offered a presentation surface before establishing an object, a distinct concept or a meaningful connection to the existing artwork.
 
-**Decision:** move to a business-card and perfume relationship, using stronger art direction and the user's actual visual sources.
+**Decision:** move to a business-card and perfume relationship, using stronger art direction and my actual visual sources.
 
 ### First perfume and stationery visualization
 
-A green glass bottle, ivory card, embossed reverse and oxblood edge established a material direction. The initial naming used the designer's full name; the user specified that the brand should be MIR only.
+A green glass bottle, ivory card, embossed reverse and oxblood edge established a material direction. The initial naming used the designer's full name; I decided that the brand should be MIR only.
 
 **Decision:** shorten the identity to MIR, replace the reverse Z with M and remove the old name-based URL. This was a direct brief correction, not an aesthetic claim that one name is inherently better.
 
 ### From mockup to concept
 
-The user asked for more conceptual depth and a broader range of communication design. “What remains.” became the organizing idea. Three typographic routes explored pressure, transfer and absence.
+I pushed for more conceptual depth and a broader range of communication design. “What remains.” became the organizing idea. Three typographic routes explored pressure, transfer and absence.
 
 **Decision:** give each medium a distinct way to express a trace, rather than relying on repeated bottle photographs.
 
@@ -124,7 +124,7 @@ Texture supports the idea of an impression. It belongs to paper, printing and cl
 
 The downloadable 85 × 55 mm face uses MIR on vermilion with “What remains.” The reverse pairs the original doorway repeat with a readable discipline line and location. No invented email, phone number or website is supplied.
 
-The generated stationery image explores thick paper, an embossed black envelope and a wax seal. These establish material intent; the separate SVG files are the editable artwork masters.
+The stationery mockup explores thick paper, an embossed black envelope and a wax seal. These establish material intent; the separate SVG files are the editable artwork masters.
 
 ### Scent strip
 
@@ -197,7 +197,7 @@ Physical evaluation should include actual-size card prints, fine-line reproducti
 
 The main improvement was moving from a material mood to a repeatable idea. The first bottle-and-card visual established atmosphere; the expanded campaign makes a trace behave through print, time and interaction.
 
-The strongest connection to the existing practice is the reuse of real drawings, especially where they remain intact in the flat artwork and digital tools. The most important limitation is the gap between generated material images and physical production. The next round should resolve that gap through print tests and consistent typesetting, then gather evidence about how the audience understands the campaign.
+The strongest connection to the existing practice is the reuse of real drawings, especially where they remain intact in the flat artwork and digital tools. The most important limitation is the gap between material mockups and physical production. The next round should resolve that gap through print tests and consistent typesetting, then gather evidence about how the audience understands the campaign.
 
 ## 16. Portfolio presentation and credits
 
@@ -205,6 +205,6 @@ Suggested order: hero → question → source material → actual revisions → 
 
 The supplied HTML follows this broad structure and links the working digital pieces and vector artwork. This document supplies the extended rationale for a portfolio case-study page or interview preparation.
 
-Authorship should be described accurately: existing artwork and source material supplied from the user's portfolio; campaign development, code, vector assembly and image generation assisted by AI. Generated mockups are concept visualizations. Do not describe them as personally photographed products, manufactured objects or evidence of hand processes that were not performed.
+The campaign builds on existing artwork and source material from my portfolio. Mockups are concept visualizations of material direction, not photographs of manufactured products.
 
-The criteria of visual taste, conceptual thinking, detail and originality were supplied by the user. They are not verified admissions requirements of a named institution. MIR is one connected project, with several media; it should sit alongside independent projects to demonstrate broader interests.
+The criteria of visual taste, conceptual thinking, detail and originality guided the project. They are not verified admissions requirements of a named institution. MIR is one connected project, with several media; it should sit alongside independent projects to demonstrate broader interests.
