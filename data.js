@@ -60,7 +60,55 @@ const PROJECTS = [
       ]},
       { type: "step", n: "04", h: "The installation", p: "The look was shown in a curtained room lit by bare bulbs hung on knotted rope. Silk banners printed with the stag crest in every colourway hang beside it, so visitors see the full pattern system around the finished garment." },
       { type: "related", text: "Each composition behind the collection is documented as its own project:",
-        links: ["corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling", "portrait-of-an-ancestor", "ivory-table", "lanterns"] }
+        links: ["corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling", "portrait-of-an-ancestor", "ivory-table", "lanterns", "mir-what-remains"] }
+    ]
+  },
+
+  {
+    slug: "mir-what-remains",
+    tone: "#e8c3ba",
+    title: "MIR — What Remains.",
+    subtitle: "A Speculative Fragrance & Communication Campaign",
+    date: "Self-Initiated · Communication Design · 2025",
+    tags: "Identity · Packaging · Typography · Motion · Interaction",
+    cover: "mir-campaign/assets/stationery.png",
+    covers: [{ src: "mir-campaign/assets/stationery.png" }, { src: "mir-campaign/assets/packaging.png" }, { src: "mir-campaign/artwork/poster-pressure.svg" }, { src: "mir-campaign/artwork/poster-transfer.svg" }],
+    sections: {
+      "The Project":
+        "MIR is a self-initiated fragrance and communication-design concept built to ask one question: how does a campaign communicate something a screen can't let you smell? It's a speculative brand, not a commissioned or manufactured one, built by reusing the doorway and painted-ceiling drawings from Threads of Time and extending them into stationery, packaging, a set of typographic posters, a twelve-second motion study and an interactive postcard maker, all held together by one line: What remains.",
+      "The Process":
+        "Every application traces back to two existing drawings, the doorway repeat and the ceiling line work, rather than a new emblem invented for the occasion. The MIR wordmark stays deliberately quiet, three letters in high-contrast strokes, so the archive drawings can carry the detail: on a card reverse, a carton panel, a textile label, or masked into the interactive piece. Three posters, Pressure, Transfer and Absence, each test a different way to make a trace visible, and a short film and a gesture-based postcard maker carry the same idea into time and touch.",
+      "The Problem":
+        "A fragrance has no visible form, and a good-looking mockup on its own can read as a generic styling exercise, disconnected from the practice behind it. The campaign needed to give an invisible experience a visible behaviour, and keep that behaviour recognisably tied to the palace drawings rather than inventing an identity from nothing.",
+      "The Goal":
+        "To let one idea, an impression that outlasts contact, hold together five different media without repeating the same bottle photograph. Paper carries pressure and relief, motion carries an afterimage, and the interactive piece lets a visitor leave their own mark and keep it."
+    },
+    blocks: [
+      { type: "full", src: "mir-campaign/artwork/poster-pressure.svg", cap: "Poster 01, Pressure: a single oversized M turned into a typographic object.", contain: true },
+      { type: "text", h: "One line: What remains.",
+        p: "Short enough to sit on a business card, open enough to carry across paper, motion and interaction: a trace that stays behind after the contact that made it has ended." },
+      { type: "pair", items: [
+        { src: "mir-campaign/artwork/mir-wordmark.svg", cap: "The wordmark: three letters, kept quiet on purpose.", contain: true },
+        { src: "mir-campaign/assets/dd-door.jpg", cap: "Its source: the haveli's carved doorway, the same one behind Threads of Time." }
+      ]},
+      { type: "step", n: "01", h: "Paper", p: "An 85 × 55mm card in vermilion and carbon, its reverse carrying the doorway repeat instead of a new emblem, plus a scent strip that extends the same identity into a sampling ritual." },
+      { type: "full", src: "mir-campaign/assets/stationery.png", cap: "Stationery system: card, scent strip, embossed envelope. Material visualisation." },
+      { type: "step", n: "02", h: "Object", p: "The doorway drawing moves from textile repeat to carton panel, paired with the green glass and oxblood cap already established in the palette." },
+      { type: "full", src: "mir-campaign/assets/packaging.png", cap: "Packaging: doorway illustration on an ivory carton, vermilion side panel. Material visualisation." },
+      { type: "step", n: "03", h: "Three typographic routes", p: "Pressure, Transfer and Absence each test a different way of making a trace legible, not three unrelated styles but one idea read three ways." },
+      { type: "trio", items: [
+        { src: "mir-campaign/artwork/poster-pressure.svg", cap: "Pressure: a letter turned into relief.", contain: true },
+        { src: "mir-campaign/artwork/poster-transfer.svg", cap: "Transfer: an offset second impression.", contain: true },
+        { src: "mir-campaign/artwork/poster-absence.svg", cap: "Absence: the missing letter as the point.", contain: true }
+      ]},
+      { type: "step", n: "04", h: "Motion & interaction", p: "A twelve-second film moves the identity through time; a postcard maker lets a visitor stamp the ceiling, doorway or lantern motif into their own composition and keep it. Both are playable, not just documented here." },
+      { type: "linkout", items: [
+        { href: "mir-campaign/motion.html", label: "Play the motion study" },
+        { href: "mir-campaign/interactive.html", label: "Try the interactive postcard" },
+        { href: "mir-campaign/case-study.html", label: "Read the extended case study" }
+      ]},
+      { type: "related", text: "Built directly on top of the archive drawings from the thesis:",
+        links: ["threads-of-time", "deer-and-doorway", "painted-ceiling"] }
     ]
   },
 

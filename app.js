@@ -89,6 +89,9 @@
       case "related":
         return `<div class="blk related reveal"><p>${esc(b.text)}</p><ul>${b.links
           .map((s) => `<li><a href="#/work/${s}">${esc(bySlug(s).title)} →</a></li>`).join("")}</ul></div>`;
+      case "linkout":
+        return `<div class="blk related reveal">${b.text ? `<p>${esc(b.text)}</p>` : ""}<ul>${b.items
+          .map((i) => `<li><a href="${i.href}"${i.newTab ? ' target="_blank" rel="noopener"' : ""}>${esc(i.label)} →</a></li>`).join("")}</ul></div>`;
       case "hl-overview":
         return `<section class="hl-ov reveal">
           <div class="hl-ov-q"><span>The question</span><p>What if a garment could tell you <em>where it came from</em>, not only the factory, but the building, the object and the family history behind its print?</p></div>

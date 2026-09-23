@@ -1,0 +1,26 @@
+const canvas=document.querySelector('#motionCanvas'),ctx=canvas.getContext('2d');
+const slider=document.querySelector('#time'),timeValue=document.querySelector('#timeValue'),play=document.querySelector('#play'),statusEl=document.querySelector('#status');
+const ornament=new Image();ornament.src='assets/cr-line.jpg';
+const W=1600,H=900,ink='#20221f',paper='#eee9df',red='#d4422e';
+let t=0,playing=false,last=0,recording=false,recorder=null,stream=null,recordStart=0;
+const clamp=v=>Math.max(0,Math.min(1,v)),ease=v=>{v=clamp(v);return v*v*(3-2*v)};
+function text(str,x,y,size,color=ink,align='left',family='Georgia'){ctx.fillStyle=color;ctx.textAlign=align;ctx.font=`${size}px ${family}`;ctx.fillText(str,x,y)}
+function draw(time){ctx.globalAlpha=1;ctx.fillStyle=time<7?paper:red;ctx.fillRect(0,0,W,H);
+ if(time<3){let a=ease(time/.8)*(1-ease((time-1.8)/1.2));if(ornament.complete&&ornament.naturalWidth){ctx.globalAlpha=.85*a;ctx.drawImage(ornament,720,-220,1100,1100)}ctx.globalAlpha=1;text('A room.',85,430,150);text('An impression.',85,585,150);text('MIR / WHAT REMAINS.',85,820,22);}
+ else if(time<7){let p=ease((time-3)/4);ctx.save();ctx.beginPath();ctx.rect(0,0,W,H);ctx.clip();for(let i=5;i>=0;i--){ctx.globalAlpha=i===0?1:.08;let x=180+p*780-i*65;text('MIR',x,635-i*18,520)}ctx.restore();ctx.globalAlpha=1;text('A name after departure.',85,820,24);}
+ else if(time<10){let p=ease((time-7)/3);for(let i=5;i>=0;i--){ctx.globalAlpha=(1-p)*(.1+i*.025);text('MIR',520-i*65,635-i*18,520,ink)}ctx.globalAlpha=ease((time-7)/1.1);text('What',85,380,210);text('remains.',85,600,210);ctx.globalAlpha=1;text('AN IMPRESSION THAT REMAINS.',85,820,22);}
+ else{let p=ease((time-10)/1.5);ctx.fillStyle=ink;ctx.globalAlpha=p;ctx.fillRect(0,0,W,H);ctx.globalAlpha=1;text('MIR',800,510,320,p>.5?paper:ink,'center');text('WHAT REMAINS.',800,620,26,p>.5?paper:ink,'center','Arial');}
+ ctx.globalAlpha=1;ctx.strokeStyle=(time>=10&&time>10.75)?paper:ink;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(80,75);ctx.lineTo(1520,75);ctx.stroke();text('MIR / 01',80,52,18,time>=10&&time>10.75?paper:ink,'left','Arial');text('ART · OBJECT · MEMORY',1520,52,18,time>=10&&time>10.75?paper:ink,'right','Arial');
+ slider.value=time;timeValue.value=`${time.toFixed(2)} / 12.00`;
+}
+function setPlaying(on){playing=on;last=performance.now();play.textContent=on?'Pause film':'Play film'}
+function frame(now){if(playing){if(recording){t=Math.min(12,(now-recordStart)/1000)}else{t+=(now-last)/1000}if(t>=12){t=12;if(recording){draw(t);recorder.stop();setPlaying(false)}else if(document.querySelector('#loop').checked){t=0}else setPlaying(false)}draw(t)}last=now;requestAnimationFrame(frame)}
+play.onclick=()=>{if(t>=12)t=0;setPlaying(!playing);statusEl.textContent=playing?'Playing.':'Paused.'};
+document.querySelector('#restart').onclick=()=>{t=0;draw(t);setPlaying(true)};
+slider.oninput=()=>{setPlaying(false);t=Number(slider.value);draw(t)};
+function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+document.querySelector('#saveFrame').onclick=()=>{try{canvas.toBlob(blob=>{if(blob){download(blob,'MIR-motion-frame.png');statusEl.textContent='Frame saved.'}else statusEl.textContent='Unable to save frame.'})}catch(e){statusEl.textContent='Open this project through a local web server to export images.'}};
+const recordButton=document.querySelector('#record');
+if(!window.MediaRecorder||!canvas.captureStream){recordButton.disabled=true;recordButton.textContent='Video export unavailable';}
+recordButton.onclick=()=>{try{const mime=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/mp4','video/webm'].find(m=>MediaRecorder.isTypeSupported(m));if(!mime){statusEl.textContent='This browser cannot encode a supported video format.';return}stream=canvas.captureStream(30);recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:8000000});const chunks=[];recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{download(new Blob(chunks,{type:mime}),`MIR-what-remains.${mime.includes('mp4')?'mp4':'webm'}`);stream.getTracks().forEach(track=>track.stop());recording=false;document.querySelectorAll('button,input').forEach(el=>el.disabled=false);statusEl.textContent='Your twelve-second campaign film has been exported.'};recorder.onerror=()=>{stream.getTracks().forEach(track=>track.stop());recording=false;setPlaying(false);document.querySelectorAll('button,input').forEach(el=>el.disabled=false);statusEl.textContent='Video export failed. The player remains available.'};t=0;draw(t);document.querySelectorAll('button,input').forEach(el=>el.disabled=true);recording=true;recordStart=performance.now();recorder.start();setPlaying(true);statusEl.textContent='Recording the twelve-second film. Keep this tab visible until export finishes.'}catch(e){statusEl.textContent='Video export requires a browser that supports canvas capture. Try the local preview in Chrome.';recording=false;document.querySelectorAll('button,input').forEach(el=>el.disabled=false)}};
+ornament.onload=()=>draw(t);ornament.onerror=()=>{statusEl.textContent='The source drawing could not load; typography playback is still available.';draw(t)};draw(t);requestAnimationFrame(frame);
