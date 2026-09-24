@@ -14,7 +14,7 @@ const PROJECTS = [
       "The Project":
         "Threads of Time is my textile thesis: a single look that wears a building. From primary research at the Talpur Haveli in Hyderabad, Sindh, I translated two parts of the house into print. The painted ceiling became a draped silk cape, and the long corridor of arches, lanterns and carved chairs became a floor-length mermaid skirt. Over them sits a corset of hand-cut brass flowers and leaves, made in collaboration with sculpture.",
       "The Process":
-        "Every surface began as a drawing. I photographed the haveli, sketched its elements in pencil, redrew them as line work in Photoshop and built them into seamless repeats. The ceiling medallions were printed in rose-gold on oxblood silk, and the corridor toile in bronze on charcoal. Inspired by Schiaparelli's surrealist, sculptural gold, I worked with a sculptor to cut, shape and assemble brass sheet into a corset of blooming roses and leaves that climb over the shoulder like the haveli's gilded ornament.",
+        "Every surface began as a drawing. I photographed the haveli, sketched its elements in pencil, redrew them as line work in Photoshop and built them into seamless repeats. The ceiling medallions were printed in rose-gold on oxblood silk, and the corridor toile in bronze on charcoal. I worked with a sculptor to cut, shape and assemble brass sheet into a corset of blooming roses and leaves that climb over the shoulder like the haveli's gilded ornament.",
       "The Problem":
         "Heritage motifs are usually lifted onto fabric as surface decoration, stripped of the structure and meaning they came from. I wanted the garment to carry the logic of the building (its rhythm, weight and light), not just its look.",
       "The Goal":
@@ -36,7 +36,7 @@ const PROJECTS = [
         { src: "img/sk-dd-9.jpg", cap: "The crest, pencil.", contain: true },
         { src: "img/sk-iv-1.jpg", cap: "The carved eagle, pencil.", contain: true }
       ]},
-      { type: "step", n: "01", h: "The brass corset", p: "A collaboration with sculpture, inspired by Schiaparelli's surrealist gold. Brass sheet was cut and shaped into petals, buds and leaves, then assembled into a corset of blooming roses that grows over one shoulder. It brings the weight of the palace's gilded ornament directly onto the body." },
+      { type: "step", n: "01", h: "The brass corset", p: "A collaboration with sculpture. Brass sheet was cut and shaped into petals, buds and leaves, then assembled into a corset of blooming roses that grows over one shoulder. It brings the weight of the palace's gilded ornament directly onto the body." },
       { type: "step", n: "02", h: "The ceiling cape", p: "The painted-ceiling composition (Composition 04), printed in rose-gold line on oxblood silk. The volume is cut to drape into a deep cowl so the medallions fold and catch the light, the way the real ceiling does." },
       { type: "grid", cols: 3, items: [
         { src: "img/sk-ce-1.jpg", cap: "Sketchbook: the ceiling medallion in pencil.", contain: true },
@@ -663,6 +663,60 @@ const PROJECTS = [
       ]},
       { type: "related", text: "The drawings behind the brand are documented in:",
         links: ["lanterns", "corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling"] }
+    ]
+  },
+
+  {
+    slug: "open-house",
+    tone: "#cfdcd4",
+    title: "Open House",
+    subtitle: "An exhibition identity and a typeface built from a palace",
+    date: "Self-Initiated · Identity & Typeface · 2026",
+    tags: "Custom typeface · Exhibition identity · Poster · Ticketing · 3D mockups",
+    cover: "img/oh-poster-wall.jpg",
+    covers: [{ src: "img/oh-poster-wall.jpg", pos: "center 40%" }, { src: "img/oh-tickets.jpg" }, { src: "img/oh-badges.jpg" }],
+    sections: {
+      "The Project":
+        "Open House is a speculative identity for an exhibition about the Talpur Haveli in Hyderabad, Sindh: its rooms, its objects and the drawings they became. At its centre is Jharoka, a modular display typeface I built from two things in the palace, the jali lattice and the faceted arch of its teak doors. The typeface carries the whole system: poster, tickets, staff and press badges, a tote bag and a bilingual Urdu and English name, کھلا گھر.",
+      "The Process":
+        "I started from my photographs of the palace and looked for a rule, not a motif. The carved jali gave a grid: every letter sits on a 5 × 7 lattice and every cell is its own tile, separated by a gap like the openings of a screen. The doorway gave the corner: wherever a tile ends a stroke, its corners are cut at 45°, the faceted arch of the doors. I built all 61 glyphs by those two rules and turned them into an installable font. The artwork was set in Jharoka and Avenir Next, then rendered in Blender as physical objects under sunlight falling through an arched jali window.",
+      "The Problem":
+        "Heritage identities usually borrow ornament: a pattern in the background, a motif on the logo. The result looks old rather than feeling specific to a place. I wanted the letters themselves to carry the building, so that anyone reading the poster is already looking at the haveli.",
+      "The Goal":
+        "A system that is strict enough to repeat and warm enough to belong to one house. The palette, Haveli at Dusk, comes from the same rooms: lantern green, lime plaster, saffron brass, kirmizi red and teak."
+    },
+    blocks: [
+      { type: "full", src: "img/oh-poster-wall.jpg", cap: "The poster, pasted on lime plaster, under light falling through an arched jali window.", contain: true },
+      { type: "text", h: "Two rules from one building",
+        p: "I wanted the palace to be in the letters themselves, not behind them. Studying my photographs, I found two rules: the jali gives the grid, the doorway gives the corner. Joins stay square and stroke ends become arches." },
+      { type: "full", src: "img/oh-construction.jpg", cap: "How the letters are built: the jali lattice, the faceted doorway arch, and the letter H with its cut tiles in brass.", contain: true },
+      { type: "oh-lattice", p: "Tap or drag across the lattice to draw. Every tile you place follows the same rule as the font: where a stroke ends, its corners are cut like the haveli's doors. Pick a letter to watch it assemble, or invent a new one." },
+      { type: "step", n: "01", h: "Jharoka Regular", p: "61 glyphs: capitals, figures and punctuation, each built from the two rules and made into a TrueType font. Lowercase maps to the same forms, so the face works as a unicase display type." },
+      { type: "full", src: "img/oh-specimen.jpg", cap: "Type specimen: A–Z, 0–9 and punctuation on the 5 × 7 lattice.", contain: true },
+      { type: "oh-tester", p: "Jharoka is a real font. Type anything and switch between the five colours of Haveli at Dusk." },
+      { type: "step", n: "02", h: "Haveli at Dusk", p: "Five colours taken from the palace: lantern green from the corridor glass, lime plaster from the walls, saffron brass from the fittings, kirmizi red from the red hall and teak from the doors." },
+      { type: "step", n: "03", h: "The poster", p: "OPEN HOUSE is set to the full width of the sheet. Below it, seven rooms rise in a stepped halftone strip, like the palace stair: doorway, corridor, stair, ceiling, lantern, jali and façade. The Urdu name sits in brass beside the English." },
+      { type: "pair", items: [
+        { src: "img/oh-poster.jpg", cap: "The poster artwork, A2.", contain: true },
+        { src: "img/oh-poster-wall.jpg", cap: "In place, on a lime-plaster wall." }
+      ]},
+      { type: "oh-light", p: "In the haveli, the jali decides where light falls. Move across the poster and an arch of lattice sunlight follows you, the same light the mockups were rendered in." },
+      { type: "step", n: "04", h: "Tickets and badges", p: "Each ticket comes in a colourway of the palette, with a perforated stub, the ticket number set vertically in Jharoka and a barcode drawn in the jali's rhythm. Badges for guests, press and staff turn the lattice into a band of arch tiles." },
+      { type: "full", src: "img/oh-tickets.jpg", cap: "Tickets in lantern green, lime and kirmizi." },
+      { type: "trio", items: [
+        { src: "img/oh-ticket-green.jpg", cap: "Ticket, lantern green.", contain: true },
+        { src: "img/oh-ticket-lime.jpg", cap: "Ticket, lime.", contain: true },
+        { src: "img/oh-ticket-kirmizi.jpg", cap: "Ticket, kirmizi.", contain: true }
+      ]},
+      { type: "oh-ticket", p: "Type your name, choose a colourway and download a ticket set in Jharoka. Your ticket number comes from your name." },
+      { type: "full", src: "img/oh-badges.jpg", cap: "Guest, press and staff badges." },
+      { type: "step", n: "05", h: "The tote", p: "One-colour print on natural canvas with green straps, carrying the arch mark in kirmizi." },
+      { type: "pair", items: [
+        { src: "img/oh-tote.jpg", cap: "The tote, half in jali light." },
+        { src: "img/oh-badge-staff.jpg", cap: "Staff badge artwork.", contain: true }
+      ]},
+      { type: "linkout", text: "Jharoka is a working font. Install it and type with it:", items: [{ label: "Download Jharoka Regular (TTF)", href: "assets/Jharoka-Regular.ttf" }] },
+      { type: "related", text: "Built from the same palace research:", links: ["threads-of-time", "deer-and-doorway", "mirs-cafe"] }
     ]
   },
 

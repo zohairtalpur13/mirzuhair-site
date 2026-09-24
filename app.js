@@ -89,6 +89,25 @@
       case "related":
         return `<div class="blk related reveal"><p>${esc(b.text)}</p><ul>${b.links
           .map((s) => `<li><a href="#/work/${s}">${esc(bySlug(s).title)} →</a></li>`).join("")}</ul></div>`;
+      case "oh-light":
+        return `<section class="oh-play reveal"><div class="oh-head"><span>Play · 01</span><h3>Move the light</h3><p>${esc(b.p)}</p></div>
+          <div class="oh-light" data-oh="light"><img src="img/oh-poster.jpg" alt="Open House poster"><div class="oh-beam" style="background-image:url(img/oh-poster.jpg)"></div><small>Drag across the poster</small></div></section>`;
+      case "oh-lattice":
+        return `<section class="oh-play oh-lat reveal" data-oh="lattice"><div class="oh-head"><span>Play · 02</span><h3>Build a letter</h3><p>${esc(b.p)}</p></div>
+          <div class="oh-lat-in"><svg viewBox="0 0 500 700" role="img" aria-label="5 by 7 jali grid: tap cells to draw a letter"></svg>
+          <div class="oh-lat-side"><p class="oh-lat-stat"></p><div class="oh-keys"></div>
+          <div class="oh-acts"><button type="button" data-act="invent">Invent a letter</button><button type="button" data-act="rule" aria-pressed="true">Show the arch cuts</button><button type="button" data-act="clear">Clear</button></div></div></div></section>`;
+      case "oh-tester":
+        return `<section class="oh-play oh-test reveal" data-oh="tester"><div class="oh-head"><span>Play · 03</span><h3>Type in Jharoka</h3><p>${esc(b.p)}</p></div>
+          <div class="oh-test-ctl"><input type="text" value="The haveli keeps its doors open" maxlength="60" aria-label="Text to set in Jharoka"><label>Size <input type="range" min="28" max="160" value="84"></label>
+          <div class="oh-ways">${[["green,lime", "Lantern"], ["lime,green", "Plaster"], ["kirm,lime", "Kirmizi"], ["teak,brass", "Teak"], ["brass,teak", "Brass"]].map(([w, l], i) => `<button type="button" data-way="${w}" aria-pressed="${i === 0}" style="--a:var(--oh-${w.split(",")[0]});--b:var(--oh-${w.split(",")[1]})"><i></i>${l}</button>`).join("")}</div></div>
+          <div class="oh-out"></div></section>`;
+      case "oh-ticket":
+        return `<section class="oh-play oh-tix reveal" data-oh="ticket"><div class="oh-head"><span>Play · 04</span><h3>Make your ticket</h3><p>${esc(b.p)}</p></div>
+          <div class="oh-tix-ctl"><input type="text" placeholder="Your name" maxlength="16" aria-label="Your name for the ticket">
+          <div class="oh-ways">${[["green", "Lantern"], ["lime", "Plaster"], ["kirm", "Kirmizi"]].map(([w, l], i) => `<button type="button" data-tw="${w}" aria-pressed="${i === 0}" style="--a:var(--oh-${w})"><i></i>${l}</button>`).join("")}</div>
+          <button type="button" class="oh-dl" data-act="download">Download ticket (PNG)</button></div>
+          <canvas aria-label="Your Open House ticket"></canvas></section>`;
       case "linkout":
         return `<div class="blk related reveal">${b.text ? `<p>${esc(b.text)}</p>` : ""}<ul>${b.items
           .map((i) => `<li><a href="${i.href}"${i.newTab ? ' target="_blank" rel="noopener"' : ""}>${esc(i.label)} →</a></li>`).join("")}</ul></div>`;
@@ -331,7 +350,7 @@
     ["Translate", "Finally, the grammar became cloth: seven compositions, printed on silk and woven as jacquard.", "img/tt-hero.jpg"],
   ];
   const R_CASE_WHY = [
-    ["Where it began", "I studied how brand designers present a campaign: one idea carried from the street to the counter, into the bag and home. I wanted a project that showed my drawings could do the same, outside fashion."],
+    ["Where it began", "A strong campaign carries one idea from the street to the counter, into the bag and home. I wanted a project that showed my drawings could do the same, outside fashion."],
     ["The idea", "In a Sindhi home the first cup of chai is for thirst and the second is for talk. That became the campaign line, \"Stay for the second cup\", and the offer: from Monday to Thursday, 4 to 7pm, the second chai is free."],
     ["The rule", "My first draft used flat, drawn mockups, and it looked artificial. So I set a rule for the second round: every piece is shown on real photography, and every ornament is one of my own palace drawings."]
   ];
@@ -343,7 +362,7 @@
     ["img/ch-drawing.jpg", "img/mc-pouch3.jpg", "Loose-leaf chai pouches", "The chandelier", "House chai pouch, book cover"]
   ];
   const R_CASE_STEPS = [
-    ["Reference study", "I broke a strong brand-campaign case study down into its parts: street advertising, packaging, digital and gifting, each shown on real photography. That became my checklist of touchpoints.", "img/mc-billboard1.jpg"],
+    ["Touchpoints", "I mapped every place the brand would meet people: street advertising, packaging, digital and gifting, each to be shown on real photography. That became my checklist.", "img/mc-billboard1.jpg"],
     ["Choosing the drawings", "From the palace archive I chose the drawings with the clearest silhouettes, the ones that still read on a cup or a sticker: the lantern, the corridor, the deer, the ceiling and the chandelier.", "img/ln-drawing.jpg"],
     ["Identity", "Each drawing was cleaned into a single-ink line so it could print in one colour on kraft, canvas and paper. I paired it with a Bodoni wordmark and a script signature, and made the deer oval the emblem.", "img/mc-sticker3.jpg"],
     ["The arch and the photograph", "For the campaign I framed real chai photography inside the shape of the palace doorway arch. It gave four key visuals: the second cup, Kashmiri pink chai, the copper kettle and bun maska.", "img/mc-kv2.jpg"],
@@ -362,24 +381,25 @@
     ["One ink goes further", "Printing single-colour line work on kraft and canvas kept the heritage feel while looking contemporary rather than costume."],
     ["Real context convinces", "Showing the work on real photography, with real people, was the difference between a concept and a campaign."]
   ];
+  // [slug, source photo, source label, finished work, hand drawing or "", one line]
   const R_WORKS = [
     ["The compositions", "Seven compositions and a lantern study, each drawn from one room or object in the palace.", [
-      ["corridors-and-chandeliers", "img/cc-hall.jpg", "The corridor and chandeliers", "Beamed ceilings, lanterns and chandeliers drawn into a toile and a placement print."],
-      ["deer-and-doorway", "img/dd-door.jpg", "Stags above the doorways", "Pencil studies of stags, arches and fanlights, built into the collection's crest."],
-      ["painted-ceiling", "img/tt-ceiling-detail.jpg", "The painted ceiling", "The ceiling medallion redrawn as a cut-paper motif and tested in colourways."],
-      ["portrait-of-an-ancestor", "img/pt-portrait.jpg", "Ancestral portraits", "A painted ancestor, framed in ornament taken from a carved cabinet."],
-      ["ivory-table", "img/gr-marble.jpg", "The carved ivory table", "One object, photographed from every side and drawn in detail."],
-      ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "Lanterns drawn from below and linked into a diagonal repeat."]
+      ["corridors-and-chandeliers", "img/cc-hall.jpg", "The main corridor", "img/co-c2.jpg", "img/sk-co-1.jpg", "Arches, lanterns and carved chairs drawn in ink, then mirrored into a toile repeat."],
+      ["deer-and-doorway", "img/dd-door.jpg", "Stags above the doorways", "img/dd-pattern.jpg", "img/sk-dd-9.jpg", "Pencil studies of stags, arches and fanlights, built into the collection's crest."],
+      ["painted-ceiling", "img/tt-ceiling-detail.jpg", "The painted ceiling", "img/ce-final-teal.jpg", "img/sk-ce-1.jpg", "The ceiling medallion redrawn as a cut-paper motif and tested in colourways."],
+      ["portrait-of-an-ancestor", "img/pt-portrait.jpg", "An ancestral portrait", "img/pt-pattern.jpg", "img/sk-pt-1.jpg", "A painted ancestor, framed in ornament taken from a carved cabinet."],
+      ["ivory-table", "img/gr-marble.jpg", "The carved ivory table", "img/gr-dark.jpg", "img/sk-iv-1.jpg", "The eagle and scrollwork of one pedestal, drawn and scattered into a repeat."],
+      ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "img/ln-pattern.jpg", "img/ln-drawing.jpg", "One lantern drawn in line, then linked by chains into a diagonal repeat."]
     ]],
     ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products.", [
-      ["mir-what-remains", "img/ce-drawing.jpg", "The doorway and ceiling drawings", "A speculative fragrance campaign built entirely from two archive drawings."],
-      ["heritage-loop", "img/tt-hero.jpg", "The thesis collection", "A platform where every garment shows the building behind its print."],
-      ["editorial-mockups", "img/co-bronze.jpg", "The printed repeats", "The palace prints tested on magazine covers, red carpets and runways."],
-      ["greek-ornament", "img/gk-key-board.jpg", "The method, on classical ornament", "The drawing-to-repeat process applied to Greek and baroque ornament."],
-      ["quiet-structure", "img/qs-02.jpg", "Letterforms on a grid", "A personal identity built with the same attention to structure and symmetry."]
+      ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "img/oh-construction-h.jpg", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
+      ["mir-what-remains", "img/dd-door.jpg", "The carved doorway", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
+      ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
+      ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
+      ["greek-ornament", "img/gk-key-board.jpg", "Classical motifs, composed", "img/gk-key-pattern.jpg", "", "The same drawing-to-repeat method, applied to Greek and baroque ornament."],
+      ["quiet-structure", "img/qs-02.jpg", "Letterforms on a grid", "img/qs-01.jpg", "", "A personal identity built with the same attention to structure and symmetry."]
     ]]
   ];
-  const workImg = (slug) => { const p = bySlug(slug); return slug === "heritage-loop" ? "img/hl-phones.jpg" : (p.covers ? p.covers[0].src : p.cover); };
   const split = (t) => { let k = 0; return t.split(" ").map((w) => `<span class="w">${w.split("").map((c) => `<i style="--d:${k++ * 30}ms">${c}</i>`).join("")}</span>`).join(" "); };
 
   const viewResearch = () => `
@@ -441,11 +461,11 @@
       </section>
 
       <section class="rs-works" id="research-to-work">
-        <div class="rs-works-head"><h2 class="rs-kicker">From research to work</h2><p>Every project in my portfolio traces back to something I found in the palace. Hover over or tap a card to see the work that came out of it.</p></div>
+        <div class="rs-works-head"><h2 class="rs-kicker">From research to work</h2><p>Each card starts with what I photographed. Hover over or tap it to see the work that came out of it, and, for the compositions, the drawing in between.</p></div>
         ${R_WORKS.map(([h, intro, items]) => `<div class="rs-works-group">
           <div class="rs-works-sub"><h4>${h}</h4><p>${intro}</p></div>
-          <div class="rs-works-grid">${items.map(([slug, src, from, line], i) => { const p = bySlug(slug); return `<figure class="rw-card reveal" style="--k:${i}" tabindex="0">
-            <div class="rw-img"><img src="${src}" alt="Source: ${esc(from)}" loading="lazy"><img class="wk" src="${workImg(slug)}" alt="${esc(p.title)}" loading="lazy"><span class="rw-tag">Source</span></div>
+          <div class="rs-works-grid">${items.map(([slug, src, from, work, sk, line], i) => { const p = bySlug(slug); return `<figure class="rw-card reveal" style="--k:${i}" tabindex="0">
+            <div class="rw-img"><img src="${src}" alt="Source: ${esc(from)}" loading="lazy"><img class="wk${slug === "quiet-structure" ? " fit" : ""}" src="${work}" alt="${esc(p.title)}" loading="lazy">${sk ? `<span class="rw-sk"><img src="${sk}" alt="My drawing" loading="lazy"><em>Drawing</em></span>` : ""}<span class="rw-tag"><i>Source</i><i>The work</i></span></div>
             <figcaption><small>${esc(from)}</small><b>${esc(p.title)}</b><p>${esc(line)}</p><a href="#/work/${slug}">${esc(p.date || p.subtitle)} · View project →</a></figcaption>
           </figure>`; }).join("")}</div></div>`).join("")}
       </section>
@@ -465,7 +485,7 @@
         </div>
 
         <div class="rs-case-block">
-          <div class="rs-case-sub"><h4>How it was made</h4><p>From a reference study to a finished campaign, in six steps.</p></div>
+          <div class="rs-case-sub"><h4>How it was made</h4><p>From the first map of touchpoints to a finished campaign, in six steps.</p></div>
           <ol class="rs-case-steps">${R_CASE_STEPS.map((s, i) => `<li class="reveal" style="--k:${i}"><div class="cs-step-img"><img src="${s[2]}" alt="" loading="lazy"${s[2].includes("-drawing") ? ' style="object-fit:contain;background:#fbf8f1;padding:4%"' : ""}></div><div><span>0${i + 1}</span><h5>${s[0]}</h5><p>${s[1]}</p></div></li>`).join("")}</ol>
         </div>
 
@@ -996,6 +1016,7 @@
     initFlow();
     initWorkStack();
     initProject();
+    if (window.OpenHouse) OpenHouse.mount(app);
     initTour();
     initSpiral();
   }
