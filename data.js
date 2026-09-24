@@ -60,7 +60,8 @@ const PROJECTS = [
       ]},
       { type: "step", n: "04", h: "The installation", p: "The look was shown in a curtained room lit by bare bulbs hung on knotted rope. Silk banners printed with the stag crest in every colourway hang beside it, so visitors see the full pattern system around the finished garment." },
       { type: "related", text: "Each composition behind the collection is documented as its own project:",
-        links: ["corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling", "portrait-of-an-ancestor", "ivory-table", "lanterns", "mir-what-remains"] }
+        links: ["corridors-and-chandeliers", "deer-and-doorway", "painted-ceiling", "portrait-of-an-ancestor", "ivory-table", "lanterns", "mir-what-remains"] },
+      { type: "linkout", text: "The full research behind the look, written up as a paper:", items: [{ label: "Read the thesis paper", href: "#/research/paper" }] }
     ]
   },
 

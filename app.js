@@ -362,6 +362,24 @@
     ["One ink goes further", "Printing single-colour line work on kraft and canvas kept the heritage feel while looking contemporary rather than costume."],
     ["Real context convinces", "Showing the work on real photography, with real people, was the difference between a concept and a campaign."]
   ];
+  const R_WORKS = [
+    ["The compositions", "Seven compositions and a lantern study, each drawn from one room or object in the palace.", [
+      ["corridors-and-chandeliers", "img/cc-hall.jpg", "The corridor and chandeliers", "Beamed ceilings, lanterns and chandeliers drawn into a toile and a placement print."],
+      ["deer-and-doorway", "img/dd-door.jpg", "Stags above the doorways", "Pencil studies of stags, arches and fanlights, built into the collection's crest."],
+      ["painted-ceiling", "img/tt-ceiling-detail.jpg", "The painted ceiling", "The ceiling medallion redrawn as a cut-paper motif and tested in colourways."],
+      ["portrait-of-an-ancestor", "img/pt-portrait.jpg", "Ancestral portraits", "A painted ancestor, framed in ornament taken from a carved cabinet."],
+      ["ivory-table", "img/gr-marble.jpg", "The carved ivory table", "One object, photographed from every side and drawn in detail."],
+      ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "Lanterns drawn from below and linked into a diagonal repeat."]
+    ]],
+    ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products.", [
+      ["mir-what-remains", "img/ce-drawing.jpg", "The doorway and ceiling drawings", "A speculative fragrance campaign built entirely from two archive drawings."],
+      ["heritage-loop", "img/tt-hero.jpg", "The thesis collection", "A platform where every garment shows the building behind its print."],
+      ["editorial-mockups", "img/co-bronze.jpg", "The printed repeats", "The palace prints tested on magazine covers, red carpets and runways."],
+      ["greek-ornament", "img/gk-key-board.jpg", "The method, on classical ornament", "The drawing-to-repeat process applied to Greek and baroque ornament."],
+      ["quiet-structure", "img/qs-02.jpg", "Letterforms on a grid", "A personal identity built with the same attention to structure and symmetry."]
+    ]]
+  ];
+  const workImg = (slug) => { const p = bySlug(slug); return slug === "heritage-loop" ? "img/hl-phones.jpg" : (p.covers ? p.covers[0].src : p.cover); };
   const split = (t) => { let k = 0; return t.split(" ").map((w) => `<span class="w">${w.split("").map((c) => `<i style="--d:${k++ * 30}ms">${c}</i>`).join("")}</span>`).join(" "); };
 
   const viewResearch = () => `
@@ -407,6 +425,31 @@
           .map(([h, p], i) => `<article class="reveal" style="--k:${i}"><span>0${i + 1}</span><h3>${h}</h3><p>${p}</p></article>`).join("")}</div>
       </section>
 
+      <section class="rs-thesis" id="thesis-paper">
+        <div class="rs-thesis-head">
+          <h2 class="rs-kicker">Thesis paper · 2025</h2>
+          <h3 class="rs-case-title">${esc(PAPER.title)}: <em>the research paper</em></h3>
+          <p>${esc(PAPER.sub)}.</p>
+        </div>
+        <div class="rs-thesis-grid">
+          <div class="rs-thesis-abs reveal"><span>Abstract</span><p>${esc(PAPER.abstract)}</p>
+            <dl>${PAPER.meta.filter((m) => m[0] !== "Programme").map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></div>
+          <ol class="rs-thesis-toc reveal">${PAPER.body.filter((b) => b.t === "h").map((b) => `<li><a href="#/research/paper"><span>0${b.n}</span>${esc(b.h)}</a></li>`).join("")}</ol>
+        </div>
+        <div class="rs-thesis-strip">${[["img/sk-ce-1.jpg", "Sketch"], ["img/comp-4.jpg", "Composition"], ["img/tt-hoop-1.jpg", "Sampling"], ["img/co-bronze.jpg", "Print"], ["img/tt-hero.jpg", "Final look"]].map(([src, l], i) => `<figure class="reveal" style="--k:${i}"><img src="${src}" alt="${l}" loading="lazy"><figcaption>${l}</figcaption></figure>`).join("")}</div>
+        <div class="rs-thesis-cta"><a class="btn" href="#/research/paper">Read the full paper</a><a class="u" href="Threads-of-Time-Thesis-Mir-Zuhair.pdf" download>Download PDF (13 pages)</a></div>
+      </section>
+
+      <section class="rs-works" id="research-to-work">
+        <div class="rs-works-head"><h2 class="rs-kicker">From research to work</h2><p>Every project in my portfolio traces back to something I found in the palace. Hover over or tap a card to see the work that came out of it.</p></div>
+        ${R_WORKS.map(([h, intro, items]) => `<div class="rs-works-group">
+          <div class="rs-works-sub"><h4>${h}</h4><p>${intro}</p></div>
+          <div class="rs-works-grid">${items.map(([slug, src, from, line], i) => { const p = bySlug(slug); return `<figure class="rw-card reveal" style="--k:${i}" tabindex="0">
+            <div class="rw-img"><img src="${src}" alt="Source: ${esc(from)}" loading="lazy"><img class="wk" src="${workImg(slug)}" alt="${esc(p.title)}" loading="lazy"><span class="rw-tag">Source</span></div>
+            <figcaption><small>${esc(from)}</small><b>${esc(p.title)}</b><p>${esc(line)}</p><a href="#/work/${slug}">${esc(p.date || p.subtitle)} · View project →</a></figcaption>
+          </figure>`; }).join("")}</div></div>`).join("")}
+      </section>
+
       <section class="rs-case" id="mirs-cafe">
         <div class="rs-case-head">
           <h2 class="rs-kicker">Case study · 2026</h2>
@@ -437,6 +480,46 @@
         </div>
       </section>
     </section>`;
+
+
+  /* ---------- Thesis paper ---------- */
+  const viewPaper = () => {
+    const P = PAPER; let fn = 0; const toc = [];
+    const body = P.body.map((b) => {
+      switch (b.t) {
+        case "h": toc.push([b.n, b.h]); return `<h2 class="pp-h reveal" id="s${b.n}"><span>${b.n}</span>${esc(b.h)}</h2>`;
+        case "h3": return `<h3 class="pp-h3">${esc(b.h)}</h3>`;
+        case "p": return `<p>${b.text}</p>`;
+        case "pull": return `<blockquote class="pp-pull reveal">${esc(b.text)}</blockquote>`;
+        case "list": return `<ul class="pp-list">${b.items.map((i) => `<li>${i}</li>`).join("")}</ul>`;
+        case "table": return `<div class="pp-table c${b.head.length} reveal"><table><thead><tr>${b.head.map((h) => `<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+        case "fig": return `<div class="pp-fig pp-${b.layout}${b.tall ? " tall" : ""} reveal">${b.items.map((i) => { fn++; return `<figure class="${i.contain ? "contain" : ""}"><img src="${i.src}" alt="${esc(i.cap)}" loading="lazy" data-cap="Fig. ${fn}. ${esc(i.cap)}"><figcaption><b>Fig. ${fn}</b> ${esc(i.cap)}</figcaption></figure>`; }).join("")}</div>`;
+      }
+      return "";
+    }).join("");
+    return `
+    <article class="pp page-enter">
+      <header class="pp-hero">
+        <div class="pp-hero-txt">
+          <small>Research paper · BFA Textile Design thesis · 2025</small>
+          <h1>${esc(P.title)}</h1>
+          <p class="pp-sub">${esc(P.sub)}</p>
+          <dl class="pp-meta">${P.meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+          <div class="pp-actions"><a class="btn" href="Threads-of-Time-Thesis-Mir-Zuhair.pdf" download>Download paper (PDF)</a><a class="u" href="#/work/threads-of-time">See the project →</a></div>
+        </div>
+        <figure class="pp-hero-img"><img src="img/tt-hero.jpg" alt="The final look of Threads of Time"></figure>
+      </header>
+      <div class="pp-wrap">
+        <aside class="pp-toc"><b>Contents</b><ol><li><a href="#abstract" data-jump>Abstract</a></li>${toc.map(([n, h]) => `<li><a href="#s${n}" data-jump><span>${n}</span>${esc(h)}</a></li>`).join("")}<li><a href="#sources" data-jump>Sources</a></li></ol></aside>
+        <div class="pp-body">
+          <section class="pp-abstract" id="abstract"><h2>Abstract</h2><p>${esc(P.abstract)}</p><p class="pp-kw"><b>Keywords</b> ${P.keywords.map(esc).join(" · ")}</p></section>
+          ${body}
+          <section class="pp-end" id="sources"><h2>Sources</h2><p>${esc(P.sources)}</p><h2>Acknowledgements</h2><p>${esc(P.thanks)}</p></section>
+          <nav class="pager"><a href="#/research"><small>Back to</small><span>Research</span></a><a class="next" href="#/work/threads-of-time"><small>The project</small><span>Threads of Time</span></a></nav>
+        </div>
+      </div>
+    </article>`;
+  };
 
   const viewAbout = () => `
     <section class="about me page-enter">
@@ -853,6 +936,7 @@
     }));
     specs.forEach((s) => s.addEventListener("click", () => s.classList.toggle("flip")));
     rs.querySelectorAll(".cs-pair").forEach((s) => s.addEventListener("click", () => s.classList.toggle("flip")));
+    rs.querySelectorAll(".rw-card").forEach((s) => s.addEventListener("click", (e) => { if (!e.target.closest("a")) s.classList.toggle("flip"); }));
     resOff = () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); cio.disconnect(); sio.disconnect(); };
   }
 
@@ -891,6 +975,8 @@
     if (seg === "work" && bySlug(slug)) {
       const p = bySlug(slug);
       app.innerHTML = viewProject(p); setNav("work"); title = `${p.title} — Mir Zuhair`;
+    } else if (seg === "research" && slug === "paper") {
+      app.innerHTML = viewPaper(); setNav("research"); title = "Threads of Time: Research Paper — Mir Zuhair";
     } else if (seg === "research") {
       app.innerHTML = viewResearch(); setNav("research"); title = "Research — Mir Zuhair";
     } else if (seg === "cv") {
@@ -928,6 +1014,22 @@
       tw.querySelectorAll("[data-t]").forEach((x) => x.setAttribute("aria-selected", x === b));
       tw.querySelectorAll("[data-c]").forEach((c) => { c.hidden = c.dataset.c !== b.dataset.t; if (!c.hidden) { c.classList.remove("play"); void c.offsetWidth; c.classList.add("play"); } });
     })));
+    app.querySelectorAll("[data-jump]").forEach((a) => a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const t = document.getElementById(a.getAttribute("href").slice(1));
+      if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+    }));
+    const toc = [...app.querySelectorAll(".pp-toc a")];
+    if (toc.length) {
+      const heads = [...app.querySelectorAll(".pp-abstract, .pp-h, .pp-end")];
+      const spy = () => {
+        if (!toc[0].isConnected) return removeEventListener("scroll", spy);
+        let cur = heads[0];
+        heads.forEach((h) => { if (h.getBoundingClientRect().top < innerHeight * .3) cur = h; });
+        toc.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + cur.id));
+      };
+      addEventListener("scroll", spy, { passive: true }); spy();
+    }
     const form = app.querySelector(".cp-form");
     if (form) form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -969,9 +1071,9 @@
   const show = (n) => { idx = (n + list.length) % list.length; lbImg.src = list[idx].src; lbCap.textContent = list[idx].dataset.cap || ""; };
   const close = () => { lb.hidden = true; document.body.style.overflow = ""; };
   app.addEventListener("click", (e) => {
-    const img = e.target.closest(".blk img, .masonry img, .cover img");
+    const img = e.target.closest(".blk img, .masonry img, .cover img, .pp-fig img");
     if (!img) return;
-    list = [...app.querySelectorAll(".blk img, .masonry img, .cover img")];
+    list = [...app.querySelectorAll(".blk img, .masonry img, .cover img, .pp-fig img")];
     show(list.indexOf(img)); lb.hidden = false; document.body.style.overflow = "hidden";
   });
   lb.querySelector(".lb-close").onclick = close;
