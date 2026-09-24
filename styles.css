@@ -975,6 +975,8 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
 /* ---------- Research: Mir's Café case study ---------- */
 .rs-case { padding: clamp(60px, 8vw, 120px) var(--gutter); background: #f4ebe6; border-top: 1px solid var(--line); }
 .rs-case-head { max-width: 900px; }
+.rs-case.rs-case-oh { background: #e6ece6; }
+.rs-case-oh .cs-pair-img .sk { object-fit: cover; padding: 0; background: #134238; }
 .rs-case-title { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 6.4vw, 104px); line-height: .95; letter-spacing: -.02em; text-wrap: balance; }
 .rs-case-title em { display: block; color: #5e1224; }
 .rs-case-head > p { margin-top: 24px; max-width: 640px; font-family: var(--serif); font-size: clamp(19px, 1.6vw, 24px); color: #3b3834; }

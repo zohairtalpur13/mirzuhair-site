@@ -400,6 +400,71 @@
       ["quiet-structure", "img/qs-02.jpg", "Letterforms on a grid", "img/qs-01.jpg", "", "A personal identity built with the same attention to structure and symmetry."]
     ]]
   ];
+  const CASE_CAFE = { id: "mirs-cafe", kicker: "Case study · 2026", title: "Mir's Café", em: "from palace to chai house",
+    intro: "The palace research was made for cloth. Mir's Café asks whether the same drawings could carry a whole brand: a chai house with cups, bags, billboards and an app, all built from what I drew on site.",
+    why: R_CASE_WHY, pairsH: "From drawing to product", pairsP: "Five drawings from the palace archive became the whole graphic language. Hover over or tap a product to see the drawing behind it.",
+    pairs: R_CASE_PAIRS, skAlt: "My drawing", stepsP: "From the first map of touchpoints to a finished campaign, in six steps.", steps: R_CASE_STEPS,
+    palP: "The palette carries on from Heritage Loop's \"Earthy Regal\", then warms up for a café.", pal: R_CASE_PAL, learn: R_CASE_LEARN,
+    cta: ["#/work/mirs-cafe", "img/mc-st-crosswalk.jpg", "Mir's Café"] };
+  const CASE_OH = { id: "open-house", cls: "rs-case-oh", kicker: "Case study · 2026", title: "Open House", em: "a typeface from a palace",
+    intro: "The palace research gave me patterns. Open House asks whether the building could give me letters: a typeface, Jharoka, and a complete exhibition identity built from two rules I found in the haveli.",
+    why: [["Where it began", "Every earlier project took ornament from the palace. I wanted to go one level deeper and find the rules underneath the ornament, so that the building would be in the letters themselves."],
+      ["The idea", "The carved jali divides light into a grid of openings. The teak doors end in a faceted arch. One gives a grid, the other gives a corner, and together they are enough to build an alphabet."],
+      ["The rule", "Every letter sits on a 5 × 7 lattice of separate tiles. Wherever a tile ends a stroke, its corners are cut at 45°. Joins stay square and ends become arches, across all 61 glyphs."]],
+    pairsH: "From the palace to the page", pairsP: "Five things I photographed in the haveli became the whole identity. Hover over or tap a piece to see where it came from.",
+    pairs: [["img/obj-jali.jpg", "img/oh-specimen.jpg", "Type specimen", "The jali", "The 5 × 7 grid inside every letter"],
+      ["img/dd-door.jpg", "img/oh-construction-h.jpg", "Letter construction", "The doorway", "The 45° cut on every stroke end"],
+      ["img/hx-stair.jpg", "img/oh-poster.jpg", "Poster", "The stair", "The stepped strip of seven rooms"],
+      ["img/cc-hall.jpg", "img/oh-tickets.jpg", "Tickets", "The lantern glass", "Lantern green, the lead colour"],
+      ["img/cc-exterior.jpg", "img/oh-tote.jpg", "Tote", "The lime-washed walls", "Lime plaster, and the light on it"]],
+    skAlt: "Source",
+    stepsP: "From a photograph of a screen to a working font and a full exhibition, in six steps.",
+    steps: [["Looking for a rule", "I went back through my photographs of the palace looking for structure rather than ornament: what repeats, what divides, where things end.", "img/obj-jali.jpg"],
+      ["Two rules", "The jali gave the grid and the doorway gave the corner. I tested both on a single letter, H, until the joins read as solid and the ends read as arches.", "img/oh-construction-h.jpg"],
+      ["Jharoka", "I built all 61 glyphs by the two rules and made them into an installable font, so the same letters work on a ticket stub and a poster.", "img/oh-specimen.jpg"],
+      ["The identity", "Poster, tickets, badges and tote, set in Jharoka with the Urdu name, Khula Ghar, beside the English.", "img/oh-poster.jpg"],
+      ["Jali light", "I placed every piece in the same light: sun falling through an arched jali window onto lime plaster, so the mockups belong to the house.", "img/oh-poster-wall.jpg"],
+      ["Something to play with", "The case study lets visitors build a letter, type in Jharoka, move the jali light and make their own ticket.", "img/oh-badges.jpg"]],
+    palP: "Haveli at Dusk: every colour is taken from a room in the palace.",
+    pal: [["#134238", "Lantern green", "The green glass lanterns of the corridor.", "#EFE6D6"],
+      ["#EFE6D6", "Lime plaster", "The lime-washed walls, and the ground of the tote.", "#134238"],
+      ["#D6A13C", "Saffron brass", "The brass fittings, used for the arch cuts.", "#2A1A12"],
+      ["#7A1C2A", "Kirmizi red", "The deep red of the red hall.", "#EFE6D6"],
+      ["#2A1A12", "Teak", "The carved teak doors.", "#D6A13C"]],
+    learn: [["Rules travel further than motifs", "A motif decorates one surface. A rule, applied everywhere, makes a whole system feel like one place."],
+      ["Constraint makes character", "Only square tiles and one cut, yet every letter reads differently and still belongs to the set."],
+      ["Light is part of the brand", "Showing the work in jali light did as much as any colour to make it belong to the haveli."]],
+    cta: ["#/work/open-house", "img/oh-poster-wall.jpg", "Open House"] };
+  const rsCase = (c) => `
+      <section class="rs-case ${c.cls || ""}" id="${c.id}">
+        <div class="rs-case-head">
+          <h2 class="rs-kicker">${c.kicker}</h2>
+          <h3 class="rs-case-title">${c.title}: <em>${c.em}</em></h3>
+          <p>${c.intro}</p>
+        </div>
+
+        <div class="rs-case-why">${c.why.map(([h, p], i) => `<article class="reveal" style="--k:${i}"><span>${h}</span><p>${p}</p></article>`).join("")}</div>
+
+        <div class="rs-case-block">
+          <div class="rs-case-sub"><h4>${c.pairsH}</h4><p>${c.pairsP}</p></div>
+          <div class="rs-case-pairs">${c.pairs.map((x) => `<figure class="cs-pair" tabindex="0"><div class="cs-pair-img"><img src="${x[1]}" alt="${x[2]}" loading="lazy"><img class="sk" src="${x[0]}" alt="${c.skAlt}: ${x[3]}" loading="lazy"></div><figcaption><b>${x[3]}</b><span>${x[4]}</span></figcaption></figure>`).join("")}</div>
+        </div>
+
+        <div class="rs-case-block">
+          <div class="rs-case-sub"><h4>How it was made</h4><p>${c.stepsP}</p></div>
+          <ol class="rs-case-steps">${c.steps.map((x, i) => `<li class="reveal" style="--k:${i}"><div class="cs-step-img"><img src="${x[2]}" alt="" loading="lazy"${x[2].includes("-drawing") ? ' style="object-fit:contain;background:#fbf8f1;padding:4%"' : ""}></div><div><span>0${i + 1}</span><h5>${x[0]}</h5><p>${x[1]}</p></div></li>`).join("")}</ol>
+        </div>
+
+        <div class="rs-case-block">
+          <div class="rs-case-sub"><h4>Where the colours come from</h4><p>${c.palP}</p></div>
+          <div class="rs-case-pal">${c.pal.map((x) => `<div style="--c:${x[0]};--t:${x[3]}"><b>${x[1]}</b><span>${x[0]}</span><p>${x[2]}</p></div>`).join("")}</div>
+        </div>
+
+        <div class="rs-case-block rs-case-end">
+          <div class="rs-case-find">${c.learn.map(([h, p], i) => `<article class="reveal" style="--k:${i}"><h5>${h}</h5><p>${p}</p></article>`).join("")}</div>
+          <a class="rs-case-cta" href="${c.cta[0]}"><img src="${c.cta[1]}" alt=""><span><small>See the full project</small><b>${c.cta[2]}</b></span></a>
+        </div>
+      </section>`;
   const split = (t) => { let k = 0; return t.split(" ").map((w) => `<span class="w">${w.split("").map((c) => `<i style="--d:${k++ * 30}ms">${c}</i>`).join("")}</span>`).join(" "); };
 
   const viewResearch = () => `
@@ -470,35 +535,8 @@
           </figure>`; }).join("")}</div></div>`).join("")}
       </section>
 
-      <section class="rs-case" id="mirs-cafe">
-        <div class="rs-case-head">
-          <h2 class="rs-kicker">Case study · 2026</h2>
-          <h3 class="rs-case-title">Mir's Café: <em>from palace to chai house</em></h3>
-          <p>The palace research was made for cloth. Mir's Café asks whether the same drawings could carry a whole brand: a chai house with cups, bags, billboards and an app, all built from what I drew on site.</p>
-        </div>
-
-        <div class="rs-case-why">${R_CASE_WHY.map(([h, p], i) => `<article class="reveal" style="--k:${i}"><span>${h}</span><p>${p}</p></article>`).join("")}</div>
-
-        <div class="rs-case-block">
-          <div class="rs-case-sub"><h4>From drawing to product</h4><p>Five drawings from the palace archive became the whole graphic language. Hover over or tap a product to see the drawing behind it.</p></div>
-          <div class="rs-case-pairs">${R_CASE_PAIRS.map((c) => `<figure class="cs-pair" tabindex="0"><div class="cs-pair-img"><img src="${c[1]}" alt="${c[2]}" loading="lazy"><img class="sk" src="${c[0]}" alt="My drawing: ${c[3]}" loading="lazy"></div><figcaption><b>${c[3]}</b><span>${c[4]}</span></figcaption></figure>`).join("")}</div>
-        </div>
-
-        <div class="rs-case-block">
-          <div class="rs-case-sub"><h4>How it was made</h4><p>From the first map of touchpoints to a finished campaign, in six steps.</p></div>
-          <ol class="rs-case-steps">${R_CASE_STEPS.map((s, i) => `<li class="reveal" style="--k:${i}"><div class="cs-step-img"><img src="${s[2]}" alt="" loading="lazy"${s[2].includes("-drawing") ? ' style="object-fit:contain;background:#fbf8f1;padding:4%"' : ""}></div><div><span>0${i + 1}</span><h5>${s[0]}</h5><p>${s[1]}</p></div></li>`).join("")}</ol>
-        </div>
-
-        <div class="rs-case-block">
-          <div class="rs-case-sub"><h4>Where the colours come from</h4><p>The palette carries on from Heritage Loop's "Earthy Regal", then warms up for a café.</p></div>
-          <div class="rs-case-pal">${R_CASE_PAL.map((c) => `<div style="--c:${c[0]};--t:${c[3]}"><b>${c[1]}</b><span>${c[0]}</span><p>${c[2]}</p></div>`).join("")}</div>
-        </div>
-
-        <div class="rs-case-block rs-case-end">
-          <div class="rs-case-find">${R_CASE_LEARN.map(([h, p], i) => `<article class="reveal" style="--k:${i}"><h5>${h}</h5><p>${p}</p></article>`).join("")}</div>
-          <a class="rs-case-cta" href="#/work/mirs-cafe"><img src="img/mc-st-crosswalk.jpg" alt=""><span><small>See the full project</small><b>Mir's Café</b></span></a>
-        </div>
-      </section>
+      ${rsCase(CASE_CAFE)}
+      ${rsCase(CASE_OH)}
     </section>`;
 
 
