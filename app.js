@@ -392,6 +392,7 @@
       ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "img/ln-pattern.jpg", "img/ln-drawing.jpg", "One lantern drawn in line, then linked by chains into a diagonal repeat."]
     ]],
     ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products.", [
+      ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "img/tx-warp.jpg", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
       ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "img/oh-construction-h.jpg", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
       ["mir-what-remains", "img/dd-door.jpg", "The carved doorway", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
@@ -435,6 +436,35 @@
       ["Constraint makes character", "Only square tiles and one cut, yet every letter reads differently and still belongs to the set."],
       ["Light is part of the brand", "Showing the work in jali light did as much as any colour to make it belong to the haveli."]],
     cta: ["#/work/open-house", "img/oh-poster-wall.jpg", "Open House"] };
+  const CASE_TX = { id: "texere", cls: "rs-case-tx", kicker: "Case study · 2026", title: "TEXERE", em: "type made of thread",
+    intro: "My research taught me how cloth is made: warp and weft, over and under, repeat and drape. TEXERE asks what happens when letters follow the same rules. Text and textile share one root; in Latin, texere means to weave.",
+    why: [["Where it began", "Every textile I made began as a drawing and ended as thread. I wanted a project that ran the other way: start from thread, and end with type."],
+      ["The idea", "If a letter is only rows of weft, then everything a thread can do, a letter can do too. It can be combed, frayed, woven, pulled and repeated."],
+      ["The rule", "No motion without a textile reason. Every interaction had to be something I had already done with my hands on a loom, a hoop or a print table."]],
+    pairsH: "From the studio to the screen", pairsP: "Five things from my textile work became the five chapters. Hover over or tap a chapter to see where it came from.",
+    pairs: [["img/cr-jq-red.jpg", "img/tx-warp.jpg", "Warp", "The jacquard file", "01 Warp: letters built from weft"],
+      ["img/tt-look.jpg", "img/tx-unravel.jpg", "Unravel", "The silk cape", "02 Unravel: threads that fall"],
+      ["img/tt-hoop-1.jpg", "img/tx-weave.jpg", "Weave", "The woven samples", "03 Weave: figure over twill"],
+      ["img/ln-red.jpg", "img/tx-tension.jpg", "Tension", "Lanterns on chains", "04 Tension: letters on threads"],
+      ["img/co-bronze.jpg", "img/tx-repeat.jpg", "Repeat", "My printed repeats", "05 Repeat: mirrored and half-dropped"]],
+    skAlt: "Source",
+    stepsP: "From a single thought about a Latin word to five chapters you can play with, in six steps.",
+    steps: [["One word", "Text and textile share the root texere, to weave. That one fact became the whole brief.", "img/tx-warp.jpg"],
+      ["Letters as rows", "I drew each word into the page and read it back row by row, so every letter became a set of weft threads that could move on their own.", "img/tx-warp.jpg"],
+      ["Thread physics", "Each thread springs back when combed, hangs when it lets go and swings when it is pulled, so the motion feels like cloth rather than animation.", "img/tx-unravel.jpg"],
+      ["A real loom", "The weave chapter follows real structure: the figure floats over the warp and a 2/2 twill holds the ground, row by row, with a shuttle crossing.", "img/tx-weave.jpg"],
+      ["Variable type", "Headings are set in a variable serif. Weight and softness shift as the cursor comes close, so even the titles respond like fabric under a hand.", "img/tx-tension.jpg"],
+      ["The repeat", "The last chapter builds cloth the way my prints are built: one drawing, mirrored four ways and half-dropped.", "img/tx-repeat-indigo.jpg"]],
+    palP: "Natural dyes: every colour is one a dyer would recognise.",
+    pal: [["#15110e", "Loom", "The dark ground every thread is drawn on.", "#efe6d6"],
+      ["#efe6d6", "Undyed cotton", "The thread before any dye.", "#15110e"],
+      ["#b23a2e", "Madder", "The red root dye of the subcontinent.", "#efe6d6"],
+      ["#1e3a6b", "Indigo", "The blue of the warp.", "#efe6d6"],
+      ["#e0a43a", "Turmeric", "A bright yellow thread through the weft.", "#15110e"]],
+    learn: [["Motion needs a reason", "Every movement worked better once it came from something real: combing, fraying, weaving or pulling."],
+      ["Play teaches", "Visitors learn how a twill holds cloth together by weaving their own name, not by reading about it."],
+      ["My craft travels", "What I know about textiles turned out to be a complete language for typography and interaction."]],
+    cta: ["#/work/texere", "img/tx-warp.jpg", "TEXERE"] };
   const rsCase = (c) => `
       <section class="rs-case ${c.cls || ""}" id="${c.id}">
         <div class="rs-case-head">
@@ -537,6 +567,7 @@
 
       ${rsCase(CASE_CAFE)}
       ${rsCase(CASE_OH)}
+      ${rsCase(CASE_TX)}
     </section>`;
 
 

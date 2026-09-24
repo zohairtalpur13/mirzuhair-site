@@ -976,6 +976,8 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
 .rs-case { padding: clamp(60px, 8vw, 120px) var(--gutter); background: #f4ebe6; border-top: 1px solid var(--line); }
 .rs-case-head { max-width: 900px; }
 .rs-case.rs-case-oh { background: #e6ece6; }
+.rs-case.rs-case-tx { background: #ece5da; }
+.rs-case-tx .cs-pair-img .sk { object-fit: cover; padding: 0; background: #15110e; }
 .rs-case-oh .cs-pair-img .sk { object-fit: cover; padding: 0; background: #134238; }
 .rs-case-title { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 6.4vw, 104px); line-height: .95; letter-spacing: -.02em; text-wrap: balance; }
 .rs-case-title em { display: block; color: #5e1224; }
