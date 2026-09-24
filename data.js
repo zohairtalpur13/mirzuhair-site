@@ -721,6 +721,45 @@ const PROJECTS = [
   },
 
   {
+    slug: "texere",
+    tone: "#d9cfc0",
+    title: "TEXERE",
+    subtitle: "Type made of thread: a typography, motion and interaction piece",
+    date: "Self-Initiated · Typography & Interaction · 2026",
+    tags: "Kinetic typography · Variable type · Creative coding · Interaction",
+    cover: "img/tx-warp.jpg",
+    covers: [{ src: "img/tx-warp.jpg" }, { src: "img/tx-weave.jpg" }, { src: "img/tx-repeat-indigo.jpg" }],
+    sections: {
+      "The Project":
+        "TEXERE is an interactive web piece about one idea: text and textile share a root. In Latin, texere means to weave. Across five chapters, type behaves like thread. It can be combed, unravelled, woven on a loom, pulled on a string and mirrored into cloth.",
+      "The Process":
+        "I treated every letter as a set of weft threads. Each word is drawn into the page, read back row by row, and rebuilt from lines that move with physics: they spring back when combed, hang when they unravel, and swing when pulled. The loom follows real weave structure, with the figure floating over a 2/2 twill. Headings are set in a variable typeface whose weight and softness shift as the cursor comes close.",
+      "The Problem":
+        "Most kinetic type moves for the sake of moving. I wanted every motion to mean something I know from textiles: tension, fraying, weaving, repeat. The interaction should teach how cloth is made without a single diagram.",
+      "The Goal":
+        "Something to play with that still reads as a textile designer's work. Visitors leave with their own woven word and a feeling for the over and under that holds every fabric together."
+    },
+    blocks: [
+      { type: "linkout", text: "TEXERE is live. It works best on a laptop with a mouse, and it works on phones too:", items: [{ label: "Open TEXERE", href: "texere/index.html" }] },
+      { type: "full", src: "img/tx-warp.jpg", cap: "01 Warp: the title drawn in weft threads. The cursor combs through them and a click sends a ripple through the cloth." },
+      { type: "text", h: "Five chapters, one idea", p: "Each chapter takes one thing a thread can do and gives it to a letter. The palette is natural dyes: madder, indigo, turmeric, lac and undyed cotton on a dark loom." },
+      { type: "step", n: "02", h: "Unravel", p: "Scroll, and each thread of the word lets go and hangs as fringe, left to right. Scroll back and the letters knit themselves together again." },
+      { type: "full", src: "img/tx-unravel.jpg", cap: "02 Unravel, halfway: the word coming apart as you scroll." },
+      { type: "step", n: "03", h: "Weave", p: "Type a word and the loom weaves it row by row, with a shuttle crossing the cloth. Where the letter is, the weft floats over the warp; everywhere else a 2/2 twill holds the fabric together. The finished cloth can be downloaded." },
+      { type: "full", src: "img/tx-weave.jpg", cap: "03 Weave: HAVELI in madder weft on an indigo twill." },
+      { type: "step", n: "04", h: "Tension", p: "Letters hang on threads with real physics. Drag one to swing it, move near them like a breeze, or double-click to cut a thread and watch the letter drop." },
+      { type: "full", src: "img/tx-tension.jpg", cap: "04 Tension: PULL ME, mid-swing." },
+      { type: "step", n: "05", h: "Repeat", p: "The word is mirrored four ways and half-dropped, the way my prints are built. The cursor sets the scale and the weight of the type; a click changes the dye." },
+      { type: "pair", items: [
+        { src: "img/tx-repeat.jpg", cap: "Repeat in turmeric on the loom." },
+        { src: "img/tx-repeat-indigo.jpg", cap: "The same repeat in indigo and cotton." }
+      ]},
+      { type: "text", h: "Every textile is a text", p: "The piece closes on the line it started from, set in a variable serif whose letters grow heavier and softer as you move toward them." },
+      { type: "linkout", text: "Play with it yourself:", items: [{ label: "Open TEXERE", href: "texere/index.html" }] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",

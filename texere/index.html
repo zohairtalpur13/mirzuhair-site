@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TEXERE — Mir Zuhair</title>
+<meta name="description" content="TEXERE: text and textile share one root, to weave. A typography, motion and interaction piece by Mir Zuhair.">
+<meta name="theme-color" content="#15110e">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="texere.css?v=2">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../#/work/texere">← Mir Zuhair</a>
+  <nav class="chapters" aria-label="Chapters">
+    <a href="#warp" data-ch="warp"><b>01</b> Warp</a>
+    <a href="#unravel" data-ch="unravel"><b>02</b> Unravel</a>
+    <a href="#weave" data-ch="weave"><b>03</b> Weave</a>
+    <a href="#tension" data-ch="tension"><b>04</b> Tension</a>
+    <a href="#repeat" data-ch="repeat"><b>05</b> Repeat</a>
+  </nav>
+</header>
+
+<main>
+  <!-- 01 WARP -->
+  <section class="ch hero" id="warp">
+    <canvas class="stage" data-scene="warp" aria-label="The word TEXERE drawn in threads. Move the cursor to comb through them, click to pluck."></canvas>
+    <div class="hero-copy">
+      <p class="kicker">Typography · Motion · Interaction</p>
+      <p class="lede"><span class="vf">Text</span> and <span class="vf">textile</span> share one root.<br>In Latin, <em>texere</em> means <em>to weave</em>.</p>
+    </div>
+    <p class="hint">Move to comb the threads · click to pluck</p>
+  </section>
+
+  <!-- 02 UNRAVEL -->
+  <section class="ch unravel" id="unravel">
+    <div class="pin">
+      <canvas class="stage" data-scene="unravel" aria-label="The word UNRAVEL coming apart thread by thread as you scroll."></canvas>
+      <div class="side">
+        <p class="num">02</p>
+        <h2 class="vf-title">Unravel</h2>
+        <p>Every letter is a row of threads that agreed to stay. Scroll, and they let go one by one. Scroll back, and they knit themselves together again.</p>
+      </div>
+      <div class="meter" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- 03 WEAVE -->
+  <section class="ch weave" id="weave">
+    <div class="wrap">
+      <div class="side">
+        <p class="num">03</p>
+        <h2 class="vf-title">Weave</h2>
+        <p>Type a word and the loom weaves it. Where a letter is, the weft rises over the warp; everywhere else a twill holds the cloth together. The same over and under that makes every fabric.</p>
+        <label class="field"><span>Your word</span><input id="word" type="text" value="HAVELI" maxlength="10" autocomplete="off" spellcheck="false"></label>
+        <div class="dyes" role="group" aria-label="Dye">
+          <button type="button" data-dye="madder" aria-pressed="true"><i style="--a:#b23a2e;--b:#1e3a6b"></i>Madder</button>
+          <button type="button" data-dye="indigo" aria-pressed="false"><i style="--a:#e9dfcc;--b:#1e3a6b"></i>Indigo</button>
+          <button type="button" data-dye="turmeric" aria-pressed="false"><i style="--a:#e0a43a;--b:#3a2418"></i>Turmeric</button>
+          <button type="button" data-dye="lac" aria-pressed="false"><i style="--a:#e9dfcc;--b:#7d1f3c"></i>Lac</button>
+        </div>
+        <div class="acts"><button type="button" id="reweave">Weave again</button><button type="button" id="save" class="solid">Download cloth (PNG)</button></div>
+      </div>
+      <div class="loom"><canvas class="stage" data-scene="weave" aria-label="Your word, woven on a loom."></canvas></div>
+    </div>
+  </section>
+
+  <!-- 04 TENSION -->
+  <section class="ch tension" id="tension">
+    <canvas class="stage" data-scene="tension" aria-label="Letters hanging on threads. Drag them to swing; double-click a letter to cut its thread."></canvas>
+    <div class="side over">
+      <p class="num">04</p>
+      <h2 class="vf-title">Tension</h2>
+      <p>A thread only shows its strength when it is pulled. Grab a letter and swing it. Double-click to cut a thread.</p>
+      <button type="button" id="retie">Tie them back</button>
+    </div>
+  </section>
+
+  <!-- 05 REPEAT -->
+  <section class="ch repeat" id="repeat">
+    <canvas class="stage" data-scene="repeat" aria-label="Your word as a mirrored textile repeat. Move to change scale and weight, click to change dye."></canvas>
+    <div class="side over dark">
+      <p class="num">05</p>
+      <h2 class="vf-title">Repeat</h2>
+      <p>My prints are built by mirroring one drawing until it becomes cloth. Here your word does the same. Move across it to change the scale and the weight; click to change the dye.</p>
+    </div>
+  </section>
+
+  <!-- OUTRO -->
+  <section class="ch outro">
+    <p class="big vf-hover" aria-label="Every textile is a text.">Every textile<br>is a text.</p>
+    <div class="credits">
+      <p><b>TEXERE</b> · 2026 · Concept, typography, motion and code by Mir Zuhair</p>
+      <p>Set in Fraunces and Space Grotesk. Dyes: madder, indigo, turmeric, lac and undyed cotton.</p>
+      <p><a href="../#/work/texere">Read the case study →</a></p>
+    </div>
+  </section>
+</main>
+
+<script src="texere.js?v=2"></script>
+</body>
+</html>
