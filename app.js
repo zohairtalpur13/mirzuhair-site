@@ -391,9 +391,9 @@
       ["ivory-table", "img/gr-marble.jpg", "The carved ivory table", "img/gr-dark.jpg", "img/sk-iv-1.jpg", "The eagle and scrollwork of one pedestal, drawn and scattered into a repeat."],
       ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "img/ln-pattern.jpg", "img/ln-drawing.jpg", "One lantern drawn in line, then linked by chains into a diagonal repeat."]
     ]],
-    ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products.", [
-      ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "img/tx-warp.jpg", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
-      ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "img/oh-construction-h.jpg", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
+    ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products. These cards show the finished work first; hover or tap to see where it came from.", [
+      ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
+      ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
       ["mir-what-remains", "img/dd-door.jpg", "The carved doorway", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
       ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
@@ -560,8 +560,10 @@
         ${R_WORKS.map(([h, intro, items]) => `<div class="rs-works-group">
           <div class="rs-works-sub"><h4>${h}</h4><p>${intro}</p></div>
           <div class="rs-works-grid">${items.map(([slug, src, from, work, sk, line], i) => { const p = bySlug(slug); return `<figure class="rw-card reveal" style="--k:${i}" tabindex="0">
-            <div class="rw-img"><img src="${src}" alt="Source: ${esc(from)}" loading="lazy"><img class="wk${slug === "quiet-structure" ? " fit" : ""}" src="${work}" alt="${esc(p.title)}" loading="lazy">${sk ? `<span class="rw-sk"><img src="${sk}" alt="My drawing" loading="lazy"><em>Drawing</em></span>` : ""}<span class="rw-tag"><i>Source</i><i>The work</i></span></div>
-            <figcaption><small>${esc(from)}</small><b>${esc(p.title)}</b><p>${esc(line)}</p><a href="#/work/${slug}">${esc(p.date || p.subtitle)} · View project →</a></figcaption>
+            <div class="rw-img">${sk
+              ? `<img src="${src}" alt="Source: ${esc(from)}" loading="lazy"><img class="wk" src="${work}" alt="${esc(p.title)}" loading="lazy"><span class="rw-sk"><img src="${sk}" alt="My drawing" loading="lazy"><em>Drawing</em></span><span class="rw-tag"><i>Source</i><i>The work</i></span>`
+              : `<img${slug === "quiet-structure" ? ' class="fit"' : ""} src="${work}" alt="${esc(p.title)}" loading="lazy"><img class="wk" src="${src}" alt="Source: ${esc(from)}" loading="lazy"><span class="rw-tag"><i>The work</i><i>Source</i></span>`}</div>
+            <figcaption><small>${sk ? esc(from) : "From " + esc(from.charAt(0).toLowerCase() + from.slice(1))}</small><b>${esc(p.title)}</b><p>${esc(line)}</p><a href="#/work/${slug}">${esc(p.date || p.subtitle)} · View project →</a></figcaption>
           </figure>`; }).join("")}</div></div>`).join("")}
       </section>
 
