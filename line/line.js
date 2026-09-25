@@ -235,7 +235,7 @@
       }
     },
 
-    // 10 Become: one line takes four jobs from the 2021 sheet: given line, python, bridge, Baldy Lock.
+    // 10 Become: one line takes four jobs from the 2021 sheet: first line, python, bridge, Baldy Lock.
     become: {
       bg: PAGE,
       init(s) { s.N = 160; s.pos = 0; },
@@ -267,7 +267,7 @@
           for (const dx of [-R * 0.3, R * 0.3]) { c.beginPath(); c.arc(cx + dx, hy - R * 0.08, 3, 0, 7); c.fill(); }
           c.beginPath(); c.arc(cx, hy + R * 0.38, R * 0.14, Math.PI * 1.15, Math.PI * 1.85); c.stroke(); }
         c.globalAlpha = 1;
-        const names = ["the given line", "a python", "a bridge", "Baldy Lock"], lab = names[Math.round(s.pos) % 4];
+        const names = ["the first line", "a python", "a bridge", "Baldy Lock"], lab = names[Math.round(s.pos) % 4];
         c.fillStyle = INK; c.font = `italic ${Math.max(22, w * 0.03)}px "Instrument Serif", serif`; c.textAlign = "center"; c.fillText(lab, cx, h - 24);
       }
     },
@@ -330,7 +330,7 @@
     const def = PLATES[cv.dataset.plate]; if (!def) return;
     const s = { cv, def, c: cv.getContext("2d"), p: { x: 0, y: 0, in: false, down: false, px: null, py: null }, vis: false };
     const size = () => {
-      const r = cv.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1);
+      const r = cv.getBoundingClientRect(), dpr = window.__lineDpr || Math.min(2, devicePixelRatio || 1);
       if (!r.width || (s.w === r.width && s.h === r.height)) return;
       s.w = r.width; s.h = r.height; cv.width = r.width * dpr; cv.height = r.height * dpr;
       s.c.setTransform(dpr, 0, 0, dpr, 0, 0);
