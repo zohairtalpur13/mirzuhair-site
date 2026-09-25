@@ -395,7 +395,7 @@
       ["line", "img/wl-given-1.jpg", "One line, 2021", "img/wl-panel-1.jpg", "", "Six pencil frames, one line each: a story about a man called Baldy Lock and the dream he chased."],
       ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
       ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
-      ["mir-what-remains", "img/dd-door.jpg", "The carved doorway", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
+      ["mir-what-remains", "img/mir-crest-line.jpg", "The doorway crest drawing", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
       ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
       ["greek-ornament", "img/gk-key-board.jpg", "Classical motifs, composed", "img/gk-key-pattern.jpg", "", "The same drawing-to-repeat method, applied to Greek and baroque ornament."],
@@ -465,7 +465,7 @@
     learn: [["Motion needs a reason", "Every movement worked better once it came from something real: combing, fraying, weaving or pulling."],
       ["Play teaches", "Visitors learn how a twill holds cloth together by weaving their own name, not by reading about it."],
       ["My craft travels", "What I know about textiles turned out to be a complete language for typography and interaction."]],
-    cta: ["#/work/texere", "img/tx-warp.jpg", "TEXERE"] };
+    cta: ["#/work/texere", "img/tx-repeat-indigo.jpg", "TEXERE"] };
   const CASE_WL = { id: "what-is-a-line", cls: "rs-case-wl", kicker: "Case study · 2021", title: "What Is a Line", em: "one line, one story",
     intro: "What is a line, and what can it do? For me, a line can start a story. In 2021 I drew six frames, put one dark line in each, and let every line decide what it wanted to become. The word line comes from the Latin linea, a linen thread, and like a thread, each one pulled the next scene along.",
     why: [["Where it began", "I'm a visual artist, and I love telling stories. I was curious how little I needed to start one. Six empty frames and six single lines felt like the smallest possible beginning."],
@@ -511,7 +511,7 @@
 
         <div class="rs-case-block">
           <div class="rs-case-sub"><h4>How it was made</h4><p>${c.stepsP}</p></div>
-          <ol class="rs-case-steps">${c.steps.map((x, i) => `<li class="reveal" style="--k:${i}"><div class="cs-step-img"><img src="${x[2]}" alt="" loading="lazy"${x[2].includes("-drawing") ? ' style="object-fit:contain;background:#fbf8f1;padding:4%"' : ""}></div><div><span>0${i + 1}</span><h5>${x[0]}</h5><p>${x[1]}</p></div></li>`).join("")}</ol>
+          <ol class="rs-case-steps">${c.steps.map((x, i) => `<li class="reveal" style="--k:${i}"><span>0${i + 1}</span><h5>${x[0]}</h5><p>${x[1]}</p></li>`).join("")}</ol>
         </div>
 
         <div class="rs-case-block">
