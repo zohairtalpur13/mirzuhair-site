@@ -183,7 +183,7 @@
   const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
       "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
       "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc-st-crosswalk.jpg",
-      "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg", "line": "img/wl-plates.jpg" };
+      "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg", "line": "img/wl-panel-1.jpg" };
 
   const viewHome = () => {
 
@@ -392,7 +392,7 @@
       ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "img/ln-pattern.jpg", "img/ln-drawing.jpg", "One lantern drawn in line, then linked by chains into a diagonal repeat."]
     ]],
     ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products. These cards show the finished work first; hover or tap to see where it came from.", [
-      ["line", "img/wl-given-1.jpg", "One line, 2021", "img/wl-panel-1.jpg", "", "One line, many jobs: nine computed plates and a hand-drawn story that grew from six single lines."],
+      ["line", "img/wl-given-1.jpg", "One line, 2021", "img/wl-panel-1.jpg", "", "Six pencil frames, one line each: a story about a man called Baldy Lock and the dream he chased."],
       ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
       ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
       ["mir-what-remains", "img/dd-door.jpg", "The carved doorway", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
@@ -466,11 +466,11 @@
       ["Play teaches", "Visitors learn how a twill holds cloth together by weaving their own name, not by reading about it."],
       ["My craft travels", "What I know about textiles turned out to be a complete language for typography and interaction."]],
     cta: ["#/work/texere", "img/tx-warp.jpg", "TEXERE"] };
-  const CASE_WL = { id: "what-is-a-line", cls: "rs-case-wl", kicker: "Case study · 2026", title: "What Is a Line", em: "one line, many jobs",
-    intro: "A quick study in answer to one prompt: what is a line, and what can it do? The word comes from the Latin linea, a linen thread, so I tested the line the way I would test a thread. I answered in two halves: nine computed lines made in collaboration with Claude (AI), and a story I drew by hand in 2021, starting each frame from a single line.",
-    why: [["Where it began", "I'm a visual artist and a storyteller. In 2021, out of curiosity, I drew six frames with one dark line in each and no plan, and let the lines turn into Baldy Lock, a python, a bridge and a Dream Wall."],
-      ["The idea", "The prompt asks the same thing that sheet did. A computed line can follow any rule; a drawn line follows a hand. Putting both side by side shows what each can and can't do."],
-      ["The rule", "One ink and one red. The red is always the starting line, whether it began a story in 2021, a program, or a visitor's drawing."]],
+  const CASE_WL = { id: "what-is-a-line", cls: "rs-case-wl", kicker: "Case study · 2021", title: "What Is a Line", em: "one line, one story",
+    intro: "What is a line, and what can it do? For me, a line can start a story. In 2021 I drew six frames, put one dark line in each, and let every line decide what it wanted to become. The word line comes from the Latin linea, a linen thread, and like a thread, each one pulled the next scene along.",
+    why: [["Where it began", "I'm a visual artist, and I love telling stories. I was curious how little I needed to start one. Six empty frames and six single lines felt like the smallest possible beginning."],
+      ["The idea", "Don't plan the story. Look at each line until it looks like something, then draw what it wants to be. A U became a gap with a python in it. A circle became a head."],
+      ["The rule", "Pencil only, and the dark line comes first. Everything else, the village, the river, the cemetery, the city, grows around it."]],
     pairsH: "From one line to a story", pairsP: "Five of the six frames. Each card shows the drawing; hover over or tap it to see the single line it started from.",
     pairs: [["img/wl-given-1.jpg", "img/wl-panel-1.jpg", "Scene 1", "A deep U", "The gap under the Dream Wall, and the python in it"],
       ["img/wl-given-2.jpg", "img/wl-panel-2.jpg", "Scene 2", "A closed curve", "Baldy Lock's head"],
@@ -478,21 +478,21 @@
       ["img/wl-given-4.jpg", "img/wl-panel-4.jpg", "Scene 4", "Two long parallels", "The only bridge across the river"],
       ["img/wl-given-6.jpg", "img/wl-panel-6.jpg", "Scene 6", "Two strokes and an oval", "The city he wanted, and the back of his head"]],
     skAlt: "The starting line",
-    stepsP: "From one Latin word and an old sketch sheet to a piece you can draw on, in six steps.",
-    steps: [["One word", "Line comes from linea, a linen thread. So the question became: what can a thread do? That gave me a list of verbs.", "img/wl-plates.jpg"],
-      ["Nine verbs", "With Claude I built nine small plates: walk, divide, enclose, shade, direct, hold, speak, write and repeat. Each one had to make its point without a caption.", "img/wl-plates.jpg"],
-      ["The old sheet", "I went back to the six frames I drew in 2021 and my notebook script, written in English and Urdu with shot directions and music cues.", "img/wl-board.jpg"],
-      ["Finding the first lines", "I traced the one line each frame started from, so the page can show it alone in red before a slider brings up the drawing around it.", "img/wl-given-drawn.jpg"],
-      ["Become", "One red line moves through the jobs it had in the story: the starting line, a python, a bridge, and Baldy Lock.", "img/wl-become.jpg"],
-      ["Your turn", "The piece ends by handing the exercise on. Each visitor gets a random red line, draws around it and can save their answer.", "img/wl-given-5.jpg"]],
-    palP: "Two inks and the paper they sit on. The red always marks the starting line.",
-    pal: [["#f1ede4", "Paper", "The page, warm like the old sketch sheet.", "#1b1a17"],
-      ["#1b1a17", "Ink", "Every line that follows a rule or a hand.", "#f1ede4"],
-      ["#d2452b", "First-line red", "The line every story starts from.", "#f1ede4"],
-      ["#9a958c", "Pencil", "The grey of the 2021 drawings.", "#1b1a17"]],
-    learn: [["A line needs a decision", "On its own a line does nothing. What it becomes (a wall, a snake, a person) is the design."],
-      ["Constraint starts stories", "Six bare lines gave me a character, a fear and an ending I would never have found on a blank page."],
-      ["Rules and hands", "Working with an AI made the difference clear: code can run any rule, but choosing which rule, and why, stayed with me."]],
+    stepsP: "From six empty frames to a short film on paper, in six steps.",
+    steps: [["Six empty frames", "I started with nothing planned: six frames and one dark line in each.", "img/wl-given-drawn.jpg"],
+      ["Looking", "I looked at each line until it turned into something. The round one became a head, and the head got three hairs.", "img/wl-panel-2.jpg"],
+      ["Drawing around it", "In pencil I built a world around each line: a village, fish in the river, a cemetery, a city of domes.", "img/wl-panel-1.jpg"],
+      ["A character", "Baldy Lock: an ordinary guy on his Dream Wall, scared of a python and a bridge, wondering what his dream was worth.", "img/wl-panel-3.jpg"],
+      ["The script", "I wrote the story in my notebook in English and Urdu, like a short film, with shots, dialogue and music cues.", "img/wl-board.jpg"],
+      ["The ending", "He reaches the city he dreamed of and realises peace was never in the dream. A restless man in a mansion has a house, not a home.", "img/wl-panel-6.jpg"]],
+    palP: "Pencil on paper, and one red to mark where each story started.",
+    pal: [["#f1ede4", "Paper", "The sheet the frames were drawn on.", "#1b1a17"],
+      ["#1b1a17", "Dark line", "The first line in every frame.", "#f1ede4"],
+      ["#9a958c", "Pencil", "Everything that grew around it.", "#1b1a17"],
+      ["#d2452b", "First-line red", "Used here to show where each story began.", "#f1ede4"]],
+    learn: [["One line is enough", "I didn't need a plan. One line and some patience gave me a character, a fear and an ending."],
+      ["Look longer", "The story was already in the lines. My job was to keep looking until I could see it."],
+      ["Stories are my way in", "Whether it's a palace, a textile or a single pencil line, I understand things by turning them into stories."]],
     cta: ["#/work/line", "img/wl-given-drawn.jpg", "What Is a Line"] };
   const rsCase = (c) => `
       <section class="rs-case ${c.cls || ""}" id="${c.id}">

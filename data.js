@@ -725,31 +725,30 @@ const PROJECTS = [
     tone: "#e8e2d6",
     title: "What Is a Line",
     subtitle: "A visual response to the prompt: what is a line, and what can it do?",
-    date: "Self-Initiated · Communication Design · 2026 (drawings 2021)",
-    tags: "Visual research · Interaction · Drawing · Storytelling · Human + AI collaboration",
+    date: "Self-Initiated · Drawing & Storytelling · 2021",
+    tags: "Pencil drawing · Visual storytelling · Script writing · English and Urdu",
     cover: "img/wl-given-drawn.jpg",
-    covers: [{ src: "img/wl-given-drawn.jpg" }, { src: "img/wl-plates.jpg" }, { src: "img/wl-become.jpg" }],
+    covers: [{ src: "img/wl-given-drawn.jpg" }, { src: "img/wl-board.jpg" }, { src: "img/wl-panel-3.jpg" }],
     sections: {
       "The Project":
-        "A quick study, a few hours of work, answering one question in two halves. Part I is nine computed lines, small interactive plates made with Claude (AI), each showing one thing a line can do: walk, divide, enclose, shade, direct, hold, speak, write and repeat. Part II is drawn: a six-frame story I made by hand in 2021, out of my own curiosity, starting each frame from a single line.",
+        "What is a line, and what can it do? My answer is a story. In 2021 I drew six frames, put one dark line in each, and let every line decide what it wanted to be. They became a python lying under a wall, a bridge over a river, a stepped Dream Wall and a man with three hairs called Baldy Lock.",
       "The Process":
-        "The English word line comes from the Latin linea, a linen thread, so I tested the line the way I would test a thread: by asking it to do things. For the drawn half, I traced the six starting lines out of my old sheet so they can be shown alone, in red, before a slider brings up the drawing I built around them.",
+        "I didn't plan the story first. I looked at each line until it looked like something, then drew around it in pencil: a village, fish in the river, a cemetery, a city on a hill. After the drawings I wrote the script in my notebook, in English and Urdu, the way I'd plan a short film, with the shots, the dialogue and where the violin comes in.",
       "The Problem":
-        "A line on its own does nothing. I'm a storyteller, so in 2021 I set myself six frames with one line each and no plan. The work was deciding what each line should become: a python, a bridge, a wall, a person.",
+        "A line on its own doesn't do anything. It needs someone to look at it and decide what it is. That moment of deciding is what I wanted to show.",
       "The Goal":
-        "To show both kinds of line side by side, one following rules and one following a hand, and to end by handing the question to the viewer. Every visitor gets a random red line and draws their own answer."
+        "To show that one line is enough to start a story, and to pass that feeling on. The web version ends by giving every visitor a line of their own to draw around."
     },
     blocks: [
-      { type: "linkout", text: "What Is a Line is live and interactive. Every plate responds to the cursor or to touch:", items: [{ label: "Open What Is a Line", href: "line/index.html" }] },
-      { type: "full", src: "img/wl-given-drawn.jpg", cap: "Top: the six lines each frame started from. Bottom: the stories I drew around them, 2021." },
-      { type: "text", h: "Part I · Computed lines", p: "Nine plates, one ink and one red, made in collaboration with Claude. Each is a small program built around one verb. The captions were written last, so every plate had to make its point without them." },
-      { type: "full", src: "img/wl-plates.jpg", cap: "Walk, Divide, Enclose / Shade, Direct, Hold / Speak, Write, Repeat." },
-      { type: "text", h: "Part II · Drawn lines", p: "Baldy Lock is an ordinary guy with three hairs, standing on the Dream Wall and wondering whether he has reached his dream or lost it. I wrote the script in my notebook in English and Urdu, with shot directions and music cues, like a short film. On the page, each scene opens with only its starting line, then a slider brings in my drawing around it." },
+      { type: "linkout", text: "What Is a Line has a web version where you can scrub the line and draw your own:", items: [{ label: "Open What Is a Line", href: "line/index.html" }] },
+      { type: "full", src: "img/wl-given-drawn.jpg", cap: "Top: the single line each frame started from. Bottom: what I drew around it." },
+      { type: "text", h: "Six frames, one line each", p: "Baldy Lock is an ordinary guy with three hairs, standing on his Dream Wall and wondering whether he reached his dream or lost it. Below him is the python he was always scared of, and the bridge he has to cross to get home." },
       { type: "full", src: "img/wl-board.jpg", cap: "The original sheet, pencil, 2021." },
-      { type: "step", n: "10", h: "Become", p: "One red line moves through the jobs it had in the story: the starting line, the python, the bridge and Baldy Lock's head." },
-      { type: "full", src: "img/wl-become.jpg", cap: "One line, four jobs." },
-      { type: "step", n: "11", h: "Your turn", p: "The piece ends by handing the exercise to the viewer. Each visitor gets a random red line, draws around it, and can save their answer." },
-      { type: "linkout", text: "Try it yourself:", items: [{ label: "Open What Is a Line", href: "line/index.html#your-turn" }] }
+      { type: "pair", items: [{ src: "img/wl-panel-1.jpg", cap: "Scene 1: the U became the gap under the Dream Wall, and the python in it." }, { src: "img/wl-panel-2.jpg", cap: "Scene 2: the circle became his head." }] },
+      { type: "pair", items: [{ src: "img/wl-panel-3.jpg", cap: "Scene 3: the branch became the edge of the wall and the start of the bridge." }, { src: "img/wl-panel-4.jpg", cap: "Scene 4: two long lines became the only bridge across." }] },
+      { type: "pair", items: [{ src: "img/wl-panel-5.jpg", cap: "Scene 5: the first step, with a jug full of fear." }, { src: "img/wl-panel-6.jpg", cap: "Scene 6: the city he dreamed of, seen from behind." }] },
+      { type: "text", h: "The script", p: "I wrote it in my notebook in English and Urdu, with shot directions and music cues. It ends with Baldy Lock looking at the city he always wanted and realising that peace was never connected with the dream: a restless man in a mansion doesn't have a home, only a house." },
+      { type: "linkout", text: "Draw around a line of your own:", items: [{ label: "Your turn", href: "line/index.html#your-turn" }] }
     ]
   },
 
