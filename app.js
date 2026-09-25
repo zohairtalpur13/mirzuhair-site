@@ -183,7 +183,7 @@
   const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
       "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
       "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc-st-crosswalk.jpg",
-      "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg" };
+      "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg", "line": "img/wl-plates.jpg" };
 
   const viewHome = () => {
 
@@ -392,6 +392,7 @@
       ["lanterns", "img/ln-yellow.jpg", "The glass lanterns", "img/ln-pattern.jpg", "img/ln-drawing.jpg", "One lantern drawn in line, then linked by chains into a diagonal repeat."]
     ]],
     ["Beyond cloth", "The same archive and the same method, carried into identity, media and digital products. These cards show the finished work first; hover or tap to see where it came from.", [
+      ["line", "img/wl-given-1.jpg", "The line I was given in 2021", "img/wl-panel-1.jpg", "", "One line, many jobs: nine computed plates and a hand-drawn story built from lines I didn't choose."],
       ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
       ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
       ["mir-what-remains", "img/dd-door.jpg", "The carved doorway", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
@@ -465,6 +466,34 @@
       ["Play teaches", "Visitors learn how a twill holds cloth together by weaving their own name, not by reading about it."],
       ["My craft travels", "What I know about textiles turned out to be a complete language for typography and interaction."]],
     cta: ["#/work/texere", "img/tx-warp.jpg", "TEXERE"] };
+  const CASE_WL = { id: "what-is-a-line", cls: "rs-case-wl", kicker: "Case study · 2026", title: "What Is a Line", em: "one line, many jobs",
+    intro: "A quick study in answer to one prompt: what is a line, and what can it do? The word comes from the Latin linea, a linen thread, so I tested the line the way I would test a thread. I answered in two halves: nine computed lines made in collaboration with Claude (AI), and a story I drew by hand in 2021 from six lines I was given.",
+    why: [["Where it began", "In 2021, applying to university in Pakistan, a test gave me six frames with one dark line in each and no instructions. I turned them into Baldy Lock, a python, a bridge and a Dream Wall."],
+      ["The idea", "The prompt asks the same thing that test did. A computed line can follow any rule; a drawn line follows a hand. Putting both side by side shows what each can and can't do."],
+      ["The rule", "One ink and one red. The red is always the line nobody chose, whether it was given by the test, by a program or by the page to a visitor."]],
+    pairsH: "From the given line to the drawing", pairsP: "Five of the six frames. Each card shows the drawing; hover over or tap it to see the only line I was given.",
+    pairs: [["img/wl-given-1.jpg", "img/wl-panel-1.jpg", "Scene 1", "A deep U", "The gap under the Dream Wall, and the python in it"],
+      ["img/wl-given-2.jpg", "img/wl-panel-2.jpg", "Scene 2", "A closed curve", "Baldy Lock's head"],
+      ["img/wl-given-3.jpg", "img/wl-panel-3.jpg", "Scene 3", "A branch", "The edge of the wall and the start of the bridge"],
+      ["img/wl-given-4.jpg", "img/wl-panel-4.jpg", "Scene 4", "Two long parallels", "The only bridge across the river"],
+      ["img/wl-given-6.jpg", "img/wl-panel-6.jpg", "Scene 6", "Two strokes and an oval", "The city he wanted, and the back of his head"]],
+    skAlt: "The given line",
+    stepsP: "From one Latin word and an old test sheet to a piece you can draw on, in six steps.",
+    steps: [["One word", "Line comes from linea, a linen thread. So the question became: what can a thread do? That gave me a list of verbs.", "img/wl-plates.jpg"],
+      ["Nine verbs", "With Claude I built nine small plates: walk, divide, enclose, shade, direct, hold, speak, write and repeat. Each one had to make its point without a caption.", "img/wl-plates.jpg"],
+      ["The old sheet", "I went back to the six frames I drew in 2021 and my notebook script, written in English and Urdu with shot directions and music cues.", "img/wl-board.jpg"],
+      ["Finding the given lines", "I traced the one line each frame started from, so the page can show it alone in red before a slider brings up the drawing around it.", "img/wl-given-drawn.jpg"],
+      ["Become", "One red line moves through the jobs it had in the story: the given line, a python, a bridge, and Baldy Lock.", "img/wl-become.jpg"],
+      ["Your turn", "The piece ends by handing the test on. Each visitor gets a random red line, draws around it and can save their answer.", "img/wl-given-5.jpg"]],
+    palP: "Two inks and the paper they sit on. The red always marks the line nobody chose.",
+    pal: [["#f1ede4", "Paper", "The page, warm like the test sheet.", "#1b1a17"],
+      ["#1b1a17", "Ink", "Every line that follows a rule or a hand.", "#f1ede4"],
+      ["#d2452b", "Given red", "The line you didn't choose.", "#f1ede4"],
+      ["#9a958c", "Pencil", "The grey of the 2021 drawings.", "#1b1a17"]],
+    learn: [["A line needs a decision", "On its own a line does nothing. What it becomes (a wall, a snake, a person) is the design."],
+      ["Constraint starts stories", "Six lines I didn't choose gave me a character, a fear and an ending I would never have started from a blank page."],
+      ["Rules and hands", "Working with an AI made the difference clear: code can run any rule, but choosing which rule, and why, stayed with me."]],
+    cta: ["#/work/line", "img/wl-given-drawn.jpg", "What Is a Line"] };
   const rsCase = (c) => `
       <section class="rs-case ${c.cls || ""}" id="${c.id}">
         <div class="rs-case-head">
@@ -570,6 +599,7 @@
       ${rsCase(CASE_CAFE)}
       ${rsCase(CASE_OH)}
       ${rsCase(CASE_TX)}
+      ${rsCase(CASE_WL)}
     </section>`;
 
 

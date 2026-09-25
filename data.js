@@ -721,6 +721,39 @@ const PROJECTS = [
   },
 
   {
+    slug: "line",
+    tone: "#e8e2d6",
+    title: "What Is a Line",
+    subtitle: "A visual response to the prompt: what is a line, and what can it do?",
+    date: "Self-Initiated · Communication Design · 2026 (drawings 2021)",
+    tags: "Visual research · Interaction · Drawing · Storytelling · Human + AI collaboration",
+    cover: "img/wl-given-drawn.jpg",
+    covers: [{ src: "img/wl-given-drawn.jpg" }, { src: "img/wl-plates.jpg" }, { src: "img/wl-become.jpg" }],
+    sections: {
+      "The Project":
+        "A quick study, a few hours of work, answering one question in two halves. Part I is nine computed lines, small interactive plates made with Claude (AI), each showing one thing a line can do: walk, divide, enclose, shade, direct, hold, speak, write and repeat. Part II is drawn: a six-frame story I made by hand in 2021 from lines I was given in a university admission test.",
+      "The Process":
+        "The English word line comes from the Latin linea, a linen thread, so I tested the line the way I would test a thread: by asking it to do things. For the drawn half, I traced the six given lines out of my old sheet so they can be shown alone, in red, before a slider brings up the drawing I built around them.",
+      "The Problem":
+        "A line on its own does nothing. The test in 2021 made that clear: six lines, no instructions. The work was deciding what each line should become: a python, a bridge, a wall, a person.",
+      "The Goal":
+        "To show both kinds of line side by side, one following rules and one following a hand, and to end by handing the question to the viewer. Every visitor gets a random red line and draws their own answer."
+    },
+    blocks: [
+      { type: "linkout", text: "What Is a Line is live and interactive. Every plate responds to the cursor or to touch:", items: [{ label: "Open What Is a Line", href: "line/index.html" }] },
+      { type: "full", src: "img/wl-given-drawn.jpg", cap: "Top: the six lines I was given in 2021. Bottom: what I made them into." },
+      { type: "text", h: "Part I · Computed lines", p: "Nine plates, one ink and one red, made in collaboration with Claude. Each is a small program built around one verb. The captions were written last, so every plate had to make its point without them." },
+      { type: "full", src: "img/wl-plates.jpg", cap: "Walk, Divide, Enclose / Shade, Direct, Hold / Speak, Write, Repeat." },
+      { type: "text", h: "Part II · Drawn lines", p: "Baldy Lock is an ordinary guy with three hairs, standing on the Dream Wall and wondering whether he has reached his dream or lost it. I wrote the script in my notebook in English and Urdu, with shot directions and music cues, like a short film. On the page, each scene opens with only the given line, then a slider brings in my drawing around it." },
+      { type: "full", src: "img/wl-board.jpg", cap: "The original sheet, pencil, 2021." },
+      { type: "step", n: "10", h: "Become", p: "One red line moves through the jobs it had in the story: the given line, the python, the bridge and Baldy Lock's head." },
+      { type: "full", src: "img/wl-become.jpg", cap: "One line, four jobs." },
+      { type: "step", n: "11", h: "Your turn", p: "The piece ends by giving the test to the viewer. Each visitor gets a random red line they didn't choose, draws around it, and can save their answer." },
+      { type: "linkout", text: "Try it yourself:", items: [{ label: "Open What Is a Line", href: "line/index.html#your-turn" }] }
+    ]
+  },
+
+  {
     slug: "texere",
     tone: "#d9cfc0",
     title: "TEXERE",
