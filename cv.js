@@ -24,10 +24,9 @@ const CV = [
     { l: ["Talpur dynasty and 19th-century Sindhi architectural heritage", "Translating historical narrative into contemporary design", "Jacquard weaving and digital textile systems", "Sustainable and circular material systems", "Visual communication of cultural memory"] }
   ]},
   { h: "Skills", items: [
-    { t: "Expertise", p: "Storytelling, product design, UI / UX design, visual design, branding, information architecture, design systems, design strategy, user research, art direction, editorial design, visual research, pattern mapping" },
-    { t: "Textile & material", p: "Pattern and repeat development, colourway systems, digital print, screen printing, jacquard, material research" },
-    { t: "Design tools", p: "Figma, Adobe Photoshop, Adobe Illustrator, Adobe InDesign, Adobe After Effects, HTML, CSS, JavaScript, GitHub, Jitter, Procreate, Framer" },
-    { t: "AI tools", p: "Claude Code, Gemini, Google Flow, ChatGPT, Figma Make, Midjourney, Adobe Firefly" }
+    { t: "Expertise", p: "Storytelling, Product Design, UI/UX Design, Visual Design, Branding, Information Architecture, Design Systems, Design Strategy, User Research" },
+    { t: "Design Tools", p: "Figma, Adobe Photoshop, Adobe Illustrator, Adobe After Effects, HTML, CSS, JavaScript, GitHub, Jitter, Procreate, Framer" },
+    { t: "AI Tools", p: "Claude Code, Gemini, Google Flow, ChatGPT, Figma Make, Midjourney, Adobe Firefly" }
   ]},
   { h: "Languages", items: [
     { p: "English (fluent) · Urdu (native) · Sindhi (native)" }
