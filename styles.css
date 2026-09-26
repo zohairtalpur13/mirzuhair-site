@@ -978,9 +978,12 @@ body.flowing .intro-brief .translate { border-top-color: color-mix(in srgb, var(
 .rs-case.rs-case-oh { background: #e6ece6; }
 .rs-case.rs-case-tx { background: #ece5da; }
 .rs-case.rs-case-wl { background: #f1ede4; }
+.rs-case.rs-case-hs { background: #f3dfcc; }
+.rs-case.rs-case-gd { background: #f1eee6; }
 .rs-case-wl .cs-pair-img .sk { object-fit: cover; padding: 0; background: #f6f3ec; }
 .rs-case-tx .cs-pair-img .sk { object-fit: cover; padding: 0; background: #15110e; }
 .rs-case-oh .cs-pair-img .sk { object-fit: cover; padding: 0; background: #134238; }
+.rs-case-hs .cs-pair-img .sk, .rs-case-gd .cs-pair-img .sk { object-fit: cover; padding: 0; }
 .rs-case-title { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 6.4vw, 104px); line-height: .95; letter-spacing: -.02em; text-wrap: balance; }
 .rs-case-title em { display: block; color: #5e1224; }
 .rs-case-head > p { margin-top: 24px; max-width: 640px; font-family: var(--serif); font-size: clamp(19px, 1.6vw, 24px); color: #3b3834; }
