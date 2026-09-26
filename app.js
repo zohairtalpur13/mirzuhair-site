@@ -399,6 +399,7 @@
       ["hisaab", "img/hs-src-2.jpg", "A weekly cotton report", "img/hs-p-5.jpg", "", "One lawn suit walked back to the cotton field: what the picking paid, and what nobody publishes."],
       ["gad", "img/gd-src-3.jpg", "A verse of Shah Abdul Latif", "img/gd-p-1.jpg", "", "Sindhi and English on one baseline grid, measured rather than guessed, ending in a bilingual broadsheet."],
       ["ghar", "img/gh-src-3.jpg", "One star on every page", "img/gh-p-3.jpg", "", "A book other people fill: draw the home you grew up in from memory, and name one thing that was in it."],
+      ["scrap", "scrap/img/issue-01.jpg", "A crumpled draft, cast in porcelain", "scrap/img/cover-01.jpg", "", "A fashion magazine made from what got thrown away: six covers, each an object cast from a crumpled page."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
       ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
       ["greek-ornament", "img/gk-key-board.jpg", "Classical motifs, composed", "img/gk-key-pattern.jpg", "", "The same drawing-to-repeat method, applied to Greek and baroque ornament."],

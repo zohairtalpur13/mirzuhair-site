@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>graphify - graphify-out/graph.html</title>
+<script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"
+        integrity="sha384-Ux6phic9PEHJ38YtrijhkzyJ8yQlH8i/+buBR8s3mAZOJrP1gwyvAcIYl3GWtpX1"
+        crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  #graph { flex: 1; }
+  #sidebar { width: 280px; background: #1a1a2e; border-left: 1px solid #2a2a4e; display: flex; flex-direction: column; overflow: hidden; }
+  #search-wrap { padding: 12px; border-bottom: 1px solid #2a2a4e; }
+  #search { width: 100%; background: #0f0f1a; border: 1px solid #3a3a5e; color: #e0e0e0; padding: 7px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  #search:focus { border-color: #4E79A7; }
+  #search-results { max-height: 140px; overflow-y: auto; padding: 4px 12px; border-bottom: 1px solid #2a2a4e; display: none; }
+  .search-item { padding: 4px 6px; cursor: pointer; border-radius: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .search-item:hover { background: #2a2a4e; }
+  #info-panel { padding: 14px; border-bottom: 1px solid #2a2a4e; min-height: 140px; }
+  #info-panel h3 { font-size: 13px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #info-content { font-size: 13px; color: #ccc; line-height: 1.6; }
+  #info-content .field { margin-bottom: 5px; }
+  #info-content .field b { color: #e0e0e0; }
+  #info-content .empty { color: #555; font-style: italic; }
+  .neighbor-link { display: block; padding: 2px 6px; margin: 2px 0; border-radius: 3px; cursor: pointer; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid #333; }
+  .neighbor-link:hover { background: #2a2a4e; }
+  #neighbors-list { max-height: 160px; overflow-y: auto; margin-top: 4px; }
+  #legend-wrap { flex: 1; overflow-y: auto; padding: 12px; }
+  #legend-wrap h3 { font-size: 13px; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; border-radius: 4px; font-size: 12px; }
+  .legend-item:hover { background: #2a2a4e; padding-left: 4px; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { color: #666; font-size: 11px; }
+  #stats { padding: 10px 14px; border-top: 1px solid #2a2a4e; font-size: 11px; color: #555; }
+  #legend-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 0; }
+  #legend-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; color: #aaa; user-select: none; }
+  #legend-controls label:hover { color: #e0e0e0; }
+  .legend-cb, #select-all-cb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1.5px solid #3a3a5e; border-radius: 3px; background: #0f0f1a; cursor: pointer; position: relative; flex-shrink: 0; }
+  .legend-cb:checked, #select-all-cb:checked { background: #4E79A7; border-color: #4E79A7; }
+  .legend-cb:checked::after, #select-all-cb:checked::after { content: ''; position: absolute; left: 3.5px; top: 1px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #select-all-cb:indeterminate { background: #4E79A7; border-color: #4E79A7; }
+  #select-all-cb:indeterminate::after { content: ''; position: absolute; left: 2px; top: 5px; width: 8px; height: 2px; background: #fff; border: none; transform: none; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+<div id="sidebar">
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Search nodes..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div id="info-panel">
+    <h3>Node Info</h3>
+    <div id="info-content"><span class="empty">Click a node to inspect it</span></div>
+  </div>
+  <div id="legend-wrap">
+    <h3>Communities</h3>
+    <div id="legend-controls">
+      <label><input type="checkbox" id="select-all-cb" checked onchange="toggleAllCommunities(!this.checked)">Select All</label>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div id="stats">69 nodes &middot; 89 edges &middot; 8 communities</div>
+</div>
+<script>
+const RAW_NODES = [{"id": "01_virgil_abloh_figures_of_speech", "label": "Figures of Speech (retrospective)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Figures of Speech (retrospective)", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_marcel_duchamp", "label": "Marcel Duchamp", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Marcel Duchamp", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_nike_the_ten", "label": "Nike The Ten (2017)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Nike The Ten (2017)", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "02_maison_margiela_replica_line", "label": "Replica Line", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Replica Line", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "02-maison-margiela.md", "file_type": "concept", "degree": 2}, {"id": "01_virgil_abloh_cheat_codes", "label": "Cheat Codes (Harvard GSD lecture, 2017)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 29.3, "font": {"size": 12, "color": "#ffffff"}, "title": "Cheat Codes (Harvard GSD lecture, 2017)", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "document", "degree": 9}, {"id": "01_virgil_abloh_3_approach", "label": "3% Approach", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "3% Approach", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_design_is_djing", "label": "Design is DJing", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Design is DJing", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_failure_is_a_ghost", "label": "Failure is a Ghost", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Failure is a Ghost", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 1}, {"id": "01_virgil_abloh_perfectionism_is_a_trap", "label": "Perfectionism is a Trap", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Perfectionism is a Trap", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_readymade", "label": "Readymade", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "Readymade", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 4}, {"id": "01_virgil_abloh_tourist_vs_purist", "label": "Tourist vs Purist", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Tourist vs Purist", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 1}, {"id": "08_scrap_concept_cover_as_discarded_draft", "label": "Cover Starts as Discarded Draft", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Cover Starts as Discarded Draft", "community": 0, "community_name": "Abloh Cheat Codes", "source_file": "08-scrap-concept.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_free_game", "label": "Free Game", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Free Game", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_ikea_markerad", "label": "IKEA Markerad", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "IKEA Markerad", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_louis_vuitton_menswear", "label": "Louis Vuitton Menswear", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Louis Vuitton Menswear", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_pyrex_vision", "label": "Pyrex Vision", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Pyrex Vision", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_virgil_abloh", "label": "Virgil Abloh", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 33.6, "font": {"size": 12, "color": "#ffffff"}, "title": "Virgil Abloh", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 11}, {"id": "01_virgil_abloh_virgil_abloh_archive", "label": "Virgil Abloh Archive", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Virgil Abloh Archive", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 1}, {"id": "01_virgil_abloh_collaboration_as_medium", "label": "Collaboration as a Medium", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Collaboration as a Medium", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_narrative_before_product", "label": "Narrative Before Product", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Narrative Before Product", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 1}, {"id": "01_virgil_abloh_quotation_marks", "label": "Quotation Marks", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Quotation Marks", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_runway_set_as_argument", "label": "Runway Set as Argument", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Runway Set as Argument", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 1}, {"id": "01_virgil_abloh_text_as_logo", "label": "Text as the Logo", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Text as the Logo", "community": 1, "community_name": "Abloh Brand Strategy", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "02_maison_margiela_artisanal_ss24", "label": "Artisanal SS24 under Pont Alexandre III", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "Artisanal SS24 under Pont Alexandre III", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "concept", "degree": 3}, {"id": "02_maison_margiela_brassai", "label": "Brassai night photographs", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Brassai night photographs", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "concept", "degree": 1}, {"id": "02_maison_margiela_four_white_stitches", "label": "Four White Stitches", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Four White Stitches", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "concept", "degree": 2}, {"id": "02_maison_margiela_maison_margiela", "label": "Maison Margiela", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 27.1, "font": {"size": 12, "color": "#ffffff"}, "title": "Maison Margiela", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "concept", "degree": 8}, {"id": "02_maison_margiela_tabi", "label": "Tabi Split-Toe Shoe", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Tabi Split-Toe Shoe", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "concept", "degree": 1}, {"id": "03_john_galliano_john_galliano", "label": "John Galliano", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 20.7, "font": {"size": 12, "color": "#ffffff"}, "title": "John Galliano", "community": 2, "community_name": "Margiela White Out", "source_file": "03-john-galliano.md", "file_type": "concept", "degree": 5}, {"id": "02_maison_margiela_chapter_02_white_out", "label": "SCRAP Chapter 02 White Out", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "SCRAP Chapter 02 White Out", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "document", "degree": 4}, {"id": "02_maison_margiela_anonymity", "label": "Anonymity", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Anonymity", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "rationale", "degree": 2}, {"id": "02_maison_margiela_bianchetto", "label": "Bianchetto (white paint over everything)", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Bianchetto (white paint over everything)", "community": 2, "community_name": "Margiela White Out", "source_file": "02-maison-margiela.md", "file_type": "rationale", "degree": 2}, {"id": "03_john_galliano_newsprint_couture", "label": "Newsprint as Couture Textile (Dior)", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Newsprint as Couture Textile (Dior)", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "03-john-galliano.md", "file_type": "concept", "degree": 2}, {"id": "08_scrap_concept_mir_zuhair", "label": "Mir Zuhair", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Mir Zuhair", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "08-scrap-concept.md", "file_type": "concept", "degree": 1}, {"id": "08_scrap_concept_realism_pipeline", "label": "Realism Pipeline", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Realism Pipeline", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "08-scrap-concept.md", "file_type": "concept", "degree": 1}, {"id": "03_john_galliano_chapter_03_extra_extra", "label": "SCRAP Chapter 03 Extra! Extra!", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "SCRAP Chapter 03 Extra! Extra!", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "03-john-galliano.md", "file_type": "document", "degree": 2}, {"id": "07_motion_reference_studio_baseline_motion_reference", "label": "studio.baseline Motion Reference (IMG_2700.MOV)", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "studio.baseline Motion Reference (IMG_2700.MOV)", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "07-motion-reference.md", "file_type": "document", "degree": 3}, {"id": "08_scrap_concept_scrap_magazine", "label": "SCRAP Magazine", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 40.0, "font": {"size": 12, "color": "#ffffff"}, "title": "SCRAP Magazine", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "08-scrap-concept.md", "file_type": "document", "degree": 14}, {"id": "07_motion_reference_pendulum_effect", "label": "Pendulum Effect", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Pendulum Effect", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "07-motion-reference.md", "file_type": "rationale", "degree": 2}, {"id": "08_scrap_concept_bin_to_vitrine", "label": "Material Arc: Paper to Ceramic to Gilded Metal", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Material Arc: Paper to Ceramic to Gilded Metal", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "08-scrap-concept.md", "file_type": "rationale", "degree": 1}, {"id": "08_scrap_concept_nothing_is_ever_really_gone", "label": "Tagline: nothing is ever really gone", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Tagline: nothing is ever really gone", "community": 3, "community_name": "SCRAP Concept & Pendulum", "source_file": "08-scrap-concept.md", "file_type": "rationale", "degree": 2}, {"id": "01_virgil_abloh_off_white", "label": "Off-White", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Off-White", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 2}, {"id": "01_virgil_abloh_off_white_jewellery", "label": "Off-White Brass and Aluminium Jewellery", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Off-White Brass and Aluminium Jewellery", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "01-virgil-abloh.md", "file_type": "concept", "degree": 2}, {"id": "06_schiaparelli_salvador_dali", "label": "Salvador Dali", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Salvador Dali", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "06-schiaparelli.md", "file_type": "concept", "degree": 1}, {"id": "06_schiaparelli_schiaparelli", "label": "Schiaparelli", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "Schiaparelli", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "06-schiaparelli.md", "file_type": "concept", "degree": 4}, {"id": "07_motion_reference_crumple_unfold_reveal", "label": "Crumple-Unfold Poster Reveal", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "Crumple-Unfold Poster Reveal", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "07-motion-reference.md", "file_type": "concept", "degree": 3}, {"id": "07_motion_reference_webgl_mesh_crumple", "label": "WebGL Mesh Crumple", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "WebGL Mesh Crumple", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "07-motion-reference.md", "file_type": "concept", "degree": 1}, {"id": "06_schiaparelli_metal_as_aesthetic_material", "label": "Metal as Aesthetic Material", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Metal as Aesthetic Material", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "06-schiaparelli.md", "file_type": "rationale", "degree": 2}, {"id": "07_motion_reference_reveal_as_table_of_contents", "label": "Reveal as Table of Contents", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 25.0, "font": {"size": 12, "color": "#ffffff"}, "title": "Reveal as Table of Contents", "community": 4, "community_name": "Metal & Crumple Reveal", "source_file": "07-motion-reference.md", "file_type": "rationale", "degree": 7}, {"id": "05_saint_laurent_le_smoking", "label": "Le Smoking", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Le Smoking", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "05-saint-laurent.md", "file_type": "concept", "degree": 2}, {"id": "05_saint_laurent_memphis_milano", "label": "Memphis Milano x Saint Laurent Rive Droite", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Memphis Milano x Saint Laurent Rive Droite", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "05-saint-laurent.md", "file_type": "concept", "degree": 1}, {"id": "05_saint_laurent_rive_droite", "label": "Saint Laurent Rive Droite", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "Saint Laurent Rive Droite", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "05-saint-laurent.md", "file_type": "concept", "degree": 4}, {"id": "05_saint_laurent_saint_laurent", "label": "Saint Laurent", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "Saint Laurent", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "05-saint-laurent.md", "file_type": "concept", "degree": 3}, {"id": "08_scrap_concept_bin_room", "label": "The Bin Room", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "The Bin Room", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "08-scrap-concept.md", "file_type": "concept", "degree": 3}, {"id": "05_saint_laurent_chapter_05_rive_droite", "label": "SCRAP Chapter 05 Rive Droite", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "SCRAP Chapter 05 Rive Droite", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "05-saint-laurent.md", "file_type": "document", "degree": 3}, {"id": "01_virgil_abloh_trash_bin_theory", "label": "Trash Bin Theory", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Trash Bin Theory", "community": 5, "community_name": "Saint Laurent & Bin Room", "source_file": "01-virgil-abloh.md", "file_type": "rationale", "degree": 2}, {"id": "06_schiaparelli_daniel_roseberry", "label": "Daniel Roseberry", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "Daniel Roseberry", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "06-schiaparelli.md", "file_type": "concept", "degree": 3}, {"id": "06_schiaparelli_gilded_lungs_necklace", "label": "Gilded Brass Lungs Necklace", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Gilded Brass Lungs Necklace", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "06-schiaparelli.md", "file_type": "concept", "degree": 1}, {"id": "08_scrap_concept_gilded_brass_crumpled_earrings", "label": "Gilded Brass Crumpled-Paper Earrings and Brooch", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Gilded Brass Crumpled-Paper Earrings and Brooch", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "08-scrap-concept.md", "file_type": "concept", "degree": 2}, {"id": "08_scrap_concept_porcelain_paper_balls", "label": "Porcelain Paper Balls", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Porcelain Paper Balls", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "08-scrap-concept.md", "file_type": "concept", "degree": 1}, {"id": "08_scrap_concept_scrap_home", "label": "SCRAP HOME Objects", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "SCRAP HOME Objects", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "08-scrap-concept.md", "file_type": "concept", "degree": 3}, {"id": "06_schiaparelli_chapter_06_gilded", "label": "SCRAP Chapter 06 Gilded", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "SCRAP Chapter 06 Gilded", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "06-schiaparelli.md", "file_type": "document", "degree": 3}, {"id": "06_schiaparelli_jewellery_as_organ", "label": "Jewellery as an Organ", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Jewellery as an Organ", "community": 6, "community_name": "Schiaparelli Gilded Objects", "source_file": "06-schiaparelli.md", "file_type": "rationale", "degree": 2}, {"id": "04_alexander_mcqueen_alexander_mcqueen", "label": "Alexander McQueen", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "Alexander McQueen", "community": 7, "community_name": "McQueen Breakdown", "source_file": "04-alexander-mcqueen.md", "file_type": "concept", "degree": 4}, {"id": "04_alexander_mcqueen_no_13", "label": "No. 13 (SS1999) robot spray-paint", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "No. 13 (SS1999) robot spray-paint", "community": 7, "community_name": "McQueen Breakdown", "source_file": "04-alexander-mcqueen.md", "file_type": "concept", "degree": 2}, {"id": "04_alexander_mcqueen_savage_beauty", "label": "Savage Beauty", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 12.1, "font": {"size": 0, "color": "#ffffff"}, "title": "Savage Beauty", "community": 7, "community_name": "McQueen Breakdown", "source_file": "04-alexander-mcqueen.md", "file_type": "concept", "degree": 1}, {"id": "04_alexander_mcqueen_voss", "label": "VOSS (SS2001) mirrored glass box", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "VOSS (SS2001) mirrored glass box", "community": 7, "community_name": "McQueen Breakdown", "source_file": "04-alexander-mcqueen.md", "file_type": "concept", "degree": 3}, {"id": "04_alexander_mcqueen_chapter_04_breakdown", "label": "SCRAP Chapter 04 Breakdown", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 16.4, "font": {"size": 12, "color": "#ffffff"}, "title": "SCRAP Chapter 04 Breakdown", "community": 7, "community_name": "McQueen Breakdown", "source_file": "04-alexander-mcqueen.md", "file_type": "document", "degree": 3}, {"id": "03_john_galliano_show_as_film_set", "label": "Theatre and Show as Film Set", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Theatre and Show as Film Set", "community": 7, "community_name": "McQueen Breakdown", "source_file": "03-john-galliano.md", "file_type": "rationale", "degree": 2}];
+const RAW_EDGES = [{"from": "01_virgil_abloh_figures_of_speech", "to": "01_virgil_abloh_design_is_djing", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_marcel_duchamp", "to": "01_virgil_abloh_readymade", "label": "cites", "title": "cites [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_nike_the_ten", "to": "01_virgil_abloh_3_approach", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_replica_line", "to": "01_virgil_abloh_readymade", "label": "conceptually_related_to", "title": "conceptually_related_to [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_replica_line", "to": "02_maison_margiela_maison_margiela", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_3_approach", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_design_is_djing", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_failure_is_a_ghost", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_perfectionism_is_a_trap", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_quotation_marks", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_readymade", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_tourist_vs_purist", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_trash_bin_theory", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_cheat_codes", "to": "01_virgil_abloh_virgil_abloh", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_perfectionism_is_a_trap", "to": "08_scrap_concept_cover_as_discarded_draft", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_readymade", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_cover_as_discarded_draft", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_free_game", "to": "01_virgil_abloh_virgil_abloh", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_ikea_markerad", "to": "01_virgil_abloh_collaboration_as_medium", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_louis_vuitton_menswear", "to": "01_virgil_abloh_virgil_abloh", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_pyrex_vision", "to": "01_virgil_abloh_virgil_abloh", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "01_virgil_abloh_collaboration_as_medium", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "01_virgil_abloh_narrative_before_product", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "01_virgil_abloh_off_white", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "01_virgil_abloh_runway_set_as_argument", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "01_virgil_abloh_text_as_logo", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "01_virgil_abloh_virgil_abloh_archive", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_virgil_abloh", "to": "07_motion_reference_reveal_as_table_of_contents", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_quotation_marks", "to": "01_virgil_abloh_text_as_logo", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "02_maison_margiela_artisanal_ss24", "to": "02_maison_margiela_brassai", "label": "cites", "title": "cites [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_artisanal_ss24", "to": "02_maison_margiela_maison_margiela", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_artisanal_ss24", "to": "03_john_galliano_john_galliano", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_four_white_stitches", "to": "02_maison_margiela_chapter_02_white_out", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_four_white_stitches", "to": "02_maison_margiela_maison_margiela", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_maison_margiela", "to": "02_maison_margiela_anonymity", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_maison_margiela", "to": "02_maison_margiela_bianchetto", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_maison_margiela", "to": "02_maison_margiela_tabi", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_maison_margiela", "to": "03_john_galliano_john_galliano", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_maison_margiela", "to": "07_motion_reference_reveal_as_table_of_contents", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "03_john_galliano_john_galliano", "to": "03_john_galliano_newsprint_couture", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "03_john_galliano_john_galliano", "to": "03_john_galliano_show_as_film_set", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "03_john_galliano_john_galliano", "to": "07_motion_reference_reveal_as_table_of_contents", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "02_maison_margiela_chapter_02_white_out", "to": "02_maison_margiela_anonymity", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "02_maison_margiela_chapter_02_white_out", "to": "02_maison_margiela_bianchetto", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "02_maison_margiela_chapter_02_white_out", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "03_john_galliano_newsprint_couture", "to": "03_john_galliano_chapter_03_extra_extra", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "08_scrap_concept_mir_zuhair", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_realism_pipeline", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "03_john_galliano_chapter_03_extra_extra", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "07_motion_reference_studio_baseline_motion_reference", "to": "07_motion_reference_crumple_unfold_reveal", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "07_motion_reference_studio_baseline_motion_reference", "to": "07_motion_reference_pendulum_effect", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "07_motion_reference_studio_baseline_motion_reference", "to": "08_scrap_concept_scrap_magazine", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "08_scrap_concept_bin_room", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "08_scrap_concept_bin_to_vitrine", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "08_scrap_concept_nothing_is_ever_really_gone", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "08_scrap_concept_scrap_home", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "04_alexander_mcqueen_chapter_04_breakdown", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "05_saint_laurent_chapter_05_rive_droite", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "08_scrap_concept_scrap_magazine", "to": "06_schiaparelli_chapter_06_gilded", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "07_motion_reference_pendulum_effect", "to": "08_scrap_concept_nothing_is_ever_really_gone", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_off_white", "to": "01_virgil_abloh_off_white_jewellery", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "01_virgil_abloh_off_white_jewellery", "to": "06_schiaparelli_metal_as_aesthetic_material", "label": "conceptually_related_to", "title": "conceptually_related_to [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "06_schiaparelli_salvador_dali", "to": "06_schiaparelli_schiaparelli", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "06_schiaparelli_schiaparelli", "to": "06_schiaparelli_daniel_roseberry", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "06_schiaparelli_schiaparelli", "to": "06_schiaparelli_metal_as_aesthetic_material", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "06_schiaparelli_schiaparelli", "to": "07_motion_reference_reveal_as_table_of_contents", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "07_motion_reference_crumple_unfold_reveal", "to": "07_motion_reference_reveal_as_table_of_contents", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "07_motion_reference_crumple_unfold_reveal", "to": "07_motion_reference_webgl_mesh_crumple", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "07_motion_reference_reveal_as_table_of_contents", "to": "04_alexander_mcqueen_alexander_mcqueen", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "07_motion_reference_reveal_as_table_of_contents", "to": "05_saint_laurent_saint_laurent", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "05_saint_laurent_le_smoking", "to": "05_saint_laurent_saint_laurent", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "05_saint_laurent_le_smoking", "to": "05_saint_laurent_chapter_05_rive_droite", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "05_saint_laurent_memphis_milano", "to": "05_saint_laurent_rive_droite", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "05_saint_laurent_rive_droite", "to": "05_saint_laurent_chapter_05_rive_droite", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "05_saint_laurent_rive_droite", "to": "05_saint_laurent_saint_laurent", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "05_saint_laurent_rive_droite", "to": "08_scrap_concept_bin_room", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_bin_room", "to": "01_virgil_abloh_trash_bin_theory", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "06_schiaparelli_daniel_roseberry", "to": "06_schiaparelli_gilded_lungs_necklace", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "06_schiaparelli_daniel_roseberry", "to": "06_schiaparelli_jewellery_as_organ", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_gilded_brass_crumpled_earrings", "to": "06_schiaparelli_chapter_06_gilded", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_gilded_brass_crumpled_earrings", "to": "08_scrap_concept_scrap_home", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "08_scrap_concept_porcelain_paper_balls", "to": "08_scrap_concept_scrap_home", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "06_schiaparelli_chapter_06_gilded", "to": "06_schiaparelli_jewellery_as_organ", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "04_alexander_mcqueen_alexander_mcqueen", "to": "04_alexander_mcqueen_no_13", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "04_alexander_mcqueen_alexander_mcqueen", "to": "04_alexander_mcqueen_savage_beauty", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "04_alexander_mcqueen_alexander_mcqueen", "to": "04_alexander_mcqueen_voss", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "04_alexander_mcqueen_no_13", "to": "04_alexander_mcqueen_chapter_04_breakdown", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "04_alexander_mcqueen_voss", "to": "03_john_galliano_show_as_film_set", "label": "semantically_similar_to", "title": "semantically_similar_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "04_alexander_mcqueen_voss", "to": "04_alexander_mcqueen_chapter_04_breakdown", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}];
+const LEGEND = [{"cid": 0, "color": "#4E79A7", "label": "Abloh Cheat Codes", "count": 12}, {"cid": 1, "color": "#F28E2B", "label": "Abloh Brand Strategy", "count": 11}, {"cid": 2, "color": "#E15759", "label": "Margiela White Out", "count": 9}, {"cid": 3, "color": "#76B7B2", "label": "SCRAP Concept &amp; Pendulum", "count": 9}, {"cid": 4, "color": "#59A14F", "label": "Metal &amp; Crumple Reveal", "count": 8}, {"cid": 5, "color": "#EDC948", "label": "Saint Laurent &amp; Bin Room", "count": 7}, {"cid": 6, "color": "#B07AA1", "label": "Schiaparelli Gilded Objects", "count": 7}, {"cid": 7, "color": "#FF9DA7", "label": "McQueen Breakdown", "count": 6}];
+
+// HTML-escape helper — prevents XSS when injecting graph data into innerHTML
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Build vis datasets
+const nodesDS = new vis.DataSet(RAW_NODES.map((n, i) => ({
+  id: n.id, label: n.label, color: n.color, size: n.size,
+  font: n.font, title: n.title,
+  // Fermat/golden-angle spiral seed positions (#3699): spreading nodes out
+  // before physics runs keeps avoidOverlap from computing near-zero-distance
+  // repulsion that blows the BarnesHut recursion into a stack overflow on large
+  // graphs. `i` is the map index — physics still settles small graphs identically.
+  x: 30 * Math.sqrt(i) * Math.cos(i * 2.4),
+  y: 30 * Math.sqrt(i) * Math.sin(i * 2.4),
+  _community: n.community, _community_name: n.community_name,
+  _source_file: n.source_file, _file_type: n.file_type, _degree: n.degree,
+})));
+
+const edgesDS = new vis.DataSet(RAW_EDGES.map((e, i) => ({
+  id: i, from: e.from, to: e.to,
+  label: '',
+  title: e.title,
+  dashes: e.dashes,
+  width: e.width,
+  color: e.color,
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+})));
+
+const container = document.getElementById('graph');
+const network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.005,
+      springLength: 120,
+      springConstant: 0.08,
+      damping: 0.4,
+      avoidOverlap: 0.8,
+    },
+    stabilization: { iterations: 200, fit: true },
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 100,
+    hideEdgesOnDrag: true,
+    navigationButtons: false,
+    keyboard: false,
+  },
+  nodes: { shape: 'dot', borderWidth: 1.5 },
+  edges: { smooth: { type: 'continuous', roundness: 0.2 }, selectionWidth: 3 },
+});
+
+network.once('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { enabled: false } });
+});
+
+function showInfo(nodeId) {
+  const n = nodesDS.get(nodeId);
+  if (!n) return;
+  const neighborIds = network.getConnectedNodes(nodeId);
+  const neighborItems = neighborIds.map(nid => {
+    const nb = nodesDS.get(nid);
+    const color = nb ? nb.color.background : '#555';
+    return `<span class="neighbor-link" style="border-left-color:${esc(color)}" data-nid="${esc(nid)}">${esc(nb ? nb.label : nid)}</span>`;
+  }).join('');
+  document.getElementById('info-content').innerHTML = `
+    <div class="field"><b>${esc(n.label)}</b></div>
+    <div class="field">Type: ${esc(n._file_type || 'unknown')}</div>
+    <div class="field">Community: ${esc(n._community_name)}</div>
+    <div class="field">Source: ${esc(n._source_file || '-')}</div>
+    <div class="field">Degree: ${n._degree}</div>
+    ${neighborIds.length ? `<div class="field" style="margin-top:8px;color:#aaa;font-size:11px">Neighbors (${neighborIds.length})</div><div id="neighbors-list">${neighborItems}</div>` : ''}
+  `;
+}
+
+function focusNode(nodeId) {
+  network.focus(nodeId, { scale: 1.4, animation: true });
+  network.selectNodes([nodeId]);
+  showInfo(nodeId);
+}
+
+// Neighbor links use a data attribute + one delegated listener rather than an
+// inline onclick. A node id/label sourced from a document or a scraped URL
+// (graphify add) can contain a double-quote; dropping the stringified id
+// unescaped into a quoted onclick both broke every link and allowed a hostile
+// source to inject an event handler into the local report (stored XSS, #1838).
+// esc() on data-nid keeps the value inside the attribute; the listener reads it
+// back verbatim. Bound to document so it survives the innerHTML rebuild that
+// recreates #neighbors-list on each showInfo().
+document.addEventListener('click', e => {
+  const el = e.target.closest('.neighbor-link');
+  if (el && el.dataset.nid !== undefined) focusNode(el.dataset.nid);
+});
+
+// Track hovered node — hover detection is more reliable than click params
+let hoveredNodeId = null;
+network.on('hoverNode', params => {
+  hoveredNodeId = params.node;
+  container.style.cursor = 'pointer';
+});
+network.on('blurNode', () => {
+  hoveredNodeId = null;
+  container.style.cursor = 'default';
+});
+container.addEventListener('click', () => {
+  if (hoveredNodeId !== null) {
+    showInfo(hoveredNodeId);
+    network.selectNodes([hoveredNodeId]);
+  }
+});
+network.on('click', params => {
+  if (params.nodes.length > 0) {
+    showInfo(params.nodes[0]);
+  } else if (hoveredNodeId === null) {
+    document.getElementById('info-content').innerHTML = '<span class="empty">Click a node to inspect it</span>';
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchResults = document.getElementById('search-results');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
+  if (!q) { searchResults.style.display = 'none'; return; }
+  const matches = RAW_NODES.filter(n => n.label.toLowerCase().includes(q)).slice(0, 20);
+  if (!matches.length) { searchResults.style.display = 'none'; return; }
+  searchResults.style.display = 'block';
+  matches.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'search-item';
+    el.textContent = n.label;
+    el.style.borderLeft = `3px solid ${n.color.background}`;
+    el.style.paddingLeft = '8px';
+    el.onclick = () => {
+      network.focus(n.id, { scale: 1.5, animation: true });
+      network.selectNodes([n.id]);
+      showInfo(n.id);
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    };
+    searchResults.appendChild(el);
+  });
+});
+document.addEventListener('click', e => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput)
+    searchResults.style.display = 'none';
+});
+
+const hiddenCommunities = new Set();
+
+const selectAllCb = document.getElementById('select-all-cb');
+
+function updateSelectAllState() {
+  const total = LEGEND.length;
+  const hidden = hiddenCommunities.size;
+  selectAllCb.checked = hidden === 0;
+  selectAllCb.indeterminate = hidden > 0 && hidden < total;
+}
+
+function toggleAllCommunities(hide) {
+  document.querySelectorAll('.legend-item').forEach(item => {
+    hide ? item.classList.add('dimmed') : item.classList.remove('dimmed');
+  });
+  document.querySelectorAll('.legend-cb').forEach(cb => {
+    cb.checked = !hide;
+  });
+  LEGEND.forEach(c => {
+    if (hide) hiddenCommunities.add(c.cid); else hiddenCommunities.delete(c.cid);
+  });
+  const updates = RAW_NODES.map(n => ({ id: n.id, hidden: hide }));
+  nodesDS.update(updates);
+  updateSelectAllState();
+}
+
+const legendEl = document.getElementById('legend');
+LEGEND.forEach(c => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'legend-cb';
+  cb.checked = true;
+  cb.addEventListener('change', (e) => {
+    e.stopPropagation();
+    if (cb.checked) {
+      hiddenCommunities.delete(c.cid);
+      item.classList.remove('dimmed');
+    } else {
+      hiddenCommunities.add(c.cid);
+      item.classList.add('dimmed');
+    }
+    const updates = RAW_NODES
+      .filter(n => n.community === c.cid)
+      .map(n => ({ id: n.id, hidden: !cb.checked }));
+    nodesDS.update(updates);
+    updateSelectAllState();
+  });
+  item.innerHTML = `<div class="legend-dot" style="background:${c.color}"></div>
+    <span class="legend-label">${c.label}</span>
+    <span class="legend-count">${c.count}</span>`;
+  item.prepend(cb);
+  item.onclick = (e) => {
+    if (e.target === cb) return;
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  };
+  legendEl.appendChild(item);
+});
+</script>
+<script>
+// Render hyperedges as shaded regions
+const hyperedges = [{"id": "readymade_logic_lineage", "label": "Readymade / recontextualisation logic", "nodes": ["01_virgil_abloh_readymade", "02_maison_margiela_replica_line", "03_john_galliano_newsprint_couture", "08_scrap_concept_cover_as_discarded_draft", "01_virgil_abloh_marcel_duchamp"], "relation": "participate_in", "confidence": "INFERRED", "confidence_score": 0.75, "source_file": "08-scrap-concept.md"}, {"id": "metal_on_body_material_arc", "label": "Metal as body adornment and material arc", "nodes": ["01_virgil_abloh_off_white_jewellery", "06_schiaparelli_metal_as_aesthetic_material", "06_schiaparelli_jewellery_as_organ", "08_scrap_concept_gilded_brass_crumpled_earrings", "08_scrap_concept_bin_to_vitrine"], "relation": "participate_in", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "06-schiaparelli.md"}, {"id": "scrap_six_legend_chapters", "label": "SCRAP six legend chapters", "nodes": ["02_maison_margiela_chapter_02_white_out", "03_john_galliano_chapter_03_extra_extra", "04_alexander_mcqueen_chapter_04_breakdown", "05_saint_laurent_chapter_05_rive_droite", "06_schiaparelli_chapter_06_gilded", "08_scrap_concept_scrap_magazine", "07_motion_reference_reveal_as_table_of_contents"], "relation": "form", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "08-scrap-concept.md"}];
+// afterDrawing passes ctx already transformed to network coordinate space.
+// Draw node positions raw — no manual pan/zoom/DPR math needed.
+
+// Andrew's monotone chain. Returns the hull in counter-clockwise order, which
+// is what the perimeter must be traced in. Collinear and duplicate points
+// collapse to the extremes, so degenerate member sets render as a segment
+// rather than a zero-area crossed path.
+function convexHull(pts) {
+    const p = pts.slice().sort((a, b) => (a.x - b.x) || (a.y - b.y));
+    if (p.length < 3) return p;
+    const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+    const build = seq => {
+        const out = [];
+        for (const q of seq) {
+            while (out.length >= 2 && cross(out[out.length - 2], out[out.length - 1], q) <= 0) out.pop();
+            out.push(q);
+        }
+        out.pop();
+        return out;
+    };
+    const hull = build(p).concat(build(p.slice().reverse()));
+    return hull.length >= 3 ? hull : p;
+}
+network.on('afterDrawing', function(ctx) {
+    hyperedges.forEach(h => {
+        const positions = h.nodes
+            .map(nid => network.getPositions([nid])[nid])
+            .filter(p => p !== undefined);
+        if (positions.length < 2) return;
+        ctx.save();
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = '#6366f1';
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        // Centroid and expanded hull in network coordinates.
+        // The perimeter must follow hull order, not h.nodes order: tracing the
+        // raw member order self-intersects whenever the layout does not happen
+        // to place members in angular order, filling as crossed wedges.
+        const cx = positions.reduce((s, p) => s + p.x, 0) / positions.length;
+        const cy = positions.reduce((s, p) => s + p.y, 0) / positions.length;
+        const hull = convexHull(positions);
+        const expanded = hull.map(p => ({
+            x: cx + (p.x - cx) * 1.15,
+            y: cy + (p.y - cy) * 1.15
+        }));
+        ctx.moveTo(expanded[0].x, expanded[0].y);
+        expanded.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 0.4;
+        ctx.stroke();
+        // Label
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = '#4f46e5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(h.label, cx, cy - 5);
+        ctx.restore();
+    });
+});
+</script>
+</body>
+</html>

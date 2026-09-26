@@ -905,6 +905,55 @@ const PROJECTS = [
   },
 
   {
+    slug: "scrap",
+    tone: "#e9e4da",
+    title: "SCRAP",
+    subtitle: "A fashion magazine made from what got thrown away",
+    date: "Self-Initiated · Art Direction · Objects · 2026",
+    tags: "Magazine covers · Editorial · 3D ceramics · Motion · Web",
+    cover: "scrap/img/cover-01.jpg",
+    covers: [{ src: "scrap/img/cover-01.jpg" }, { src: "scrap/img/cover-03.jpg" }, { src: "scrap/img/cover-06.jpg" }],
+    sections: {
+      "The Project":
+        "SCRAP is a speculative fashion magazine in six issues, each built on one of Virgil Abloh's ideas: the readymade, the 3% edit, perfection as a trap, the tourist and the purist, transparency, and metal worn on the body. Every cover is a single object cast from a crumpled draft, in porcelain, black glaze, blown glass or gilded brass.",
+      "The Process":
+        "I researched Abloh's methods alongside Margiela, Galliano, McQueen, Saint Laurent and Schiaparelli, and organised the findings as a knowledge graph. The objects were modelled and lit as still lifes in Blender. The covers are typeset in the browser, and they arrive the way drafts do: as paper balls that unfold in WebGL with their creases still showing.",
+      "The Problem":
+        "Fashion references Abloh constantly but usually copies his surface: the quotation marks, the zip ties, the stripes. I wanted to use his method instead, starting from the most ordinary thing in a design studio, the page that gets thrown away.",
+      "The Goal":
+        "A complete magazine world rather than a single cover: six covers, five editorial spreads, an object line called SCRAP HOME, a blind-embossed invitation and a launch exhibition, the Bin Room, where visitors walk through crumpled paper to reach the work."
+    },
+    blocks: [
+      { type: "linkout", text: "SCRAP is live. Watch the covers unfold, then scroll through the six issues:", items: [{ label: "Open SCRAP", href: "scrap/index.html" }] },
+      { type: "grid", cols: 3, items: [
+        { src: "scrap/img/cover-01.jpg", cap: "Issue 01, Nothing New: a crumpled page cast in porcelain, gold on the creases." },
+        { src: "scrap/img/cover-02.jpg", cap: "Issue 02, 3%: a porcelain carrier bag, one red zip tie." },
+        { src: "scrap/img/cover-03.jpg", cap: "Issue 03, Perfection is a trap: a plate mended in gold." },
+        { src: "scrap/img/cover-04.jpg", cap: "Issue 04, Tourist / Purist: one page cast twice." },
+        { src: "scrap/img/cover-05.jpg", cap: "Issue 05, See Through: a gilded page inside blown glass." },
+        { src: "scrap/img/cover-06.jpg", cap: "Issue 06, Metal, worn like skin: the draft as an earring." }
+      ]},
+      { type: "step", n: "02", h: "Editorials", p: "Five spreads pair each cover object with a detail shot and a short essay: the readymade, the zip tie, the kintsugi plate, the two readers and the earring." },
+      { type: "pair", items: [
+        { src: "scrap/img/bagdetail.jpg", cap: "The 3%: a red zip tie on a porcelain handle." },
+        { src: "scrap/img/plate.jpg", cap: "Gold seams across the mended plate." }
+      ]},
+      { type: "step", n: "03", h: "SCRAP HOME", p: "An object line cast from the magazine's own waste: a crumpled vase, the porcelain bin, a receipt in porcelain after Abloh's receipt rug, and the gilded earring." },
+      { type: "full", src: "scrap/img/home.jpg", cap: "The SCRAP HOME line-up." },
+      { type: "trio", items: [
+        { src: "scrap/img/vase.jpg", cap: "“CRUMPLE”, black-glazed vase." },
+        { src: "scrap/img/bin.jpg", cap: "“THE BIN”, porcelain with a gold rim." },
+        { src: "scrap/img/receipt.jpg", cap: "“PROOF OF PURCHASE”, porcelain receipt." }
+      ]},
+      { type: "step", n: "04", h: "The invitation and the Bin Room", p: "The launch invitation is blind-embossed with no ink, sent in a crumpled glassine envelope. The exhibition fills a white room ankle-deep in paper, with one path through it to the covers." },
+      { type: "full", src: "scrap/img/invite.jpg", cap: "Blind-embossed cotton card, glassine envelope, gilded seal." },
+      { type: "full", src: "scrap/img/binroom.jpg", cap: "The Bin Room." },
+      { type: "text", h: "What comes next", p: "Two of the objects are designed to be made for real: the porcelain paper ball and the gilded earring, cast from a crumpled page." },
+      { type: "linkout", text: "Read the issues:", items: [{ label: "Open SCRAP", href: "scrap/index.html#issues" }] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",

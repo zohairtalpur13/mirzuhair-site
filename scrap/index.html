@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SCRAP — Mir Zuhair</title>
+<meta name="description" content="SCRAP: a fashion magazine made from what got thrown away. Six issues built on Virgil Abloh's myths, with porcelain, glass and gilded-brass objects cast from crumpled drafts. By Mir Zuhair.">
+<meta name="theme-color" content="#121110">
+<meta property="og:title" content="SCRAP — a magazine made from what got thrown away">
+<meta property="og:description" content="Six issues, six objects cast from crumpled drafts. Art direction, objects, motion and web by Mir Zuhair.">
+<meta property="og:image" content="https://mirzuhair.site/scrap/img/issue-01.jpg">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrap.css?v=3">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../">&larr; Mir Zuhair</a>
+  <nav class="jump" aria-label="Sections">
+    <a href="#issues">Issues</a>
+    <a href="#editorials">Editorials</a>
+    <a href="#home">SCRAP HOME</a>
+    <a href="#binroom">The Bin Room</a>
+  </nav>
+</header>
+
+<main>
+  <!-- 01 · The reveal -->
+  <section class="stage" id="stage" aria-label="SCRAP cover loop">
+    <div class="card" id="card">
+      <div class="card-top"><span>Issues 01&ndash;06</span><span>AW26</span></div>
+      <h1 class="mast">SCRAP</h1>
+      <p class="card-sans">A fashion magazine made from what got thrown away</p>
+      <p class="card-serif">Nothing<br>is ever really<br><em>gone.</em></p>
+      <div class="card-foot"><span>Porcelain &middot; Glass &middot; Gilded brass</span><span>Free</span></div>
+    </div>
+    <canvas id="gl" aria-hidden="true"></canvas>
+  </section>
+
+  <div class="controls">
+    <p class="now" id="now" aria-live="polite">Loading paper&hellip;</p>
+    <div class="ctl-row">
+      <button class="play" id="play" type="button" aria-pressed="false">Pause</button>
+      <div class="chips" id="chips" role="group" aria-label="Unfold an issue"></div>
+    </div>
+  </div>
+
+  <!-- 02 · The idea -->
+  <section class="intro">
+    <p class="kicker">Speculative magazine &middot; Art direction &middot; Objects &middot; Motion &middot; Web</p>
+    <h2>Every cover starts in the bin.</h2>
+    <div class="intro-cols">
+      <p>Virgil Abloh built a mythology out of ordinary things: a shopping bag called <em>&ldquo;Sculpture&rdquo;</em>, a receipt woven into a rug, a plate printed with one word. He changed them by three per cent and put them in quotation marks. SCRAP takes the most ordinary thing in any design studio, the crumpled draft, and gives it the same treatment.</p>
+      <p>Each of the six issues is built on one of his ideas, and each cover is a single object cast from a thrown-away page: in porcelain, black glaze, blown glass and gilded brass. The covers arrive the way drafts do, as paper balls, and open flat with their creases still showing. The fold is part of the finish.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Concept, art direction, 3D objects, editorial design, motion, web</dd></div>
+      <div><dt>Output</dt><dd>6 covers &middot; 5 editorials &middot; SCRAP HOME &middot; invitation &middot; exhibition</dd></div>
+      <div><dt>Tools</dt><dd>Blender (Cycles), WebGL, Canvas, a knowledge graph of the research</dd></div>
+    </dl>
+  </section>
+
+  <!-- 03 · The issues, unfolding on scroll -->
+  <section class="reader" id="issues" aria-labelledby="issues-h">
+    <h2 id="issues-h" class="sec-h wrap"><b>01&ndash;06</b> The issues</h2>
+    <div class="reader-grid" id="reader">
+      <div class="reader-sticky"><canvas id="reader-gl" aria-hidden="true"></canvas></div>
+      <div class="reader-steps" id="reader-steps"></div>
+    </div>
+  </section>
+
+  <!-- 04 · Editorials -->
+  <section class="editorials" id="editorials" aria-labelledby="ed-h">
+    <h2 id="ed-h" class="sec-h wrap"><b>E1&ndash;E5</b> Editorials</h2>
+
+    <article class="spread">
+      <figure class="sp-left"><img src="img/issue-01.jpg" alt="A crumpled page cast in white porcelain with gold on its creases, on a stone backdrop" loading="lazy" width="1000" height="1250"></figure>
+      <div class="sp-right">
+        <p class="folio">SCRAP 01 &middot; The readymade &middot; p.14</p>
+        <h3>The most worthless thing in the studio</h3>
+        <p class="drop">Every design begins with pages that don&rsquo;t survive. They are balled up, thrown at the bin and missed. Abloh&rsquo;s first move was always to take the thing nobody valued and look at it again. Here the draft is cast in porcelain and fired twice; the second firing lays gold along every crease, so the object records exactly how it was thrown away.</p>
+        <blockquote>Start with what exists. Change it by three per cent.</blockquote>
+        <figure class="sp-inset"><img src="img/receipt.jpg" alt="A porcelain till receipt curling off a dark plinth" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;PROOF OF PURCHASE&rdquo;, porcelain receipt, after the receipt rug.</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="spread flip">
+      <figure class="sp-left"><img src="img/bagdetail.jpg" alt="Close-up of a red zip tie looped around a porcelain bag handle" loading="lazy" width="1000" height="1250"></figure>
+      <div class="sp-right">
+        <p class="folio">SCRAP 02 &middot; The edit &middot; p.32</p>
+        <h3>Three per cent</h3>
+        <p class="drop">A carrier bag is the first luxury object most people own. Leave its shape alone, cast it in porcelain so it can never carry anything again, and add one red zip tie. That tie is the whole intervention: the 3% that tells you someone decided this was worth keeping.</p>
+        <figure class="sp-inset"><img src="img/issue-02.jpg" alt="A white porcelain shopping bag printed with the word BAG in quotation marks, on yellow" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;BAG&rdquo;, porcelain, printed glaze, one zip tie.</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="spread">
+      <figure class="sp-left"><img src="img/plate.jpg" alt="Macro of gold seams across a mended white porcelain plate" loading="lazy" width="1000" height="1250"></figure>
+      <div class="sp-right">
+        <p class="folio">SCRAP 03 &middot; Unfinished &middot; p.48</p>
+        <h3>Mended in gold</h3>
+        <p class="drop">Perfection is a trap, so this plate arrives already broken. Every fracture is filled with gold in the Japanese kintsugi way, which treats repair as part of an object&rsquo;s history rather than something to hide. It answers one of Abloh&rsquo;s last pieces, a plate carrying a single word.</p>
+        <blockquote>The damage becomes the decoration.</blockquote>
+        <figure class="sp-inset"><img src="img/issue-03.jpg" alt="A kintsugi plate leaning beside a crumpled porcelain draft on deep blue" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;DRAFT&rdquo;, porcelain with gold seams. Unique.</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="spread flip">
+      <figure class="sp-left"><img src="img/issue-04.jpg" alt="Two casts of the same crumpled page: raw white bisque and black glaze with gold" loading="lazy" width="1000" height="1250"></figure>
+      <div class="sp-right">
+        <p class="folio">SCRAP 04 &middot; Two readers &middot; p.66</p>
+        <h3>Tourist / Purist</h3>
+        <p class="drop">Abloh said he designed for two people at once: the tourist, who loves how a thing looks, and the purist, who knows where it came from. So the same crumpled page is cast twice from one mould. The tourist&rsquo;s is raw bisque, soft as chalk. The purist&rsquo;s is black glaze with gold only on the sharpest folds.</p>
+        <figure class="sp-inset"><img src="img/vase.jpg" alt="A black glazed vase with a crumpled surface on terracotta" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;CRUMPLE&rdquo;, black-glazed vase, SCRAP HOME.</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="spread">
+      <figure class="sp-left"><img src="img/earrings.jpg" alt="A pair of gilded brass crumpled-paper earrings on black mirror" loading="lazy" width="1000" height="1250"></figure>
+      <div class="sp-right">
+        <p class="folio">SCRAP 06 &middot; The body &middot; p.90</p>
+        <h3>Worn like skin</h3>
+        <p class="drop">Schiaparelli treated gold as part of the body: lungs, ears, eyes, cast in gilded brass. Abloh turned industrial hardware into jewellery. SCRAP&rsquo;s first jewellery borrows from both. The draft is crumpled, cast in brass, gilded, and hung from a single hook, sold one at a time, like a thought you keep.</p>
+        <blockquote>From the bin to the vitrine.</blockquote>
+        <figure class="sp-inset"><img src="img/issue-06.jpg" alt="A gilded brass crumpled earring hanging from a hook on shocking pink" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;EARRING&rdquo;, gilded brass. Sold singly.</figcaption></figure>
+      </div>
+    </article>
+  </section>
+
+  <!-- 05 · SCRAP HOME -->
+  <section class="home-sec" id="home" aria-labelledby="home-h">
+    <h2 id="home-h" class="sec-h wrap"><b>+</b> SCRAP HOME</h2>
+    <figure class="wide"><img src="img/home.jpg" alt="The SCRAP HOME line-up on a long plaster plinth: black crumpled vase, gilded porcelain ball, porcelain bin with paper, a gold ball and a bisque ball" loading="lazy" width="1600" height="1067"></figure>
+    <p class="lede wrap">An object line cast from the magazine&rsquo;s own waste, sold the way fashion houses sell ceramics and books beside their clothes.</p>
+    <div class="products wrap">
+      <figure><img src="img/issue-01.jpg" alt="" loading="lazy" width="1000" height="1250"><figcaption><b>&ldquo;PAPER&rdquo;</b>Porcelain, gold lustre &middot; Ed. 12</figcaption></figure>
+      <figure><img src="img/vase.jpg" alt="" loading="lazy" width="1000" height="1250"><figcaption><b>&ldquo;CRUMPLE&rdquo;</b>Black-glazed vase &middot; Ed. 20</figcaption></figure>
+      <figure><img src="img/bin.jpg" alt="" loading="lazy" width="1000" height="1250"><figcaption><b>&ldquo;THE BIN&rdquo;</b>Porcelain, gold rim, SCRAP mark &middot; Ed. 30</figcaption></figure>
+      <figure><img src="img/receipt.jpg" alt="" loading="lazy" width="1000" height="1250"><figcaption><b>&ldquo;PROOF OF PURCHASE&rdquo;</b>Porcelain receipt &middot; Ed. 50</figcaption></figure>
+      <figure><img src="img/issue-05.jpg" alt="" loading="lazy" width="1000" height="1250"><figcaption><b>&ldquo;CLEAR&rdquo;</b>Blown glass, gilded brass &middot; Ed. 6</figcaption></figure>
+      <figure><img src="img/issue-06.jpg" alt="" loading="lazy" width="1000" height="1250"><figcaption><b>&ldquo;EARRING&rdquo;</b>Gilded brass &middot; Sold singly</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 06 · Invitation -->
+  <section class="invite wrap" aria-labelledby="inv-h">
+    <figure><img src="img/invite.jpg" alt="A blind-embossed cotton invitation card reading SCRAP, The Bin Room, opening night, beside a crumpled glassine envelope and a gold seal" loading="lazy" width="1600" height="1067"></figure>
+    <div>
+      <h2 id="inv-h" class="sec-h"><b>+</b> The invitation</h2>
+      <p>No ink. The launch invitation is blind-embossed on heavy cotton paper, so the words only appear when light rakes across them. It arrives in a crumpled glassine envelope, the one thing in the set that was meant to be thrown away, closed with a gilded crumpled seal.</p>
+    </div>
+  </section>
+
+  <!-- 07 · The Bin Room -->
+  <section class="binroom" id="binroom" aria-labelledby="bin-h">
+    <figure><img src="img/binroom.jpg" alt="A white gallery with the floor covered in crumpled paper, the SCRAP covers hung in a row and three objects on plinths" loading="lazy" width="1600" height="900"></figure>
+    <div class="wrap bin-text">
+      <h2 id="bin-h" class="sec-h"><b>+</b> The Bin Room</h2>
+      <p>The launch exhibition. A white room with the floor ankle-deep in crumpled paper and one clear path through it. The covers hang in a perfect line on the far wall; the objects stand on plaster plinths above the mess. Visitors walk through the waste to reach the work, which is the whole idea of the magazine in one room.</p>
+    </div>
+  </section>
+
+  <!-- 08 · Research -->
+  <section class="map wrap" aria-labelledby="map-h">
+    <h2 id="map-h" class="sec-h"><b>+</b> Research map</h2>
+    <p>The research behind SCRAP is organised as a knowledge graph: 69 ideas, 89 links, eight clusters, covering Abloh&rsquo;s methods and strategy alongside Margiela, Galliano, McQueen, Saint Laurent and Schiaparelli. Three threads shape the design: the reveal as a table of contents, the found object made precious, and metal worn on the body.</p>
+    <a class="map-link" href="research/graphify-out/graph.html">Open the research graph &rarr;</a>
+    <p class="note">SCRAP is an independent student project and an homage. It is not affiliated with or endorsed by any of the designers or houses named.</p>
+  </section>
+</main>
+
+<script src="covers.js?v=2"></script>
+<script src="crumple.js?v=1"></script>
+<script src="scrap.js?v=3"></script>
+<script src="reader.js?v=1"></script>
+</body>
+</html>
