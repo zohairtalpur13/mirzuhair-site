@@ -398,6 +398,7 @@
       ["mir-what-remains", "img/mir-crest-line.jpg", "The doorway crest drawing", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
       ["hisaab", "img/hs-src-2.jpg", "A weekly cotton report", "img/hs-p-5.jpg", "", "One lawn suit walked back to the cotton field: what the picking paid, and what nobody publishes."],
       ["gad", "img/gd-src-3.jpg", "A verse of Shah Abdul Latif", "img/gd-p-1.jpg", "", "Sindhi and English on one baseline grid, measured rather than guessed, ending in a bilingual broadsheet."],
+      ["ghar", "img/gh-src-3.jpg", "One star on every page", "img/gh-p-3.jpg", "", "A book other people fill: draw the home you grew up in from memory, and name one thing that was in it."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
       ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
       ["greek-ornament", "img/gk-key-board.jpg", "Classical motifs, composed", "img/gk-key-pattern.jpg", "", "The same drawing-to-repeat method, applied to Greek and baroque ornament."],
@@ -554,6 +555,35 @@
       ["Rhythm over alignment", "Sindhi and English cannot share every line, but they can meet on a steady beat: nine lines to five."],
       ["Measure first", "Reading the fonts in the browser settled a question that taste alone could not."]],
     cta: ["#/work/gad", "img/gd-cover.jpg", "Gaḍ"] };
+  const CASE_GH = { id: "ghar", cls: "rs-case-gh", kicker: "Case study · 2026", title: "Ghar", em: "draw me your home",
+    intro: "My research began with a palace I could photograph. Ghar, گھر, meaning home, turns the method around: it asks other people to draw the homes they grew up in, from memory, and makes each drawing a page of a shared book.",
+    why: [["Where it began", "Every project in my portfolio starts with my own looking. I wanted one that starts with someone else's memory, where I design the system and they supply the content."],
+      ["The idea", "A plan drawn from memory is never right, and that is what makes it worth keeping. The wrong sizes and missing walls show what a person held on to."],
+      ["The rule", "Four instructions for everyone: the walls, the openings, where you slept, and one object. The same rule on paper and on screen, so strangers' pages can share one book."]],
+    pairsH: "From reference to system", pairsP: "Five decisions shaped the project. Each card shows the result; hover over or tap it to see where it came from.",
+    pairs: [["img/gh-src-1.jpg", "img/gh-p-1.jpg", "The invitation", "A book others fill", "A plan, drawn one wall at a time"],
+      ["img/gh-src-2.jpg", "img/gh-p-2.jpg", "Four instructions", "One rule for every page", "The walls, the openings, the star, one object"],
+      ["img/gh-src-3.jpg", "img/gh-p-3.jpg", "The spread", "One star on every page", "The plan on the left page of the book"],
+      ["img/gh-src-4.jpg", "img/gh-p-4.jpg", "The kit", "A kit people complete", "Eight A5 pages on one folded sheet"],
+      ["img/gh-src-5.jpg", "img/gh-p-5.jpg", "The page", "A5, made in the browser", "The page the tool downloads"]],
+    skAlt: "Source",
+    stepsP: "From an invitation to a book of homes, in six steps.",
+    steps: [["An invitation", "Draw the home you grew up in, from memory, and tell me about one thing that was in it.", "img/gh-cover.jpg"],
+      ["Four instructions", "Walls, openings, where you slept, one object: short enough to remember, strict enough to make pages match.", "img/gh-steps.jpg"],
+      ["A drawing tool", "Walls snap to a dotted grid, stamps place doors, windows and a bed, and rooms are named by hand.", "img/gh-draw.jpg"],
+      ["The spread", "Plan on the left, object on the right, in the same type and the same place on every spread.", "img/gh-book.jpg"],
+      ["The kit", "Eight A5 pages printed on one sheet and folded, for people who would rather draw with a pencil.", "img/gh-kit.jpg"],
+      ["Private by design", "The page is made in the browser. Nothing is uploaded unless the person chooses to send it.", "img/gh-page.jpg"]],
+    palP: "An architect's notebook: graphite, one blue pencil and one yellow star.",
+    pal: [["#f4efe4", "Drawing paper", "The ground of every page.", "#2b2a28"],
+      ["#2b2a28", "Graphite", "Walls, stamps and type.", "#f4efe4"],
+      ["#2d5fb8", "Architect's blue", "The hand: room names and the sentence.", "#f4efe4"],
+      ["#f2c14e", "Star yellow", "The one mark every page shares.", "#2b2a28"],
+      ["#fbf8f1", "Page white", "The book and the kit.", "#2b2a28"]],
+    learn: [["Design the rule, not the result", "I cannot draw anyone's home for them. What I can design is the rule that makes every drawing belong to the same book."],
+      ["Constraints make pages match", "One star and one object gave strangers' pages a shared structure without flattening them."],
+      ["Privacy is part of the design", "Keeping the page in the browser made the invitation safer to accept."]],
+    cta: ["#/work/ghar", "img/gh-cover.jpg", "Ghar"] };
   const rsCase = (c) => `
       <section class="rs-case ${c.cls || ""}" id="${c.id}">
         <div class="rs-case-head">
@@ -662,6 +692,7 @@
       ${rsCase(CASE_WL)}
       ${rsCase(CASE_HS)}
       ${rsCase(CASE_GD)}
+      ${rsCase(CASE_GH)}
     </section>`;
 
 

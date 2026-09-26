@@ -39,7 +39,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .hero { max-width: var(--measure); margin: 0 auto; padding: clamp(90px, 13vh, 140px) var(--gutter) clamp(30px, 5vw, 60px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(30px, 6vw, 90px); align-items: center; }
 .kicker { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
 h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(76px, 11vw, 150px); line-height: .95; letter-spacing: -.02em; display: flex; align-items: baseline; gap: .22em; flex-wrap: wrap; }
-h1 .ur { font-size: .62em; color: var(--blue); line-height: 1.6; }
+h1 .ur { font-size: .46em; color: var(--blue); line-height: 1.6; }
 .gloss { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin: 2px 0 24px; }
 .gloss .ur-i { text-transform: none; letter-spacing: 0; }
 .lede { font-family: var(--serif); font-size: clamp(21px, 2vw, 27px); line-height: 1.4; max-width: 30ch; }

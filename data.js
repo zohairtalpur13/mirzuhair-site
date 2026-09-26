@@ -868,6 +868,43 @@ const PROJECTS = [
   },
 
   {
+    slug: "ghar",
+    tone: "#f4efe4",
+    title: "Ghar",
+    subtitle: "Draw me your home: a participatory book",
+    date: "Self-Initiated · Participatory Design · 2026",
+    tags: "Participatory publication · Drawing tool · Book design · Print kit",
+    cover: "img/gh-cover.jpg",
+    covers: [{ src: "img/gh-cover.jpg" }, { src: "img/gh-book.jpg" }, { src: "img/gh-page.jpg" }],
+    sections: {
+      "The Project":
+        "Ghar (گھر, home) asks people to draw the home they grew up in, from memory, and to name one object that was in it. Every drawing becomes one page of a shared book. The project has three parts: a drawing tool on the web, a printed kit for people who would rather use a pencil, and the book those pages go into.",
+      "The Process":
+        "I wrote four instructions that every page follows: the walls, the openings, where you slept, and one object. The same four appear in the kit and in the tool, so pages drawn by strangers can sit in one book. The tool snaps walls to a dotted grid, stamps doors, windows and a bed, lets you name rooms by hand, and turns your plan into a finished A5 page in your browser.",
+      "The Problem":
+        "Most of my work so far starts with me: my research, my drawings, my prints. I wanted a project designed for other people to fill, where my job is the system and theirs is the memory.",
+      "The Goal":
+        "A book of homes built from contributions only. The rooms will be the wrong size and the walls won't meet, and that is the point: a plan drawn from memory shows what a person kept. Nothing is uploaded; a page only leaves someone's computer if they choose to send it."
+    },
+    blocks: [
+      { type: "linkout", text: "Ghar is live. Draw your home, download your page, or print the kit:", items: [{ label: "Open Ghar", href: "ghar/index.html" }] },
+      { type: "full", src: "img/gh-steps.jpg", cap: "Four instructions, the same on paper and on screen, so every page is built by the same rule." },
+      { type: "step", n: "02", h: "The drawing tool", p: "Drag from dot to dot to draw walls; they snap straight or to 45°. Stamps place doors with their swing, windows, a bed and one star for where you slept. Rooms are named in a handwritten face, and everything can be erased or undone." },
+      { type: "full", src: "img/gh-draw.jpg", cap: "The tool with the example plan I drew to test it. It is not anyone's home." },
+      { type: "step", n: "03", h: "Your page in the book", p: "Each contribution takes one spread: the plan on the left, the object on the right, in the same type and the same place. A hundred different homes read as one book." },
+      { type: "full", src: "img/gh-book.jpg", cap: "The spread updates as you draw and type." },
+      { type: "pair", items: [
+        { src: "img/gh-page.jpg", cap: "The A5 page the tool downloads, made in the browser from the example plan.", contain: true },
+        { src: "img/gh-mobile-draw.jpg", cap: "Drawing on a phone.", contain: true }
+      ]},
+      { type: "step", n: "04", h: "The kit", p: "Eight A5 pages printed on one sheet and folded: the invitation, the four instructions, a dotted page to draw on and a card for the object. It prints straight from the page." },
+      { type: "full", src: "img/gh-kit.jpg", cap: "The kit, cover to back." },
+      { type: "text", h: "What comes next", p: "The book is made of contributions only. The next step is to hand the kit to people and collect their homes, one page at a time." },
+      { type: "linkout", text: "Draw yours:", items: [{ label: "Open Ghar", href: "ghar/index.html#draw" }] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",
