@@ -31,8 +31,8 @@ const PROJECTS = [
       ]},
       { type: "step", n: "00", h: "Drawn by hand first", p: "Every print in the look began in my sketchbook: the palace's ceilings, corridors, chandeliers and chairs, drawn in pencil and ink before anything was digitised." },
       { type: "grid", cols: 4, items: [
-        { src: "img/sk-co-1.jpg", cap: "The corridor, ink.", contain: true },
-        { src: "img/sk-ce-4.jpg", cap: "Ceiling panel, ink.", contain: true },
+        { src: "img/sk-co-6.jpg", cap: "The palace from outside, ink.", contain: true },
+        { src: "img/sk-ce-3.jpg", cap: "A ceiling tile, ink.", contain: true },
         { src: "img/sk-dd-9.jpg", cap: "The crest, pencil.", contain: true },
         { src: "img/sk-iv-1.jpg", cap: "The carved eagle, pencil.", contain: true }
       ]},
@@ -97,9 +97,8 @@ const PROJECTS = [
       { type: "step", n: "02", h: "Object", p: "The doorway drawing moves from textile repeat to carton panel, paired with the green glass and oxblood cap already established in the palette." },
       { type: "full", src: "mir-campaign/assets/packaging.png", cap: "Packaging: doorway illustration on an ivory carton, vermilion side panel. Material visualisation." },
       { type: "step", n: "03", h: "Three typographic routes", p: "Pressure, Transfer and Absence each test a different way of making a trace legible, not three unrelated styles but one idea read three ways." },
-      { type: "trio", items: [
-        { src: "mir-campaign/artwork/poster-pressure.svg", cap: "Pressure: a letter turned into relief.", contain: true },
-        { src: "mir-campaign/artwork/poster-transfer.svg", cap: "Transfer: an offset second impression.", contain: true },
+      { type: "pair", items: [
+                { src: "mir-campaign/artwork/poster-transfer.svg", cap: "Transfer: an offset second impression.", contain: true },
         { src: "mir-campaign/artwork/poster-absence.svg", cap: "Absence: the missing letter as the point.", contain: true }
       ]},
       { type: "step", n: "04", h: "Motion & interaction", p: "A twelve-second film moves the identity through time; a postcard maker lets a visitor stamp the ceiling, doorway or lantern motif into their own composition and keep it. Both are playable, not just documented here." },
@@ -696,10 +695,7 @@ const PROJECTS = [
       { type: "oh-tester", p: "Jharoka is a real font. Type anything and switch between the five colours of Haveli at Dusk." },
       { type: "step", n: "02", h: "Haveli at Dusk", p: "Five colours taken from the palace: lantern green from the corridor glass, lime plaster from the walls, saffron brass from the fittings, kirmizi red from the red hall and teak from the doors." },
       { type: "step", n: "03", h: "The poster", p: "OPEN HOUSE is set to the full width of the sheet. Below it, seven rooms rise in a stepped halftone strip, like the palace stair: doorway, corridor, stair, ceiling, lantern, jali and façade. The Urdu name sits in brass beside the English." },
-      { type: "pair", items: [
-        { src: "img/oh-poster.jpg", cap: "The poster artwork, A2.", contain: true },
-        { src: "img/oh-poster-wall.jpg", cap: "In place, on a lime-plaster wall." }
-      ]},
+      { type: "full", src: "img/oh-poster.jpg", cap: "The poster artwork, A2.", contain: true },
       { type: "oh-light", p: "In the haveli, the jali decides where light falls. Move across the poster and an arch of lattice sunlight follows you, the same light the mockups were rendered in." },
       { type: "step", n: "04", h: "Tickets and badges", p: "Each ticket comes in a colourway of the palette, with a perforated stub, the ticket number set vertically in Jharoka and a barcode drawn in the jali's rhythm. Badges for guests, press and staff turn the lattice into a band of arch tiles." },
       { type: "full", src: "img/oh-tickets.jpg", cap: "Tickets in lantern green, lime and kirmizi." },
@@ -818,13 +814,9 @@ const PROJECTS = [
       { type: "step", n: "02", h: "Walk it back to the field", p: "Each step back loses weight. 0.72 kg of cloth needs about 0.88 kg of fibre, and in Pakistan only a third of raw cotton is fibre. One suit needs 2.68 kg of phutti: 6.7% of a picker's 40 kg sack, and about 37 minutes of her day." },
       { type: "full", src: "img/hs-field.jpg", cap: "Shop, mill, gin, sack, field. The clock shows the minutes of picking in one suit." },
       { type: "step", n: "03", h: "The statement", p: "A thousand squares, each a tenth of a percent of the price. The picker is red, the fibre's value at the gin is ochre, sales tax is grey, and everything with no public record is hatched. The hatching is the finding: three quarters of the price or more cannot be traced." },
-      { type: "full", src: "img/hs-statement.jpg", cap: "A printed suit at the rate the pickers won: 20 squares of a thousand." },
-      { type: "full", src: "img/hs-statement-luxury.jpg", cap: "A luxury suit at the rate they refused: 3 squares of a thousand, and 82.7% unpublished." },
+      { type: "full", src: "img/hs-statement.jpg", cap: "A printed suit at the rate the pickers won: 20 squares of a thousand. Switch to a luxury suit at the rate they refused and it falls to 3, with 82.7% unpublished." },
       { type: "step", n: "04", h: "Days of work", p: "The same price measured in working days: for a picker at the union rate, for a worker on Sindh's minimum wage, and for a garment worker on a living wage." },
-      { type: "pair", items: [
-        { src: "img/hs-days.jpg", cap: "A printed suit: 3.8 days of picking." },
-        { src: "img/hs-days-luxury.jpg", cap: "A luxury suit at Rs 800 a sack: 28.6 days of picking." }
-      ]},
+      { type: "full", src: "img/hs-days.jpg", cap: "A printed suit costs 3.8 days of picking. A luxury suit at Rs 800 a sack costs 28.6." },
       { type: "step", n: "05", h: "The hands in between", p: "Nine stages from the boll to the cupboard. Only four have any number on the record, and none of them is on the label." },
       { type: "full", src: "img/hs-hands.jpg", cap: "Published lines in madder, unpublished lines hatched." },
       { type: "text", h: "Show the working", p: "The piece ends on its method: every calculation, every source and every estimate, so anyone can check it or change it. Change an estimate and the picker's share moves by a few rupees. The shape of the answer doesn't change." },
@@ -859,20 +851,14 @@ const PROJECTS = [
     blocks: [
       { type: "linkout", text: "Gaḍ is live. Change the word pair and the Sindhi size, explore the alphabet, or print the broadsheet:", items: [{ label: "Open Gaḍ", href: "gad/index.html" }] },
       { type: "full", src: "img/gd-metrics.jpg", cap: "Together and گڏ on one shared baseline. At 1.66 times the size, the English x-height and the Sindhi bowl fall on the same line." },
-      { type: "full", src: "img/gd-metrics-sindh.jpg", cap: "Boat, ٻيڙي: the implosive ٻ and the retroflex ڙ, dots above and below, all held inside the shared lines." },
       { type: "step", n: "02", h: "Three problems", p: "Set with the same settings, the two scripts break in three predictable ways: size, dots and direction. Each one can be switched between the default and the tuned setting." },
-      { type: "full", src: "img/gd-problems-default.jpg", cap: "Default: Sindhi too small, dots touching, the sentence starting at the wrong edge." },
-      { type: "full", src: "img/gd-problems-tuned.jpg", cap: "Tuned: matched size, Sindhi leading on the grid, right-to-left paragraph with Sindhi digits." },
+      { type: "full", src: "img/gd-problems-tuned.jpg", cap: "All three tuned: matched size, Sindhi leading on the grid, a right-to-left paragraph with Sindhi digits. Each panel switches back to the default." },
       { type: "step", n: "03", h: "Fifty-two letters", p: "The Sindhi alphabet in its standard order, with the letters Urdu and Arabic do not have picked out in red. Each letter shows its joined forms and its sound." },
-      { type: "pair", items: [
-        { src: "img/gd-alphabet.jpg", cap: "ڀ, bʱ: one of the letters Sindhi adds." },
-        { src: "img/gd-alphabet-sindhi.jpg", cap: "Filtered to the Sindhi letters, with ڳ, the implosive g." }
-      ]},
+      { type: "full", src: "img/gd-alphabet.jpg", cap: "ڀ, bʱ: one of the letters Sindhi adds, with its joined forms and sound." },
       { type: "step", n: "04", h: "The system", p: "Four rules and one table: one 6 px unit, a matched body size, a nine-to-five line rhythm and a mirrored spine." },
       { type: "full", src: "img/gd-system.jpg", cap: "The rules and the hierarchy for both scripts." },
       { type: "step", n: "05", h: "The broadsheet", p: "The system at work on a bilingual front page. The English column explains the rules; the Sindhi column carries a verse of Shah Abdul Latif, words of cloth and the cities of Sindh, each glossed in English." },
-      { type: "full", src: "img/gd-sheet.jpg", cap: "The front page, Literata and Lateef on a 6 px grid." },
-      { type: "full", src: "img/gd-sheet-grid.jpg", cap: "With the grid on: the red lines every 270 px, where nine English lines and five Sindhi lines come round together." },
+      { type: "full", src: "img/gd-sheet-grid.jpg", cap: "The front page with its grid on: Literata and Lateef on a 6 px unit, and red lines every 270 px where nine English lines and five Sindhi lines come round together." },
       { type: "pair", items: [
         { src: "img/gd-mobile.jpg", cap: "On a phone: the title and the measured stage.", contain: true },
         { src: "img/gd-mobile-sheet.jpg", cap: "On a phone the two columns stack at the spine.", contain: true }
@@ -955,31 +941,7 @@ const PROJECTS = [
     },
     note: "These are speculative mockups made for study. Original photography, models and magazine mastheads belong to their respective publications and photographers; only the textile patterns are my work.",
     blocks: [
-      { type: "full", src: "img/ed-moodboard.jpg", cap: "Moodboard: contemporary fashion covers as the visual context for the collection.", contain: true },
-      { type: "trio", items: [
-        { src: "img/ed-vogue-margot.jpg", cap: "Deer-crest print, tone on tone in pink, on a sculpted dress." },
-        { src: "img/ed-vogue-adele.jpg", cap: "Architectural print in teal on a structured gown." },
-        { src: "img/ed-elle.jpg", cap: "Tonal oxblood repeat on a strapless ball gown." }
-      ]},
-      { type: "trio", items: [
-        { src: "img/ed-vogue-adria.jpg", cap: "Draped silk in a soft teal-and-rose colourway." },
-        { src: "img/ed-schiap.jpg", cap: "Composition 02 deer print in coral on a flared silhouette." },
-        { src: "img/ed-fashion.jpg", cap: "Headscarf rendered in a burgundy ornament repeat." }
-      ]},
-      { type: "trio", items: [
-        { src: "img/ed-red.jpg", cap: "Colonnade print on a column gown." },
-        { src: "img/ed-marble.jpg", cap: "Greek Key print on a fitted gown." },
-        { src: "img/ed-gown.jpg", cap: "Hummingbird print on an evening coat." }
-      ]},
-      { type: "pair", items: [
-        { src: "img/ed-vogue-mexico.jpg", cap: "Portrait-and-floral repeat, tone on tone in navy, on a satin top and fitted skirt." },
-        { src: "img/ed-vogue-france.jpg", cap: "Lantern and archway print in tonal red on a draped skirt." }
-      ]},
-      { type: "pair", items: [
-        { src: "img/ed-balenciaga.jpg", cap: "Doorway crest in teal and red on a second-skin catsuit." },
-        { src: "img/ed-bazaar.jpg", cap: "Doorway crest in navy and magenta on a sculpted bubble dress." }
-      ]},
-      { type: "full", src: "img/ed-group.jpg", cap: "Collection view: multiple repeats styled together as a runway line-up." }
+      { type: "full", src: "img/ed-moodboard.jpg", cap: "Moodboard: contemporary fashion covers as the visual context for the collection.", contain: true }
     ]
   }
 ];

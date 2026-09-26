@@ -513,7 +513,7 @@
       ["Collecting", "I gathered what is on the record: a brand's fabric lengths, the weekly cotton rates, the pickers' piece rate, the minimum and living wage.", "img/hs-method.jpg"],
       ["A model", "A small model turns metres of cloth into kilograms, cloth into raw cotton, and raw cotton into minutes and rupees.", "img/hs-field.jpg"],
       ["Drawing the gap", "Everything with no public record is hatched and drawn to the same scale as the rest. The hatching became the finding.", "img/hs-statement.jpg"],
-      ["Something to play with", "Readers choose a suit and a picking rate and watch the account move. A link carries any version of it.", "img/hs-statement-luxury.jpg"],
+      ["Something to play with", "Readers choose a suit and a picking rate and watch the account move. A link carries any version of it.", "img/hs-days.jpg"],
       ["Print and Urdu", "A clean madder buti print, Urdu headings with their English meanings, and a broadsheet that prints at A3.", "img/hs-measure.jpg"]],
     palP: "A financial daily crossed with a lawn catalogue.",
     pal: [["#f3dfcc", "Newsprint salmon", "The paper of a financial daily.", "#1c1814"],
