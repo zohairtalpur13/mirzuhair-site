@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ghar — Mir Zuhair</title>
+<meta name="description" content="Ghar (گھر, home): draw the home you grew up in from memory, name one object, and make a page for a shared book. A participatory project by Mir Zuhair.">
+<meta name="theme-color" content="#f4efe4">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&family=Caveat:wght@500;700&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ghar.css?v=1">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../#/work/ghar">← Mir Zuhair</a>
+  <nav class="jump" aria-label="Sections">
+    <a href="#invite">Invitation</a>
+    <a href="#draw">Draw</a>
+    <a href="#book">The book</a>
+    <a href="#kit">The kit</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="invite">
+    <div class="hero-text">
+      <p class="kicker">A participatory book · 2026</p>
+      <h1>Ghar <span class="ur" lang="ur" dir="rtl">گھر</span></h1>
+      <p class="gloss">Ghar, <span class="ur-i" lang="ur" dir="rtl">گھر</span>: home</p>
+      <p class="lede">Draw me the home you grew up in. Not from a photograph, from memory: where the doors were, where the light came in, where you slept. Then tell me about one thing that was in it.</p>
+      <p class="sub">Every drawing becomes one page of a shared book. The rooms will be the wrong size and the walls won't meet, and that is the point. A plan drawn from memory shows what a person kept.</p>
+      <div class="cta"><a class="btn solid" href="#draw">Draw your home</a><a class="btn" href="#kit">Print the kit</a></div>
+    </div>
+    <figure class="hero-plan">
+      <svg viewBox="0 0 400 480" data-hero-plan role="img" aria-label="A floor plan drawing itself line by line, with a star where someone slept."></svg>
+      <figcaption>A plan, drawn one wall at a time</figcaption>
+    </figure>
+  </section>
+
+  <!-- HOW -->
+  <section class="sec how">
+    <header class="sec-head"><span>01</span><h2>Four things to draw</h2><p>The same four instructions appear in the printed kit and on this page, so every page in the book is built the same way.</p></header>
+    <ol class="steps">
+      <li><b>The walls</b><p>Start at the front door and walk through the house in your head. Draw each wall as you reach it.</p></li>
+      <li><b>The openings</b><p>Add the doors you used and the windows you remember. Leave out the ones you don't.</p></li>
+      <li><b>Where you slept</b><p>Put a star where you slept. Every page in the book has exactly one star.</p></li>
+      <li><b>One object</b><p>Name one thing that was in the house, and write one sentence about it. The object is the page's title.</p></li>
+    </ol>
+  </section>
+
+  <!-- DRAW -->
+  <section class="sec" id="draw">
+    <header class="sec-head"><span>02</span><h2>Draw your home</h2><p>Drag from dot to dot to draw walls. Choose a stamp to place doors, windows, a bed or your star. Nothing you draw leaves your browser unless you download it.</p></header>
+    <div class="studio">
+      <div class="tools" role="toolbar" aria-label="Drawing tools">
+        <div class="tool-group" role="group" aria-label="Tool" data-tools>
+          <button type="button" data-tool="wall" aria-pressed="true"><i class="ic ic-wall"></i>Wall</button>
+          <button type="button" data-tool="door" aria-pressed="false"><i class="ic ic-door"></i>Door</button>
+          <button type="button" data-tool="window" aria-pressed="false"><i class="ic ic-window"></i>Window</button>
+          <button type="button" data-tool="bed" aria-pressed="false"><i class="ic ic-bed"></i>Bed</button>
+          <button type="button" data-tool="star" aria-pressed="false"><i class="ic ic-star"></i>Where I slept</button>
+          <button type="button" data-tool="label" aria-pressed="false"><i class="ic ic-label"></i>Name a room</button>
+          <button type="button" data-tool="erase" aria-pressed="false"><i class="ic ic-erase"></i>Erase</button>
+        </div>
+        <div class="tool-group" role="group" aria-label="Edit">
+          <button type="button" data-act="rotate" title="Turn doors, windows and beds (R)">Turn stamp</button>
+          <button type="button" data-act="undo" title="Undo (Ctrl or Cmd + Z)">Undo</button>
+          <button type="button" data-act="clear">Clear</button>
+          <button type="button" data-act="example">Show an example</button>
+        </div>
+      </div>
+      <div class="board">
+        <canvas data-board role="img" aria-label="Drawing board: a dotted grid for drawing the plan of a home."></canvas>
+        <p class="board-hint" data-hint>Start at the front door. Drag from dot to dot to draw a wall.</p>
+      </div>
+      <form class="memory" data-memory autocomplete="off">
+        <label><span>One object I remember</span><input name="object" maxlength="40" placeholder="The ceiling fan"></label>
+        <label><span>One sentence about it</span><textarea name="line" maxlength="180" rows="3" placeholder="It clicked on every turn, and we slept to the sound of it in June."></textarea></label>
+        <div class="two">
+          <label><span>Your initials</span><input name="name" maxlength="30" placeholder="Optional"></label>
+          <label><span>The city</span><input name="city" maxlength="30" placeholder="Optional"></label>
+        </div>
+        <label><span>The years you lived there</span><input name="years" maxlength="20" placeholder="Optional"></label>
+        <div class="acts">
+          <button type="button" class="btn solid" data-act="download">Download my page</button>
+          <p class="note" data-status role="status">Your page is made in your browser. Send it to me if you would like it in the book.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="sec" id="book">
+    <header class="sec-head"><span>03</span><h2>Your page in the book</h2><p>Every contribution takes one spread: the plan on the left, the object on the right, in the same type and the same place, so a hundred different homes read as one book.</p></header>
+    <div class="spread" data-spread>
+      <div class="page page-l">
+        <p class="folio"><span>No. 001</span><span>Ghar <span lang="ur" dir="rtl" class="ur-i">گھر</span></span></p>
+        <div class="plan-slot"><img alt="The plan you drew" data-plan-img hidden><p class="empty" data-empty>Your plan appears here as you draw.</p></div>
+        <p class="meta"><span data-out="city">The city</span><span data-out="years">The years</span></p>
+      </div>
+      <div class="page page-r">
+        <p class="folio"><span>Draw me your home</span><span data-out="name">Initials</span></p>
+        <p class="obj-k">One object</p>
+        <h3 class="obj" data-out="object">The ceiling fan</h3>
+        <p class="line" data-out="line">It clicked on every turn, and we slept to the sound of it in June.</p>
+        <p class="star-note"><i class="ic ic-star"></i> marks where they slept</p>
+      </div>
+    </div>
+    <div class="book-spec">
+      <div><b>Format</b><span>A5 portrait, 148 × 210 mm, sewn</span></div>
+      <div><b>Spread</b><span>Plan on the left, object on the right</span></div>
+      <div><b>Type</b><span>Young Serif and Instrument Sans, with Caveat for the drawn hand</span></div>
+      <div><b>Colour</b><span>Graphite, one architect's blue, one yellow star</span></div>
+    </div>
+  </section>
+
+  <!-- KIT -->
+  <section class="sec" id="kit">
+    <header class="sec-head"><span>04</span><h2>The kit</h2><p>For people who would rather draw with a pencil: eight A5 pages, printed on one sheet and folded. The invitation, the four instructions, a dotted page to draw on and a card for the object.</p></header>
+    <div class="kit" data-kit>
+      <article class="kp kp-cover"><p class="k-top">A participatory book</p><h3>Ghar</h3><p class="k-ur" lang="ur" dir="rtl">گھر</p><p class="k-bottom">Draw me your home</p></article>
+      <article class="kp"><p class="k-top">01 · The invitation</p><p class="k-body">Draw the home you grew up in, from memory. It does not need to be right. It needs to be yours.</p><p class="k-small">Your drawing will be one page of a book of homes.</p></article>
+      <article class="kp"><p class="k-top">02 · The walls</p><p class="k-body">Start at the front door. Walk through the house in your head and draw each wall as you reach it.</p><svg class="k-fig" viewBox="0 0 120 80" aria-hidden="true"><path d="M10 70V10h70v30h30v30z"/></svg></article>
+      <article class="kp"><p class="k-top">03 · The openings</p><p class="k-body">Add the doors you used and the windows you remember. Leave out the ones you don't.</p><svg class="k-fig" viewBox="0 0 120 80" aria-hidden="true"><path d="M10 70V10h40M70 10h40v60H10"/><path class="arc" d="M50 10v20a20 20 0 0 0 20-20"/><path d="M110 30v20M106 30v20M114 30v20"/></svg></article>
+      <article class="kp"><p class="k-top">04 · Where you slept</p><p class="k-body">Put one star where you slept.</p><svg class="k-fig" viewBox="0 0 120 80" aria-hidden="true"><path class="star" d="M60 14l6.5 13.5 14.5 2-10.5 10 2.5 14.5L60 47l-13 7 2.5-14.5-10.5-10 14.5-2z"/></svg></article>
+      <article class="kp"><p class="k-top">05 · One object</p><p class="k-body">Name one thing that was in the house, and write one sentence about it.</p><p class="k-lines"><span></span><span></span><span></span></p></article>
+      <article class="kp kp-grid"><p class="k-top">06 · Draw here</p><div class="k-dots"></div></article>
+      <article class="kp"><p class="k-top">07 · Send it back</p><p class="k-body">Photograph or scan this sheet and send it to me, with your initials and the city written on the back.</p><p class="k-small">mirzuhair.com</p></article>
+    </div>
+    <div class="acts kit-acts"><button type="button" class="btn solid" data-act="print-kit">Print the kit</button></div>
+  </section>
+
+  <!-- NOTES -->
+  <section class="sec notes">
+    <header class="sec-head"><span>05</span><h2>Notes</h2><p>How the project works, and what it keeps.</p></header>
+    <ul class="note-list">
+      <li><b>Private by design</b> The drawing tool runs in your browser. Nothing is uploaded or stored; a page only leaves your computer if you download it and send it.</li>
+      <li><b>One rule for every page</b> Four instructions, one grid, one star and one object, so pages by strangers can sit in the same book.</li>
+      <li><b>The example</b> The plan behind “Show an example” is one I drew to test the tool. It is not anyone's home. The book is made of contributions only.</li>
+      <li><b>References</b> Participatory publications from the Parsons BFA Communication Design thesis shows: a book built from windows photographed around the world, and an archive readers arrange themselves.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="foot"><span>Ghar · Mir Zuhair · 2026</span><span><span lang="ur" dir="rtl" class="ur-i">گھر</span> home</span></footer>
+
+<script src="ghar.js?v=1"></script>
+</body>
+</html>
