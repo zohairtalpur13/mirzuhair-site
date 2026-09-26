@@ -396,6 +396,8 @@
       ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
       ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
       ["mir-what-remains", "img/mir-crest-line.jpg", "The doorway crest drawing", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
+      ["hisaab", "img/hs-src-2.jpg", "A weekly cotton report", "img/hs-cover.jpg", "", "One lawn suit walked back to the cotton field: what the picking paid, and what nobody publishes."],
+      ["gad", "img/gd-src-3.jpg", "A verse of Shah Abdul Latif", "img/gd-cover.jpg", "", "Sindhi and English on one baseline grid, measured rather than guessed, ending in a bilingual broadsheet."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
       ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
       ["greek-ornament", "img/gk-key-board.jpg", "Classical motifs, composed", "img/gk-key-pattern.jpg", "", "The same drawing-to-repeat method, applied to Greek and baroque ornament."],
@@ -494,6 +496,64 @@
       ["Look longer", "The story was already in the lines. My job was to keep looking until I could see it."],
       ["Stories are my way in", "Whether it's a palace, a textile or a single pencil line, I understand things by turning them into stories."]],
     cta: ["#/work/line", "img/wl-given-drawn.jpg", "What Is a Line"] };
+  const CASE_HS = { id: "hisaab", cls: "rs-case-hs", kicker: "Case study · 2026", title: "Hisaab", em: "the account of a lawn suit",
+    intro: "My textiles begin with a print and end on a body. Hisaab follows the cloth the other way: back from the shop to the cotton field in Sindh, to ask how much of a lawn suit's price reaches the women who picked its cotton.",
+    why: [["Where it began", "As a textile designer I know what goes into a print. I knew almost nothing about what went into the cotton underneath it, or who was paid for it."],
+      ["The idea", "Treat one suit like a company and write its accounts. Start from a real price, walk the cloth back to the field, and put every rupee on the page."],
+      ["The rule", "Only published numbers. Where none existed I made an estimate, marked it and showed the working, so the gaps stay visible instead of being filled in."]],
+    pairsH: "From source to graphic", pairsP: "Five published figures became the whole piece. Each card shows the graphic; hover over or tap it to see the source behind it.",
+    pairs: [["img/hs-src-5.jpg", "img/hs-p-5.jpg", "The lead", "A lawn suit, Summer 2026", "The swatch is the price; the red square is the picker's share"],
+      ["img/hs-src-1.jpg", "img/hs-p-1.jpg", "Measure", "The brand's own listing", "5.75 m of lawn, drawn to scale"],
+      ["img/hs-src-2.jpg", "img/hs-p-2.jpg", "Field", "Business Recorder, 21 Sep 2026", "Cloth walked back to 2.68 kg of raw cotton"],
+      ["img/hs-src-3.jpg", "img/hs-p-3.jpg", "Statement", "Arab News, 2024", "A thousand squares; the picker's are red"],
+      ["img/hs-src-4.jpg", "img/hs-p-4.jpg", "Days of work", "Government of Sindh, 2025–26", "The price measured in working days"]],
+    skAlt: "Source",
+    stepsP: "From one question to an account anyone can check, in six steps.",
+    steps: [["A question", "Every lawn season the prints change and the question stays the same: what did the picking pay?", "img/hs-lead.jpg"],
+      ["Collecting", "I gathered what is on the record: a brand's fabric lengths, the weekly cotton rates, the pickers' piece rate, the minimum and living wage.", "img/hs-method.jpg"],
+      ["A model", "A small model turns metres of cloth into kilograms, cloth into raw cotton, and raw cotton into minutes and rupees.", "img/hs-field.jpg"],
+      ["Drawing the gap", "Everything with no public record is hatched and drawn to the same scale as the rest. The hatching became the finding.", "img/hs-statement.jpg"],
+      ["Something to play with", "Readers choose a suit and a picking rate and watch the account move. A link carries any version of it.", "img/hs-statement-luxury.jpg"],
+      ["Print and Urdu", "A clean madder buti print, Urdu headings with their English meanings, and a broadsheet that prints at A3.", "img/hs-measure.jpg"]],
+    palP: "A financial daily crossed with a lawn catalogue.",
+    pal: [["#f3dfcc", "Newsprint salmon", "The paper of a financial daily.", "#1c1814"],
+      ["#1c1814", "Ledger ink", "Every figure and every rule.", "#f3dfcc"],
+      ["#b3261e", "Madder", "The picker's share, and the buti print.", "#f3dfcc"],
+      ["#c8912e", "Cotton ochre", "The fibre's value at the gin.", "#1c1814"],
+      ["#2f3f6e", "Indigo", "The dyed trouser of the suit.", "#f3dfcc"]],
+    learn: [["Missing numbers are data", "The most important part of the chart is the part nobody publishes. Drawing it to scale said more than any caption could."],
+      ["Show the working", "Marking every estimate made the piece stronger, not weaker: anyone can check it, and anyone can change it."],
+      ["A print has a supply chain", "A print is the last step of a long chain. Designing for cloth now includes asking who made the cloth."]],
+    cta: ["#/work/hisaab", "img/hs-cover.jpg", "Hisaab"] };
+  const CASE_GD = { id: "gad", cls: "rs-case-gd", kicker: "Case study · 2026", title: "Gaḍ", em: "Sindhi and English on one line",
+    intro: "Open House set Urdu beside English in a typeface of my own. Gaḍ, گڏ, meaning together, goes further: a whole type system that lets Sindhi and English share a page as equals, built on measurements instead of guesses.",
+    why: [["Where it began", "Signs, school books and newspapers in Sindh carry Sindhi and English together, and one of the two nearly always loses: too small, too tight, or running the wrong way."],
+      ["The idea", "Treat the pair as one system: a shared unit, a shared baseline rhythm, and a mirrored layout where the two scripts meet at a spine."],
+      ["The rule", "Measure, don't guess. The size ratio comes from the fonts themselves, and every Sindhi word on the page carries its English meaning."]],
+    pairsH: "From source to system", pairsP: "Five findings became the system. Each card shows the result; hover over or tap it to see where it came from.",
+    pairs: [["img/gd-src-1.jpg", "img/gd-p-1.jpg", "Matched size", "Measured in the browser", "1.66×: the English x-height meets the Sindhi bowl"],
+      ["img/gd-src-4.jpg", "img/gd-p-4.jpg", "Leading", "Letters with four dots", "Sindhi gets its own leading on the grid"],
+      ["img/gd-src-2.jpg", "img/gd-p-2.jpg", "Alphabet", "Sindhi Wikipedia", "All 52 letters, the Sindhi ones in red"],
+      ["img/gd-src-5.jpg", "img/gd-p-5.jpg", "Hierarchy", "The 6 px unit", "Five levels, set for both scripts"],
+      ["img/gd-src-3.jpg", "img/gd-p-3.jpg", "Broadsheet", "Shah Abdul Latif", "The verse, set on the Sindhi side of the spine"]],
+    skAlt: "Source",
+    stepsP: "From one measurement to a bilingual front page, in six steps.",
+    steps: [["Pairing", "Lateef, made for Sindhi and named after Shah Abdul Latif, with Literata for English.", "img/gd-cover.jpg"],
+      ["Measuring", "Naskh has no x-height, so I measured the bowls of ص ع ه and matched them to the English x-height: 1.66×.", "img/gd-metrics.jpg"],
+      ["Three problems", "Size, dots and direction, each shown default against tuned, so the reason for every rule can be seen.", "img/gd-problems-tuned.jpg"],
+      ["Fifty-two letters", "The whole alphabet in order, with joined forms and sounds, and the letters Sindhi adds picked out in red.", "img/gd-alphabet.jpg"],
+      ["The grid", "One 6 px unit. English runs on 30 px lines and Sindhi on 54 px, and they meet every 270 px.", "img/gd-system.jpg"],
+      ["The broadsheet", "A bilingual front page that puts the rules to work, and prints at A3.", "img/gd-sheet.jpg"]],
+    palP: "One colour for each script, on newsprint.",
+    pal: [["#f1eee6", "Newsprint", "The ground of the broadsheet.", "#16171b"],
+      ["#16171b", "Ink", "Body text in both scripts.", "#f1eee6"],
+      ["#243b8f", "English indigo", "Every English line and label.", "#f1eee6"],
+      ["#d9432b", "Sindhi vermilion", "Every Sindhi line and label.", "#f1eee6"],
+      ["#f8f6f0", "Specimen card", "The pages of the specimen.", "#16171b"]],
+    learn: [["Equal has to be designed", "Two scripts only look equal when the system is built for both. The same point size is not the same size."],
+      ["Rhythm over alignment", "Sindhi and English cannot share every line, but they can meet on a steady beat: nine lines to five."],
+      ["Measure first", "Reading the fonts in the browser settled a question that taste alone could not."]],
+    cta: ["#/work/gad", "img/gd-cover.jpg", "Gaḍ"] };
   const rsCase = (c) => `
       <section class="rs-case ${c.cls || ""}" id="${c.id}">
         <div class="rs-case-head">
@@ -600,6 +660,8 @@
       ${rsCase(CASE_OH)}
       ${rsCase(CASE_TX)}
       ${rsCase(CASE_WL)}
+      ${rsCase(CASE_HS)}
+      ${rsCase(CASE_GD)}
     </section>`;
 
 
