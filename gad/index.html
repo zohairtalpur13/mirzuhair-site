@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gaḍ — Mir Zuhair</title>
+<meta name="description" content="Gaḍ (گڏ, together): a bilingual type system for setting Sindhi and English side by side on one baseline grid. By Mir Zuhair.">
+<meta name="theme-color" content="#f1eee6">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lateef:wght@300;400;600;800&family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gad.css?v=3">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../#/work/gad">← Mir Zuhair</a>
+  <nav class="jump" aria-label="Sections">
+    <a href="#together"><b>01</b> Together</a>
+    <a href="#problems"><b>02</b> Three problems</a>
+    <a href="#alphabet"><b>03</b> Alphabet</a>
+    <a href="#system"><b>04</b> System</a>
+    <a href="#broadsheet"><b>05</b> Broadsheet</a>
+  </nav>
+</header>
+
+<main>
+  <!-- 01 TOGETHER -->
+  <section class="hero" id="together">
+    <div class="hero-head">
+      <p class="kicker">A bilingual type system · Sindhi and English</p>
+      <h1><span class="lat">Gaḍ</span> <span class="snd" lang="sd" dir="rtl">گڏ</span></h1>
+      <p class="gloss">Gaḍ, <span lang="sd" dir="rtl" class="snd-i">گڏ</span>: together</p>
+    </div>
+    <figure class="stage">
+      <canvas data-metrics role="img" aria-label="An English word and a Sindhi word sitting on one shared baseline, with their size lines drawn across the page."></canvas>
+      <figcaption class="legend">
+        <span class="k-lat">English: cap height, x-height, baseline, descender</span>
+        <span class="k-snd">Sindhi: alif, bowl, dots above, dots below</span>
+      </figcaption>
+    </figure>
+    <div class="hero-ctl">
+      <div class="pairs" role="group" aria-label="Word pair" data-pairs></div>
+      <label class="scale"><span>Sindhi size</span><input type="range" min="0.9" max="1.7" step="0.01" value="1.66" data-scale aria-label="Sindhi size relative to English"><output data-out="scale">1.66×</output></label>
+      <button type="button" class="ghost" data-match>Match optically</button>
+    </div>
+    <div class="hero-copy">
+      <p>Road signs, shop boards, school books and newspapers in Sindh carry Sindhi and English side by side. Usually one of them is squeezed to fit the other: the Sindhi set too small to read, or its dots clipped by tight lines.</p>
+      <p><em>Gaḍ</em> is a small type system that lets the two scripts share a page as equals. It pairs <em>Lateef</em>, a typeface made for Sindhi, with <em>Literata</em>, and gives them one baseline grid, one hierarchy and a mirrored layout that meets at a spine.</p>
+    </div>
+  </section>
+
+  <!-- 02 PROBLEMS -->
+  <section class="sec" id="problems">
+    <header class="sec-head"><span>02</span><h2>Three problems</h2><p>Setting the two scripts with the same settings breaks in three predictable ways. Switch each one between the default and the tuned setting.</p></header>
+    <div class="probs">
+      <article class="prob" data-prob>
+        <header><h3>Size</h3><button type="button" class="tog" aria-pressed="false" data-tune>Tuned</button></header>
+        <div class="demo size-demo">
+          <p class="lat-line">Cotton, thread and cloth</p>
+          <p class="snd-line" lang="sd" dir="rtl">ڪپهه، ڌاڳو ۽ ڪپڙو</p>
+        </div>
+        <p class="tr">Sindhi: cotton, thread and cloth</p>
+        <p class="why"><b>Default:</b> at the same point size, Sindhi reads a size smaller. <b>Tuned:</b> the Sindhi is scaled until the height of its bowls matches the English x-height, <span data-out="scaleWord">1.66×</span>.</p>
+      </article>
+      <article class="prob" data-prob>
+        <header><h3>Dots</h3><button type="button" class="tog" aria-pressed="false" data-tune>Tuned</button></header>
+        <div class="demo lead-demo" lang="sd" dir="rtl">
+          <p>ڀٽ شاهه ۽ ٿر</p>
+          <p>ڪپهه، ڌاڳو ۽ ڪپڙو</p>
+          <p>ڇاڇرو، ڳوٺ ۽ ڦل</p>
+        </div>
+        <p class="tr">Bhit Shah and Thar · cotton, thread and cloth · Chachro, village and fruit</p>
+        <p class="why"><b>Default:</b> at English line spacing the dots of one line touch the next. Several Sindhi letters carry four dots, like <span class="snd-i" lang="sd">ٿ ڀ ڦ</span>. <b>Tuned:</b> Sindhi gets its own leading, locked to the shared grid.</p>
+      </article>
+      <article class="prob" data-prob>
+        <header><h3>Direction</h3><button type="button" class="tog" aria-pressed="false" data-tune>Tuned</button></header>
+        <div class="demo dir-demo">
+          <p class="dir-line" data-dir lang="sd"><bdi>Lateef</bdi> فونٽ سنڌي لاءِ ٺهيل آهي، سنڌي ۾ <span data-digits>52</span> اکر آهن</p>
+        </div>
+        <p class="tr">The Lateef font is made for Sindhi; Sindhi has 52 letters.</p>
+        <p class="why"><b>Default:</b> in a left-to-right box the sentence starts at the wrong edge and its comma and number land out of place. <b>Tuned:</b> the paragraph runs right to left, the English name is isolated, and numbers use Sindhi digits.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 03 ALPHABET -->
+  <section class="sec" id="alphabet">
+    <header class="sec-head"><span>03</span><h2>Fifty-two letters</h2><p>The Sindhi alphabet in its standard order. Sindhi adds letters Urdu and Arabic do not have, for its implosive, aspirated and retroflex sounds. Choose a letter to see its joined forms and its sound.</p></header>
+    <div class="filters" role="group" aria-label="Filter letters">
+      <button type="button" aria-pressed="true" data-filter="all">All 52</button>
+      <button type="button" aria-pressed="false" data-filter="sindhi">Sindhi letters</button>
+      <button type="button" aria-pressed="false" data-filter="implosive">Implosives</button>
+    </div>
+    <div class="abc">
+      <ol class="abc-grid" data-abc></ol>
+      <aside class="abc-card" aria-live="polite">
+        <p class="card-n" data-card="n">01 / 52</p>
+        <p class="card-glyph" lang="sd" dir="rtl" data-card="glyph">ا</p>
+        <p class="card-forms" lang="sd" dir="rtl" data-card="forms"></p>
+        <p class="card-forms-l"><span>initial</span><span>medial</span><span>final</span><span>alone</span></p>
+        <p class="card-ipa">Sound <b data-card="ipa">/aː/</b></p>
+        <p class="card-tags" data-card="tags"></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 04 SYSTEM -->
+  <section class="sec" id="system">
+    <header class="sec-head"><span>04</span><h2>The system</h2><p>Four rules and one table. Everything sits on a 6 px baseline unit, so the two scripts can run in separate columns and still meet.</p></header>
+    <ol class="rules">
+      <li><b>One unit</b>Every line height and every gap is a multiple of 6 px.</li>
+      <li><b>Matched body</b>Sindhi is set <span data-out="scaleWord">1.66×</span> the English size, measured so the bowls of Sindhi letters like <span lang="sd" class="snd-i">ص ع ه</span> match the English x-height.</li>
+      <li><b>Nine to five</b>English body runs on 30 px lines, Sindhi on 54 px. Nine lines of English and five of Sindhi meet on the same baseline every 270 px.</li>
+      <li><b>A mirrored spine</b>English reads from the left edge, Sindhi from the right. The two columns meet at a shared gutter, never stacked under each other.</li>
+    </ol>
+    <div class="table-wrap">
+      <table class="scale-table">
+        <caption>Hierarchy <span lang="sd" dir="rtl" class="snd-i">درجا</span> <small>darja, levels</small></caption>
+        <thead><tr><th scope="col">Level</th><th scope="col">English, Literata</th><th scope="col">Sindhi, Lateef</th><th scope="col">Sample</th></tr></thead>
+        <tbody data-levels></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 05 BROADSHEET -->
+  <section class="sec" id="broadsheet">
+    <header class="sec-head"><span>05</span><h2>The broadsheet</h2><p>The system at work on a bilingual front page. Turn on the grid to see every line sit on the 6 px unit. The red lines fall every 270 px, where nine English lines and five Sindhi lines come round together.</p></header>
+    <div class="sheet-ctl">
+      <button type="button" class="tog" aria-pressed="false" data-grid>Show grid</button>
+      <button type="button" class="ghost" data-print>Print the broadsheet</button>
+    </div>
+    <article class="sheet" data-sheet>
+      <header class="sheet-mast">
+        <p class="m-lat">Gaḍ</p>
+        <p class="m-mid">A bilingual specimen<br>Issue 01 · September 2026</p>
+        <p class="m-snd" lang="sd" dir="rtl">گڏ</p>
+      </header>
+      <div class="sheet-cols">
+        <div class="col col-lat">
+          <p class="lvl-folio">English</p>
+          <h3 class="lvl-head">Two scripts, one line</h3>
+          <p class="lvl-deck">A system for setting Sindhi and English side by side, so that neither has to shrink to fit the other.</p>
+          <p class="lvl-body">Sindhi has been written in this form of the Arabic script since 1853, when a committee settled on fifty-two letters. Its extra letters carry sounds that English and Urdu readers rarely meet: four implosives, a row of aspirates and retroflexes, and dots stacked four at a time.</p>
+          <p class="lvl-body">Those dots are the first rule of this page. Sindhi needs more space between lines than English, so the two columns run on different line heights. Both are built from the same six-pixel unit, so every ninth English line lands on the same baseline as every fifth Sindhi one.</p>
+          <p class="lvl-body">The second rule is size. At the same point size Sindhi looks a step smaller than English. Here it is scaled until the height of its bowls matches the English x-height, so a reader crossing the spine does not feel the page change.</p>
+          <p class="lvl-caption">The Sindhi column carries words and verse; the English column explains the rules.</p>
+        </div>
+        <div class="spine" aria-hidden="true"><span>English</span><span lang="sd">سنڌي</span></div>
+        <div class="col col-snd" lang="sd" dir="rtl">
+          <p class="lvl-folio">سنڌي <span class="tr-in" lang="en" dir="ltr">Sindhi</span></p>
+          <h3 class="lvl-head">ٻه لپيون، هڪ سٽ</h3>
+          <p class="tr-block" lang="en" dir="ltr">Two scripts, one line</p>
+          <blockquote class="lvl-deck">سائينم سدائين، ڪرين مٿي سنڌ سڪار<br>دوست مٺا دلدار، عالم سڀ آباد ڪرين</blockquote>
+          <p class="tr-block" lang="en" dir="ltr">“O my Lord, keep Sindh prosperous for all times to come, and bless the whole world with prosperity.” Shah Abdul Latif Bhittai</p>
+          <h4 class="lvl-sub">ڪپڙي جا لفظ <span class="tr-in" lang="en" dir="ltr">words of cloth</span></h4>
+          <dl class="words" data-words="cloth"></dl>
+          <h4 class="lvl-sub">سنڌ جا شهر <span class="tr-in" lang="en" dir="ltr">cities of Sindh</span></h4>
+          <dl class="words" data-words="cities"></dl>
+          <p class="digits"><span>۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹</span><span class="tr-in" lang="en" dir="ltr">0 1 2 3 4 5 6 7 8 9</span></p>
+        </div>
+      </div>
+      <footer class="sheet-foot"><span>Page 1</span><span>Set in Literata and Lateef on a 6 px grid</span><span lang="sd" dir="rtl">صفحو ۱ <span class="tr-in" lang="en" dir="ltr">page 1</span></span></footer>
+    </article>
+  </section>
+
+  <!-- 06 NOTES -->
+  <section class="sec notes" id="notes">
+    <header class="sec-head"><span>06</span><h2>Notes</h2><p>Sources, fonts and what the page measures.</p></header>
+    <ul class="note-list">
+      <li><b>Alphabet</b> Order and sounds follow the Sindhi Wikipedia table of the Arabic-Sindhi alphabet (<span lang="sd" class="snd-i">سنڌي آئيويٽا</span>, the Sindhi alphabet). The 52 letters count the digraphs <span lang="sd" class="snd-i">جه</span> and <span lang="sd" class="snd-i">گه</span>.</li>
+      <li><b>1853</b> The year a committee formed under the East India Company settled the fifty-two-letter alphabet, as recorded in the same article.</li>
+      <li><b>Verse</b> Shah Abdul Latif Bhittai, from Shah jo Risalo, as quoted with its English translation by Dunya News.</li>
+      <li><b>Scale</b> The Sindhi size is measured, not guessed: Naskh has no x-height, so the page measures the closed bowls of <span lang="sd" class="snd-i">ص ع ه</span> in Lateef and the x-height of Literata in your browser, and divides one by the other: <b data-out="scaleWord">1.66×</b>.</li>
+      <li><b>Fonts</b> Lateef by SIL International, named after Shah Abdul Latif and made for Sindhi; Literata by TypeTogether; JetBrains Mono. All under the SIL Open Font License.</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="foot"><span>Gaḍ · Mir Zuhair · 2026</span><span lang="sd" dir="rtl">گڏ <span class="tr-in" lang="en" dir="ltr">together</span></span></footer>
+
+<script src="gad.js?v=3"></script>
+</body>
+</html>

@@ -792,6 +792,96 @@ const PROJECTS = [
   },
 
   {
+    slug: "hisaab",
+    tone: "#f3dfcc",
+    title: "Hisaab",
+    subtitle: "The true cost of a lawn suit, from the cotton field to the shop",
+    date: "Self-Initiated · Information Design · 2026",
+    tags: "Investigation · Data visualisation · Editorial · Interaction",
+    cover: "img/hs-cover.jpg",
+    covers: [{ src: "img/hs-cover.jpg" }, { src: "img/hs-statement.jpg" }, { src: "img/hs-field.jpg" }],
+    sections: {
+      "The Project":
+        "Hisaab (حساب, the account) is an investigative piece about one printed lawn suit. It walks the suit back from the shop to the cotton field in Sindh and asks how much of its price reaches the women who picked the cotton. It is designed as a financial statement crossed with a lawn catalogue: salmon newsprint, a ledger, Urdu set beside the English, and a clean madder buti print, keri and phool in a half-drop, like the lawn it is about.",
+      "The Process":
+        "I built the account from published numbers only: a brand's own fabric lengths, the weekly cotton rates from Business Recorder, the piece rate Sindh's women pickers won through their union, the minimum and living wage. Where nothing was published I made an estimate, marked it, and showed the working. A small model turns metres of cloth into kilograms of raw cotton, minutes of picking and rupees.",
+      "The Problem":
+        "Everyone has an opinion about what fashion costs, but almost nobody can show where the money goes. The women at the start of the chain are paid by the sack, and everything between the gin and the shop is private.",
+      "The Goal":
+        "To make the missing numbers visible as missing. The picker's share is drawn to scale, and so is everything that has no public record. Readers can change the suit and the picking rate and watch the account move."
+    },
+    blocks: [
+      { type: "linkout", text: "Hisaab is live. Change the suit and the picking rate, or print it as a broadsheet:", items: [{ label: "Open Hisaab", href: "lawn/index.html" }] },
+      { type: "full", src: "img/hs-lead.jpg", cap: "The lead: a printed suit at Rs 3,990, and the Rs 80 paid for picking its cotton. The swatch is the price; the red square is the picker's share, to scale." },
+      { type: "text", h: "Measure first", p: "The account starts with a tape measure. A large brand lists its printed three-piece as a 2.25 m dupatta, a 1.75 m shirt and a 1.75 m dyed trouser: 5.75 m of light lawn, about 0.72 kg of cloth." },
+      { type: "full", src: "img/hs-measure.jpg", cap: "01 Measure: the three pieces drawn to scale, with their weight worked out underneath." },
+      { type: "step", n: "02", h: "Walk it back to the field", p: "Each step back loses weight. 0.72 kg of cloth needs about 0.88 kg of fibre, and in Pakistan only a third of raw cotton is fibre. One suit needs 2.68 kg of phutti: 6.7% of a picker's 40 kg sack, and about 37 minutes of her day." },
+      { type: "full", src: "img/hs-field.jpg", cap: "Shop, mill, gin, sack, field. The clock shows the minutes of picking in one suit." },
+      { type: "step", n: "03", h: "The statement", p: "A thousand squares, each a tenth of a percent of the price. The picker is red, the fibre's value at the gin is ochre, sales tax is grey, and everything with no public record is hatched. The hatching is the finding: three quarters of the price or more cannot be traced." },
+      { type: "full", src: "img/hs-statement.jpg", cap: "A printed suit at the rate the pickers won: 20 squares of a thousand." },
+      { type: "full", src: "img/hs-statement-luxury.jpg", cap: "A luxury suit at the rate they refused: 3 squares of a thousand, and 82.7% unpublished." },
+      { type: "step", n: "04", h: "Days of work", p: "The same price measured in working days: for a picker at the union rate, for a worker on Sindh's minimum wage, and for a garment worker on a living wage." },
+      { type: "pair", items: [
+        { src: "img/hs-days.jpg", cap: "A printed suit: 3.8 days of picking." },
+        { src: "img/hs-days-luxury.jpg", cap: "A luxury suit at Rs 800 a sack: 28.6 days of picking." }
+      ]},
+      { type: "step", n: "05", h: "The hands in between", p: "Nine stages from the boll to the cupboard. Only four have any number on the record, and none of them is on the label." },
+      { type: "full", src: "img/hs-hands.jpg", cap: "Published lines in madder, unpublished lines hatched." },
+      { type: "text", h: "Show the working", p: "The piece ends on its method: every calculation, every source and every estimate, so anyone can check it or change it. Change an estimate and the picker's share moves by a few rupees. The shape of the answer doesn't change." },
+      { type: "full", src: "img/hs-method.jpg", cap: "06 Method and sources." },
+      { type: "pair", items: [
+        { src: "img/hs-mobile.jpg", cap: "On a phone: the masthead and the lead.", contain: true },
+        { src: "img/hs-mobile-statement.jpg", cap: "On a phone: the statement controls.", contain: true }
+      ]},
+      { type: "linkout", text: "Read the whole account:", items: [{ label: "Open Hisaab", href: "lawn/index.html" }] }
+    ]
+  },
+
+  {
+    slug: "gad",
+    tone: "#f1eee6",
+    title: "Gaḍ",
+    subtitle: "A bilingual type system for Sindhi and English",
+    date: "Self-Initiated · Typography & Type Systems · 2026",
+    tags: "Bilingual typography · Arabic script · Grid systems · Specimen",
+    cover: "img/gd-cover.jpg",
+    covers: [{ src: "img/gd-cover.jpg" }, { src: "img/gd-sheet.jpg" }, { src: "img/gd-alphabet.jpg" }],
+    sections: {
+      "The Project":
+        "Gaḍ (گڏ, together) is a small type system for setting Sindhi and English side by side as equals. It pairs Lateef, a typeface made for Sindhi and named after Shah Abdul Latif, with Literata, and gives them one baseline grid, one hierarchy and a mirrored layout that meets at a spine. It ends in a bilingual broadsheet specimen.",
+      "The Process":
+        "I started by measuring rather than guessing. Naskh has no x-height, so the page measures the closed bowls of ص ع ه in the browser and matches them to the English x-height: Sindhi is set 1.66 times the English size. From there I built a 6 px grid, gave Sindhi its own leading for its stacked dots, and found the rhythm where nine English lines and five Sindhi lines meet on one baseline every 270 px.",
+      "The Problem":
+        "On signs, school books and newspapers in Sindh, Sindhi and English share space but rarely share it well. Set at the same size Sindhi looks a step smaller; at English line spacing its dots collide; in a left-to-right box its sentences start at the wrong edge.",
+      "The Goal":
+        "A set of rules anyone can reuse, shown working: an interactive specimen of all 52 letters, a hierarchy table for both scripts, and a front page where a reader can cross from one column to the other without the page changing under them. Every Sindhi word on the page carries its English meaning."
+    },
+    blocks: [
+      { type: "linkout", text: "Gaḍ is live. Change the word pair and the Sindhi size, explore the alphabet, or print the broadsheet:", items: [{ label: "Open Gaḍ", href: "gad/index.html" }] },
+      { type: "full", src: "img/gd-metrics.jpg", cap: "Together and گڏ on one shared baseline. At 1.66 times the size, the English x-height and the Sindhi bowl fall on the same line." },
+      { type: "full", src: "img/gd-metrics-sindh.jpg", cap: "Boat, ٻيڙي: the implosive ٻ and the retroflex ڙ, dots above and below, all held inside the shared lines." },
+      { type: "step", n: "02", h: "Three problems", p: "Set with the same settings, the two scripts break in three predictable ways: size, dots and direction. Each one can be switched between the default and the tuned setting." },
+      { type: "full", src: "img/gd-problems-default.jpg", cap: "Default: Sindhi too small, dots touching, the sentence starting at the wrong edge." },
+      { type: "full", src: "img/gd-problems-tuned.jpg", cap: "Tuned: matched size, Sindhi leading on the grid, right-to-left paragraph with Sindhi digits." },
+      { type: "step", n: "03", h: "Fifty-two letters", p: "The Sindhi alphabet in its standard order, with the letters Urdu and Arabic do not have picked out in red. Each letter shows its joined forms and its sound." },
+      { type: "pair", items: [
+        { src: "img/gd-alphabet.jpg", cap: "ڀ, bʱ: one of the letters Sindhi adds." },
+        { src: "img/gd-alphabet-sindhi.jpg", cap: "Filtered to the Sindhi letters, with ڳ, the implosive g." }
+      ]},
+      { type: "step", n: "04", h: "The system", p: "Four rules and one table: one 6 px unit, a matched body size, a nine-to-five line rhythm and a mirrored spine." },
+      { type: "full", src: "img/gd-system.jpg", cap: "The rules and the hierarchy for both scripts." },
+      { type: "step", n: "05", h: "The broadsheet", p: "The system at work on a bilingual front page. The English column explains the rules; the Sindhi column carries a verse of Shah Abdul Latif, words of cloth and the cities of Sindh, each glossed in English." },
+      { type: "full", src: "img/gd-sheet.jpg", cap: "The front page, Literata and Lateef on a 6 px grid." },
+      { type: "full", src: "img/gd-sheet-grid.jpg", cap: "With the grid on: the red lines every 270 px, where nine English lines and five Sindhi lines come round together." },
+      { type: "pair", items: [
+        { src: "img/gd-mobile.jpg", cap: "On a phone: the title and the measured stage.", contain: true },
+        { src: "img/gd-mobile-sheet.jpg", cap: "On a phone the two columns stack at the spine.", contain: true }
+      ]},
+      { type: "linkout", text: "See the whole system:", items: [{ label: "Open Gaḍ", href: "gad/index.html" }] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",

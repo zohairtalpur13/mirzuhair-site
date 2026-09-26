@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hisaab — Mir Zuhair</title>
+<meta name="description" content="Hisaab: the true cost of a lawn suit, from the cotton field in Sindh to the shop. An investigative data piece by Mir Zuhair.">
+<meta name="theme-color" content="#f3dfcc">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lawn.css?v=4">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../#/work/hisaab">← Mir Zuhair</a>
+  <nav class="jump" aria-label="Sections">
+    <a href="#measure">Measure</a>
+    <a href="#field">Field</a>
+    <a href="#statement">Statement</a>
+    <a href="#days">Days</a>
+    <a href="#method">Method</a>
+  </nav>
+</header>
+
+<main>
+  <!-- MASTHEAD -->
+  <section class="mast" id="top">
+    <div class="mast-rule">
+      <span>Issue 01</span>
+      <span>Hyderabad, Sindh</span>
+      <span>September 2026</span>
+    </div>
+    <h1 class="title">Hisaab <span class="ur" lang="ur" dir="rtl">حساب</span></h1>
+    <p class="gloss">Hisaab, <span class="ur-i" lang="ur" dir="rtl">حساب</span>: the account, the reckoning</p>
+    <p class="mast-sub">An account of one lawn suit, from the cotton field to the shop</p>
+    <p class="mast-ur"><span lang="ur" dir="rtl">ایک لان سوٹ کا حساب، کپاس کے کھیت سے دکان تک</span></p>
+    <div class="mast-rule thin"><span>Investigation</span><span>Information design</span><span>Every figure sourced or shown as an estimate</span></div>
+
+    <blockquote class="epigraph">
+      <p class="ur" lang="ur" dir="rtl">جس کھیت سے دہقاں کو میسر نہیں روزی<br>اس کھیت کے ہر خوشۂ گندم کو جلا دو</p>
+      <footer>The field that gives its farmer no living: burn every ear of wheat it grows. <cite>Allama Iqbal, Farman-e-Khuda, Bal-e-Jibril, 1935</cite></footer>
+    </blockquote>
+
+    <div class="lead">
+      <div class="lead-fig">
+        <p class="lead-price"><span class="lbl">The suit</span><b data-out="price">Rs 3,990</b></p>
+        <p class="lead-pick"><span class="lbl">The hands that picked its cotton</span><b data-out="picker">Rs 80</b></p>
+      </div>
+      <figure class="swatch-lead">
+        <div class="swatch-box" role="img" aria-label="A printed lawn swatch. A small red square in its corner shows the picker's share of the price, to scale.">
+          <svg class="swatch" data-swatch="lead"></svg>
+          <i class="share-box" data-share-box></i>
+          <span class="swatch-tag"><span class="ur" lang="ur" dir="rtl">لان</span> Lawn · Summer 2026</span>
+        </div>
+        <figcaption>The swatch is the price. The red square in the corner is the picker's share, to scale: <b data-out="pickerPct">2.0%</b>.</figcaption>
+      </figure>
+    </div>
+    <p class="standfirst">Every summer, Pakistan buys lawn by the season: printed, embroidered, unstitched, three pieces in a box. I grew up in Sindh, where much of that cotton is grown and picked by hand, mostly by women. I wanted to know how much of a suit's price reaches the field. Some of the answer is public. Most of it is not, and that is part of the answer.</p>
+  </section>
+
+  <!-- 01 MEASURE -->
+  <section class="sec" id="measure">
+    <header class="sec-head"><span>01</span><h2>Measure the suit</h2><span class="ur-h"><span lang="ur" dir="rtl">سوٹ کی ناپ</span><small>Suit ki naap · the suit's measure</small></span><p>A printed three-piece, as a large brand lists it: dupatta, shirt and trouser, unstitched.</p></header>
+    <div class="tape" role="img" aria-label="The three pieces of fabric drawn to scale: dupatta 2.25 metres, shirt 1.75 metres, trouser 1.75 metres.">
+      <div class="tape-row" style="--m:2.25"><svg class="swatch" data-swatch="a"></svg><span>Dupatta <span class="ur-s" lang="ur" dir="rtl">دوپٹہ</span><b>2.25 m</b></span></div>
+      <div class="tape-row" style="--m:1.75"><svg class="swatch" data-swatch="b"></svg><span>Shirt, qameez <span class="ur-s" lang="ur" dir="rtl">قمیض</span><b>1.75 m</b></span></div>
+      <div class="tape-row plain" style="--m:1.75"><i></i><span>Dyed trouser, shalwar <span class="ur-s" lang="ur" dir="rtl">شلوار</span><b>1.75 m</b></span></div>
+      <div class="tape-scale" aria-hidden="true"></div>
+    </div>
+    <div class="facts">
+      <p><b>5.75 m</b> of cloth in total <sup>[1]</sup></p>
+      <p><b>≈ 90 g/m²</b> a light lawn, 60 to 100 g/m² <sup>[2]</sup></p>
+      <p><b>≈ 1.4 m</b> wide, my estimate <sup>[E1]</sup></p>
+      <p><b data-out="clothKg">0.72 kg</b> of finished cloth</p>
+    </div>
+  </section>
+
+  <!-- 02 FIELD -->
+  <section class="sec" id="field">
+    <header class="sec-head"><span>02</span><h2>Walk it back to the field</h2><span class="ur-h"><span lang="ur" dir="rtl">واپس کھیت تک</span><small>Wapas khet tak · back to the field</small></span><p>Cloth is made from yarn, yarn from fibre, fibre from the raw cotton a woman pulls from the boll. Each step loses weight, so the field has to give more than the shop receives.</p></header>
+    <ol class="chain">
+      <li class="stage reveal">
+        <p class="stage-n">Shop</p>
+        <p class="stage-v" data-out="clothKg">0.72 kg</p>
+        <p class="stage-t">of printed lawn, folded into a box.</p>
+      </li>
+      <li class="stage reveal">
+        <p class="stage-n">Mill</p>
+        <p class="stage-v" data-out="fibreKg">0.88 kg</p>
+        <p class="stage-t">of cotton fibre, before about 18% is lost to spinning, weaving and finishing <sup>[E2]</sup>.</p>
+      </li>
+      <li class="stage reveal">
+        <p class="stage-n">Gin</p>
+        <p class="stage-v" data-out="phuttiKg">2.68 kg</p>
+        <p class="stage-t">of <em>phutti</em> (<span class="ur-i" lang="ur" dir="rtl">پھٹی</span>), raw seed cotton. In Pakistan only about a third of it is fibre; the rest is seed and trash <sup>[3]</sup>.</p>
+      </li>
+      <li class="stage reveal">
+        <p class="stage-n">Sack</p>
+        <div class="sack" role="img" aria-label="A 40 kilogram sack, filled to the share one suit needs."><i data-sack></i></div>
+        <p class="stage-t">A maund (<span class="ur-i" lang="ur" dir="rtl">من</span>) is 40 kg, the sack pickers are paid by. One suit fills <b data-out="sackPct">6.7%</b> of it.</p>
+      </li>
+      <li class="stage reveal">
+        <p class="stage-n">Field</p>
+        <svg class="clock" viewBox="0 0 120 120" role="img" aria-label="A clock face showing the minutes of picking one suit needs."><circle cx="60" cy="60" r="54"/><path data-clock d=""/></svg>
+        <p class="stage-t">About <b data-out="minutes">37 minutes</b> of one woman's picking, out of an eight-hour day <sup>[4]</sup>.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 03 STATEMENT -->
+  <section class="sec" id="statement">
+    <header class="sec-head"><span>03</span><h2>The statement</h2><span class="ur-h"><span lang="ur" dir="rtl">کھاتہ</span><small>Khaata · the ledger</small></span><p>Choose a suit and a picking rate. Each of the thousand squares is a tenth of a percent of the price.</p></header>
+    <div class="controls">
+      <div class="ctl" role="group" aria-label="Suit">
+        <p class="ctl-l">The suit <sup>[5]</sup></p>
+        <div class="btns">
+          <button type="button" data-price="3990" aria-pressed="true">Printed <b>Rs 3,990</b></button>
+          <button type="button" data-price="7250" aria-pressed="false">Embroidered <b>Rs 7,250</b></button>
+          <button type="button" data-price="19990" aria-pressed="false">Luxury <b>Rs 19,990</b></button>
+        </div>
+        <label class="range"><span>Or any price</span><input type="range" min="2000" max="25000" step="10" value="3990" data-range aria-label="Price in rupees"><output data-out="price">Rs 3,990</output></label>
+      </div>
+      <div class="ctl" role="group" aria-label="Picking rate">
+        <p class="ctl-l">Paid per 40 kg picked <sup>[6]</sup></p>
+        <div class="btns">
+          <button type="button" data-rate="800" aria-pressed="false">Offered <b>Rs 800</b></button>
+          <button type="button" data-rate="1200" aria-pressed="true">Won by a union <b>Rs 1,200</b></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="statement">
+      <figure>
+        <svg class="waffle" data-waffle viewBox="0 0 400 250" role="img" aria-label="A grid of one thousand squares showing how the price divides."></svg>
+        <figcaption class="waffle-cap">One square is <b data-out="perCell">Rs 3.99</b>. The picker's squares are the red ones in the top corner: <b data-out="pickCells">20</b> of a thousand.</figcaption>
+      </figure>
+      <table class="ledger">
+        <caption>Account of one suit</caption>
+        <thead><tr><th scope="col">Line</th><th scope="col">Rs</th><th scope="col">Share</th></tr></thead>
+        <tbody>
+          <tr class="k-pick"><th scope="row"><i></i>The picker, for about <span data-out="phuttiKgShort">2.7 kg</span> of raw cotton</th><td data-out="pickerN">80</td><td data-out="pickerPct">2.0%</td></tr>
+          <tr class="k-gin"><th scope="row"><i></i>The fibre's value at the gin, less the picking: farmer, ginner, trader</th><td data-out="gin">326</td><td data-out="ginPct">8.2%</td></tr>
+          <tr class="k-tax"><th scope="row"><i></i>Sales tax, if the price includes the standard 18% <sup>[7]</sup></th><td data-out="tax">609</td><td data-out="taxPct">15.3%</td></tr>
+          <tr class="k-unk"><th scope="row"><i></i>Spinning, weaving, printing, design, rent, retail, profit: <em>not published</em></th><td data-out="unk">2,975</td><td data-out="unkPct">74.6%</td></tr>
+        </tbody>
+        <tfoot><tr><th scope="row">Price</th><td data-out="priceShort">3,990</td><td>100%</td></tr></tfoot>
+      </table>
+    </div>
+    <p class="pull reveal"><span data-out="unkPct">74.6%</span> of the price has no public record. The only line written down anywhere is the smallest one, and it was written down because women in Shaheed Benazirabad organised and refused Rs 800.</p>
+  </section>
+
+  <!-- 04 DAYS -->
+  <section class="sec" id="days">
+    <header class="sec-head"><span>04</span><h2>Days of work</h2><span class="ur-h"><span lang="ur" dir="rtl">مزدوری کے دن</span><small>Mazdoori ke din · days of wages</small></span><p>How long each person would work to buy the suit they helped make.</p></header>
+    <div class="days">
+      <div class="day-row">
+        <p class="day-l">A cotton picker<small>30 to 40 kg a day at the rate above <sup>[4][6]</sup></small></p>
+        <div class="day-bar" data-days="picker"></div>
+        <p class="day-v"><b data-out="dPicker">3.8</b> days</p>
+      </div>
+      <div class="day-row">
+        <p class="day-l">A worker on Sindh's minimum wage<small>Rs 1,538 a day <sup>[8]</sup></small></p>
+        <div class="day-bar" data-days="min"></div>
+        <p class="day-v"><b data-out="dMin">2.6</b> days</p>
+      </div>
+      <div class="day-row">
+        <p class="day-l">A garment worker on a living wage<small>Rs 47,627 a month, 26 days <sup>[9]</sup></small></p>
+        <div class="day-bar" data-days="living"></div>
+        <p class="day-v"><b data-out="dLiving">2.2</b> days</p>
+      </div>
+    </div>
+    <p class="note">Picking is seasonal. For most of the year the picker earns nothing from cotton at all, so these days come out of a few weeks' income.</p>
+  </section>
+
+  <!-- 05 HANDS -->
+  <section class="sec" id="hands">
+    <header class="sec-head"><span>05</span><h2>The hands in between</h2><span class="ur-h"><span lang="ur" dir="rtl">بیچ کے ہاتھ</span><small>Beech ke haath · the hands in between</small></span><p>Nine stages between the boll and your cupboard, and what is on the record for each.</p></header>
+    <ol class="hands">
+      <li class="pub"><b>Picker</b><span>Piece rate, reported <sup>[6]</sup></span></li>
+      <li class="pub"><b>Farmer</b><span>Raw cotton price, reported weekly <sup>[3]</sup></span></li>
+      <li class="pub"><b>Ginner</b><span>Fibre price, reported weekly <sup>[3]</sup></span></li>
+      <li><b>Spinner</b><span>Not published per suit</span></li>
+      <li><b>Weaver</b><span>Not published per suit</span></li>
+      <li><b>Printer and dyer</b><span>Not published per suit</span></li>
+      <li><b>Designer and brand</b><span>Not published per suit</span></li>
+      <li><b>Shop</b><span>Not published per suit</span></li>
+      <li class="pub"><b>State</b><span>Tax rate, published <sup>[7]</sup></span></li>
+    </ol>
+    <p class="note">If you work anywhere in this chain and can put a number on your line, I would like to add it.</p>
+  </section>
+
+  <!-- 06 METHOD -->
+  <section class="sec method" id="method">
+    <header class="sec-head"><span>06</span><h2>Method and sources</h2><span class="ur-h"><span lang="ur" dir="rtl">طریقہ اور حوالے</span><small>Tareeqa aur hawale · method and references</small></span><p>How each number above was worked out, so you can check it or change it.</p></header>
+    <div class="method-grid">
+      <ol class="calc">
+        <li><span>Cloth</span> 5.75 m × 1.4 m × 90 g/m² = <b data-out="clothKg">0.72 kg</b></li>
+        <li><span>Fibre</span> cloth ÷ (1 − 0.18 loss) = <b data-out="fibreKg">0.88 kg</b></li>
+        <li><span>Raw cotton</span> fibre ÷ 0.33 lint yield = <b data-out="phuttiKg">2.68 kg</b></li>
+        <li><span>Picker</span> raw cotton × (rate ÷ 40 kg) = <b data-out="picker">Rs 80</b></li>
+        <li><span>Fibre value</span> fibre × (Rs 18,400 ÷ 40 kg) = <b data-out="lintRs">Rs 406</b></li>
+        <li><span>Tax</span> price × 18 ÷ 118</li>
+        <li><span>Minutes</span> raw cotton ÷ 35 kg a day × 480 minutes</li>
+      </ol>
+      <ol class="sources">
+        <li>[1] Gul Ahmed, Lawn 2025, 3-piece printed lawn suit CLP-52230: dupatta 2.25 m, shirt 1.75 m, dyed trouser 1.75 m, listed at Rs 3,890.</li>
+        <li>[2] Lawn and voile fabrics typically weigh 60 to 100 g/m²; fabric weight guides, 2025.</li>
+        <li>[3] Business Recorder, Weekly Cotton Review, 21 Sep 2026: KCA spot rate Rs 18,400 per maund; phutti in Sindh Rs 8,000 to 8,600 per 40 kg. Lint is about 33% of raw cotton in Pakistan (Business Recorder, “More seed cotton or more lint?”).</li>
+        <li>[4] D+C Development and Cooperation: women pick 30 to 40 kg of phutti to earn a day's wage. IJWHR: pickers work about eight hours a day.</li>
+        <li>[5] Regular 2026 prices for unstitched three-piece lawn suits at a national retailer: printed Rs 3,990, embroidered Rs 7,250, luxury embroidered Rs 19,990.</li>
+        <li>[6] Arab News, 2024: women cotton pickers in Shaheed Benazirabad, Sindh refused Rs 800 per 40 kg and won Rs 1,200 through their union.</li>
+        <li>[7] Pakistan federal budget 2024–25: Tier-1 textile and leather retailers charge the standard 18% sales tax.</li>
+        <li>[8] Government of Sindh, minimum wage notification 2025–26: Rs 40,000 a month, Rs 1,538 a day for unskilled workers.</li>
+        <li>[9] Clean Clothes Campaign: estimated living wage in Pakistan Rs 47,627 (US$286) a month; surveyed garment workers earned 74% less.</li>
+        <li>[E1] Estimate. A shirt length of 1.75 m only makes a kameez if the cloth is wide, so I assumed 1.4 m.</li>
+        <li>[E2] Estimate. Combined losses in spinning, weaving and finishing of roughly 18%.</li>
+      </ol>
+    </div>
+    <p class="note">This is a model, not an audit. Estimates are marked E. Change one and the picker's share moves by a few rupees; the shape of the answer does not.</p>
+    <div class="end">
+      <button type="button" class="solid" data-print>Print the broadsheet</button>
+      <a class="ghost" href="../#/work/hisaab">Back to the case study</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><span>Hisaab · Mir Zuhair · 2026</span><span lang="ur" dir="rtl" class="ur">حساب · میر زہیر · ۲۰۲۶</span></footer>
+
+<script src="lawn.js?v=3"></script>
+</body>
+</html>
