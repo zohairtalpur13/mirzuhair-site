@@ -1,0 +1,40 @@
+/* “RAW” — black and red only, on top of scrap/scrap.css. */
+.raw {
+  --paper: #0f0e0d;
+  --ink: #efe9df;
+  --ink-soft: #a39c90;
+  --mute: #6f6960;
+  --red: #c8261b;
+  --gold: #c8261b;
+  --night: #070606;
+  background: var(--paper);
+  color: var(--ink);
+}
+.raw .stage { background: radial-gradient(ellipse at 30% 30%, #1c1311 0%, var(--night) 65%); }
+.raw .card { background: #121110; color: var(--ink); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7); }
+.raw .card::before { mix-blend-mode: screen; opacity: 0.08; }
+.raw .card-top, .raw .card-foot { color: var(--ink-soft); }
+.raw .mast { color: var(--red); font: 900 30cqi/0.82 var(--sans); letter-spacing: -0.06em; margin: 5cqi 0 0 -0.05em; }
+.raw .card-label { margin: 3cqi 0 0; font: 800 2.9cqi/1.35 var(--sans); letter-spacing: 0.02em; text-transform: uppercase; }
+.raw .controls button.on, .raw .controls .play { background: var(--red); border-color: var(--red); color: #fff; }
+.raw .controls button.on b { color: #fff; }
+.raw .facts { border-top-color: #2a2725; }
+.raw .sec-h { border-color: #2a2725; }
+.raw .reader { background: #070606; }
+
+.rooms { padding-top: var(--section); }
+.room-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.room-grid .tall { grid-row: span 2; }
+.room-grid img { width: 100%; height: 100%; object-fit: cover; }
+.room-grid figure { position: relative; overflow: hidden; }
+.room-grid figcaption {
+  position: absolute; left: 12px; bottom: 12px;
+  font: 800 11px/1.3 var(--sans); letter-spacing: 0.04em; text-transform: uppercase;
+  color: #fff; background: var(--red); padding: 6px 8px;
+}
+.raw .map-link { background: var(--red); color: #fff; margin-right: 8px; }
+.raw .map-link:hover { background: #fff; color: #000; }
+
+@media (max-width: 760px) {
+  .room-grid { grid-template-columns: 1fr 1fr; }
+}

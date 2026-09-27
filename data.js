@@ -980,19 +980,22 @@ const PROJECTS = [
       { type: "step", n: "03", h: "Press by press", p: "The reader presses the block onto the cloth. Every press lands a little differently, lighter or slightly off, the way a hand would print it." },
       { type: "full", src: "img/cp-press.jpg", cap: "III · The press, finished by the printer." },
       { type: "step", n: "04", h: "Madder, then indigo", p: "Scrolling dyes the cloth: madder into the heart of every print, then indigo around it. The printed lines hold." },
-      { type: "full", src: "img/cp-dye.jpg", cap: "IV · The dye, halfway: madder in, indigo on its way." },
+      { type: "pair", items: [
+        { src: "img/cp-dye.jpg", cap: "IV · The dye for the lantern: madder in, indigo on its way." },
+        { src: "img/cp-dye-doorway.jpg", cap: "The same chapter for the doorway: turmeric, then madder." }
+      ]},
       { type: "pair", items: [
         { src: "img/cp-water.jpg", cap: "V · Washed: the cloth sways in the water." },
         { src: "img/cp-sun.jpg", cap: "VI · Dried in the sun, moving in the wind." }
       ]},
-      { type: "step", n: "05", h: "Four blocks, four cloths", p: "The same story prints differently with every motif from the house." },
+      { type: "step", n: "05", h: "Four blocks, four cloths", p: "Every block has its own print shape and its own two natural dyes, so the same story ends in a different cloth: madder ovals on indigo for the lantern, turmeric arches on madder for the doorway, indigo circles on iron black for the deer, madder diamonds on iron black for the ceiling." },
       { type: "trio", items: [
-        { src: "img/cp-deer.jpg", cap: "The deer crest." },
-        { src: "img/cp-doorway.jpg", cap: "The doorway." },
-        { src: "img/cp-ceiling.jpg", cap: "The painted ceiling." }
+        { src: "img/cp-doorway.jpg", cap: "The doorway: turmeric arches on madder." },
+        { src: "img/cp-deer.jpg", cap: "The deer crest: indigo circles on iron black." },
+        { src: "img/cp-ceiling.jpg", cap: "The ceiling: madder diamonds on iron black." }
       ]},
       { type: "pair", items: [
-        { src: "img/cp-cloth.jpg", cap: "The cloth a reader takes home: 2400 × 3000 px, with a printed border.", contain: true },
+        { src: "img/cp-cloth.jpg", cap: "The cloth a reader takes home, here the ceiling: 2400 × 3000 px, with a printed border.", contain: true },
         { src: "img/cp-mobile.jpg", cap: "On a phone.", contain: true }
       ]},
       { type: "linkout", text: "Print your own cloth:", items: [{ label: "Open Chhaap", href: "chhaap/index.html" }] }
@@ -1042,6 +1045,37 @@ const PROJECTS = [
     ]
   },
 
+  {
+    slug: "raw",
+    tone: "#1a1716",
+    title: "“RAW”",
+    subtitle: "A wabi-sabi magazine in black and red",
+    date: "Self-Initiated · Art Direction · 3D · 2026",
+    tags: "Magazine covers · 3D interiors · Label typography · Web",
+    cover: "raw/img/cover-01.jpg",
+    covers: [{ src: "raw/img/cover-01.jpg" }, { src: "raw/img/cover-02.jpg" }, { src: "raw/img/cover-04.jpg" }],
+    sections: {
+      "The Project":
+        "“RAW” is a five-issue magazine about objects that show their age: a hand-formed vessel, a bowl mended in red lacquer, a bench in an empty room, a red book and three rough stones. Two colours only, black and red.",
+      "The Process":
+        "Each object was modelled and lit in Blender inside a dark lime-plaster room with a single shaft of light. The covers set wabi-sabi quiet against Virgil Abloh’s loud label language: the name in quotation marks, materials printed like a factory tag, and © and ™ where nobody expects them.",
+      "The Problem":
+        "Wabi-sabi is usually shown in beige and linen and ends up looking like a catalogue. I wanted to keep its patience and imperfection but make it graphic and confident.",
+      "The Goal":
+        "A magazine that feels like a quiet room with one loud sign on the door."
+    },
+    blocks: [
+      { type: "linkout", text: "“RAW” is live. Watch the covers unfold and read the issues:", items: [{ label: "Open “RAW”", href: "raw/index.html" }] },
+      { type: "grid", cols: 3, items: [
+        { src: "raw/img/cover-01.jpg", cap: "“VESSEL”, black stone, red lacquer inside." },
+        { src: "raw/img/cover-02.jpg", cap: "“REPAIR”, raku mended in red." },
+        { src: "raw/img/cover-03.jpg", cap: "“BENCH”, one red cushion." },
+        { src: "raw/img/cover-04.jpg", cap: "“BOOK”, the most honest object." },
+        { src: "raw/img/cover-05.jpg", cap: "“STONE”, one of three is red." }
+      ]},
+      { type: "linkout", text: "Read the issues:", items: [{ label: "Open “RAW”", href: "raw/index.html#issues" }] }
+    ]
+  },
   {
     slug: "heritage-loop",
     tone: "#cfe1de",

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>“RAW” — Mir Zuhair</title>
+<meta name="description" content="“RAW”: a wabi-sabi magazine in black and red, set in Virgil Abloh's label language. Five issues about objects that show their age. By Mir Zuhair.">
+<meta name="theme-color" content="#0b0a09">
+<meta property="og:title" content="“RAW” — a magazine about things that show their age">
+<meta property="og:image" content="https://mirzuhair.com/raw/img/cover-01.jpg">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../scrap/scrap.css?v=3">
+<link rel="stylesheet" href="raw.css?v=1">
+</head>
+<body class="raw">
+<header class="bar">
+  <a class="home" href="../">&larr; Mir Zuhair</a>
+  <nav class="jump" aria-label="Sections">
+    <a href="#issues">Issues</a>
+    <a href="#rooms">The rooms</a>
+  </nav>
+</header>
+
+<main>
+  <section class="stage" id="stage" aria-label="RAW cover loop">
+    <div class="card" id="card">
+      <div class="card-top"><span>Issues 01&ndash;05</span><span>&copy;2026</span></div>
+      <h1 class="mast">&ldquo;RAW&rdquo;</h1>
+      <p class="card-label">&ldquo;MAGAZINE&rdquo;<br>BLACK LIME PLASTER<br>RED LACQUER<br>c/o MIR ZUHAIR&trade;</p>
+      <p class="card-serif">Things<br>that show<br><em>their age.</em></p>
+      <div class="card-foot"><span>Black &middot; Red &middot; Nothing else</span><span>Free</span></div>
+    </div>
+    <canvas id="gl" aria-hidden="true"></canvas>
+  </section>
+
+  <div class="controls">
+    <p class="now" id="now" aria-live="polite">Loading&hellip;</p>
+    <div class="ctl-row">
+      <button class="play" id="play" type="button" aria-pressed="false">Pause</button>
+      <div class="chips" id="chips" role="group" aria-label="Unfold an issue"></div>
+    </div>
+  </div>
+
+  <section class="intro">
+    <p class="kicker">Wabi-sabi &middot; Art direction &middot; 3D interiors &middot; Editorial &middot; Web</p>
+    <h2>&ldquo;Beautiful&rdquo; because it isn&rsquo;t finished.</h2>
+    <div class="intro-cols">
+      <p>Wabi-sabi is the Japanese idea that beauty lives in things that are rough, aged and incomplete: a bowl that wobbles, a crack mended where you can see it, a room with almost nothing in it. The quiet plaster rooms of minimalist architecture brought it into fashion&rsquo;s world.</p>
+      <p>&ldquo;RAW&rdquo; sets that quiet against Virgil Abloh&rsquo;s loud label language: the name in quotation marks, the materials printed like a factory tag, &copy; and &trade; where nobody expects them. Two colours only, black and red. Each issue is one object in a dark plaster room, lit by a single shaft of light.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Concept, art direction, 3D objects and interiors, editorial design, web</dd></div>
+      <div><dt>Palette</dt><dd>Black lime plaster &middot; raw stone &middot; red lacquer</dd></div>
+      <div><dt>Tools</dt><dd>Blender (Cycles), WebGL, Canvas</dd></div>
+    </dl>
+  </section>
+
+  <section class="reader" id="issues" aria-labelledby="issues-h">
+    <h2 id="issues-h" class="sec-h wrap"><b>01&ndash;05</b> The issues</h2>
+    <div class="reader-grid" id="reader">
+      <div class="reader-sticky"><canvas id="reader-gl" aria-hidden="true"></canvas></div>
+      <div class="reader-steps" id="reader-steps"></div>
+    </div>
+  </section>
+
+  <section class="rooms wrap" id="rooms" aria-labelledby="rooms-h">
+    <h2 id="rooms-h" class="sec-h"><b>+</b> The rooms</h2>
+    <div class="room-grid">
+      <figure class="tall"><img src="img/raw-01.jpg" alt="A hand-formed black stone vessel on a plaster plinth in a dark room" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;VESSEL&rdquo; &mdash; black stone, red lacquer inside</figcaption></figure>
+      <figure><img src="img/raw-02.jpg" alt="A black raku bowl mended with red lacquer seams" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;REPAIR&rdquo; &mdash; black raku, red seams</figcaption></figure>
+      <figure><img src="img/raw-03.jpg" alt="A black plaster bench with one red cushion in a shaft of light" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;BENCH&rdquo; &mdash; black plaster, red linen</figcaption></figure>
+      <figure><img src="img/raw-04.jpg" alt="A red cloth book on a black plaster block" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;BOOK&rdquo; &mdash; red bookcloth</figcaption></figure>
+      <figure class="tall"><img src="img/raw-05.jpg" alt="Three rough stone pots on a dark floor, one of them red" loading="lazy" width="1000" height="1250"><figcaption>&ldquo;STONE&rdquo; &mdash; one of three, red</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="map wrap">
+    <p class="note">&ldquo;RAW&rdquo; is an independent student project. The label language is an homage to Virgil Abloh; it is not affiliated with any designer or house.</p>
+    <a class="map-link" href="../scrap/">See SCRAP &rarr;</a> <a class="map-link" href="../talpur/">See TALPUR &rarr;</a>
+  </section>
+</main>
+
+<script src="raw.js?v=2"></script>
+<script src="../scrap/covers.js?v=8"></script>
+<script src="../scrap/crumple.js?v=1"></script>
+<script src="../scrap/scrap.js?v=4"></script>
+<script src="../scrap/reader.js?v=1"></script>
+</body>
+</html>
