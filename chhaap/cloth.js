@@ -4,12 +4,16 @@ window.ChhaapCloth = (() => {
 
   const MOTIFS = Object.freeze(["lantern", "doorway", "deer", "ceiling"]);
   const INK = "#1a1512";
-  // the three moments of colour: raw cotton, after madder, after indigo
-  const DYES = Object.freeze([
-    { ground: "#efe6d4", medal: "#efe6d4", dot: "#1a1512" },
-    { ground: "#efe6d4", medal: "#a3201d", dot: "#1a1512" },
-    { ground: "#1f2d5c", medal: "#9b1d1a", dot: "#efe6d4" }
-  ]);
+  const RAW = "#efe6d4";
+  // each block has its own print shape and its own two natural dyes:
+  // the first fills the heart of every print, the second the cloth around it
+  const STYLES = Object.freeze({
+    lantern: { shape: "oval", first: { name: "madder", color: "#a3201d" }, second: { name: "indigo", color: "#1f2d5c" }, note: "Madder is a red from a root; indigo, a blue from a leaf." },
+    doorway: { shape: "arch", first: { name: "turmeric", color: "#d69a1a" }, second: { name: "madder", color: "#7e1714" }, note: "Turmeric is a yellow from a root; madder, a red from a root." },
+    deer: { shape: "circle", first: { name: "indigo", color: "#2c4a8e" }, second: { name: "iron black", color: "#1b1917" }, note: "Indigo is a blue from a leaf; iron black comes from rusted iron." },
+    ceiling: { shape: "diamond", first: { name: "madder", color: "#b0271f" }, second: { name: "iron black", color: "#1b1917" }, note: "Madder is a red from a root; iron black comes from rusted iron." }
+  });
+  const styleOf = (motif) => STYLES[motif] || STYLES.lantern;
   const DOTS_PER_RING = 30;
   const TINT_CACHE_MAX = 40;
   const tintCache = new Map();
@@ -26,12 +30,19 @@ window.ChhaapCloth = (() => {
   const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
   const mix = (a, b, t) => { const x = hex(a); const y = hex(b); return `rgb(${x.map((v, i) => Math.round(v + (y[i] - v) * t)).join(",")})`; };
 
-  function colorsAt(dye) {
+  // the three moments of colour: raw cotton, after the first dye, after the second
+  function colorsAt(dye, motif) {
+    const st = styleOf(motif);
+    const stops = [
+      { ground: RAW, medal: RAW, dot: INK },
+      { ground: RAW, medal: st.first.color, dot: INK },
+      { ground: st.second.color, medal: st.first.color, dot: RAW }
+    ];
     const d = Math.max(0, Math.min(2, dye));
     const i = Math.min(1, Math.floor(d));
     const t = d - i;
-    const a = DYES[i];
-    const b = DYES[i + 1];
+    const a = stops[i];
+    const b = stops[i + 1];
     return { ground: mix(a.ground, b.ground, t), medal: mix(a.medal, b.medal, t), dot: mix(a.dot, b.dot, t), line: INK };
   }
 
@@ -70,15 +81,36 @@ window.ChhaapCloth = (() => {
     return { jx: (r(1) - .5) * tile * .024, jy: (r(2) - .5) * tile * .024, rot: (r(3) - .5) * .026, ink: .84 + r(4) * .16 };
   }
 
-  function drawPrint(ctx, slot, tile, mask, col, jit) {
+  function shapePath(ctx, shape, rx, ry) {
+    ctx.beginPath();
+    if (shape === "circle") ctx.arc(0, 0, Math.min(rx, ry), 0, Math.PI * 2);
+    else if (shape === "diamond") { ctx.moveTo(0, -ry * 1.05); ctx.lineTo(rx * 1.05, 0); ctx.lineTo(0, ry * 1.05); ctx.lineTo(-rx * 1.05, 0); ctx.closePath(); }
+    else if (shape === "arch") { ctx.moveTo(-rx, ry); ctx.lineTo(-rx, -ry * .1); ctx.bezierCurveTo(-rx, -ry * .75, -rx * .35, -ry, 0, -ry * 1.08); ctx.bezierCurveTo(rx * .35, -ry, rx, -ry * .75, rx, -ry * .1); ctx.lineTo(rx, ry); ctx.closePath(); }
+    else ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+  }
+
+  // points around the edge of the print shape, for the ring of resist dots
+  function edgePoint(shape, a, rx, ry) {
+    if (shape === "circle") { const r = Math.min(rx, ry); return [Math.cos(a) * r, Math.sin(a) * r]; }
+    if (shape === "diamond") { const c = Math.cos(a); const s2 = Math.sin(a); const k = 1.05 / (Math.abs(c) / rx + Math.abs(s2) / ry); return [c * k, s2 * k]; }
+    if (shape === "arch") {
+      const c = Math.cos(a);
+      const s2 = Math.sin(a);
+      if (s2 < 0) return [c * rx, s2 * ry * 1.05]; // the rounded top
+      const k = Math.min(rx / Math.max(Math.abs(c), 1e-6), ry / Math.max(s2, 1e-6)); // the straight sides and base
+      return [c * k, s2 * k];
+    }
+    return [Math.cos(a) * rx, Math.sin(a) * ry];
+  }
+
+  function drawPrint(ctx, slot, tile, mask, col, jit, shape = "oval") {
     const rx = tile * .43;
     const ry = tile * .47;
     ctx.save();
     ctx.translate(slot.x + jit.jx, slot.y + jit.jy);
     ctx.rotate(jit.rot);
     ctx.globalAlpha = jit.ink;
-    ctx.beginPath();
-    ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2);
+    shapePath(ctx, shape, rx, ry);
     ctx.fillStyle = col.medal;
     ctx.fill();
     ctx.lineWidth = Math.max(1, tile * .012);
@@ -88,7 +120,8 @@ window.ChhaapCloth = (() => {
     for (let k = 0; k < DOTS_PER_RING; k++) {
       const a = (k / DOTS_PER_RING) * Math.PI * 2;
       ctx.beginPath();
-      ctx.arc(Math.cos(a) * rx * 1.08, Math.sin(a) * ry * 1.08, Math.max(.8, tile * .011), 0, Math.PI * 2);
+      const [ex, ey] = edgePoint(shape, a, rx, ry);
+      ctx.arc(ex * 1.08, ey * 1.08, Math.max(.8, tile * .011), 0, Math.PI * 2);
       ctx.fill();
     }
     const box = tile * .64;
@@ -119,10 +152,11 @@ window.ChhaapCloth = (() => {
   }
 
   function drawCloth(ctx, W, H, o) {
-    const col = colorsAt(o.dye);
+    const col = colorsAt(o.dye, o.motif);
+    const shape = styleOf(o.motif).shape;
     ctx.fillStyle = col.ground;
     ctx.fillRect(0, 0, W, H);
-    o.slots.forEach((slot, idx) => { if (o.pressed.has(idx)) drawPrint(ctx, slot, o.tile, o.mask, col, jitterFor(idx, o.tile)); });
+    o.slots.forEach((slot, idx) => { if (o.pressed.has(idx)) drawPrint(ctx, slot, o.tile, o.mask, col, jitterFor(idx, o.tile), shape); });
     ctx.save();
     ctx.globalCompositeOperation = "multiply";
     ctx.globalAlpha = .16;
@@ -131,11 +165,11 @@ window.ChhaapCloth = (() => {
     ctx.restore();
   }
 
-  function drawBorders(ctx, W, H, band) {
+  function drawBorders(ctx, W, H, band, accent) {
     [0, H - band].forEach((y) => {
       ctx.fillStyle = INK;
       ctx.fillRect(0, y, W, band);
-      ctx.fillStyle = "#a3201d";
+      ctx.fillStyle = accent;
       ctx.fillRect(0, y + band * .18, W, band * .1);
       ctx.fillRect(0, y + band * .72, W, band * .1);
       ctx.fillStyle = "#efe6d4";
@@ -202,7 +236,7 @@ window.ChhaapCloth = (() => {
   }
 
   // one lone print on a square of cloth, for the prologue
-  function drawSingle(ctx, W, H, mask, cx) {
+  function drawSingle(ctx, W, H, mask, cx, motif) {
     ctx.fillStyle = "#0d1120";
     ctx.fillRect(0, 0, W, H);
     const S = Math.min(W, H) * .5;
@@ -218,10 +252,10 @@ window.ChhaapCloth = (() => {
     ctx.fillStyle = "#efe6d4";
     ctx.fillRect(cx - S / 2, H / 2 - S / 2, S, S);
     ctx.restore();
-    drawPrint(ctx, { x: cx, y: H / 2 }, S * .86, mask, colorsAt(1), { jx: 0, jy: 0, rot: -.01, ink: .96 });
+    drawPrint(ctx, { x: cx, y: H / 2 }, S * .86, mask, colorsAt(1, motif), { jx: 0, jy: 0, rot: -.01, ink: .96 }, styleOf(motif).shape);
   }
 
-  function exportCloth(mask) {
+  function exportCloth(mask, motif) {
     const W = 2400;
     const H = 3000;
     const band = 150;
@@ -233,11 +267,11 @@ window.ChhaapCloth = (() => {
     const slots = layout(W, H - band * 2, tile);
     ctx.save();
     ctx.translate(0, band);
-    drawCloth(ctx, W, H - band * 2, { slots, tile, mask, dye: 2, pressed: new Set(slots.map((_, i) => i)) });
+    drawCloth(ctx, W, H - band * 2, { slots, tile, mask, motif, dye: 2, pressed: new Set(slots.map((_, i) => i)) });
     ctx.restore();
-    drawBorders(ctx, W, H, band);
+    drawBorders(ctx, W, H, band, styleOf(motif).first.color);
     return c;
   }
 
-  return Object.freeze({ MOTIFS, loadMasks, layout, colorsAt, drawCloth, drawBlock, drawSingle, exportCloth });
+  return Object.freeze({ MOTIFS, styleOf, loadMasks, layout, colorsAt, drawCloth, drawBlock, drawSingle, exportCloth });
 })();

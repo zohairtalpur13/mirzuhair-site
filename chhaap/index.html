@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="chhaap.css?v=2">
+<link rel="stylesheet" href="chhaap.css?v=4">
 </head>
 <body>
 <header class="bar">
@@ -91,10 +91,11 @@
   <section class="ch tall" id="dye" data-ch="dye">
     <div class="card">
       <p class="num">IV · The dye</p>
-      <h2>Madder, then indigo</h2>
-      <p>The printed lines hold. Then the colour comes: first <em class="madder">madder</em>, a red from a root, into the heart of every print.</p>
-      <p>Then <em class="indigo">indigo</em>, a blue from a leaf, into everything around it. Keep scrolling to dye the cloth.</p>
-      <div class="dye-meter" aria-hidden="true"><i data-dye-meter></i><span>madder</span><span>indigo</span></div>
+      <h2><span data-dye="first" data-cap="1">Madder</span>, then <span data-dye="second">indigo</span></h2>
+      <p>The printed lines hold. Then the colour comes: first <em class="dye-a" data-dye="first">madder</em>, into the heart of every print.</p>
+      <p>Then <em class="dye-b" data-dye="second">indigo</em>, into everything around it. Keep scrolling to dye the cloth.</p>
+      <p class="fine" data-dye="note">Madder is a red from a root; indigo, a blue from a leaf.</p>
+      <div class="dye-meter" aria-hidden="true"><i data-dye-meter></i><span data-dye="first">madder</span><span data-dye="second">indigo</span></div>
     </div>
   </section>
 
@@ -140,7 +141,7 @@
   </section>
 </main>
 
-<script src="cloth.js?v=1"></script>
-<script src="chhaap.js?v=2"></script>
+<script src="cloth.js?v=2"></script>
+<script src="chhaap.js?v=4"></script>
 </body>
 </html>

@@ -94,7 +94,7 @@
   /* ---------- drawing per chapter ---------- */
   function renderCloth(dye) {
     if (!clothDirty) return;
-    C.drawCloth(offCtx, W, H, { slots, tile, mask: masks[state.motif], dye, pressed: state.pressed });
+    C.drawCloth(offCtx, W, H, { slots, tile, mask: masks[state.motif], motif: state.motif, dye, pressed: state.pressed });
     clothDirty = false;
   }
 
@@ -149,10 +149,10 @@
     for (let x = 0; x < W; x += strip) {
       const phase = x * .012 - t * 1.4;
       const dy = REDUCED ? 0 : Math.sin(phase) * amp;
-      ctx.drawImage(off, x * sx, 0, strip * sx, off.height, x, dy, strip, H);
+      ctx.drawImage(off, x * sx, 0, strip * sx, off.height, x, dy - amp, strip, H + amp * 2); // overdraw so no edge shows
       const shade = REDUCED ? 0 : Math.cos(phase) * .12;
       ctx.fillStyle = shade > 0 ? `rgba(255,236,200,${shade.toFixed(3)})` : `rgba(0,0,20,${(-shade).toFixed(3)})`;
-      ctx.fillRect(x, dy, strip, H);
+      ctx.fillRect(x, 0, strip, H);
     }
     const sun = ctx.createRadialGradient(W * .85, -H * .1, 0, W * .85, -H * .1, Math.max(W, H));
     sun.addColorStop(0, "rgba(255,210,140,.22)");
@@ -165,7 +165,7 @@
     const ch = state.chapter;
     const mask = masks && masks[state.motif];
     if (mask) {
-      if (ch === "prologue") C.drawSingle(ctx, W, H, mask, focusX());
+      if (ch === "prologue") C.drawSingle(ctx, W, H, mask, focusX(), state.motif);
       else if (ch === "block") C.drawBlock(ctx, W, H, mask, REDUCED ? 1 : (now - chapterStart) / CARVE_MS, focusX());
       else if (ch === "press") { renderCloth(0); ctx.drawImage(off, 0, 0, W, H); drawFlashes(now); }
       else if (ch === "dye") { renderCloth(state.dye); ctx.drawImage(off, 0, 0, W, H); }
@@ -210,18 +210,30 @@
   }
 
   /* ---------- choices and actions ---------- */
+  // the dye chapter names the two dyes of the chosen block and wears its colours
+  function showDyes(st) {
+    const cap = (w) => w.charAt(0).toUpperCase() + w.slice(1);
+    $$("[data-dye='first']").forEach((el) => { el.textContent = el.dataset.cap ? cap(st.first.name) : st.first.name; });
+    $$("[data-dye='second']").forEach((el) => { el.textContent = st.second.name; });
+    $("[data-dye='note']").textContent = st.note;
+    const card = $("#dye .card");
+    card.style.setProperty("--dye-a", st.first.color);
+    card.style.setProperty("--dye-b", st.second.color);
+  }
+
   function chooseMotif(m) {
     if (!C.MOTIFS.includes(m)) return;
     update({ motif: m });
     $$("[data-motif]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.motif === m)));
     $$("[data-photo]").forEach((f) => f.classList.toggle("on", f.dataset.photo === m));
+    showDyes(C.styleOf(m));
     const url = new URL(location.href);
     url.searchParams.set("block", m);
     history.replaceState(null, "", url);
   }
 
   function downloadCloth(status) {
-    C.exportCloth(masks[state.motif]).toBlob((blob) => {
+    C.exportCloth(masks[state.motif], state.motif).toBlob((blob) => {
       if (!blob) { status.textContent = "Your browser could not make the image. Please try another browser."; return; }
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
