@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TALPUR — Mir Zuhair</title>
+<meta name="description" content="TALPUR: a magazine of the artifacts of the Talpur haveli in Hyderabad, Sindh. Each issue is one object from the house, rendered as it is and set in front of the print drawn from it. By Mir Zuhair.">
+<meta name="theme-color" content="#140f0d">
+<meta property="og:title" content="TALPUR — the artifacts of the Talpur haveli">
+<meta property="og:image" content="https://mirzuhair.site/talpur/img/cover-01.jpg">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Gulzar&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../scrap/scrap.css?v=3">
+<link rel="stylesheet" href="talpur.css?v=4">
+</head>
+<body class="talpur">
+<header class="bar">
+  <a class="home" href="../">&larr; Mir Zuhair</a>
+  <nav class="jump" aria-label="Sections">
+    <a href="#issues">Issues</a>
+    <a href="#turn">Turn</a>
+    <a href="#house">From the house</a>
+    <a href="#prints">The prints</a>
+  </nav>
+</header>
+
+<main>
+  <section class="stage" id="stage" aria-label="TALPUR cover loop">
+    <div class="card" id="card">
+      <div class="card-top"><span>Issues 01&ndash;09</span><span>Since 1843</span></div>
+      <h1 class="mast"><span class="mast-ur" lang="ur" dir="rtl">ٹالپر</span><span class="mast-en">TALPUR</span><em class="mast-sub">the house and its objects</em></h1>
+      <p class="card-sans">The artifacts of the Talpur haveli, Hyderabad, Sindh</p>
+      <p class="card-serif">Objects<br>outlive the<br><em>people.</em></p>
+      <div class="card-foot"><span>Glass &middot; Porcelain &middot; Gilt</span><span>Nine issues</span></div>
+    </div>
+    <canvas id="gl" aria-hidden="true"></canvas>
+  </section>
+
+  <div class="controls">
+    <p class="now" id="now" aria-live="polite">Loading&hellip;</p>
+    <div class="ctl-row">
+      <button class="play" id="play" type="button" aria-pressed="false">Pause</button>
+      <div class="chips" id="chips" role="group" aria-label="Unfold an issue"></div>
+    </div>
+  </div>
+
+  <section class="intro">
+    <p class="kicker">Heritage magazine &middot; 3D objects &middot; Pattern &middot; Motion &middot; Web</p>
+    <h2>Every object in the house has an issue.</h2>
+    <div class="intro-cols">
+      <p>The Talpur haveli in Hyderabad was built in 1843 and is still lived in. Its rooms are full of things that have outlived everyone who used them: a ruby glass vase on the dining table, a painted porcelain ewer, a jewelled yellow lantern in the hallway, a carved walnut clock, Bohemian and cranberry glass, and two tables standing on carved ivory. My textile work has always started from these objects. TALPUR gives each of them a magazine cover of its own.</p>
+      <p>Each object is modelled and rendered from my photographs of it, with its real colours, gilding and painting, and set in front of the repeat pattern I drew from the house. In most of those prints the object itself appears, so every cover shows the thing and its drawing together. The covers arrive the same way as SCRAP&rsquo;s: folded, then opened flat.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Concept, 3D modelling and rendering, pattern, editorial design, web</dd></div>
+      <div><dt>Objects</dt><dd>Ruby vase &middot; porcelain ewer &middot; cut-glass goblet &middot; enamelled lantern &middot; mantel clock &middot; Bohemian decanter &middot; cranberry vase &middot; the ivory tables</dd></div>
+      <div><dt>Tools</dt><dd>Blender (Cycles), my repeat patterns, WebGL, Canvas</dd></div>
+    </dl>
+  </section>
+
+  <section class="reader" id="issues" aria-labelledby="issues-h">
+    <h2 id="issues-h" class="sec-h wrap"><b>01&ndash;09</b> The issues</h2>
+    <div class="reader-grid" id="reader">
+      <div class="reader-sticky"><canvas id="reader-gl" aria-hidden="true"></canvas></div>
+      <div class="reader-steps" id="reader-steps"></div>
+    </div>
+  </section>
+
+  <section class="spin-sec wrap" id="turn" aria-labelledby="turn-h">
+    <h2 id="turn-h" class="sec-h"><b>+</b> Turn the object</h2>
+    <p class="lede">Each object turns slowly on its own. Drag across it to spin it yourself, or use the arrow keys.</p>
+    <div class="spins">
+      <figure class="spin" data-spin="vase" data-frames="24" tabindex="0" aria-label="The ruby vase. Drag or use arrow keys to turn it."><img src="img/turn/vase-00.jpg" alt="The ruby vase, turning" width="640" height="800"><span class="hint">Drag to turn</span><figcaption>The ruby vase</figcaption></figure>
+      <figure class="spin" data-spin="ewer" data-frames="24" tabindex="0" aria-label="The ewer. Drag or use arrow keys to turn it."><img src="img/turn/ewer-00.jpg" alt="The porcelain ewer, turning" width="640" height="800"><span class="hint">Drag to turn</span><figcaption>The ewer</figcaption></figure>
+      <figure class="spin" data-spin="goblet" data-frames="24" tabindex="0" aria-label="The goblet. Drag or use arrow keys to turn it."><img src="img/turn/goblet-00.jpg" alt="The green cut-glass goblet, turning" width="640" height="800"><span class="hint">Drag to turn</span><figcaption>The goblet</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="house wrap" id="house" aria-labelledby="house-h">
+    <h2 id="house-h" class="sec-h"><b>+</b> From the house</h2>
+    <p class="lede">Photographed in the haveli, then rebuilt as renders. The photograph is on the left; the render is on the right.</p>
+    <div class="pairs">
+      <figure><img src="../img/obj-vase.jpg" alt="The ruby glass vase with gilt vines on the dining table of the haveli" loading="lazy"><figcaption>The ruby vase, dining room.</figcaption></figure>
+      <figure><img src="img/talpur-01.jpg" alt="Render of the ruby vase in front of the carriage print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, in front of the carriage print.</figcaption></figure>
+      <figure><img src="../img/obj-ewer.jpg" alt="The porcelain ewer with a gilded collar and a painted boy" loading="lazy"><figcaption>The ewer, sideboard.</figcaption></figure>
+      <figure><img src="img/talpur-02.jpg" alt="Render of the porcelain ewer in front of the clock print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, with its own painted panel.</figcaption></figure>
+      <figure><img src="../img/hx/h-goblet.jpg" alt="The green cut-glass goblet on a marble table" loading="lazy"><figcaption>The goblet, marble table.</figcaption></figure>
+      <figure><img src="img/talpur-03.jpg" alt="Render of the green cut-glass goblet in front of the jali print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, in front of the jali print.</figcaption></figure>
+      <figure><img src="img/house-lantern.jpg" alt="The yellow enamelled lantern hanging from the wooden ceiling" loading="lazy"><figcaption>The lantern, hallway.</figcaption></figure>
+      <figure><img src="img/talpur-05.jpg" alt="Render of the lantern in front of the saffron clock print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, every jewel in place.</figcaption></figure>
+      <figure><img src="img/house-clock.jpg" alt="The carved walnut mantel clock with bronze mounts" loading="lazy"><figcaption>The clock, mantelpiece.</figcaption></figure>
+      <figure><img src="img/talpur-06.jpg" alt="Render of the clock in front of the bronze carriage print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, in front of the carriage print.</figcaption></figure>
+      <figure><img src="img/house-urn.jpg" alt="The ruby Bohemian decanter on the marble table" loading="lazy"><figcaption>The decanter, marble table.</figcaption></figure>
+      <figure><img src="img/talpur-07.jpg" alt="Render of the decanter in front of the emerald chandelier print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, in front of the chandelier print.</figcaption></figure>
+      <figure><img src="img/house-cranberry.jpg" alt="The fluted cranberry glass vase with gilt ferns" loading="lazy"><figcaption>The cranberry vase, dining room.</figcaption></figure>
+      <figure><img src="img/talpur-08.jpg" alt="Render of the cranberry vase in front of the rose stairwell print" loading="lazy" width="1000" height="1250"><figcaption>Rendered, in front of the stairwell print.</figcaption></figure>
+      <figure><img src="img/house-ivory-table-3.jpg" alt="An ivory table pedestal carved with eagles" loading="lazy"><figcaption>The ivory table: eagles below the top.</figcaption></figure>
+      <figure><img src="img/house-ivory-table-2.jpg" alt="The carved ivory base with a face, scrolls and roses" loading="lazy"><figcaption>The second ivory table: faces, scrolls and roses.</figcaption></figure>
+      <figure><img src="img/house-chandelier.jpg" alt="The ruby and crystal chandelier against a red wall" loading="lazy"><figcaption>The chandelier, red room.</figcaption></figure>
+      <figure><img src="img/house-ivory-table.jpg" alt="The ivory table pedestal from the front" loading="lazy"><figcaption>The ivory table, from the front.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="prints wrap" id="prints" aria-labelledby="prints-h">
+    <h2 id="prints-h" class="sec-h"><b>+</b> The prints</h2>
+    <p class="lede">The repeats behind each cover, drawn from the house. The vase and the ewer appear in them as drawings.</p>
+    <div class="print-grid">
+      <figure><img src="tex/carriage-verdigris-oxblood.jpg" alt="Carriage, stag and vase repeat in verdigris on oxblood" loading="lazy"><figcaption>Carriage &middot; verdigris on oxblood</figcaption></figure>
+      <figure><img src="tex/clock-ivory-oxblood.jpg" alt="Clock and ewer repeat in ivory on oxblood" loading="lazy"><figcaption>Clock &middot; ivory on oxblood</figcaption></figure>
+      <figure><img src="tex/jali-gold-emerald.jpg" alt="Jali repeat in gold on emerald" loading="lazy"><figcaption>Jali &middot; gold on emerald</figcaption></figure>
+      <figure><img src="tex/chandelier-amber-charcoal.jpg" alt="Chandelier repeat in amber on charcoal" loading="lazy"><figcaption>Chandelier &middot; amber on charcoal</figcaption></figure>
+      <figure><img src="tex/clock-saffron-indigo.jpg" alt="Clock and ewer repeat in saffron on indigo" loading="lazy"><figcaption>Clock &middot; saffron on indigo</figcaption></figure>
+      <figure><img src="tex/carriage-bronze-charcoal.jpg" alt="Carriage repeat in bronze on charcoal" loading="lazy"><figcaption>Carriage &middot; bronze on charcoal</figcaption></figure>
+      <figure><img src="tex/chandelier-emerald-plum.jpg" alt="Chandelier repeat in emerald on plum" loading="lazy"><figcaption>Chandelier &middot; emerald on plum</figcaption></figure>
+      <figure><img src="tex/stairwell-rose-aubergine.jpg" alt="Stairwell repeat in rose on aubergine" loading="lazy"><figcaption>Stairwell &middot; rose on aubergine</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="map wrap">
+    <p class="note">The objects belong to the Talpur family and were photographed in the haveli. The renders and patterns are my own work.</p>
+    <a class="map-link" href="../scrap/">See SCRAP, the magazine this one grew from &rarr;</a>
+  </section>
+</main>
+
+<script src="talpur.js?v=6"></script>
+<script src="../scrap/covers.js?v=8"></script>
+<script src="../scrap/crumple.js?v=1"></script>
+<script src="../scrap/scrap.js?v=4"></script>
+<script src="../scrap/reader.js?v=1"></script>
+<script src="spin.js?v=1"></script>
+</body>
+</html>

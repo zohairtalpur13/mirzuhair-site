@@ -1,0 +1,38 @@
+/* TALPUR — overrides on top of scrap/scrap.css: a serif masthead, warmer paper, oxblood accents. */
+.talpur {
+  --paper: #f1ebe0;
+  --red: #7a1f24;
+  --gold: #d6b06a;
+  --night: #140f0d;
+  --ur: "Gulzar", "Noto Nastaliq Urdu", serif;
+}
+.talpur .stage { background: radial-gradient(ellipse at 50% 45%, #2a1c18 0%, var(--night) 70%); }
+.talpur .card-sans { margin-top: 0; }
+
+.house, .prints { padding-top: var(--section); }
+.talpur .lede { font: 400 clamp(22px, 2.4vw, 34px)/1.15 var(--serif); margin: 0 0 40px; max-width: 34ch; }
+.pairs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.pairs img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.pairs figcaption, .print-grid figcaption { padding: 10px 0 0; font: 400 12px/1.4 var(--mono); color: var(--ink-soft); }
+.pairs figure:nth-child(4n + 1), .pairs figure:nth-child(4n + 2) { margin-bottom: 36px; }
+.print-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 24px; }
+.print-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+@media (max-width: 640px) {
+  .pairs { gap: 10px; }
+}
+
+/* Turn the object */
+.spin-sec { padding-top: var(--section); }
+.spins { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+.spin { position: relative; margin: 0; cursor: grab; touch-action: pan-y; user-select: none; background: #1a1412; }
+.spin:active { cursor: grabbing; }
+.spin img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; pointer-events: none; }
+.spin figcaption { padding: 10px 0 0; font: 400 12px/1.4 var(--mono); color: var(--ink-soft); background: var(--paper); }
+.spin .hint { position: absolute; left: 12px; bottom: 44px; font: 500 11px/1 var(--mono); color: #f1ebe0; background: rgba(20, 15, 13, 0.6); padding: 6px 8px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* Calligraphic masthead: Urdu name in Nastaliq, English in spaced capitals */
+.talpur .mast { display: grid; margin: 1cqi 0 0; font: inherit; letter-spacing: 0; }
+.talpur .mast-ur { font: 400 25cqi/1.25 var(--ur); text-align: right; color: var(--ink); margin-top: 0; }
+.talpur .mast-en { order: -1; font: 400 4.4cqi/1 var(--serif); letter-spacing: 0.35em; }
+.talpur .mast-sub { order: -1; font: italic 400 3.2cqi/1.4 var(--serif); color: var(--ink-soft); }

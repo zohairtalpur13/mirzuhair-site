@@ -103,7 +103,7 @@
 
   function paperState(p, now) {
     const L = layout;
-    const tgt = TARGETS[p.index];
+    const tgt = TARGETS[p.index % TARGETS.length];
     const t = now - p.t0;
     if (t < 0) return null;
 

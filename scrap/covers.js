@@ -3,8 +3,10 @@
 (function () {
   const W = 1000;
   const H = 1250;
+  // Another magazine can reuse this compositor by defining window.COVER_CONFIG first.
+  const CFG = window.COVER_CONFIG || {};
 
-  const ISSUES = [
+  const SCRAP_ISSUES = [
     { n: "01", myth: "Nothing New", word: "PAPER", ink: "#141210", accent: "#8a6a2c",
       headline: ["Nothing", "New."],
       season: "The readymade issue",
@@ -43,8 +45,15 @@
       object: "“EARRING”, gilded brass. Sold singly." }
   ];
 
-  const FONT_SPECS = ['900 300px "Archivo"', '800 60px "Archivo"', '500 30px "Archivo"',
-    'italic 120px "Instrument Serif"', '120px "Instrument Serif"', '22px "JetBrains Mono"'];
+  const ISSUES = CFG.issues || SCRAP_ISSUES;
+  const MAST = CFG.masthead || "SCRAP";
+  const MAST_FONT = CFG.mastFont || '900 {s} "Archivo"';
+  const MAST_TRACKING = CFG.mastTracking !== undefined ? CFG.mastTracking : -0.045;
+  const TAGLINE = CFG.tagline || ["A FASHION MAGAZINE MADE FROM", "WHAT GOT THROWN AWAY  \u00b7  FREE"];
+  const FILE = CFG.file || function (n) { return "issue-" + n; };
+
+  const FONT_SPECS = (CFG.fonts || []).concat(['900 300px "Archivo"', '800 60px "Archivo"', '500 30px "Archivo"',
+    'italic 120px "Instrument Serif"', '120px "Instrument Serif"', '22px "JetBrains Mono"']);
   const FONT_TIMEOUT_MS = 4000;
   const MARGIN = 44;
 
@@ -98,20 +107,28 @@
     ctx.fillText("9 771234 56700" + seed, x, y + 92);
   }
 
+  /* A foil-stamped gold: dark edges, a bright band where the light catches it. */
+  function goldFoil(ctx, y0, y1) {
+    const g = ctx.createLinearGradient(0, y0, W * 0.35, y1);
+    [[0, "#6f4f16"], [0.28, "#e9cf86"], [0.46, "#a67a28"], [0.56, "#fff3c8"], [0.66, "#c89a3e"], [1, "#6a4a14"]]
+      .forEach(function (st) { g.addColorStop(st[0], st[1]); });
+    return g;
+  }
+
   /* Tightly tracked masthead across the full width; returns its baseline. */
   function masthead(ctx, color) {
-    const tracking = -0.045;
+    const tracking = MAST_TRACKING;
     let size = 360;
-    ctx.font = '900 ' + size + 'px "Archivo"';
-    const natural = "SCRAP".split("").reduce(function (w, ch) {
+    ctx.font = MAST_FONT.replace("{s}", size + "px");
+    const natural = MAST.split("").reduce(function (w, ch) {
       return w + ctx.measureText(ch).width + size * tracking;
     }, 0);
     size = Math.floor(size * (W - 2 * MARGIN + 10) / natural);
-    ctx.font = '900 ' + size + 'px "Archivo"';
-    ctx.fillStyle = color;
+    ctx.font = MAST_FONT.replace("{s}", size + "px");
     const baseline = 62 + size * 0.73;
+    ctx.fillStyle = CFG.mastGold ? goldFoil(ctx, baseline - size * 0.72, baseline) : color;
     let x = MARGIN - size * 0.02;
-    "SCRAP".split("").forEach(function (ch) {
+    MAST.split("").forEach(function (ch) {
       ctx.fillText(ch, x, baseline);
       x += ctx.measureText(ch).width + size * tracking;
     });
@@ -149,8 +166,25 @@
     ctx.fillText(issue.season.toUpperCase(), W - MARGIN, 46);
     ctx.textAlign = "left";
 
-    const base = masthead(ctx, issue.ink);
+    const base = CFG.drawMasthead ? CFG.drawMasthead(ctx, issue, { W: W, H: H, MARGIN: MARGIN }) : masthead(ctx, issue.ink);
+    if (CFG.subMast && !CFG.drawMasthead) {
+      ctx.font = CFG.subMastFont || '48px "Instrument Serif"';
+      if (CFG.mastGold) ctx.fillStyle = goldFoil(ctx, base + 20, base + 90);
+      ctx.textAlign = "right";
+      ctx.direction = CFG.subMastRtl ? "rtl" : "ltr";
+      ctx.fillText(CFG.subMast, CFG.subMastRtl ? W - MARGIN : W - MARGIN, base + 70);
+      ctx.direction = "ltr";
+      ctx.textAlign = "left";
+    }
     if (photo && mask) ctx.drawImage(maskedObject(photo, mask), 0, 0, W, H);
+    if (issue.scrim) {
+      // a soft shadow behind the cover lines, for legibility over busy prints
+      const g = ctx.createRadialGradient(MARGIN + 160, base + 230, 20, MARGIN + 160, base + 230, 460);
+      g.addColorStop(0, issue.scrim);
+      g.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
+    }
 
     ctx.fillStyle = issue.ink;
     ctx.font = 'italic 100px "Instrument Serif"';
@@ -169,8 +203,8 @@
       ctx.fillText(line, MARGIN + 2, base + 330 + i * 32);
     });
     ctx.font = '18px "JetBrains Mono"';
-    ctx.fillText("A FASHION MAGAZINE MADE FROM", MARGIN, H - 116);
-    ctx.fillText("WHAT GOT THROWN AWAY  ·  FREE", MARGIN, H - 90);
+    ctx.fillText(TAGLINE[0], MARGIN, H - 116);
+    ctx.fillText(TAGLINE[1], MARGIN, H - 90);
     barcode(ctx, W - MARGIN - 150, H - 150, issue.ink, Number(issue.n));
     return canvas;
   }
@@ -179,8 +213,8 @@
     return loadFonts().then(function () {
       return Promise.all(ISSUES.map(function (issue) {
         return Promise.all([
-          loadImage(base + "issue-" + issue.n + ".jpg"),
-          loadImage(base + "issue-" + issue.n + "-mask.png")
+          loadImage(base + FILE(issue.n) + ".jpg"),
+          issue.noMask ? Promise.resolve(null) : loadImage(base + FILE(issue.n) + "-mask.png")
         ]).then(function (imgs) { return composeCover(issue, imgs[0], imgs[1]); });
       }));
     });

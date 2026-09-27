@@ -1000,6 +1000,49 @@ const PROJECTS = [
   },
 
   {
+    slug: "talpur",
+    tone: "#e8dfd2",
+    title: "TALPUR",
+    subtitle: "The artifacts of the Talpur haveli, as a magazine",
+    date: "Self-Initiated · Heritage · 3D · 2026",
+    tags: "Magazine covers · 3D rendering · Pattern · Urdu calligraphy · Web",
+    cover: "talpur/img/cover-05.jpg",
+    covers: [{ src: "talpur/img/cover-05.jpg" }, { src: "talpur/img/cover-02.jpg" }, { src: "talpur/img/cover-09.jpg" }],
+    sections: {
+      "The Project":
+        "TALPUR is a magazine of the objects in the Talpur haveli in Hyderabad, built in 1843 and still lived in. Nine issues, one object each: a ruby vase, a painted porcelain ewer, a cut-glass goblet, a jewelled lantern, a carved walnut clock, a Bohemian decanter, a cranberry vase, the ivory tables, and the three together.",
+      "The Process":
+        "I photographed each object in the house, then rebuilt it in Blender with its real surface: the ewer carries its own painted panel, the lantern its jewels, the clock is cut from my photograph and given a wooden body. Each stands in front of the repeat pattern I drew from the house, in which the object itself often appears.",
+      "The Problem":
+        "Heritage objects usually reach people as museum records: flat, captioned, behind glass. I wanted them to be treated the way fashion treats its objects, as the star of a cover.",
+      "The Goal":
+        "A living magazine where the masthead is the family name in Nastaliq calligraphy, the covers unfold on screen, and each object can be turned in the hand."
+    },
+    blocks: [
+      { type: "linkout", text: "TALPUR is live. Watch the covers unfold, read the issues and turn the objects:", items: [{ label: "Open TALPUR", href: "talpur/index.html" }] },
+      { type: "grid", cols: 3, items: [
+        { src: "talpur/img/cover-01.jpg", cap: "Issue 01, the ruby vase." },
+        { src: "talpur/img/cover-02.jpg", cap: "Issue 02, the ewer." },
+        { src: "talpur/img/cover-03.jpg", cap: "Issue 03, the goblet." },
+        { src: "talpur/img/cover-05.jpg", cap: "Issue 05, the lantern." },
+        { src: "talpur/img/cover-06.jpg", cap: "Issue 06, the clock." },
+        { src: "talpur/img/cover-09.jpg", cap: "Issue 09, the ivory table." }
+      ]},
+      { type: "step", n: "02", h: "From the house to the render", p: "Each object was photographed where it stands, then rebuilt in 3D with its real painting, gilding and jewels, and set in front of its own printed repeat." },
+      { type: "pair", items: [
+        { src: "talpur/img/house-lantern.jpg", cap: "The lantern in the hallway." },
+        { src: "talpur/img/talpur-05.jpg", cap: "Rendered in front of the saffron clock print." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/obj-ewer.jpg", cap: "The ewer on the sideboard." },
+        { src: "talpur/img/talpur-02.jpg", cap: "Rendered with its own painted panel." }
+      ]},
+      { type: "step", n: "03", h: "The masthead", p: "The name is set in Nastaliq calligraphy as the masthead, with the English in spaced capitals beneath it, so the magazine reads first in the script of the house." },
+      { type: "linkout", text: "Turn the objects:", items: [{ label: "Open TALPUR", href: "talpur/index.html#turn" }] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",
