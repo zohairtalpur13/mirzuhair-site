@@ -954,6 +954,52 @@ const PROJECTS = [
   },
 
   {
+    slug: "chhaap",
+    tone: "#0d1120",
+    title: "Chhaap",
+    subtitle: "A house becomes a block, a block becomes a cloth",
+    date: "Self-Initiated · Interactive Storytelling · 2026",
+    tags: "Scrollytelling · Block printing · Creative coding · Textile",
+    cover: "img/cp-cover.jpg",
+    covers: [{ src: "img/cp-cover.jpg" }, { src: "img/cp-sun.jpg" }, { src: "img/cp-block.jpg" }],
+    sections: {
+      "The Project":
+        "Chhaap (چھاپ, the print) is an interactive story in seven chapters. It follows one motif from the Talpur haveli in Hyderabad, Sindh, as it becomes a carved wooden block, is pressed onto cloth, dyed in madder and indigo, washed and dried in the sun. The blocks are my own line drawings from the haveli.",
+      "The Process":
+        "I turned four of my haveli drawings, the lantern, the doorway, the deer crest and the painted ceiling, into printing blocks. The story is built as a scroll: a stage behind the text changes with every chapter. The reader chooses the motif, watches it carved in reverse, presses it onto the cloth by hand, scrolls to dye it, and takes the finished cloth home.",
+      "The Problem":
+        "Heritage is usually shown behind glass. I wanted people to take part in the making, so that the house reaches them the way it reached the cloth: by hand, one press at a time.",
+      "The Goal":
+        "A story that is short enough to finish and memorable enough to share, ending with something to keep: a full-size cloth printed from the reader's chosen block. Every cloth remembers the house it came from."
+    },
+    blocks: [
+      { type: "linkout", text: "Chhaap is live. Choose a motif from the house and print your own cloth:", items: [{ label: "Open Chhaap", href: "chhaap/index.html" }] },
+      { type: "full", src: "img/cp-house.jpg", cap: "I · The house. A photograph from the haveli dissolves into my drawing of it, and the reader chooses one to carve." },
+      { type: "step", n: "02", h: "Carved in reverse", p: "The chosen drawing is cut into a block of wood, mirrored, the way a block printer carves it so the print reads the right way round." },
+      { type: "full", src: "img/cp-block.jpg", cap: "II · The block: the lantern, carved as the reader scrolls." },
+      { type: "step", n: "03", h: "Press by press", p: "The reader presses the block onto the cloth. Every press lands a little differently, lighter or slightly off, the way a hand would print it." },
+      { type: "full", src: "img/cp-press.jpg", cap: "III · The press, finished by the printer." },
+      { type: "step", n: "04", h: "Madder, then indigo", p: "Scrolling dyes the cloth: madder into the heart of every print, then indigo around it. The printed lines hold." },
+      { type: "full", src: "img/cp-dye.jpg", cap: "IV · The dye, halfway: madder in, indigo on its way." },
+      { type: "pair", items: [
+        { src: "img/cp-water.jpg", cap: "V · Washed: the cloth sways in the water." },
+        { src: "img/cp-sun.jpg", cap: "VI · Dried in the sun, moving in the wind." }
+      ]},
+      { type: "step", n: "05", h: "Four blocks, four cloths", p: "The same story prints differently with every motif from the house." },
+      { type: "trio", items: [
+        { src: "img/cp-deer.jpg", cap: "The deer crest." },
+        { src: "img/cp-doorway.jpg", cap: "The doorway." },
+        { src: "img/cp-ceiling.jpg", cap: "The painted ceiling." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/cp-cloth.jpg", cap: "The cloth a reader takes home: 2400 × 3000 px, with a printed border.", contain: true },
+        { src: "img/cp-mobile.jpg", cap: "On a phone.", contain: true }
+      ]},
+      { type: "linkout", text: "Print your own cloth:", items: [{ label: "Open Chhaap", href: "chhaap/index.html" }] }
+    ]
+  },
+
+  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",

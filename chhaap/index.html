@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chhaap — Mir Zuhair</title>
+<meta name="description" content="Chhaap (چھاپ, the print): the story of a house that became a block, and a block that became a cloth. An interactive block-printing story by Mir Zuhair.">
+<meta name="theme-color" content="#0d1120">
+<link rel="icon" href="../icon-512.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="chhaap.css?v=2">
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="../#/work/chhaap">← Mir Zuhair</a>
+  <ol class="progress" aria-label="Chapters" data-progress>
+    <li><a href="#prologue" data-to="prologue"><span>Prologue</span></a></li>
+    <li><a href="#house" data-to="house"><span>I · The house</span></a></li>
+    <li><a href="#block" data-to="block"><span>II · The block</span></a></li>
+    <li><a href="#press" data-to="press"><span>III · The press</span></a></li>
+    <li><a href="#dye" data-to="dye"><span>IV · The dye</span></a></li>
+    <li><a href="#water" data-to="water"><span>V · The water</span></a></li>
+    <li><a href="#sun" data-to="sun"><span>VI · The sun</span></a></li>
+    <li><a href="#home" data-to="home"><span>Epilogue</span></a></li>
+  </ol>
+</header>
+
+<!-- the stage stays behind the story and changes with every chapter -->
+<div class="stage" data-stage>
+  <div class="house-stage" aria-hidden="true">
+    <figure data-photo="lantern"><img src="../img/ln-yellow.jpg" alt=""><img class="drawn" src="../img/ln-drawing.jpg" alt=""></figure>
+    <figure data-photo="doorway"><img src="../img/dd-door.jpg" alt=""><img class="drawn" src="../img/dd-motif.jpg" alt=""></figure>
+    <figure data-photo="deer"><img src="../img/dd-deer.jpg" alt=""><img class="drawn" src="../img/de-drawing.jpg" alt=""></figure>
+    <figure data-photo="ceiling"><img src="../img/tt-ceiling-detail.jpg" alt=""><img class="drawn" src="../img/ce-drawing.jpg" alt=""></figure>
+  </div>
+  <canvas data-cloth aria-label="The cloth being printed"></canvas>
+  <p class="stage-hint" data-stage-hint></p>
+</div>
+
+<main class="story">
+  <section class="ch" id="prologue" data-ch="prologue">
+    <div class="card intro">
+      <p class="kicker">A block-printing story</p>
+      <h1>Chhaap <span class="ur" lang="ur" dir="rtl">چھاپ</span></h1>
+      <p class="gloss">Chhaap, <span class="ur-i" lang="ur" dir="rtl">چھاپ</span>: the print</p>
+      <p class="lede">Every cloth remembers the house it came from.</p>
+      <p class="scroll-cue">Scroll, and I will tell you how.</p>
+    </div>
+  </section>
+
+  <section class="ch" id="house" data-ch="house">
+    <div class="card">
+      <p class="num">I · The house</p>
+      <h2>A house of lanterns, deer and doorways</h2>
+      <p>In Hyderabad, Sindh, there is a house full of ornament: coloured lanterns, stags above the doors, carved doorways, painted ceilings. I studied it room by room, and I drew what I found by hand.</p>
+      <p class="ask">Choose one thing from the house. It will become your block.</p>
+      <div class="choices" role="group" aria-label="Choose a motif" data-choices>
+        <button type="button" data-motif="lantern" aria-pressed="true"><b>The lantern</b><span lang="ur" dir="rtl">لالٹین</span></button>
+        <button type="button" data-motif="doorway" aria-pressed="false"><b>The doorway</b><span lang="ur" dir="rtl">دروازہ</span></button>
+        <button type="button" data-motif="deer" aria-pressed="false"><b>The deer crest</b><span lang="ur" dir="rtl">ہرن</span></button>
+        <button type="button" data-motif="ceiling" aria-pressed="false"><b>The ceiling</b><span lang="ur" dir="rtl">چھت</span></button>
+      </div>
+      <p class="fine">Urdu: lalten, lantern · darwaza, doorway · hiran, deer · chhat, ceiling</p>
+    </div>
+  </section>
+
+  <section class="ch" id="block" data-ch="block">
+    <div class="card">
+      <p class="num">II · The block</p>
+      <h2>Carved in reverse</h2>
+      <p>A block printer cuts the drawing into a block of wood. Everything is carved backwards, so that when the block meets the cloth, the drawing reads the right way round.</p>
+      <p>The lines stand up from the wood. Whatever is cut away will stay empty on the cloth.</p>
+    </div>
+  </section>
+
+  <section class="ch" id="press" data-ch="press">
+    <div class="card">
+      <p class="num">III · The press</p>
+      <h2>Press by press</h2>
+      <p>Now the cloth. Tap anywhere on it to press your block. Each press lands a little differently, a little lighter, a little off. That is how you know a hand made it.</p>
+      <div class="acts">
+        <button type="button" class="btn" data-act="press-one">Press once</button>
+        <button type="button" class="btn solid" data-act="finish">Let the printer finish</button>
+      </div>
+      <p class="fine" data-count>No presses yet.</p>
+    </div>
+  </section>
+
+  <section class="ch tall" id="dye" data-ch="dye">
+    <div class="card">
+      <p class="num">IV · The dye</p>
+      <h2>Madder, then indigo</h2>
+      <p>The printed lines hold. Then the colour comes: first <em class="madder">madder</em>, a red from a root, into the heart of every print.</p>
+      <p>Then <em class="indigo">indigo</em>, a blue from a leaf, into everything around it. Keep scrolling to dye the cloth.</p>
+      <div class="dye-meter" aria-hidden="true"><i data-dye-meter></i><span>madder</span><span>indigo</span></div>
+    </div>
+  </section>
+
+  <section class="ch" id="water" data-ch="water">
+    <div class="card">
+      <p class="num">V · The water</p>
+      <h2>Washed</h2>
+      <p>The cloth goes into the water. Whatever the dye did not hold lets go and floats away. What stays, stays for good.</p>
+    </div>
+  </section>
+
+  <section class="ch" id="sun" data-ch="sun">
+    <div class="card">
+      <p class="num">VI · The sun</p>
+      <h2>Dried in the sun</h2>
+      <p>It is laid out to dry, and the wind moves through it. The colours settle. The house is in the cloth now.</p>
+    </div>
+  </section>
+
+  <section class="ch" id="home" data-ch="home">
+    <div class="card end">
+      <p class="num">Epilogue</p>
+      <h2>Take the cloth home</h2>
+      <p>A lantern, a doorway, a deer, a ceiling. Every cloth remembers the house it came from. This one is yours.</p>
+      <div class="acts">
+        <button type="button" class="btn solid" data-act="download">Download your cloth</button>
+        <button type="button" class="btn" data-act="again">Carve another block</button>
+        <button type="button" class="btn" data-act="share">Copy a link to it</button>
+      </div>
+      <p class="fine" data-status role="status"></p>
+    </div>
+  </section>
+
+  <section class="notes" id="notes">
+    <h2>Notes</h2>
+    <ul>
+      <li><b>The drawings</b> The four blocks are my own line drawings from my research at the Talpur haveli in Hyderabad, Sindh. The photographs in the first chapter are from the same research.</li>
+      <li><b>The process</b> Block printing in Sindh, including ajrak, takes many more steps than this story shows. I kept four moments: the press, the dye, the water and the sun. This is an homage, not a record of a real workshop and not a copy of any traditional block.</li>
+      <li><b>Nothing leaves your screen</b> The cloth is drawn in your browser. It is only saved if you download it.</li>
+      <li><b>The research</b> This project began with the interactive and generative work in student portfolios at Parsons, RISD and CalArts, and asks what that way of working looks like when it starts from a house in Sindh.</li>
+    </ul>
+    <a class="btn" href="../#/work/chhaap">Back to the case study</a>
+  </section>
+</main>
+
+<script src="cloth.js?v=1"></script>
+<script src="chhaap.js?v=2"></script>
+</body>
+</html>

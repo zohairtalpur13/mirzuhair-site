@@ -400,6 +400,7 @@
       ["gad", "img/gd-src-3.jpg", "A verse of Shah Abdul Latif", "img/gd-p-1.jpg", "", "Sindhi and English on one baseline grid, measured rather than guessed, ending in a bilingual broadsheet."],
       ["ghar", "img/gh-src-3.jpg", "One star on every page", "img/gh-p-3.jpg", "", "A book other people fill: draw the home you grew up in from memory, and name one thing that was in it."],
       ["scrap", "scrap/img/issue-01.jpg", "A crumpled draft, cast in porcelain", "scrap/img/cover-01.jpg", "", "A fashion magazine made from what got thrown away: six covers, each an object cast from a crumpled page."],
+      ["chhaap", "img/ln-yellow.jpg", "The jewelled lantern", "img/cp-p-1.jpg", "", "A house becomes a block, a block becomes a cloth: an interactive story you print yourself."],
       ["heritage-loop", "img/obj-deer.jpg", "The mounted stags", "img/hl-phones.jpg", "", "A Digital Twin screen traces each print back to the room it came from."],
       ["editorial-mockups", "img/dd-colour.jpg", "The deer-crest print", "img/ed-vogue-margot.jpg", "", "The crest, tone on tone in pink, mapped onto a sculpted dress on a speculative cover."],
       ["greek-ornament", "img/gk-key-board.jpg", "Classical motifs, composed", "img/gk-key-pattern.jpg", "", "The same drawing-to-repeat method, applied to Greek and baroque ornament."],
@@ -585,6 +586,34 @@
       ["Constraints make pages match", "One star and one object gave strangers' pages a shared structure without flattening them."],
       ["Privacy is part of the design", "Keeping the page in the browser made the invitation safer to accept."]],
     cta: ["#/work/ghar", "img/gh-cover.jpg", "Ghar"] };
+  const CASE_CP = { id: "chhaap", cls: "rs-case-cp", kicker: "Case study · 2026", title: "Chhaap", em: "every cloth remembers the house",
+    intro: "My research drew the haveli; my textiles printed it. Chhaap, چھاپ, meaning the print, turns that journey into a story the reader takes part in: a motif from the house is carved into a block, pressed onto cloth, dyed, washed and dried, and the finished cloth is theirs.",
+    why: [["Where it began", "Heritage is usually shown behind glass. I wanted people to make something with it, the way the cloth itself was made: by hand, one press at a time."],
+      ["The idea", "Tell block printing as a story in seven short chapters, with a stage behind the words that changes as you scroll."],
+      ["The rule", "Only my own drawings from the haveli become blocks, and every chapter asks the reader to do one thing: choose, watch, press, dye, wait."]],
+    pairsH: "From the house to the cloth", pairsP: "Four things in the haveli became four blocks. Each card shows the result; hover over or tap it to see the photograph it came from.",
+    pairs: [["img/ln-yellow.jpg", "img/cp-p-1.jpg", "The lantern", "The jewelled lantern", "Carved in reverse"],
+      ["img/dd-door.jpg", "img/cp-p-2.jpg", "The doorway", "The carved doorway", "A block from the doorway drawing"],
+      ["img/dd-deer.jpg", "img/cp-p-3.jpg", "The deer crest", "Stags above the doors", "Dried in the sun"],
+      ["img/tt-ceiling-detail.jpg", "img/cp-p-4.jpg", "The ceiling", "The painted ceiling", "Washed in the water"]],
+    skAlt: "Source",
+    stepsP: "From a house in Sindh to a cloth you can download, in six steps.",
+    steps: [["The house", "Four motifs from my research at the haveli: lantern, doorway, deer crest, ceiling.", "img/cp-house.jpg"],
+      ["The block", "Each drawing becomes a carved block, mirrored like a real one.", "img/cp-block.jpg"],
+      ["The press", "The reader presses the block by hand; every press lands a little differently.", "img/cp-press.jpg"],
+      ["The dye", "Scrolling dyes the cloth: madder, then indigo.", "img/cp-dye.jpg"],
+      ["The water and the sun", "The cloth sways in water, then moves in the wind as it dries.", "img/cp-sun.jpg"],
+      ["The cloth", "The reader downloads a full-size cloth printed from their block.", "img/cp-cloth.jpg"]],
+    palP: "Night, cotton and two natural dyes.",
+    pal: [["#0d1120", "Night", "The stage the story is told on.", "#efe6d4"],
+      ["#efe6d4", "Raw cotton", "The cloth before the dye.", "#0d1120"],
+      ["#a3201d", "Madder", "A red from a root, in the heart of every print.", "#efe6d4"],
+      ["#1f2d5c", "Indigo", "A blue from a leaf, around it.", "#efe6d4"],
+      ["#e0a43a", "Lantern gold", "The light of the house.", "#0d1120"]],
+    learn: [["Stories need something to do", "Readers remember the chapter where they pressed the block, not the one they only read."],
+      ["Imperfection is proof", "The small misprints are what make the cloth feel hand-made."],
+      ["My drawings are a toolkit", "The same haveli drawings made silk, a typeface and now a printing block. The research keeps giving."]],
+    cta: ["#/work/chhaap", "img/cp-sun.jpg", "Chhaap"] };
   const rsCase = (c) => `
       <section class="rs-case ${c.cls || ""}" id="${c.id}">
         <div class="rs-case-head">
@@ -694,6 +723,7 @@
       ${rsCase(CASE_HS)}
       ${rsCase(CASE_GD)}
       ${rsCase(CASE_GH)}
+      ${rsCase(CASE_CP)}
     </section>`;
 
 
