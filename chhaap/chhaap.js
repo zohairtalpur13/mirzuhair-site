@@ -42,7 +42,7 @@
 
   /* ---------- sizing ---------- */
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2); // full Retina sharpness
     W = window.innerWidth;
     H = window.innerHeight;
     [canvas, off].forEach((c) => { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });

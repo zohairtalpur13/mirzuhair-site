@@ -961,7 +961,7 @@ const PROJECTS = [
     date: "Self-Initiated · Interactive Storytelling · 2026",
     tags: "Scrollytelling · Block printing · Creative coding · Textile",
     cover: "img/cp-cover.jpg",
-    covers: [{ src: "img/cp-cover.jpg" }, { src: "img/cp-sun.jpg" }, { src: "img/cp-block.jpg" }],
+    covers: [{ src: "img/cp-cover.jpg" }, { src: "img/cp-4k-doorway.jpg" }, { src: "img/cp-4k-ceiling.jpg" }],
     sections: {
       "The Project":
         "Chhaap (چھاپ, the print) is an interactive story in seven chapters. It follows one motif from the Talpur haveli in Hyderabad, Sindh, as it becomes a carved wooden block, is pressed onto cloth, dyed in madder and indigo, washed and dried in the sun. The blocks are my own line drawings from the haveli.",
@@ -989,10 +989,11 @@ const PROJECTS = [
         { src: "img/cp-sun.jpg", cap: "VI · Dried in the sun, moving in the wind." }
       ]},
       { type: "step", n: "05", h: "Four blocks, four cloths", p: "Every block has its own print shape and its own two natural dyes, so the same story ends in a different cloth: madder ovals on indigo for the lantern, turmeric arches on madder for the doorway, indigo circles on iron black for the deer, madder diamonds on iron black for the ceiling." },
-      { type: "trio", items: [
-        { src: "img/cp-doorway.jpg", cap: "The doorway: turmeric arches on madder." },
-        { src: "img/cp-deer.jpg", cap: "The deer crest: indigo circles on iron black." },
-        { src: "img/cp-ceiling.jpg", cap: "The ceiling: madder diamonds on iron black." }
+      { type: "grid", cols: 4, items: [
+        { src: "img/cp-4k-lantern.jpg", cap: "The lantern: madder ovals on indigo." },
+        { src: "img/cp-4k-doorway.jpg", cap: "The doorway: turmeric arches on madder." },
+        { src: "img/cp-4k-deer.jpg", cap: "The deer crest: indigo circles on iron black." },
+        { src: "img/cp-4k-ceiling.jpg", cap: "The ceiling: madder diamonds on iron black." }
       ]},
       { type: "pair", items: [
         { src: "img/cp-cloth.jpg", cap: "The cloth a reader takes home, here the ceiling: 2400 × 3000 px, with a printed border.", contain: true },
