@@ -1230,21 +1230,24 @@
   addEventListener("pagehide", saveScroll);
   document.addEventListener("click", (e) => { if (e.target.closest("a[href]")) saveScroll(); }, true);
   ["wheel", "touchstart", "keydown"].forEach((t) => addEventListener(t, () => { pendingY = null; }, { passive: true }));
+  // jump without the page's smooth scroll-behavior, so the hero doesn't replay on the way
+  const jumpTo = (y) => {
+    try { window.scrollTo({ top: y, behavior: "instant" }); }
+    catch (e) { const s = document.documentElement.style; s.scrollBehavior = "auto"; window.scrollTo(0, y); s.scrollBehavior = ""; }
+  };
   function restoreScroll() {
     clearTimeout(saveTimer);
     const y = history.state && Number.isFinite(history.state.y) ? history.state.y : 0;
-    pendingY = y || null;
-    window.scrollTo(0, y);
-    if (!pendingY) return;
     // images may still be loading, so keep trying until the page is tall enough to land on y
     let tries = 0;
-    const retry = () => {
+    pendingY = y;
+    const attempt = () => {
       if (pendingY !== y) return;
-      window.scrollTo(0, y);
+      jumpTo(y);
       if (Math.abs(scrollY - y) < 2 || ++tries >= RESTORE_TRIES) { pendingY = null; return; }
-      setTimeout(retry, 50);
+      setTimeout(attempt, 50);
     };
-    requestAnimationFrame(retry);
+    attempt();
   }
 
   function route() {
