@@ -107,6 +107,294 @@
       "lastAccessed": "2026-09-29T07:42:44.500Z",
       "accessCount": 0,
       "expiresAt": "2026-10-29T07:42:44.500Z"
+    },
+    "cmd-1790667790370": {
+      "key": "cmd-1790667790370",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site; sed -n 20,32p scrap/scrap.css; grep -n \\\"font\\\" raw/raw.css | head -40; sed -n 15,68p raw/index.html\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:10.370Z",
+      "lastAccessed": "2026-09-29T07:43:10.370Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:10.370Z"
+    },
+    "cmd-1790667816142": {
+      "key": "cmd-1790667816142",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw && cat -n index.html && cat -n raw.css && cat -n houses.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:36.142Z",
+      "lastAccessed": "2026-09-29T07:43:36.142Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:36.142Z"
+    },
+    "cmd-1790667825289": {
+      "key": "cmd-1790667825289",
+      "value": "{\"command\":\"cat -n raw/flip.js; grep -n \\\"hidden\\\\|sr-only\\\\|--mute\\\\|\\\\.note\\\\|\\\\.map \\\\|\\\\.map p\\\\|facts dt\\\\|sec-h\\\\|\\\\.intro h\\\\|h1\\\" scrap/scrap.css | head -60\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:45.289Z",
+      "lastAccessed": "2026-09-29T07:43:45.289Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:45.289Z"
+    },
+    "cmd-1790667825620": {
+      "key": "cmd-1790667825620",
+      "value": "{\"command\":\"git status --short | head -50; cat .gitignore; ls -la raw/img raw/img/.claude-flow 2>&1 | head -40; stat -f \\\"%Sm %N\\\" raw/pages.js raw/img/page-*.jpg; git log --oneline -3 -- raw/index.html; git show HEAD:raw/index.html | grep -n \\\"h1\\\" \",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:45.620Z",
+      "lastAccessed": "2026-09-29T07:43:45.620Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:45.620Z"
+    },
+    "cmd-1790667826346": {
+      "key": "cmd-1790667826346",
+      "value": "{\"command\":\"cat -n /Users/zuhairtalpur/Documents/mirzuhair-site/raw/flip.js; grep -n \\\"stage\\\\|flip\\\" /Users/zuhairtalpur/Documents/mirzuhair-site/raw/raw.css | head -60\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:46.346Z",
+      "lastAccessed": "2026-09-29T07:43:46.346Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:46.346Z"
+    },
+    "cmd-1790667831461": {
+      "key": "cmd-1790667831461",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw; grep -n \\\"stage\\\\|canvas\\\\|mag\\\" raw.css index.html | head -40; grep -n \\\"RATIO\\\" pages.js | head\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:51.461Z",
+      "lastAccessed": "2026-09-29T07:43:51.461Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:51.461Z"
+    },
+    "cmd-1790667832633": {
+      "key": "cmd-1790667832633",
+      "value": "{\"command\":\"git status --short --untracked-files=all | head; git ls-files raw | head -40; git ls-files | grep claude-flow | head; git log --stat -3 --format='%h %ad %s' | head -60; git check-ignore -v raw/img/.claude-flow/memory/store.json; ls raw/img/.claude-flow/*\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:52.633Z",
+      "lastAccessed": "2026-09-29T07:43:52.633Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:52.633Z"
+    },
+    "cmd-1790667834589": {
+      "key": "cmd-1790667834589",
+      "value": "{\"command\":\"cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/25296f0d-a864-4b59-ab81-357ed324b300/scratchpad && curl -s https://api.github.com/repos/sergebulaev/linkedin-skills | python3 -c \\\"import sys,json;d=json.load(sys.stdin);print({k:d.get(k) for k in ['full_name','description','stargazers_count','pushed_at','default_branch']}, (d.get('license') or {}).get('spdx_id'))\\\"; curl -s \\\"https://api.github.com/repos/sergebulaev/linkedin-skills/git/trees/HEAD?recursive=1\\\" | python3 -c \\\"import sys,json;[print(x['type'][0],x['path']) for x in json.load(sys.stdin).get('tree',[])]\\\" | head -80\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:54.589Z",
+      "lastAccessed": "2026-09-29T07:43:54.589Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:54.589Z"
+    },
+    "cmd-1790667836043": {
+      "key": "cmd-1790667836043",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw; sed -n 15,70p raw.css; sed -n 120,135p raw.css; grep -n \\\"grain\\\\|folio\\\\|20px\\\" pages.js | head\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:43:56.043Z",
+      "lastAccessed": "2026-09-29T07:43:56.043Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:43:56.043Z"
+    },
+    "cmd-1790667845496": {
+      "key": "cmd-1790667845496",
+      "value": "{\"command\":\"cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/25296f0d-a864-4b59-ab81-357ed324b300/scratchpad && B=https://raw.githubusercontent.com/sergebulaev/linkedin-skills/main; echo \\\"=== marketplace.json\\\"; curl -sL $B/.claude-plugin/marketplace.json; echo; echo \\\"=== plugin.json\\\"; curl -sL $B/.claude-plugin/plugin.json; echo; echo \\\"=== .env.example\\\"; curl -sL $B/.codex-marketplace/linkedin-skills/.env.example; echo \\\"=== README install/keys/approval lines\\\"; curl -sL $B/README.md -o li-README.md; grep -n -i -E \\\"install|/plugin|api key|apify|publora|approv|schedule|cookie|password|login|cost|\\\\\\\\$\\\" li-README.md | head -60\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:44:05.496Z",
+      "lastAccessed": "2026-09-29T07:44:05.496Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:44:05.496Z"
+    },
+    "cmd-1790667856008": {
+      "key": "cmd-1790667856008",
+      "value": "{\"command\":\"mkdir -p /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad && cd $_ && cat > sim.js <<'EOF'\\nconst NX=48,NY=16,CURL=1.15,LEAD=0.35,STACK=0.9,TILT=0.5,D=2600,RATIO=1.25;\\nfunction shape(t,w,h,z){const pts=[];const dx=w/NX;const lift=Math.sin(Math.PI*t);\\nfor(let j=0;j<=NY;j++){const vy=j/NY,y=(vy-.5)*h,lead=(vy-.5)*LEAD*lift;let x=0,zz=z;\\nfor(let i=0;i<=NX;i++){const u=i/NX;const a=Math.min(Math.PI,Math.max(0,Math.PI*t-CURL*lift*Math.pow(u,1.4)+lead*u));\\npts.push([x,y,zz,-Math.sin(a),0,Math.cos(a)]);x+=dx*Math.cos(a);zz+=dx*Math.sin(a);}}return pts;}\\nfunction proj(p,rx,ry,shift,cw,ch,ty=0){const cx=Math.cos(rx),sx=Math.sin(rx),cy=Math.cos(ry),sy=Math.sin(ry);\\nconst X=p[0]+shift,Y=p[1]+ty,Z=p[2];\\nconst px=X*cy+Y*sy*sx+Z*sy*cx, py=Y*cx-Z*sx, pz=-X*sy+Y*cy*sx+Z*cy*cx;const w=D-pz;\\nreturn [px*D/(cw/2)/w, py*D/(ch/2)/w];}\\nfunction run(cw,ch,wf=0.44,hf=0.86,tyf=0){const w=Math.min(cw*wf,ch*hf/RATIO),h=w*RATIO;let peak=0,peakx=0;const L=6;\\nfor(const tx of [0,0.06,-0.06])for(const tyy of [0,0.08,-0.08])for(let s=0;s<=20;s++){const t=s/20;\\n// cover intro: e=t, shift\\nconst e=t;const shift=-w*.5*(1-Math.min(e,1));\\nfor(const p of shape(t,w,h,(L+2)*STACK)){const [nx,ny]=proj(p,-TILT+tx,tyy,shift,cw,ch,tyf*h);if(ny>peak)peak=ny;if(Math.abs(nx)>peakx)peakx=Math.abs(nx);}}\\n// also mid turns shift=0\\nfor(let s=0;s<=20;s++){const t=s/20;for(const p of shape(t,w,h,(L+2)*STACK)){const [nx,ny]=proj(p,-TILT,0,0,cw,ch,tyf*h);if(ny>peak)peak=ny;if(Math.abs(nx)>peakx)peakx=Math.abs(nx);}}\\nreturn {w:w.toFixed(0),peak:peak.toFixed(3),peakx:peakx.toFixed(3)};}\\nfor(const [cw,ch] of [[1440,792],[1920,920],[1280,633],[1024,675],[768,717],[375,568]]) console.log(cw,ch,JSON.stringify(run(cw,ch)), JSON.stringify(run(cw,ch,0.42,0.6,-0.12)));\\n// t samples at 1440x792 flat tilt\\nconst cw=1440,ch=792,w=Math.min(cw*.44,ch*.86/1.25),h=w*1.25;\\nfor(const t of [0,0.3,0.5,0.6,0.8]){let pk=0;for(const p of shape(t,w,h,7.2)){const [,ny]=proj(p,-TILT,0,0,cw,ch);pk=Math.max(pk,ny);}console.log('t',t,pk.toFixed(3));}\\n// shading of flat page\\nconst L=[-0.3,0.5,0.8];const ln=Math.hypot(...L);const Ln=L.map(v=>v/ln);\\nconst n=[0,Math.sin(0.5),Math.cos(0.5)];const dot=n[0]*Ln[0]+n[1]*Ln[1]+n[2]*Ln[2];console.log('shade',0.35+0.65*dot/Ln[2], 'L', Ln);\\nEOF\\nnode sim.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:44:16.008Z",
+      "lastAccessed": "2026-09-29T07:44:16.008Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:44:16.008Z"
+    },
+    "cmd-1790667856117": {
+      "key": "cmd-1790667856117",
+      "value": "{\"command\":\"curl -s \\\"https://api.github.com/repos/sergebulaev/linkedin-skills/git/trees/HEAD?recursive=1\\\" | python3 -c \\\"\\nimport sys,json\\nt=json.load(sys.stdin)['tree']\\nprint('files:',len(t))\\nfor x in t:\\n  p=x['path']\\n  if p.startswith('.codex-marketplace/'): continue\\n  if 'hooks' in p or p.endswith('.mcp.json') or p.startswith('skills/') and p.endswith('SKILL.md') or p.count('/')==0: print(p)\\n\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:44:16.117Z",
+      "lastAccessed": "2026-09-29T07:44:16.117Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:44:16.117Z"
+    },
+    "cmd-1790667892289": {
+      "key": "cmd-1790667892289",
+      "value": "{\"command\":\"sed -n 1,30p scrap/scrap.css; sed -n 128,160p scrap/scrap.css; sed -n 228,240p scrap/scrap.css; git show e98021c:raw/index.html | grep -n \\\"<h1\\\\|mast\\\"; grep -n \\\"<h1\\\" scrap/index.html talpur/index.html; sed -n 1,40p raw/pages.js; grep -n \\\"page-\\\" data.js app.js | head -20\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:44:52.289Z",
+      "lastAccessed": "2026-09-29T07:44:52.289Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:44:52.289Z"
+    },
+    "cmd-1790667899425": {
+      "key": "cmd-1790667899425",
+      "value": "{\"command\":\"python3 -c \\\"\\ndef L(h):\\n  h=h.lstrip('#');c=[int(h[i:i+2],16)/255 for i in (0,2,4)]\\n  c=[x/12.92 if x<=0.03928 else ((x+0.055)/1.055)**2.4 for x in c]\\n  return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]\\ndef cr(a,b):\\n  a,b=L(a),L(b);return (max(a,b)+0.05)/(min(a,b)+0.05)\\nfor f in ['#6f6960','#c8261b','#a39c90','#ef4b3f']: print(f, round(cr(f,'#0f0e0d'),2))\\n\\\"; sed -n 110,125p /Users/zuhairtalpur/Documents/mirzuhair-site/raw/pages.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:44:59.425Z",
+      "lastAccessed": "2026-09-29T07:44:59.425Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:44:59.425Z"
+    },
+    "cmd-1790667908630": {
+      "key": "cmd-1790667908630",
+      "value": "{\"command\":\"git status -sb | head -1; git branch -vv | head -3; head -c 600 raw/img/.claude-flow/memory/store.json; echo; ls .nojekyll CNAME 2>&1\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:45:08.630Z",
+      "lastAccessed": "2026-09-29T07:45:08.630Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:45:08.630Z"
+    },
+    "cmd-1790667918458": {
+      "key": "cmd-1790667918458",
+      "value": "{\"command\":\"python3 - <<'EOF'\\nimport json\\nfor f in ['.claude-flow/memory/store.json','raw/img/.claude-flow/memory/store.json']:\\n    d=json.load(open(f))\\n    for k,v in d.get('entries',{}).items():\\n        s=str(v.get('value',''))\\n        if 'pages.js' in s or 'LE ROUGE' in s or 'page-' in s:\\n            print(f,k,s[:300].replace('\\\\\\\\n',' '))\\n            print('---')\\nEOF\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:45:18.458Z",
+      "lastAccessed": "2026-09-29T07:45:18.458Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:45:18.458Z"
+    },
+    "cmd-1790667928270": {
+      "key": "cmd-1790667928270",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw/img && python3 -c \\\"\\nfrom PIL import Image\\nim=Image.open('page-01.jpg').convert('L')\\nfor y0,y1 in [(1050,1090),(1060,1085)]:\\n  xs=[x for x in range(im.width) for y in range(y0,y1) if im.getpixel((x,y))>150]\\n  print(y0,y1,min(xs) if xs else None,max(xs) if xs else None, (min(xs)+max(xs))/2 if xs else None)\\n\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:45:28.270Z",
+      "lastAccessed": "2026-09-29T07:45:28.270Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:45:28.270Z"
+    },
+    "cmd-1790667937770": {
+      "key": "cmd-1790667937770",
+      "value": "{\"command\":\"cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad && cat >> sim.js <<'EOF'\\nfor(const [cw,ch] of [[1440,792],[768,717],[375,568]]){for(const [wf,hf,tyf] of [[0.44,0.86,0],[0.42,0.6,-0.12]]){const w=Math.min(cw*wf,ch*hf/1.25),h=w*1.25;let mn=9;for(const p of shape(0,w,h,5.4)){const [,ny]=proj(p,-TILT,0,0,cw,ch,tyf*h);mn=Math.min(mn,ny);}console.log('min',cw,ch,wf,mn.toFixed(3),'px from bottom',((1+mn)*ch/2).toFixed(0));}}\\nEOF\\nnode sim.js | grep min\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:45:37.770Z",
+      "lastAccessed": "2026-09-29T07:45:37.770Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:45:37.770Z"
+    },
+    "cmd-1790668015056": {
+      "key": "cmd-1790668015056",
+      "value": "{\"command\":\"python3 - <<'EOF'\\nimport json\\nt=open('/private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/tasks/weeic174w.output').read()\\nprint(len(t), t[:300])\\nEOF\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:46:55.056Z",
+      "lastAccessed": "2026-09-29T07:46:55.056Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:46:55.056Z"
+    },
+    "cmd-1790668028402": {
+      "key": "cmd-1790668028402",
+      "value": "{\"command\":\"python3 - <<'EOF'\\nimport json\\nd=json.load(open('/private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/tasks/weeic174w.output'))['result']\\nfor n,f in enumerate(d['confirmed'],1):\\n    v=f['verdict'] or {}\\n    c=v.get('corrected_fix','')\\n    print(f\\\"\\\\n{n}. [{f['severity']}] {f['dimension']} — {f['title']} ({f['file'].split('/')[-1]}:{f['line']})\\\\n   FIX: {f['fix'][:420]}\\\" + (f\\\"\\\\n   CORR: {c[:380]}\\\" if c else \\\"\\\"))\\nprint(\\\"\\\\nREJECTED:\\\", [r['title'][:90] for r in d['rejected']])\\nEOF\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:47:08.402Z",
+      "lastAccessed": "2026-09-29T07:47:08.402Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:47:08.402Z"
+    },
+    "cmd-1790668048408": {
+      "key": "cmd-1790668048408",
+      "value": "{\"command\":\"ls -la raw/img/.claude-flow .claude-flow 2>&1 | head; cat .gitignore; git ls-files | grep -c claude-flow\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:47:28.408Z",
+      "lastAccessed": "2026-09-29T07:47:28.408Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:47:28.408Z"
+    },
+    "cmd-1790668116417": {
+      "key": "cmd-1790668116417",
+      "value": "{\"command\":\"claude plugin list 2>&1 > /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/25296f0d-a864-4b59-ab81-357ed324b300/scratchpad/plugin-list2.txt; cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/25296f0d-a864-4b59-ab81-357ed324b300/scratchpad && python3 -c \\\"\\nimport json,re\\ntxt=open('plugin-list2.txt').read()\\nblocks=re.findall(r'❯ (\\\\S+)\\\\n\\\\s+Version: (\\\\S+)\\\\n\\\\s+Scope: (\\\\S+)\\\\n\\\\s+Status: ([^\\\\n]+)',txt)\\ndef show(mkt):\\n  rows=[b for b in blocks if b[0].endswith('@'+mkt)]\\n  en=[b for b in rows if 'enabled' in b[3]]\\n  return rows,en\\nwant=[p['name'] for p in json.load(open('$HOME/.claude/plugins/marketplaces/ruflo/.claude-plugin/marketplace.json'))['plugins']]\\nrows,en=show('ruflo'); got={b[0].split('@')[0] for b in rows}\\nprint('RUFLO: installed',len(rows),'of',len(want),'| enabled',len(en),'| missing',[w for w in want if w not in got] or 'none','| not enabled',[b[0] for b in rows if b not in en] or 'none', '| scopes',sorted({b[2] for b in rows}))\\nrows,en=show('linkedin-skills'); print('LINKEDIN:',rows)\\n\\\"; echo \\\"--- linkedin skill count on disk\\\"; ls -d ~/.claude/plugins/cache/linkedin-skills/*/*/skills/*/ 2>/dev/null | wc -l\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:48:36.417Z",
+      "lastAccessed": "2026-09-29T07:48:36.417Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:48:36.417Z"
+    },
+    "cmd-1790668226575": {
+      "key": "cmd-1790668226575",
+      "value": "{\"command\":\"echo \\\"--- tz\\\"; date \\\"+%Z %z %H:%M\\\"; echo \\\"--- remote\\\"; git remote -v | head -2; echo \\\"--- files\\\"; ls; echo \\\"--- data.js head\\\"; wc -l data.js; head -60 data.js; echo \\\"--- recent commits\\\"; git log --since=\\\"60 days ago\\\" --pretty=format:\\\"%h %ad %s\\\" --date=short | head -30\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:50:26.575Z",
+      "lastAccessed": "2026-09-29T07:50:26.575Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:50:26.575Z"
+    },
+    "cmd-1790668305963": {
+      "key": "cmd-1790668305963",
+      "value": "{\"command\":\"cat CNAME; echo \\\"--- routing in app.js\\\"; grep -n -E \\\"location\\\\.(hash|search|pathname)|hashchange|pushState|#/|\\\\?p=\\\" app.js | head -12; echo \\\"--- env loading\\\"; P=$(ls -d ~/.claude/plugins/cache/linkedin-skills/linkedin-skills/*/ | tail -1); echo \\\"$P\\\"; sed -n '1,60p' \\\"$P/lib/_env.py\\\" | grep -n -E \\\"env|path|Path|home|getenv|dotenv\\\" | head -25; echo \\\"--- approval.py summary\\\"; grep -n -E \\\"def |approve|confirm\\\" \\\"$P/lib/approval.py\\\" | head -15\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:51:45.963Z",
+      "lastAccessed": "2026-09-29T07:51:45.963Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:51:45.963Z"
+    },
+    "cmd-1790668342594": {
+      "key": "cmd-1790668342594",
+      "value": "{\"command\":\"git fetch origin --quiet 2>&1 | tail -2; echo \\\"origin/main: $(git rev-parse --short origin/main) $(git log -1 --format='%ad %s' --date=short origin/main)\\\"; echo \\\"local HEAD:  $(git rev-parse --short HEAD)\\\"; echo \\\"--- python deps\\\"; python3 -c \\\"import requests; print('requests ok')\\\" 2>&1 | tail -1; python3 -c \\\"import dotenv; print('python-dotenv ok')\\\" 2>&1 | tail -1; echo \\\"--- ~/.env exists?\\\"; ls -la ~/.env 2>&1 | cut -c1-60; echo \\\"--- .env ignored in repo?\\\"; git check-ignore -v .env 2>&1 | head -1\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:52:22.594Z",
+      "lastAccessed": "2026-09-29T07:52:22.594Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:52:22.594Z"
+    },
+    "cmd-1790668373832": {
+      "key": "cmd-1790668373832",
+      "value": "{\"command\":\"SHA=$(git rev-parse origin/main) && F=/Users/zuhairtalpur/.claude/scheduled-tasks/linkedin-daily-post/state.json && printf '{\\\\n  \\\"last_commit\\\": \\\"%s\\\",\\\\n  \\\"queue\\\": [],\\\\n  \\\"history\\\": []\\\\n}\\\\n' \\\"$SHA\\\" > \\\"$F\\\" && cat \\\"$F\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:52:53.832Z",
+      "lastAccessed": "2026-09-29T07:52:53.832Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:52:53.832Z"
+    },
+    "cmd-1790668387616": {
+      "key": "cmd-1790668387616",
+      "value": "{\"command\":\"which python3; python3 --version; python3 -m pip --version 2>&1 | head -1; ls \\\"$(python3 -c 'import sys;print(sys.prefix)')\\\"/lib/python3*/EXTERNALLY-MANAGED 2>/dev/null && echo \\\"externally managed\\\" || echo \\\"not externally managed\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:53:07.616Z",
+      "lastAccessed": "2026-09-29T07:53:07.616Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:53:07.616Z"
+    },
+    "cmd-1790668424257": {
+      "key": "cmd-1790668424257",
+      "value": "{\"command\":\"ls -la && cat package.json 2>/dev/null | head -30\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:53:44.257Z",
+      "lastAccessed": "2026-09-29T07:53:44.257Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:53:44.257Z"
+    },
+    "cmd-1790668429624": {
+      "key": "cmd-1790668429624",
+      "value": "{\"command\":\"cat index.html && grep -n \\\"scrollTo\\\\|scrollRestoration\\\\|popstate\\\\|hashchange\\\\|pushState\\\\|replaceState\\\\|location\\\\.\\\\(hash\\\\|href\\\\|assign\\\\)\\\\|pageshow\\\\|sessionStorage\\\\|function route\\\\|function render\\\\|window.open\\\\|target=\\\\\\\"_blank\\\\|target='_blank\\\\|_blank\\\" app.js | head -80\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:53:49.624Z",
+      "lastAccessed": "2026-09-29T07:53:49.624Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:53:49.624Z"
+    },
+    "cmd-1790668434158": {
+      "key": "cmd-1790668434158",
+      "value": "{\"command\":\"sed -n 1200,1345p app.js && grep -n \\\"href=\\\\\\\"\\\\(\\\\./\\\\)\\\\?\\\\(raw\\\\|chhaap\\\\|talpur\\\\|ghar\\\\|gad\\\\|lawn\\\\|line\\\\|scrap\\\\|texere\\\\|mir-campaign\\\\|threads-of-time\\\\)\\\\|url:\\\\|href:\\\" data.js | head -40\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:53:54.158Z",
+      "lastAccessed": "2026-09-29T07:53:54.158Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:53:54.158Z"
+    },
+    "cmd-1790668441602": {
+      "key": "cmd-1790668441602",
+      "value": "{\"command\":\"grep -n \\\"function initHero\\\\|function initWorkStack\\\\|function initFlow\\\\|function viewHome\\\\|function initProject\\\\|function initResearch\\\" app.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:54:01.602Z",
+      "lastAccessed": "2026-09-29T07:54:01.602Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:54:01.602Z"
+    },
+    "cmd-1790668445914": {
+      "key": "cmd-1790668445914",
+      "value": "{\"command\":\"sed -n 835,1000p app.js && grep -n \\\"viewHome\\\" app.js | head\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:54:05.914Z",
+      "lastAccessed": "2026-09-29T07:54:05.914Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:54:05.914Z"
     }
   },
   "version": "3.0.0"

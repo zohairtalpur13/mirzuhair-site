@@ -1,0 +1,13 @@
+{
+  "id": "session-1790668080036",
+  "startedAt": "2026-09-29T07:48:00.036Z",
+  "cwd": "/Users/zuhairtalpur/Documents/mirzuhair-site",
+  "context": {},
+  "metrics": {
+    "edits": 0,
+    "commands": 0,
+    "tasks": 0,
+    "errors": 0
+  },
+  "restoredAt": "2026-09-29T07:53:33.579Z"
+}

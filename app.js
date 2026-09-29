@@ -1215,6 +1215,38 @@
   /* ---------- Router ---------- */
   const setNav = (key) => document.querySelectorAll("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === key));
 
+  /* ---------- Scroll memory: going back returns to where you were, not the top ----------
+     Each history entry keeps its own scroll position in history.state, so Back (or
+     returning from a live project page) restores it; a fresh link click starts at the top. */
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  const SAVE_DELAY = 200, RESTORE_TRIES = 40;
+  let saveTimer = 0, pendingY = null;
+  const saveScroll = () => {
+    clearTimeout(saveTimer);
+    if (pendingY !== null) return;
+    try { history.replaceState({ ...(history.state || {}), y: Math.round(scrollY) }, ""); } catch (e) { /* Safari rate limit: skip this save */ }
+  };
+  addEventListener("scroll", () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveScroll, SAVE_DELAY); }, { passive: true });
+  addEventListener("pagehide", saveScroll);
+  document.addEventListener("click", (e) => { if (e.target.closest("a[href]")) saveScroll(); }, true);
+  ["wheel", "touchstart", "keydown"].forEach((t) => addEventListener(t, () => { pendingY = null; }, { passive: true }));
+  function restoreScroll() {
+    clearTimeout(saveTimer);
+    const y = history.state && Number.isFinite(history.state.y) ? history.state.y : 0;
+    pendingY = y || null;
+    window.scrollTo(0, y);
+    if (!pendingY) return;
+    // images may still be loading, so keep trying until the page is tall enough to land on y
+    let tries = 0;
+    const retry = () => {
+      if (pendingY !== y) return;
+      window.scrollTo(0, y);
+      if (Math.abs(scrollY - y) < 2 || ++tries >= RESTORE_TRIES) { pendingY = null; return; }
+      setTimeout(retry, 50);
+    };
+    requestAnimationFrame(retry);
+  }
+
   function route() {
     const h = location.hash.replace(/^#\/?/, "");
     const [seg, slug] = h.split("/");
@@ -1236,7 +1268,7 @@
       app.innerHTML = viewHome(); setNav("work");
     }
     document.title = title;
-    window.scrollTo(0, 0);
+    restoreScroll();
     wire();
     initHero();
     initResearch();
