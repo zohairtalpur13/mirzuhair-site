@@ -1,0 +1,113 @@
+{
+  "entries": {
+    "cmd-1790667629938": {
+      "key": "cmd-1790667629938",
+      "value": "{\"command\":\"cat > /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/fit.js <<'EOF'\\nconst NX=48,NY=16,CURL=1.15,LEAD=0.35,STACK=0.9,TILT=0.5,D=2600,RATIO=1.25,L=6;\\nfunction rot(rx,ry){const cx=Math.cos(rx),sx=Math.sin(rx),cy=Math.cos(ry),sy=Math.sin(ry);\\n return v=>[cy*v[0]+sy*sx*v[1]+sy*cx*v[2], cx*v[1]-sx*v[2], -sy*v[0]+cy*sx*v[1]+cy*cx*v[2]];}\\nfunction extent(cw,ch,f,oy){const w=Math.min(cw*0.44,ch*f/RATIO),h=w*RATIO;let maxY=-9,minY=9;\\n for(const tx of [-0.06,0.06])for(const ty of [-0.08,0.08]){const R=rot(-TILT+tx,ty);\\n for(let s=0;s<=50;s++){const t=s/50;const lift=Math.sin(Math.PI*t);\\n  for(let j=0;j<=NY;j+=NY){const vy=j/NY,y=(vy-0.5)*h,lead=(vy-0.5)*LEAD*lift;let x=0,z=(L+2)*STACK;\\n   for(let i=0;i<=NX;i++){const u=i/NX;const a=Math.min(Math.PI,Math.max(0,Math.PI*t-CURL*lift*Math.pow(u,1.4)+lead*u));\\n    for(const sh of [-w/2,0,w/2]){const p=R([x+sh*(1),y+oy*h,z]);const ny=p[1]*D/(ch/2)/(D-p[2]);maxY=Math.max(maxY,ny);minY=Math.min(minY,ny);}\\n    x+=w/NX*Math.cos(a);z+=w/NX*Math.sin(a);}}}}\\n return [minY.toFixed(2),maxY.toFixed(2)];}\\nfor(const [f,oy] of [[0.86,0],[0.6,0],[0.55,0],[0.62,-0.12],[0.66,-0.15],[0.7,-0.17]]){\\n console.log('f',f,'oy',oy,'1440x792',extent(1440,792,f,oy),'1920x920',extent(1920,920,f,oy),'768x717',extent(768,717,f,oy));}\\nEOF\\nnode /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/fit.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:29.938Z",
+      "lastAccessed": "2026-09-29T07:40:29.938Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:29.938Z"
+    },
+    "cmd-1790667632357": {
+      "key": "cmd-1790667632357",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && ls -la --time-style=+%T raw/*.* 2>/dev/null || ls -laT raw/; grep -n -E \\\"mag-fallback|circle 22%|hidden\\\" raw/raw.css; git status --short app.js data.js raw | head -5\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:32.357Z",
+      "lastAccessed": "2026-09-29T07:40:32.357Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:32.357Z"
+    },
+    "cmd-1790667643496": {
+      "key": "cmd-1790667643496",
+      "value": "{\"command\":\"cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad && sed -i '' 's/^for(const \\\\[f,oy\\\\] of .*$/for(const [f,oy] of [[0.6,-0.12],[0.58,-0.1],[0.6,-0.1]]){/' fit.js && node fit.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:43.496Z",
+      "lastAccessed": "2026-09-29T07:40:43.496Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:43.496Z"
+    },
+    "cmd-1790667643632": {
+      "key": "cmd-1790667643632",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && grep -n '\\\\[\\\"raw\\\"' app.js; grep -n -E \\\"raw/img/(cover-0|raw-0|house-)\\\" app.js data.js; ls raw/img; git status --short raw/img | head -3\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:43.632Z",
+      "lastAccessed": "2026-09-29T07:40:43.632Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:43.632Z"
+    },
+    "cmd-1790667656573": {
+      "key": "cmd-1790667656573",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && git status --short --untracked-files=all raw | grep -v \\\"^D \\\" ; git ls-files raw/img | head\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:56.573Z",
+      "lastAccessed": "2026-09-29T07:40:56.573Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:56.573Z"
+    },
+    "cmd-1790667657932": {
+      "key": "cmd-1790667657932",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && wc -l raw/flip.js && sed -n 170,180p raw/flip.js && sed -n 26,43p raw/flip.js && sed -n 244,275p raw/flip.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:57.932Z",
+      "lastAccessed": "2026-09-29T07:40:57.932Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:57.932Z"
+    },
+    "cmd-1790667667726": {
+      "key": "cmd-1790667667726",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && ls -a | head -20; cat .gitignore 2>/dev/null; ls -la raw/img/.claude-flow; git check-ignore -v raw/img/.claude-flow/memory/store.json; echo \\\"exit $?\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:41:07.726Z",
+      "lastAccessed": "2026-09-29T07:41:07.726Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:41:07.726Z"
+    },
+    "cmd-1790667680825": {
+      "key": "cmd-1790667680825",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && git ls-files .claude-flow | head -3; git status --short --untracked-files=normal | grep -i flow; find raw/img/.claude-flow -type f -exec ls -la {} \\\\;\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:41:20.825Z",
+      "lastAccessed": "2026-09-29T07:41:20.825Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:41:20.825Z"
+    },
+    "cmd-1790667696253": {
+      "key": "cmd-1790667696253",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && ls -laT raw/pages.js raw/img/page-00.jpg raw/img/page-11.jpg; cat -n raw/pages.js | sed -n 1,60p | grep -n -v \\\"^$\\\" | head -0; diff <(sed -n 1,400p raw/pages.js) /dev/null | wc -l; grep -n -E \\\"seed|grain\\\\(|posterNuit|LE ROUGE|fit\\\\(\\\" raw/pages.js | head -30\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:41:36.253Z",
+      "lastAccessed": "2026-09-29T07:41:36.253Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:41:36.253Z"
+    },
+    "cmd-1790667704915": {
+      "key": "cmd-1790667704915",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site && sed -n 100,125p raw/pages.js | cat -n | sed 's/^ *\\\\([0-9]*\\\\)/\\\\1+99/'; ls -laT raw/*.js raw/*.css raw/index.html\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:41:44.915Z",
+      "lastAccessed": "2026-09-29T07:41:44.915Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:41:44.915Z"
+    },
+    "cmd-1790667708437": {
+      "key": "cmd-1790667708437",
+      "value": "{\"command\":\"cat > /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/pop.js <<'EOF'\\nconst TILT=0.5,D=2600,STACK=0.9,L=6;const cw=1440,ch=792;const w=Math.min(cw*0.44,ch*0.86/1.25),h=w*1.25;\\nconst cx=Math.cos(-TILT),sx=Math.sin(-TILT);\\nfunction proj(x,y,z){const py=cx*y-sx*z,pz=sx*y+cx*z;const W=D-pz;return [x*D/W,py*D/W];}\\nfor(const [label,x0,z0,z1] of [['k=5 fwd start (right, shift 0)',0,(L-5)*STACK,(L+2)*STACK],['k=0 fwd end (left, shift 0)',0,(L+2)*STACK,0]]){\\n for(const [cxn,cyn] of [[1,-0.5],[1,0.5],[0.5,-0.5]]){const x=(label.includes('left')?-1:1)*cxn*w,y=cyn*h;\\n  const a=proj(x,y,z0),b=proj(x,y,z1);console.log(label,'corner',cxn,cyn,'dx',(b[0]-a[0]).toFixed(2),'dy(css px, +up)',(b[1]-a[1]).toFixed(2));}}\\nEOF\\nnode /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/pop.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:41:48.437Z",
+      "lastAccessed": "2026-09-29T07:41:48.437Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:41:48.437Z"
+    },
+    "cmd-1790667740365": {
+      "key": "cmd-1790667740365",
+      "value": "{\"command\":\"cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad && cat > xfit.js <<'EOF'\\nconst NX=48,NY=16,CURL=1.15,LEAD=0.35,STACK=0.9,TILT=0.5,D=2600,RATIO=1.25,L=6;\\nfunction rot(rx,ry){const cx=Math.cos(rx),sx=Math.sin(rx),cy=Math.cos(ry),sy=Math.sin(ry);\\n return v=>[cy*v[0]+sy*sx*v[1]+sy*cx*v[2], cx*v[1]-sx*v[2], -sy*v[0]+cy*sx*v[1]+cy*cx*v[2]];}\\nfunction ext(cw,ch,fx,fy,oy){const w=Math.min(cw*fx,ch*fy/RATIO),h=w*RATIO;let mx=0,my=0;\\n for(const tx of [-0.06,0.06])for(const ty of [-0.08,0.08]){const R=rot(-TILT+tx,ty);\\n for(const sf of [t=>-w/2*(1-t),t=>0,t=>w/2*t])for(let s=0;s<=50;s++){const t=s/50,lift=Math.sin(Math.PI*t),sh=sf(t);\\n  for(let j=0;j<=NY;j+=NY){const vy=j/NY,y=(vy-0.5)*h,lead=(vy-0.5)*LEAD*lift;let x=0,z=(L+2)*STACK;\\n   for(let i=0;i<=NX;i++){const u=i/NX;const a=Math.min(Math.PI,Math.max(0,Math.PI*t-CURL*lift*Math.pow(u,1.4)+lead*u));\\n    const p=R([x+sh,y+oy*h,z]);const W=D-p[2];mx=Math.max(mx,Math.abs(p[0]*D/(cw/2)/W));my=Math.max(my,p[1]*D/(ch/2)/W);\\n    x+=w/NX*Math.cos(a);z+=w/NX*Math.sin(a);}}}}\\n return 'w='+w.toFixed(0)+' maxX='+mx.toFixed(3)+' maxY='+my.toFixed(3);}\\nfor(const [cw,ch] of [[1440,792],[1920,920],[1280,633],[768,717],[1024,675],[375,568],[390,591],[820,901]]) console.log(cw+'x'+ch,'current',ext(cw,ch,0.44,0.86,0),'| fix',ext(cw,ch,0.42,0.6,-0.12));\\nEOF\\nnode xfit.js\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:42:20.365Z",
+      "lastAccessed": "2026-09-29T07:42:20.365Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:42:20.365Z"
+    }
+  },
+  "version": "3.0.0"
+}

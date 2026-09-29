@@ -1050,31 +1050,32 @@ const PROJECTS = [
     slug: "raw",
     tone: "#1a1716",
     title: "“RAW”",
-    subtitle: "A wabi-sabi magazine in black and red",
-    date: "Self-Initiated · Art Direction · 3D · 2026",
-    tags: "Magazine covers · 3D interiors · Label typography · Web",
-    cover: "raw/img/cover-01.jpg",
-    covers: [{ src: "raw/img/cover-01.jpg" }, { src: "raw/img/cover-02.jpg" }, { src: "raw/img/cover-04.jpg" }],
+    subtitle: "The Houses Issue: five invented fashion houses, sold by typography alone",
+    date: "Self-Initiated · Art Direction · Typography · 2026",
+    tags: "Invented brand identities · Editorial design · Typography · WebGL",
+    cover: "raw/img/page-00.jpg",
+    covers: [{ src: "raw/img/page-00.jpg" }, { src: "raw/img/page-01.jpg" }, { src: "raw/img/page-03.jpg" }],
     sections: {
       "The Project":
-        "“RAW” is a five-issue magazine about objects that show their age: a hand-formed vessel, a bowl mended in red lacquer, a bench in an empty room, a red book and three rough stones. Two colours only, black and red.",
+        "“RAW”, The Houses Issue, is a black-and-red fashion magazine of five invented luxury houses, each art-directed in the spirit of a real one: NUIT after Saint Laurent, BRUT after Balenciaga, VELLUTO after Gucci, ZERO after Maison Margiela and “QUOTE” after Virgil Abloh.",
       "The Process":
-        "Each object was modelled and lit in Blender inside a dark lime-plaster room with a single shaft of light. The covers set wabi-sabi quiet against Virgil Abloh’s loud label language: the name in quotation marks, materials printed like a factory tag, and © and ™ where nobody expects them.",
+        "There are no products, no models and no photographs. Each house is sold by typography alone: one campaign poster and one editorial page, all drawn in code. The issue lives on a table as a 3D magazine you turn by hand, with a camera flash that follows the cursor.",
       "The Problem":
-        "Wabi-sabi is usually shown in beige and linen and ends up looking like a catalogue. I wanted to keep its patience and imperfection but make it graphic and confident.",
+        "Fashion houses are recognised as much by their type and attitude as by their products. I wanted to see how much of a house survives with everything taken away except the letters.",
       "The Goal":
-        "A magazine that feels like a quiet room with one loud sign on the door."
+        "A magazine you handle rather than scroll, where each spread feels like a different house speaking."
     },
     blocks: [
-      { type: "linkout", text: "“RAW” is live. Watch the covers unfold and read the issues:", items: [{ label: "Open “RAW”", href: "raw/index.html" }] },
+      { type: "linkout", text: "“RAW” is live. Drag the pages to turn them:", items: [{ label: "Open “RAW”", href: "raw/index.html" }] },
       { type: "grid", cols: 3, items: [
-        { src: "raw/img/cover-01.jpg", cap: "“VESSEL”, black stone, red lacquer inside." },
-        { src: "raw/img/cover-02.jpg", cap: "“REPAIR”, raku mended in red." },
-        { src: "raw/img/cover-03.jpg", cap: "“BENCH”, one red cushion." },
-        { src: "raw/img/cover-04.jpg", cap: "“BOOK”, the most honest object." },
-        { src: "raw/img/cover-05.jpg", cap: "“STONE”, one of three is red." }
+        { src: "raw/img/page-00.jpg", cap: "The cover." },
+        { src: "raw/img/page-01.jpg", cap: "NUIT, after Saint Laurent: one letter, one red hairline." },
+        { src: "raw/img/page-03.jpg", cap: "BRUT, after Balenciaga: the name as a wall." },
+        { src: "raw/img/page-05.jpg", cap: "VELLUTO, after Gucci: a monogram like a wax seal." },
+        { src: "raw/img/page-07.jpg", cap: "ZERO, after Maison Margiela: a blank label." },
+        { src: "raw/img/page-09.jpg", cap: "“QUOTE”, after Virgil Abloh: a campaign that says so." }
       ]},
-      { type: "linkout", text: "Read the issues:", items: [{ label: "Open “RAW”", href: "raw/index.html#issues" }] }
+      { type: "linkout", text: "Turn the pages:", items: [{ label: "Open “RAW”", href: "raw/index.html#magazine" }] }
     ]
   },
   {

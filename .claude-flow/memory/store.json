@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "cmd-1790667573682": {
+      "key": "cmd-1790667573682",
+      "value": "{\"command\":\"claude plugin list 2>&1 > /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/25296f0d-a864-4b59-ab81-357ed324b300/scratchpad/plugin-list.txt; cd /private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/25296f0d-a864-4b59-ab81-357ed324b300/scratchpad && grep -c \\\"@ruflo\\\" plugin-list.txt; grep -A4 \\\"@ruflo\\\" plugin-list.txt | head -20; echo \\\"--- missing:\\\"; python3 -c \\\"\\nimport json,re\\nwant=[p['name'] for p in json.load(open('$HOME/.claude/plugins/marketplaces/ruflo/.claude-plugin/marketplace.json'))['plugins']]\\ntxt=open('plugin-list.txt').read()\\ngot=set(re.findall(r'(ruflo[\\\\w-]*)@ruflo',txt))\\nprint([w for w in want if w not in got] or 'none'); print('installed',len(got),'of',len(want))\\n\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:39:33.682Z",
+      "lastAccessed": "2026-09-29T07:39:33.682Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:39:33.682Z"
+    },
+    "cmd-1790667592371": {
+      "key": "cmd-1790667592371",
+      "value": "{\"command\":\"echo \\\"--- git status (new/changed)\\\"; git status --short | head -30; echo \\\"--- claude-flow mcp\\\"; claude mcp get claude-flow 2>&1 | head -15; echo \\\"--- UserPromptSubmit hooks\\\"; grep -l \\\"UserPromptSubmit\\\" ~/.claude/settings.json .claude/settings.json .claude/settings.local.json 2>/dev/null; ls -a .claude 2>/dev/null | head -30\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:39:52.371Z",
+      "lastAccessed": "2026-09-29T07:39:52.371Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:39:52.371Z"
+    },
+    "cmd-1790667620063": {
+      "key": "cmd-1790667620063",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw/img && sips -g pixelWidth -g pixelHeight page-00.jpg page-05.jpg | paste - - - ; python3 -c \\\"\\nfrom PIL import Image\\nd='/Users/zuhairtalpur/Documents/mirzuhair-site/raw/img/'\\nS='/private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/'\\nims=[Image.open(d+'page-%02d.jpg'%i).convert('RGB') for i in range(12)]\\nw,h=ims[0].size\\ntw,th=400,500\\nout=Image.new('RGB',(tw*6,th*2),(60,60,60))\\nfor i,im in enumerate(ims):\\n    out.paste(im.resize((tw,th)),((i%6)*tw,(i//6)*th))\\nout.save(S+'sheet.png')\\nprint(w,h)\\n\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:20.063Z",
+      "lastAccessed": "2026-09-29T07:40:20.063Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:20.063Z"
+    },
+    "cmd-1790667625862": {
+      "key": "cmd-1790667625862",
+      "value": "{\"command\":\"echo \\\"--- .mcp.json\\\"; ls -la .mcp.json 2>&1; git check-ignore -v .mcp.json 2>&1; git log --oneline -1 -- .mcp.json 2>&1; echo \\\"--- .claude-flow\\\"; ls -la .claude-flow | head; echo \\\"--- UserPromptSubmit hook in ~/.claude/settings.json\\\"; python3 -c \\\"\\nimport json;d=json.load(open('$HOME/.claude/settings.json'))\\nh=d.get('hooks',{})\\nfor ev,items in h.items():\\n  for it in items:\\n    for hk in it.get('hooks',[]):\\n      c=hk.get('command','')\\n      if 'flow' in c or 'ruflo' in c or ev=='UserPromptSubmit': print(ev,'|',c[:160])\\n\\\"; echo \\\"--- standalone skills/commands dirs\\\"; ls -ld ~/.claude/skills/agentdb-advanced ~/.claude/skills/sparc-methodology ~/.claude/commands/sparc ~/.claude/commands/hive-mind 2>&1\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:25.862Z",
+      "lastAccessed": "2026-09-29T07:40:25.862Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:25.862Z"
+    },
+    "cmd-1790667628706": {
+      "key": "cmd-1790667628706",
+      "value": "{\"command\":\"cat -n /Users/zuhairtalpur/Documents/mirzuhair-site/raw/flip.js | sed -n 170,340p; echo ----; cat -n /Users/zuhairtalpur/Documents/mirzuhair-site/raw/houses.js | sed -n 1,80p\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:28.706Z",
+      "lastAccessed": "2026-09-29T07:40:28.706Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:28.706Z"
+    },
+    "cmd-1790667638365": {
+      "key": "cmd-1790667638365",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw; cat -n flip.js | sed -n 1,170p; cat -n houses.js | sed -n 80,140p; cat -n raw.css | sed -n 30,110p; cat -n index.html | sed -n 20,50p\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:38.365Z",
+      "lastAccessed": "2026-09-29T07:40:38.365Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:38.365Z"
+    },
+    "cmd-1790667652915": {
+      "key": "cmd-1790667652915",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw/img && S=/private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/ && python3 -c \\\"\\nfrom PIL import Image\\nd='./'; S='$S'\\na=Image.open('page-03.jpg'); b=Image.open('page-07.jpg'); c=Image.open('page-00.jpg')\\nout=Image.new('RGB',(1000,780),(80,80,80))\\nout.paste(a.crop((0,0,1000,260)),(0,0))\\nout.paste(a.crop((0,1080,1000,1250)),(0,265))\\nout.paste(b.crop((400,1140,1000,1250)),(0,440))\\nout.paste(c.crop((0,0,1000,220)),(0,555))\\nout.save(S+'zoom.png')\\n\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:52.915Z",
+      "lastAccessed": "2026-09-29T07:40:52.915Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:52.915Z"
+    },
+    "cmd-1790667656577": {
+      "key": "cmd-1790667656577",
+      "value": "{\"command\":\"echo \\\"--- timestamps\\\"; stat -f \\\"%Sm %N\\\" -t \\\"%H:%M:%S\\\" ~/.claude/plugins/marketplaces/ruflo ~/.claude/helpers/hook-handler.cjs ~/.claude/settings.json ~/.claude/skills/agentdb-advanced ~/.mcp.json ~/Documents/.mcp.json 2>&1; ls ~/.claude/settings.json.* ~/.claude/*.bak 2>/dev/null | head; echo \\\"--- missing plugin dirs in clone\\\"; M=~/.claude/plugins/marketplaces/ruflo; for p in ruflo-graph-intelligence ruflo-music ruflo-sparc ruflo-neural-trader; do ls -d \\\"$M/plugins/$p/.claude-plugin\\\" 2>&1; done; echo \\\"--- details for one missing\\\"; claude plugin details ruflo-music@ruflo 2>&1 | head -15\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:40:56.577Z",
+      "lastAccessed": "2026-09-29T07:40:56.577Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:40:56.577Z"
+    },
+    "cmd-1790667674656": {
+      "key": "cmd-1790667674656",
+      "value": "{\"command\":\"S=/private/tmp/claude-501/-Users-zuhairtalpur-Documents-mirzuhair-site/24eb4bf0-a644-46ca-ab54-e3a1a8184f41/scratchpad/ && cd /Users/zuhairtalpur/Documents/mirzuhair-site/raw/img && python3 -c \\\"\\nfrom PIL import Image\\nb=Image.open('page-06.jpg').crop((500,1140,1000,1230)).resize((1000,180))\\nb.save('$S'+'vel.png')\\\"\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:41:14.656Z",
+      "lastAccessed": "2026-09-29T07:41:14.656Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:41:14.656Z"
+    },
+    "cmd-1790667731058": {
+      "key": "cmd-1790667731058",
+      "value": "{\"command\":\"cat -n /Users/zuhairtalpur/Documents/mirzuhair-site/raw/pages.js; cat -n /Users/zuhairtalpur/Documents/mirzuhair-site/raw/houses.js | sed -n 1,60p\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:42:11.058Z",
+      "lastAccessed": "2026-09-29T07:42:11.058Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:42:11.058Z"
+    },
+    "cmd-1790667756466": {
+      "key": "cmd-1790667756466",
+      "value": "{\"command\":\"cd /Users/zuhairtalpur/Documents/mirzuhair-site; grep -n \\\"fonts.googleapis\\\\|<script\\\" raw/index.html; grep -n \\\"Archivo\\\" scrap/scrap.css raw/raw.css | head -30; ls raw/img/\",\"exitCode\":0,\"success\":true}",
+      "namespace": "commands",
+      "storedAt": "2026-09-29T07:42:36.466Z",
+      "lastAccessed": "2026-09-29T07:42:36.466Z",
+      "accessCount": 0,
+      "expiresAt": "2026-10-29T07:42:36.466Z"
+    }
+  },
+  "version": "3.0.0"
+}
