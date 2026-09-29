@@ -182,7 +182,7 @@
   /* ---------- Views ---------- */
   const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
       "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
-      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc-st-crosswalk.jpg",
+      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc2-street-wall.jpg",
       "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg", "line": "img/wl-panel-1.jpg" };
 
   const viewHome = () => {
@@ -350,36 +350,36 @@
     ["Translate", "Finally, the grammar became cloth: seven compositions, printed on silk and woven as jacquard.", "img/tt-hero.jpg"],
   ];
   const R_CASE_WHY = [
-    ["Where it began", "A strong campaign carries one idea from the street to the counter, into the bag and home. I wanted a project that showed my drawings could do the same, outside fashion."],
-    ["The idea", "In a Sindhi home the first cup of chai is for thirst and the second is for talk. That became the campaign line, \"Stay for the second cup\", and the offer: from Monday to Thursday, 4 to 7pm, the second chai is free."],
-    ["The rule", "My first draft used flat, drawn mockups, and it looked artificial. So I set a rule for the second round: every piece is shown on real photography, and every ornament is one of my own palace drawings."]
+    ["Where it began", "A strong café brand carries one idea from the street to the counter, into the bag and home. I wanted to show that my palace drawings could do the same, far from fashion."],
+    ["The idea", "The first cup is for the coffee; the second is for the company. That became the line, \"Stay for the second cup\", and the offer: Monday to Thursday, 4 to 7pm, the second cup is on the house."],
+    ["The rule", "Every ornament is one of my own drawings, and every piece is shown where people actually meet it: in a hand, on a shirt, behind the counter and on the street."]
   ];
   const R_CASE_PAIRS = [
-    ["img/ln-drawing.jpg", "img/mc-tote3.jpg", "Canvas tote", "The lantern", "Tote, cups, billboards"],
-    ["img/co-drawing.jpg", "img/mc-kraft2.jpg", "Kraft takeaway bag", "The corridor", "Takeaway bag"],
-    ["img/de-oval.jpg", "img/mc-sticker1.jpg", "Emblem sticker", "The deer", "Emblem, stickers, loyalty stamps"],
-    ["img/ce-drawing.jpg", "img/mc-tin1.jpg", "Nankhatai tin", "The painted ceiling", "Tin lid, Kashmiri chai pouch"],
-    ["img/ch-drawing.jpg", "img/mc-pouch3.jpg", "Loose-leaf chai pouches", "The chandelier", "House chai pouch, book cover"]
+    ["img/co-drawing.jpg", "img/mc2-cups.jpg", "House cup", "The corridor", "Cups, takeaway bag, T-shirt back"],
+    ["img/ln-drawing.jpg", "img/mc2-tote.jpg", "Canvas tote", "The lantern", "Cups, tote, tin, posters"],
+    ["img/de-oval.jpg", "img/mc2-sign.jpg", "Hanging sign", "The deer", "Emblem, sign, stickers, chest print"],
+    ["img/sk-dd-9.jpg", "img/mc2-box.jpg", "Pastry box", "The doorway crest", "Pastry box lid, offer poster"],
+    ["img/ln-drawing.jpg", "img/mc2-tin.jpg", "Coffee and tea tin", "The lantern", "Tin, lightbox poster"]
   ];
   const R_CASE_STEPS = [
-    ["Touchpoints", "I mapped every place the brand would meet people: street advertising, packaging, digital and gifting, each to be shown on real photography. That became my checklist.", "img/mc-billboard1.jpg"],
-    ["Choosing the drawings", "From the palace archive I chose the drawings with the clearest silhouettes, the ones that still read on a cup or a sticker: the lantern, the corridor, the deer, the ceiling and the chandelier.", "img/ln-drawing.jpg"],
-    ["Identity", "Each drawing was cleaned into a single-ink line so it could print in one colour on kraft, canvas and paper. I paired it with a Bodoni wordmark and a script signature, and made the deer oval the emblem.", "img/mc-sticker3.jpg"],
-    ["The arch and the photograph", "For the campaign I framed real chai photography inside the shape of the palace doorway arch. It gave four key visuals: the second cup, Kashmiri pink chai, the copper kettle and bun maska.", "img/mc-kv2.jpg"],
-    ["Mockups", "Every design was placed into Photoshop smart-object mockups, so the print follows the folds of canvas, the grain of kraft and the curve of a cup. The street scenes are real photographs, with passers-by cut out so they walk in front of the posters.", "img/mc-st-umbrella.jpg"],
-    ["The app and social", "The loyalty idea became the Second Cup Club: an app with stamps, the 4–7pm offer and real drink photography, plus an Instagram grid that alternates photos and type.", "img/mc-app-home.jpg"]
+    ["Touchpoints", "I listed every place the café meets people: the cup in a hand, the bag on the way home, the barista's apron, the poster on the walk to work. Each one had to be shown in a real scene.", "img/mc2-group.jpg"],
+    ["Choosing the drawings", "From the palace archive I chose drawings that still read at the size of a cup: the corridor, the lantern, the deer and the doorway crest.", "img/ln-drawing.jpg"],
+    ["Identity", "Each drawing became a single-ink line in oxblood or linen. The wordmark sets MIR'S in Didone capitals over a script Café; the deer oval inside a ring of lettering is the emblem.", "img/mc2-logo.jpg"],
+    ["Packaging", "Cups, bag, pastry box, tin, tote and sign were built and lit in Blender, with the print wrapped onto real geometry under warm window light.", "img/mc2-bag.jpg"],
+    ["People", "The cups, shirts and aprons were mapped onto photographs of real people in Photoshop and Python: displacement from the fabric's own folds, masks so fingers and jewellery stay in front, and the photo's light on the ink.", "img/mc2-baristas.jpg"],
+    ["The street", "Four posters carry the line \"Stay for the second cup\" into bus shelters, lightboxes and sunlit walls, matched to each scene's perspective and light.", "img/mc2-street-wall.jpg"]
   ];
   const R_CASE_PAL = [
-    ["#5E1224", "Oxblood", "The burgundy of Earthy Regal, deepened to the colour of the red hall.", "#F3EBDD"],
-    ["#E7B3B0", "Kashmiri pink", "Taken from the drink itself: the colour of Kashmiri chai.", "#5E1224"],
-    ["#0D4F4E", "Palace teal", "The teal of Earthy Regal and the painted-ceiling prints.", "#F3EBDD"],
-    ["#C99E52", "Lantern gold", "The brass of the lanterns and the gilt lines of the ceiling.", "#231E20"],
-    ["#F3EBDD", "Raw linen", "Unbleached canvas and paper, the ground for one-ink prints.", "#5E1224"]
+    ["#5E1224", "Oxblood", "The deep red of the palace's red hall: the one ink for every print.", "#F3EBDD"],
+    ["#F3EBDD", "Raw linen", "Unbleached paper and canvas, the ground the drawings sit on.", "#5E1224"],
+    ["#C99E52", "Lantern brass", "The brass of the lanterns, used on the tin and the sign's fittings.", "#231E20"],
+    ["#3B2317", "Roast", "The colour of the coffee itself, for type on light grounds.", "#F3EBDD"],
+    ["#E4D6BE", "Milk", "Steamed milk and kraft: the quiet ground of the packaging.", "#5E1224"]
   ];
   const R_CASE_LEARN = [
     ["Research travels", "Drawings made for silk worked just as well on a paper cup, because they were built on clear silhouettes and symmetry."],
-    ["One ink goes further", "Printing single-colour line work on kraft and canvas kept the heritage feel while looking contemporary rather than costume."],
-    ["Real context convinces", "Showing the work on real photography, with real people, was the difference between a concept and a campaign."]
+    ["One ink goes further", "A single oxblood line on linen reads as heritage without turning into costume."],
+    ["People make it a campaign", "The same cup looks like a product in a studio and like a café in someone's hand. The community photographs are what make the brand feel lived in."]
   ];
   // [slug, source photo, source label, finished work, hand drawing or "", one line]
   const R_WORKS = [
@@ -409,12 +409,12 @@
       ["quiet-structure", "img/qs-02.jpg", "Letterforms on a grid", "img/qs-01.jpg", "", "A personal identity built with the same attention to structure and symmetry."]
     ]]
   ];
-  const CASE_CAFE = { id: "mirs-cafe", kicker: "Case study · 2026", title: "Mir's Café", em: "from palace to chai house",
-    intro: "The palace research was made for cloth. Mir's Café asks whether the same drawings could carry a whole brand: a chai house with cups, bags, billboards and an app, all built from what I drew on site.",
-    why: R_CASE_WHY, pairsH: "From drawing to product", pairsP: "Five drawings from the palace archive became the whole graphic language. Hover over or tap a product to see the drawing behind it.",
+  const CASE_CAFE = { id: "mirs-cafe", kicker: "Case study · 2026", title: "Mir's Café", em: "from palace to coffee house",
+    intro: "The palace research was made for cloth. Mir's Café asks whether the same drawings could carry a whole brand: a coffee and tea house with cups, bags, aprons and street posters, all built from what I drew on site.",
+    why: R_CASE_WHY, pairsH: "From drawing to product", pairsP: "Four drawings from the palace archive became the whole graphic language. Hover over or tap a product to see the drawing behind it.",
     pairs: R_CASE_PAIRS, skAlt: "My drawing", stepsP: "From the first map of touchpoints to a finished campaign, in six steps.", steps: R_CASE_STEPS,
-    palP: "The palette carries on from Heritage Loop's \"Earthy Regal\", then warms up for a café.", pal: R_CASE_PAL, learn: R_CASE_LEARN,
-    cta: ["#/work/mirs-cafe", "img/mc-st-crosswalk.jpg", "Mir's Café"] };
+    palP: "One ink on one ground: oxblood on linen, with brass, roast and milk from the café itself.", pal: R_CASE_PAL, learn: R_CASE_LEARN,
+    cta: ["#/work/mirs-cafe", "img/mc2-street-wall.jpg", "Mir's Café"] };
   const CASE_OH = { id: "open-house", cls: "rs-case-oh", kicker: "Case study · 2026", title: "Open House", em: "a typeface from a palace",
     intro: "The palace research gave me patterns. Open House asks whether the building could give me letters: a typeface, Jharoka, and a complete exhibition identity built from two rules I found in the haveli.",
     why: [["Where it began", "Every earlier project took ornament from the palace. I wanted to go one level deeper and find the rules underneath the ornament, so that the building would be in the letters themselves."],
