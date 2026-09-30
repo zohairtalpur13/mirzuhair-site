@@ -182,7 +182,7 @@
   /* ---------- Views ---------- */
   const STAGE = { "threads-of-time": "img/tt-hero.jpg", "deer-and-doorway": "img/cr-mock-2.jpg", "painted-ceiling": "img/ce-final-teal.jpg",
       "portrait-of-an-ancestor": "img/pt-jq-3.jpg", "corridors-and-chandeliers": "img/cc-hall.jpg", "ivory-table": "img/gr-dark.jpg",
-      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc2-street-wall.jpg",
+      "lanterns": "img/ln-pattern.jpg", "greek-ornament": "img/ed-red.jpg", "quiet-structure": "img/qs-01.jpg", "mirs-cafe": "img/mc2-street-wall.jpg", "talpurs-in-sindh": "img/ts-collection.jpg",
       "heritage-loop": "img/hl-deer-look.jpg", "editorial-mockups": "img/ed-vogue-margot.jpg", "line": "img/wl-panel-1.jpg" };
 
   const viewHome = () => {
@@ -395,6 +395,7 @@
       ["line", "img/wl-given-1.jpg", "One line, 2021", "img/wl-panel-1.jpg", "", "Six pencil frames, one line each: a story about a man called Baldy Lock and the dream he chased."],
       ["texere", "img/tt-hoop-1.jpg", "My woven samples", "img/tx-weave.jpg", "", "Type that behaves like thread: combed, unravelled, woven, pulled and repeated."],
       ["open-house", "img/obj-jali.jpg", "The carved jali screen", "img/oh-poster-wall.jpg", "", "A typeface built from the jali's grid and the doorway's arch, carrying a whole exhibition."],
+      ["talpurs-in-sindh", "img/pt-portrait.jpg", "An ancestral portrait", "img/ts-collection.jpg", "", "A history of the Talpur Mirs as a collector's edition: the portrait drawing gold-blocked, embossed and woven into the cover."],
       ["mir-what-remains", "img/mir-crest-line.jpg", "The doorway crest drawing", "mir-campaign/assets/stationery.png", "", "The doorway drawing carried onto a card, a scent strip and a sealed envelope."],
       ["hisaab", "img/hs-src-2.jpg", "A weekly cotton report", "img/hs-p-5.jpg", "", "One lawn suit walked back to the cotton field: what the picking paid, and what nobody publishes."],
       ["gad", "img/gd-src-3.jpg", "A verse of Shah Abdul Latif", "img/gd-p-1.jpg", "", "Sindhi and English on one baseline grid, measured rather than guessed, ending in a bilingual broadsheet."],

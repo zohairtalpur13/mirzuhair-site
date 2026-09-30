@@ -652,6 +652,94 @@ const PROJECTS = [
   },
 
   {
+    slug: "talpurs-in-sindh",
+    tone: "#e6c9c5",
+    title: "Talpurs in Sindh",
+    subtitle: "A collector's edition and launch campaign for a history of the Talpur Mirs",
+    date: "Self-Initiated · Book Design · 3D · 2026",
+    tags: "Book cover · Cloth & leather binding · Foil & emboss · 3D rendering · Launch campaign",
+    cover: "img/ts-collection.jpg",
+    covers: [{ src: "img/ts-collection.jpg" }, { src: "img/ts-macro-gilt.jpg" }, { src: "img/ts-ooh-columns.jpg" }],
+    sections: {
+      "The Project":
+        "Talpurs in Sindh is a history of the Talpur Mirs, who ruled Sindh from the victory at Halani in 1783 to the defeat at Miani in 1843. I designed it as a collector's edition: printed jackets, cloth, jacquard and leather bindings, and a launch campaign that takes the book from the shelf to the street.",
+      "The Process":
+        "Every surface comes from my Threads of Time archive. The ancestral portrait, drawn from a painting in the haveli, became the centre of the cover; the painted ceiling, the corridor, the lanterns and the portrait jacquard became jackets, endpapers and cloth. I built the books in Blender with real relief, so gold foil, blind embossing and debossed labels catch the light as they would in the hand, then mapped the campaign into street, museum and gallery photographs.",
+      "The Problem":
+        "History books tend to look either dusty or like any other paperback. A book about a ruling family of Sindh needed to feel like an object worth keeping, without turning the heritage into costume.",
+      "The Goal":
+        "A book that reads as history from across a room: classical serif type, one ornament, gold on cloth, and colour taken from the palace itself. Then a launch that treats the book like a museum exhibition."
+    },
+    note: "The books are rendered in Blender; street, museum and gallery scenes use reference and Unsplash photography (Phil Hearing, Annie Hatuanh, Ricardo Gomez Angel) with the artwork mapped in. The drawings, patterns, covers and all applied artwork are my work.",
+    blocks: [
+      { type: "full", src: "img/ts-collection.jpg", cap: "The collection: three printed jackets, the teal cloth edition and the quarter binding." },
+      { type: "text", h: "One portrait, many bindings",
+        p: "The centre of every cover is the same drawing: a Talpur ancestor, drawn from a portrait in the haveli and framed in lotus ornament. Around it, each edition is dressed in a different part of the house." },
+      { type: "trio", items: [
+        { src: "img/ts-jacket-crimson.jpg", cap: "Crimson jacket: the portrait repeat.", contain: true },
+        { src: "img/ts-jacket-teal.jpg", cap: "Teal jacket: the painted ceiling.", contain: true },
+        { src: "img/ts-jacket-plum.jpg", cap: "Plum jacket: the corridor toile.", contain: true }
+      ]},
+      { type: "step", n: "01", h: "The source", p: "The portrait drawing and the printed repeats from Threads of Time: every colour and ornament on the book was already in the archive." },
+      { type: "pair", items: [
+        { src: "img/pt-drawing.jpg", cap: "The ancestral portrait, drawn by hand.", contain: true },
+        { src: "img/pt-jq-3.jpg", cap: "The portrait jacquard, which became the woven edition." }
+      ]},
+      { type: "step", n: "02", h: "Cloth, jacquard and leather", p: "Under the jackets, the case itself carries the design: gold blocking on crimson cloth, a blind-embossed ceiling on teal cloth with a recessed label, the portrait jacquard as woven cloth, and gilt leather." },
+      { type: "full", src: "img/ts-fabric.jpg", cap: "The woven edition: the portrait jacquard as book cloth, with a foil-stamped leather label." },
+      { type: "pair", items: [
+        { src: "img/ts-label.jpg", cap: "Teal cloth, the painted ceiling blind-embossed across the board." },
+        { src: "img/ts-leather.jpg", cap: "Teal and crimson leather, gold-blocked." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/ts-gilt.jpg", cap: "Crimson cloth case with its slipcase." },
+        { src: "img/ts-quarter.jpg", cap: "Quarter binding: leather spine and corners, portrait-pattern sides." }
+      ]},
+      { type: "step", n: "03", h: "In the hand", p: "Rendered close, the finishes do the work: gold that catches light, cloth weave, and letters pressed into the board." },
+      { type: "full", src: "img/ts-macro-gilt.jpg", cap: "Gold-blocked portrait in crimson leather." },
+      { type: "pair", items: [
+        { src: "img/ts-fabric-macro.jpg", cap: "Foil title on the jacquard edition." },
+        { src: "img/ts-macro-label.jpg", cap: "Gilt title over the embossed ceiling." }
+      ]},
+      { type: "step", n: "04", h: "Inside", p: "Each chapter opens on a full page of one repeat, facing a quiet title in the same serif as the cover." },
+      { type: "pair", items: [
+        { src: "img/ts-open-1.jpg", cap: "I. The Rise of the Mirs, with the painted ceiling." },
+        { src: "img/ts-open-2.jpg", cap: "II. Hyderabad, with the corridor toile." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/ts-open-3.jpg", cap: "III. Court and Culture, with the deer and doorway." },
+        { src: "img/ts-open-4.jpg", cap: "IV. Miani, 1843, with the lanterns." }
+      ]},
+      { type: "step", n: "05", h: "On the shelf and the table", p: "The edition is meant to be kept, so it is shown where people keep books." },
+      { type: "full", src: "img/ts-shelf.jpg", cap: "In the library." },
+      { type: "pair", items: [
+        { src: "img/ts-table.jpg", cap: "On the coffee table." },
+        { src: "img/ts-spines.jpg", cap: "Every spine in the series." }
+      ]},
+      { type: "step", n: "06", h: "The launch", p: "The campaign treats the book like an exhibition: museum banners, column wraps, a building wrap and posters, all built from the same arch, portrait and patterns." },
+      { type: "full", src: "img/ts-ooh-columns.jpg", cap: "Column wraps under a colonnade." },
+      { type: "pair", items: [
+        { src: "img/ts-museum-banner.jpg", cap: "Museum banner." },
+        { src: "img/ts-gallery-banner.jpg", cap: "Gallery facade banner." }
+      ]},
+      { type: "pair", items: [
+        { src: "img/ts-ooh-building.jpg", cap: "Building wrap." },
+        { src: "img/ts-ooh-paris.jpg", cap: "Street hoarding." }
+      ]},
+      { type: "full", src: "img/ts-ooh-night.jpg", cap: "Lit billboard at night." },
+      { type: "pair", items: [
+        { src: "img/ts-ooh-stone.jpg", cap: "Poster in a stone frame." },
+        { src: "img/ts-gallery-frame.jpg", cap: "In the gallery." }
+      ]},
+      { type: "grid", cols: 3, items: [
+        { src: "img/ts-sq-1.jpg", cap: "Halani, 1783." }, { src: "img/ts-sq-2.jpg", cap: "Hyderabad." }, { src: "img/ts-sq-3.jpg", cap: "Miani, 1843." }
+      ]},
+      { type: "related", text: "The drawings and patterns behind the book are documented in:",
+        links: ["portrait-of-an-ancestor", "painted-ceiling", "corridors-and-chandeliers", "lanterns", "threads-of-time"] }
+    ]
+  },
+
+  {
     slug: "open-house",
     tone: "#cfdcd4",
     title: "Open House",
