@@ -659,7 +659,7 @@ const PROJECTS = [
     date: "Self-Initiated · Book Design · 3D · 2026",
     tags: "Book cover · Cloth & leather binding · Foil & emboss · 3D rendering · Launch campaign · Pop-up",
     cover: "img/ts-collection.jpg",
-    covers: [{ src: "img/ts-collection.jpg" }, { src: "img/tp-carve-wall.jpg" }, { src: "img/tp-window-garnet.jpg" }],
+    covers: [{ src: "img/ts-collection.jpg" }, { src: "img/tp-carve-wall.jpg" }, { src: "img/tp-window-muse.jpg" }],
     sections: {
       "The Project":
         "Talpurs in Sindh is a history of the Talpur Mirs, who ruled Sindh from the victory at Halani in 1783 to the defeat at Miani in 1843. I designed it as a collector's edition: printed jackets, cloth, jacquard and leather bindings, and a launch campaign that takes the book from the shelf to the street.",
@@ -751,16 +751,13 @@ const PROJECTS = [
         { src: "img/tp-carve-corner.jpg", cap: "The portrait cut into the entrance pillar." },
         { src: "img/tp-carve-plaster.jpg", cap: "Carved into lime plaster inside." }
       ]},
-      { type: "full", src: "img/tp-window-garnet.jpg", cap: "The shopfront in white vinyl." },
       { type: "pair", natural: true, items: [
         { src: "img/tp-window-muse.jpg", cap: "Window, stone facade." },
         { src: "img/tp-window-glo.jpg", cap: "Window, gallery interior." }
       ]},
-      { type: "text", h: "A quieter series", p: "Next to stone and daylight the arched posters felt too busy, so the pop-up has its own series: one element each on stone, cream or oxblood, taken from the same portrait and repeat." },
-      { type: "grid", cols: 5, items: [
-        { src: "img/tp-lounge-stone.jpg", cap: "Stone." }, { src: "img/tp-lounge-portrait.jpg", cap: "Portrait." },
-        { src: "img/tp-lounge-detail.jpg", cap: "Detail." }, { src: "img/tp-lounge-oxblood.jpg", cap: "Oxblood." },
-        { src: "img/tp-lounge-dates.jpg", cap: "Dates." }
+      { type: "text", h: "A quieter series", p: "Next to stone and daylight the arched posters felt too busy, so the pop-up has its own quieter posters, each built from one element of the same portrait and repeat." },
+      { type: "pair", natural: true, items: [
+        { src: "img/tp-lounge-detail.jpg", cap: "Detail." }, { src: "img/tp-lounge-oxblood.jpg", cap: "Oxblood." }
       ]},
       { type: "pair", natural: true, items: [
         { src: "img/tp-banner.jpg", cap: "Hanging banner under the colonnade." },
@@ -774,20 +771,16 @@ const PROJECTS = [
         { src: "img/tp-window-poster.jpg", cap: "Framed window poster." },
         { src: "img/tp-walkers.jpg", cap: "On the street." }
       ]},
-      { type: "step", n: "08", h: "To take home", p: "The book leaves in a box and a bag, and the covers carry the same finishes as the walls: blind embossing and a pressed title." },
+      { type: "step", n: "08", h: "To take home", p: "The book leaves in a bag, and the covers carry the same finishes as the walls: blind embossing and a pressed title." },
       { type: "pair", natural: true, items: [
         { src: "img/tp-book-hands.jpg", cap: "Title pressed into black cloth, portrait raised." },
         { src: "img/tp-emboss-paper.jpg", cap: "Blind emboss on the endpaper stock." }
       ]},
-      { type: "full", src: "img/tp-box.jpg", cap: "The book box." },
       { type: "pair", natural: true, items: [
         { src: "img/tp-bag-cream.jpg", cap: "The shopping bag." },
         { src: "img/tp-bag-brooke.jpg", cap: "Carried out of the pop-up." }
       ]},
-      { type: "pair", natural: true, items: [
-        { src: "img/tp-elevator-steel.jpg", cap: "Launch day." },
-        { src: "img/tp-elevator-hotel.jpg", cap: "Delivered to the hotel." }
-      ]},
+      { type: "full", src: "img/tp-elevator-steel.jpg", cap: "Launch day." },
       { type: "related", text: "The drawings and patterns behind the book are documented in:",
         links: ["portrait-of-an-ancestor", "painted-ceiling", "corridors-and-chandeliers", "lanterns", "threads-of-time"] }
     ]
