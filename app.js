@@ -1,5 +1,6 @@
 (function () {
   const app = document.getElementById("app");
+  const imgDim = (s) => { const d = (window.IMGDIM || {})[s]; return d ? ` width="${d[0]}" height="${d[1]}" style="--ar:${d[0]} / ${d[1]}"` : ""; };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const bySlug = (slug) => PROJECTS.find((p) => p.slug === slug);
 
@@ -71,7 +72,7 @@
 
   /* ---------- Block renderers ---------- */
   const fig = (it, extra = "") =>
-    `<figure class="${it.contain ? "contain" : ""} ${extra}"><img src="${it.src}" alt="${esc(it.cap || "")}" loading="lazy" data-cap="${esc(it.cap || "")}">${it.cap ? `<figcaption>${esc(it.cap)}</figcaption>` : ""}</figure>`;
+    `<figure class="${it.contain ? "contain" : ""} ${extra}"><img src="${it.src}" alt="${esc(it.cap || "")}"${imgDim(it.src)} loading="lazy" data-cap="${esc(it.cap || "")}">${it.cap ? `<figcaption>${esc(it.cap)}</figcaption>` : ""}</figure>`;
 
   const renderBlock = (b) => {
     switch (b.type) {

@@ -187,7 +187,7 @@ main:focus { outline: none; }
 .blk.pair { grid-template-columns: 1fr 1fr; }
 .blk.trio { grid-template-columns: repeat(3, 1fr); }
 .blk.pair img, .blk.trio img { aspect-ratio: 4 / 5; object-fit: cover; }
-.blk.natural img { aspect-ratio: auto !important; height: auto; }
+.blk.natural img { aspect-ratio: var(--ar, auto) !important; height: auto; }
 .blk.natural { align-items: center; }
 .blk.pair .contain img, .blk.trio .contain img { object-fit: contain; background: #fff; border: 1px solid var(--line); padding: 4%; }
 .blk.text {
@@ -763,7 +763,7 @@ button.hl-ui-card:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -
 
 /* ===== Show every image whole (no cropping) ===== */
 .blk.pair, .blk.trio { align-items: start; }
-.blk.pair img, .blk.trio img { aspect-ratio: auto !important; height: auto; object-fit: contain; }
+.blk.pair img, .blk.trio img { aspect-ratio: var(--ar, auto) !important; height: auto; object-fit: contain; }
 .blk[class*="grid-"] img, .blk.tall img { object-fit: contain !important; background: #f3ede1; }
 .blk[class*="grid-"] .contain img { background: #fff; }
 .rs-frames { background: #f3ede1; }
