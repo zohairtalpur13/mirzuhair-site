@@ -685,6 +685,7 @@ const PROJECTS = [
         { src: "img/pt-drawing.jpg", cap: "The ancestral portrait, drawn by hand.", contain: true },
         { src: "img/pt-jq-3.jpg", cap: "The portrait jacquard, which became the woven edition." }
       ]},
+      { type: "full", src: "img/ts-hero.jpg", cap: "The crimson edition in its jacket." },
       { type: "step", n: "02", h: "Cloth, jacquard and leather", p: "Under the jackets, the case itself carries the design: gold blocking on crimson cloth, a blind-embossed ceiling on teal cloth with a recessed label, the portrait jacquard as woven cloth, and gilt leather." },
       { type: "full", src: "img/ts-fabric.jpg", cap: "The woven edition: the portrait jacquard as book cloth, with a foil-stamped leather label." },
       { type: "pair", items: [
@@ -695,6 +696,7 @@ const PROJECTS = [
         { src: "img/ts-gilt.jpg", cap: "Crimson cloth case with its slipcase." },
         { src: "img/ts-quarter.jpg", cap: "Quarter binding: leather spine and corners, portrait-pattern sides." }
       ]},
+      { type: "full", src: "img/ts-bold.jpg", cap: "The launch edition: turquoise cloth with a blind title, and its jacket." },
       { type: "step", n: "03", h: "In the hand", p: "Rendered close, the finishes do the work: gold that catches light, cloth weave, and letters pressed into the board." },
       { type: "full", src: "img/ts-macro-gilt.jpg", cap: "Gold-blocked portrait in crimson leather." },
       { type: "pair", items: [
@@ -717,6 +719,14 @@ const PROJECTS = [
         { src: "img/ts-spines.jpg", cap: "Every spine in the series." }
       ]},
       { type: "step", n: "06", h: "The launch", p: "The campaign treats the book like an exhibition: museum banners, column wraps, a building wrap and posters, all built from the same arch, portrait and patterns." },
+      { type: "grid", cols: 3, items: [
+        { src: "img/ts-banner-crimson.jpg", cap: "Banner, crimson." }, { src: "img/ts-banner-teal.jpg", cap: "Banner, teal." },
+        { src: "img/ts-banner-plum.jpg", cap: "Banner, plum." }
+      ]},
+      { type: "grid", cols: 3, items: [
+        { src: "img/ts-poster-crimson.jpg", cap: "Sixty years that shaped a province." }, { src: "img/ts-poster-teal.jpg", cap: "The Mirs of Hyderabad, retold." },
+        { src: "img/ts-poster-plum.jpg", cap: "A dynasty, a river, a palace." }
+      ]},
       { type: "full", src: "img/ts-ooh-columns.jpg", cap: "Column wraps under a colonnade." },
       { type: "pair", items: [
         { src: "img/ts-museum-banner.jpg", cap: "Museum banner." },
@@ -727,6 +737,7 @@ const PROJECTS = [
         { src: "img/ts-ooh-paris.jpg", cap: "Street hoarding." }
       ]},
       { type: "full", src: "img/ts-ooh-night.jpg", cap: "Lit billboard at night." },
+      { type: "full", src: "img/ts-billboard-street.jpg", cap: "Street billboard." },
       { type: "pair", items: [
         { src: "img/ts-ooh-stone.jpg", cap: "Poster in a stone frame." },
         { src: "img/ts-gallery-frame.jpg", cap: "In the gallery." }
