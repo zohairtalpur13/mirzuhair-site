@@ -1168,38 +1168,6 @@ const PROJECTS = [
   },
 
   {
-    slug: "raw",
-    tone: "#1a1716",
-    title: "“RAW”",
-    subtitle: "The Houses Issue: five invented fashion houses, sold by typography alone",
-    date: "Self-Initiated · Art Direction · Typography · 2026",
-    tags: "Invented brand identities · Editorial design · Typography · WebGL",
-    cover: "raw/img/page-00.jpg",
-    covers: [{ src: "raw/img/page-00.jpg" }, { src: "raw/img/page-01.jpg" }, { src: "raw/img/page-03.jpg" }],
-    sections: {
-      "The Project":
-        "“RAW”, The Houses Issue, is a black-and-red fashion magazine of five invented luxury houses, each art-directed in the spirit of a real one: NUIT after Saint Laurent, BRUT after Balenciaga, VELLUTO after Gucci, ZERO after Maison Margiela and “QUOTE” after Virgil Abloh.",
-      "The Process":
-        "There are no products, no models and no photographs. Each house is sold by typography alone: one campaign poster and one editorial page, all drawn in code. The issue lives on a table as a 3D magazine you turn by hand, with a camera flash that follows the cursor.",
-      "The Problem":
-        "Fashion houses are recognised as much by their type and attitude as by their products. I wanted to see how much of a house survives with everything taken away except the letters.",
-      "The Goal":
-        "A magazine you handle rather than scroll, where each spread feels like a different house speaking."
-    },
-    blocks: [
-      { type: "linkout", text: "“RAW” is live. Drag the pages to turn them:", items: [{ label: "Open “RAW”", href: "raw/index.html" }] },
-      { type: "grid", cols: 3, items: [
-        { src: "raw/img/page-00.jpg", cap: "The cover." },
-        { src: "raw/img/page-01.jpg", cap: "NUIT, after Saint Laurent: one letter, one red hairline." },
-        { src: "raw/img/page-03.jpg", cap: "BRUT, after Balenciaga: the name as a wall." },
-        { src: "raw/img/page-05.jpg", cap: "VELLUTO, after Gucci: a monogram like a wax seal." },
-        { src: "raw/img/page-07.jpg", cap: "ZERO, after Maison Margiela: a blank label." },
-        { src: "raw/img/page-09.jpg", cap: "“QUOTE”, after Virgil Abloh: a campaign that says so." }
-      ]},
-      { type: "linkout", text: "Turn the pages:", items: [{ label: "Open “RAW”", href: "raw/index.html#magazine" }] }
-    ]
-  },
-  {
     slug: "heritage-loop",
     tone: "#cfe1de",
     title: "Heritage Loop",
