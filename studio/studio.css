@@ -212,13 +212,18 @@ section + section { border-top: 1px solid var(--rule); }
 .colo-foot a { text-decoration: none; }
 .colo-foot a:hover { color: var(--green); }
 
-/* Seamless pattern grounds: fade in on scroll, drift slowly, move with scroll */
+/* Seamless pattern grounds: fade in on scroll, drift slowly, move with scroll,
+   and glow brighter wherever the visitor carries the lantern (--mx, --my, --lr). */
 .bg {
   --tile: 360px; --o: .13; --dx: 1; --dy: -1; --dur: 90s;
+  --base: .3; --mx: -9999px; --my: -9999px; --lr: 0px;
+  --fade: linear-gradient(transparent, #000 18%, #000 82%, transparent);
   position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); width: 100vw;
   overflow: hidden; pointer-events: none; opacity: 0; transition: opacity 1.6s var(--ease);
-  -webkit-mask: linear-gradient(transparent, #000 18%, #000 82%, transparent);
-          mask: linear-gradient(transparent, #000 18%, #000 82%, transparent);
+  -webkit-mask-image: var(--fade), radial-gradient(circle var(--lr) at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, .9) 35%, rgba(0, 0, 0, var(--base)) 100%);
+  -webkit-mask-composite: source-in;
+          mask-image: var(--fade), radial-gradient(circle var(--lr) at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, .9) 35%, rgba(0, 0, 0, var(--base)) 100%);
+          mask-composite: intersect;
 }
 .bg::before {
   content: ""; position: absolute; inset: calc(-1 * (var(--tile) + 160px));
@@ -227,20 +232,61 @@ section + section { border-top: 1px solid var(--rule); }
   will-change: transform;
 }
 @keyframes drift { to { transform: translate(calc(var(--dx) * var(--tile)), calc(var(--dy) * var(--tile))); } }
-.in > .bg { opacity: var(--o); }
+.in > .bg { opacity: calc(var(--o) / var(--base) * 1.15); }
 .bg-doors { --img: url("art/tile-doorways.png"); --tile: 320px; --dx: 1; --dy: -1; --dur: 110s; }
 .bg-deer { --img: url("art/tile-deer.png"); --tile: 380px; --dx: 0; --dy: -1; --dur: 80s; --o: .12; }
 .bg-lanterns { --img: url("art/tile-lanterns.png"); --tile: 300px; --dx: -1; --dy: 0; --dur: 70s; --o: .11; }
 .bg-rev { --dx: 1; --dy: 1; --tile: 300px; --dur: 100s; }
-.bg-letter { --o: .16; -webkit-mask: radial-gradient(ellipse 70% 62% at 50% 50%, #000 35%, transparent 100%); mask: radial-gradient(ellipse 70% 62% at 50% 50%, #000 35%, transparent 100%); }
+.bg-letter { --o: .16; --fade: radial-gradient(ellipse 70% 62% at 50% 50%, #000 35%, transparent 100%); }
 .band { animation: band 40s linear infinite; }
 @keyframes band { to { background-position-x: calc(50% + 240px); } }
+
+/* The lantern: a warm pool of light that follows the visitor */
+body { position: relative; }
+.lamp {
+  position: fixed; left: 0; top: 0; z-index: -2; width: 560px; height: 560px; border-radius: 50%;
+  pointer-events: none; opacity: 0; transition: opacity .8s var(--ease); will-change: transform;
+  background: radial-gradient(circle, rgba(255, 222, 160, .55) 0%, rgba(240, 196, 120, .22) 32%, rgba(240, 196, 120, 0) 68%);
+}
+.lamp.on { opacity: 1; }
+
+/* Block prints pressed into the paper */
+.prints { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.stamp {
+  position: absolute; width: var(--w); height: auto; translate: -50% -50%; rotate: var(--r);
+  mix-blend-mode: multiply; opacity: .78; transition: opacity 2.6s ease;
+  animation: press .6s cubic-bezier(.2, 1.4, .4, 1) both;
+}
+.stamp.lift { opacity: 0; }
+@keyframes press {
+  0% { opacity: 0; scale: 1.4; filter: blur(3px); }
+  55% { opacity: .92; scale: .95; filter: blur(0); }
+  100% { opacity: .78; scale: 1; }
+}
+.ripple {
+  position: absolute; width: 18px; height: 18px; translate: -50% -50%; border-radius: 50%;
+  border: 1px solid var(--brass); pointer-events: none; animation: ripple .9s ease-out forwards;
+}
+@keyframes ripple { to { scale: 14; opacity: 0; } }
+
+/* A quiet invitation to play */
+.hint {
+  position: fixed; left: 22px; bottom: 22px; z-index: 40; translate: 0 12px;
+  display: flex; align-items: center; gap: 10px; padding: 9px 18px 9px 12px;
+  background: rgba(247, 241, 230, .9); border: 1px solid var(--rule); border-radius: 2px;
+  font: italic 400 16px var(--serif); color: var(--ink-soft); white-space: nowrap;
+  box-shadow: 0 10px 24px -16px rgba(46, 33, 14, .5);
+  opacity: 0; pointer-events: none; transition: opacity .7s var(--ease), translate .7s var(--ease);
+}
+.hint img { width: 16px; height: auto; }
+.hint.show { opacity: 1; translate: 0 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .cover-ceiling, .lantern, .bg::before, .band { animation: none; }
   .bg { transition: none; }
   .bg::before { translate: none; }
+  .stamp, .ripple { animation: none; }
   .plate img, .seal, .ink-link { transition: none; }
 }
 
@@ -261,6 +307,8 @@ section + section { border-top: 1px solid var(--rule); }
 
 @media (max-width: 600px) {
   body { font-size: 18px; }
+  .lamp { width: 380px; height: 380px; }
+  .hint { font-size: 14px; left: 12px; bottom: 12px; max-width: calc(100vw - 24px); white-space: normal; }
   .mast-back { position: static; display: block; text-align: left; }
   .mast-line { padding-top: 14px; font-size: 10px; letter-spacing: .12em; }
   .mast-line span:not(.mast-name) { display: none; }
